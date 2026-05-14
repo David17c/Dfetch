@@ -14,6 +14,7 @@ func main() {
 	mem := getsysinfo.GetMem()
 	username := getsysinfo.GetUsername()
 	hostname := getsysinfo.GetHostname()
+	localip, version := getsysinfo.GetLocalIP()
 
 	// Read ASCII art
 	file := fmt.Sprintf("/home/david/Documents/Programmeer-projecten/Dfetch/logo/%s.txt", strings.ToLower(ID))
@@ -35,6 +36,7 @@ func main() {
 		fmt.Sprintf("Kernel: %s", kernel),
 		fmt.Sprintf("CPU: %s", cpu),
 		fmt.Sprintf("Memory: %s", mem),
+		fmt.Sprintf("Local IP (%s): %s", version, localip),
 	}
 
 	// Find max width of ASCII art for padding
