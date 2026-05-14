@@ -1,19 +1,16 @@
-             ...-:::::-...
-          .-MMMMMMMMMMMMMMM-.
-      .-MMMM`..-:::::::-..`MMMM-.
-    .:MMMM.:MMMMMMMMMMMMMMM:.MMMM:.
-   -MMM-M---MMMMMMMMMMMMMMMMMMM.MMM-
- `:MMM:MM`  :MMMM:....::-...-MMMM:MMM:`
- :MMM:MMM`  :MM:`  ``    ``  `:MMM:MMM:
-.MMM.MMMM`  :MM.  -MM.  .MM-  `MMMM.MMM.
-:MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM-MMM:
-:MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM:MMM:
-:MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM-MMM:
-.MMM.MMMM`  :MM:--:MM:--:MM:  `MMMM.MMM.
- :MMM:MMM-  `-MMMMMMMMMMMM-`  -MMM-MMM:
-  :MMM:MMM:`                `:MMM:MMM:
-   .MMM.MMMM:--------------:MMMM.MMM.
-     '-MMMM.-MMMMMMMMMMMMMMM-.MMMM-'
-       '.-MMMM``--:::::--``MMMM-.'
-            '-MMMMMMMMMMMMM-'
-               ``-:::::-``
+          `.-::---..
+      .:++++ooooosssoo:.  
+    .+o++::.      `.:oos+.   
+   :oo:.`             -+oo:    
+ `+o/`    .::::::-.    .++-` 
+`/s/    .yyyyyyyyyyo:   +o-`    
+`so     .ss       ohyo` :s-:  
+`s/     .ss  h  m  myy/ /s``   
+`s:     `oo  s  m  Myy+-o:`   
+ :o.      .:////////++:       
+ `/++        -:::::-       
+  `++-                 
+   `/+-             
+     .+/.       
+       .:+-.     
+          `--.``      

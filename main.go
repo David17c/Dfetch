@@ -12,6 +12,8 @@ func main() {
 	kernel := getsysinfo.GetKernel()
 	cpu := getsysinfo.GetCpu()
 	mem := getsysinfo.GetMem()
+	username := getsysinfo.GetUsername()
+	hostname := getsysinfo.GetHostname()
 
 	// Read ASCII art
 	file := fmt.Sprintf("/home/david/Documents/Programmeer-projecten/Dfetch/logo/%s.txt", strings.ToLower(ID))
@@ -20,10 +22,15 @@ func main() {
 		panic(err)
 	}
 
-	asciiLines := strings.Split(string(data), "\n")
+	asciiLines := strings.Split(strings.ReplaceAll(string(data), "\r\n", "\n"), "\n")
+
+	userinfo := fmt.Sprintf("%s@%s", username, hostname)
+	separator := strings.Repeat("-", len(userinfo))
 
 	// Prepare system info lines
 	infoLines := []string{
+		fmt.Sprintf("%s@%s", username, hostname),
+		fmt.Sprintf("%s", separator),
 		fmt.Sprintf("OS: %s", prettyName),
 		fmt.Sprintf("Kernel: %s", kernel),
 		fmt.Sprintf("CPU: %s", cpu),
