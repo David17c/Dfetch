@@ -1,1 +1,1 @@
-Dfetch is far from usable dont use it yet
+Simple lighweight command-line tool displaying your system information written in Go
