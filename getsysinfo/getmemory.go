@@ -1,3 +1,4 @@
+// getsysinfo/getmemory.go
 package getsysinfo
 
 import (

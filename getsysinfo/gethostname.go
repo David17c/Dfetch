@@ -1,3 +1,4 @@
+// getsysinfo/gethostname.go
 package getsysinfo
 
 import (

@@ -1,3 +1,4 @@
+// main.go
 package main
 
 import (
@@ -16,15 +17,15 @@ func main() {
 	hostname := getsysinfo.GetHostname()
 	localip, version := getsysinfo.GetLocalIP()
 
-	// Read ASCII art
+	// Try to read the correct ASCII art for your distro
 	file := fmt.Sprintf("/home/david/Documents/Programmeer-projecten/Dfetch/logo/%s.txt", strings.ToLower(ID))
 	data, err := os.ReadFile(file)
 	if err != nil {
-		// fallback to linux.txt
+		// If your distro's ascii art can not be found just use the linux tux logo
 		file = "/home/david/Documents/Programmeer-projecten/Dfetch/logo/linux.txt"
+		// if that also fails just skip the ascii art
 		data, err = os.ReadFile(file)
 		if err != nil {
-			// if linux.txt also fails, just ignore the ascii art its not that important anyway.
 			data = []byte("")
 		}
 	}

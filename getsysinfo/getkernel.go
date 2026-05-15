@@ -1,3 +1,4 @@
+// getsysinfo/getkernel.go
 package getsysinfo
 
 import (

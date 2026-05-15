@@ -1,3 +1,4 @@
+// getsysinfo/getusername.go
 package getsysinfo
 
 import (

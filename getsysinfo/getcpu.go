@@ -1,3 +1,4 @@
+// getsysinfo/getcpu.go
 package getsysinfo
 
 import (

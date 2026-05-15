@@ -1,3 +1,4 @@
+// getsysinfo/getlocalip.go
 package getsysinfo
 
 import (
