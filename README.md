@@ -11,7 +11,7 @@ A minimal lighweight command-line tool inspired by [Neofetch](https://github.com
 ### Example output
 
 ```
- ___________    david@Thinkpad
+ ___________    David17c@Thinkpad
 |_          \   --------------
   | | _____ |   OS: LMDE 7 (gigi)
   | | | | | |   Kernel: 6.12.86+deb13-amd64
