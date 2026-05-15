@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func GetKernel() string {
+func Kernel() string {
 	file, err := os.Open("/proc/sys/kernel/osrelease")
 	if err != nil {
 		return "unknown"

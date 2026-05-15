@@ -9,14 +9,14 @@ import (
 )
 
 func main() {
-	prettyName, ID := getsysinfo.GetDistro()
-	kernel := getsysinfo.GetKernel()
-	cpu := getsysinfo.GetCpu()
-	mem := getsysinfo.GetMem()
-	username := getsysinfo.GetUsername()
-	hostname := getsysinfo.GetHostname()
-	localip, version := getsysinfo.GetLocalIP()
-	uptime := getsysinfo.GetUptime()
+	prettyName, ID := getsysinfo.Distro()
+	kernel := getsysinfo.Kernel()
+	cpu := getsysinfo.Cpu()
+	mem := getsysinfo.Mem()
+	username := getsysinfo.Username()
+	hostname := getsysinfo.Hostname()
+	localip, version := getsysinfo.LocalIP()
+	uptime := getsysinfo.Uptime()
 
 	// Try to read the correct ASCII art for your distro
 	file := fmt.Sprintf("/home/david/Documents/Programmeer-projecten/Dfetch/logo/%s.txt", strings.ToLower(ID))

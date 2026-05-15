@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func GetHostname() string {
+func Hostname() string {
 	file, err := os.Open("/etc/hostname")
 	if err != nil {
 		return "unknown"

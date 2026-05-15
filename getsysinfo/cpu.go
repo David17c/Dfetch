@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func GetCpu() string {
+func Cpu() string {
 	file, err := os.Open("/proc/cpuinfo")
 	if err != nil {
 		return "unknown"

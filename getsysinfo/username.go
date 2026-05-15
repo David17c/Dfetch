@@ -5,7 +5,7 @@ import (
 	"os/user"
 )
 
-func GetUsername() string {
+func Username() string {
 	currentUser, err := user.Current()
 	if err != nil {
 		return "unknown"

@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func GetDistro() (string, string) {
+func Distro() (string, string) {
 
 	file, err := os.Open("/etc/os-release")
 	if err != nil {

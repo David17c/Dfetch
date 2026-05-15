@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func GetUptime() string {
+func Uptime() string {
 	content, err := os.ReadFile("/proc/uptime")
 	if err != nil {
 		return "unknown"
