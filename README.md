@@ -1,9 +1,41 @@
-Minimal lighweight tool inspired by [Neofetch](https://github.com/dylanaraps/neofetch) displaying your system information. 
+![Dfetch banner](images/Dfetch_banner.png)
+
+Minimal lighweight tool written in Go displaying your system information. 
 
 Dfetch currently only works on Linux based operating systems.
 Its far from done and not yet ready for use.
 
+### File structure
+
+```
+Dfetch
+├── getsysinfo
+│   ├── cpu.go       # CPU information
+│   ├── distro.go    # Linux distribution
+│   ├── hostname.go  # System hostname
+│   ├── kernel.go    # Kernel version
+│   ├── localip.go   # Local IP address
+│   ├── memory.go    # Memory usage
+│   ├── uptime.go    # System uptime
+│   └── username.go  # Current username
+│
+├── go.mod           # Go module config
+├── images           # README images
+├── LICENSE          # Project license
+│
+├── logo             # ASCII logos
+│   ├── arch.txt
+│   ├── debian.txt
+│   ├── linuxmint.txt
+│   ├── ubuntu.txt
+│   └── ...
+│
+├── main.go          # Start / end of program
+└── README.md        # Project overview
+```
+
 ### To do
+
 * [ ] Add configuration system
 * [ ] Add colors to ASCII art
 * [ ] Add more types of system info
@@ -12,30 +44,3 @@ Its far from done and not yet ready for use.
 * [ ] Improve error handeling
 * [ ] Write better README.md
 * [ ] Add command-line flags
-
-```
-Dfetch
-├── getsysinfo
-│   ├── cpu.go       # Fetch cpu info
-│   ├── distro.go    # Fetch distro information
-│   ├── hostname.go  # Fetch hostname
-│   ├── kernel.go    # Fetch info about kernel version
-│   ├── localip.go   # Fetch your local IP
-│   ├── memory.go    # Fetch memory related info
-│   ├── uptime.go    # Fetch computer uptime
-│   └── username.go  # Fetch current users name
-│
-├── go.mod              # Go module file
-├── images              # Some images used in readme
-├── LICENSE
-│
-├── logo                # ASCII art distro logos
-│   ├── arch.txt
-│   ├── debian.txt
-│   ├── linuxmint.txt
-│   ├── ubuntu.txt
-│   └── ...
-│
-├── main.go             # Start and end of the program
-└── README.md           # Repo descripting
-```
