@@ -16,6 +16,7 @@ func main() {
 	username := getsysinfo.GetUsername()
 	hostname := getsysinfo.GetHostname()
 	localip, version := getsysinfo.GetLocalIP()
+	uptime := getsysinfo.GetUptime()
 
 	// Try to read the correct ASCII art for your distro
 	file := fmt.Sprintf("/home/david/Documents/Programmeer-projecten/Dfetch/logo/%s.txt", strings.ToLower(ID))
@@ -44,6 +45,7 @@ func main() {
 		fmt.Sprintf("CPU: %s", cpu),
 		fmt.Sprintf("Memory: %s", mem),
 		fmt.Sprintf("Local IP (%s): %s", version, localip),
+		fmt.Sprintf("Uptime: %s", uptime),
 	}
 
 	// Find max width of ASCII art for padding
