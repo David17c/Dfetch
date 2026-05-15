@@ -6,8 +6,9 @@ Its also far from done ready for use and still actively being developed.
 ### To do
 * [ ] Add configuration system
 * [ ] Add colors to ASCII art
+* [ ] Add more types of system info
 * [ ] Test on more distro's
 * [ ] Add support for more distro's
 * [ ] Improve error handeling
 * [ ] Write better README.md
-* [ ] Add command arguments
+* [ ] Add command-line flags
