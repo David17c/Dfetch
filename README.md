@@ -16,14 +16,14 @@ Its far from done and not yet ready for use.
 ```
 Dfetch
 ├── getsysinfo
-│   ├── getcpu.go       # Fetch cpu info
-│   ├── getdistro.go    # Fetch distro information
-│   ├── gethostname.go  # Fetch hostname
-│   ├── getkernel.go    # Fetch info about kernel version
-│   ├── getlocalip.go   # Fetch your local IP
-│   ├── getmemory.go    # Fetch memory related info
-│   ├── getuptime.go    # Fetch computer uptime
-│   └── getusername.go  # Fetch current users name
+│   ├── cpu.go       # Fetch cpu info
+│   ├── distro.go    # Fetch distro information
+│   ├── hostname.go  # Fetch hostname
+│   ├── kernel.go    # Fetch info about kernel version
+│   ├── localip.go   # Fetch your local IP
+│   ├── memory.go    # Fetch memory related info
+│   ├── uptime.go    # Fetch computer uptime
+│   └── username.go  # Fetch current users name
 │
 ├── go.mod              # Go module file
 ├── images              # Some images used in readme
@@ -37,5 +37,5 @@ Dfetch
 │   └── ...
 │
 ├── main.go             # Start and end of the program
-└── readme.md           # Repo descripting
+└── README.md           # Repo descripting
 ```
