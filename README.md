@@ -1,9 +1,8 @@
 ![Dfetch banner](images/Dfetch_banner.png)
 
-Minimal lighweight tool written in Go displaying your system information. 
+A minimal lighweight command-line tool inspired by [Neofetch](https://github.com/dylanaraps/neofetch) written in Go. Dfetch shows information relating to your OS, hardware and software in a minimal and visually nice way.
 
-Dfetch currently only works on Linux based operating systems.
-Its far from done and not yet ready for use.
+![Output example](images/output_example.png)
 
 ### File structure
 
@@ -38,9 +37,7 @@ Dfetch
 
 * [ ] Add configuration system
 * [ ] Add colors to ASCII art
-* [ ] Add more types of system info
 * [ ] Test on more distro's
 * [ ] Add support for more distro's
 * [ ] Improve error handeling
-* [ ] Write better README.md
 * [ ] Add command-line flags
