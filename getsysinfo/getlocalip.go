@@ -5,7 +5,7 @@ import (
 )
 
 func GetLocalIP() (string, string) {
-	conn, err := net.Dial("udp", "8.8.8.8:80")
+	conn, err := net.Dial("udp", "1.1.1.1:80")
 	if err != nil {
 		return "unknown", "unknown"
 	}

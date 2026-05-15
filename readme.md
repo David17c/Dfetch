@@ -1,1 +1,1 @@
-Simple lighweight command-line tool displaying your system information written in Go
+Minimal lighweight tool displaying your system information written in Go.

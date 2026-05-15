@@ -20,7 +20,13 @@ func main() {
 	file := fmt.Sprintf("/home/david/Documents/Programmeer-projecten/Dfetch/logo/%s.txt", strings.ToLower(ID))
 	data, err := os.ReadFile(file)
 	if err != nil {
-		panic(err)
+		// fallback to linux.txt
+		file = "/home/david/Documents/Programmeer-projecten/Dfetch/logo/linux.txt"
+		data, err = os.ReadFile(file)
+		if err != nil {
+			// if linux.txt also fails, just ignore the ascii art its not that important anyway.
+			data = []byte("")
+		}
 	}
 
 	asciiLines := strings.Split(strings.ReplaceAll(string(data), "\r\n", "\n"), "\n")
@@ -65,5 +71,28 @@ func main() {
 		}
 
 		fmt.Printf("%-*s   %s\n", maxLen, left, right)
+	}
+}
+
+func getANSIColor(name string) string {
+	switch strings.ToLower(name) {
+	case "black":
+		return "\033[30m"
+	case "red":
+		return "\033[31m"
+	case "green":
+		return "\033[32m"
+	case "yellow":
+		return "\033[33m"
+	case "blue":
+		return "\033[34m"
+	case "magenta":
+		return "\033[35m"
+	case "cyan":
+		return "\033[36m"
+	case "white":
+		return "\033[37m"
+	default:
+		return "\033[0m"
 	}
 }
