@@ -1,6 +1,6 @@
 ![Dfetch banner](images/Dfetch_banner.png)
 
-A minimal and lightweight command-line tool inspired by [Neofetch](https://github.com/dylanaraps/neofetch) anf written in Go. Dfetch shows information relating to your OS, hardware and software in a visually pleasing way.
+A minimal and lightweight command-line tool inspired by [Neofetch](https://github.com/dylanaraps/neofetch) and written in Go. Dfetch shows information relating to your OS, hardware and software in a visually pleasing way.
 
 ### Example output
 
