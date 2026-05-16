@@ -1,4 +1,4 @@
-color: yellow
+color: bright_yellow
    .--.  
   |o_o | 
   |:_/ | 
