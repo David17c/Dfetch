@@ -22,6 +22,7 @@ Dfetch
 │   ├── localip.go       # Local IP address
 │   ├── memory.go        # Memory usage
 │   ├── uptime.go        # System uptime
+│   ├── battery.go       # Battery percentage and status
 │   └── username.go      # Current username
 │
 ├── go.mod               # Go module config
