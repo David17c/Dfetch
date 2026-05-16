@@ -1,30 +1,18 @@
-```
-██████  ███████ ███████ ████████  ██████ ██   ██ 
-██   ██ ██      ██         ██    ██      ██   ██ 
-██   ██ █████   █████      ██    ██      ███████ 
-██   ██ ██      ██         ██    ██      ██   ██ 
-██████  ██      ███████    ██     ██████ ██   ██ 
-```
+![Dfetch banner](images/Dfetch_banner.png)
 
 A minimal lighweight command-line tool inspired by [Neofetch](https://github.com/dylanaraps/neofetch). Dfetch shows information relating to your OS, hardware and software and has a focus on being minimal, simple and lightweight.
 
 ### Example output
 
-```
- ___________    David17c@Thinkpad
-|_          \   --------------
-  | | _____ |   OS: LMDE 7 (gigi)
-  | | | | | |   Kernel: 6.12.86+deb13-amd64
-  | | | | | |   CPU: AMD Ryzen 7 250 w/ Radeon 780M Graphics
-  | \_____/ |   Memory: 3.55 / 29.03 GB (12%)
-  \_________/   Local IP (IPv4): 192.168.1.107
-                Uptime: 6h 59m 16s
-```
+![Dfetch output example](images/output_example.png)
 
 ### File structure
 
 ```
 Dfetch
+├── cusomization
+│   └── colors.go    # Supported colors
+│
 ├── getsysinfo
 │   ├── cpu.go       # CPU information
 │   ├── distro.go    # Linux distribution
@@ -52,7 +40,7 @@ Dfetch
 ### To do
 
 * [ ] Add configuration system
-* [ ] Add colors to ASCII art
+* [x] Add colors to ASCII art
 * [ ] Test on more distro's
 * [ ] Add support for more distro's
 * [ ] Improve error handeling

@@ -2,7 +2,9 @@
 package main
 
 import (
+	"Dfetch/customization"
 	"Dfetch/getsysinfo"
+	"bufio"
 	"fmt"
 	"os"
 	"strings"
@@ -18,20 +20,44 @@ func main() {
 	localip, version := getsysinfo.LocalIP()
 	uptime := getsysinfo.Uptime()
 
-	// Try to read the correct ASCII art for your distro
-	file := fmt.Sprintf("/home/david/Documents/Programmeer-projecten/Dfetch/logo/%s.txt", strings.ToLower(ID))
-	data, err := os.ReadFile(file)
+	file := fmt.Sprintf(
+		"/home/david/Documents/Programmeer-projecten/Dfetch/logo/%s.txt",
+		strings.ToLower(ID),
+	)
+
+	f, err := os.Open(file)
 	if err != nil {
-		// If your distro's ascii art can not be found just use the linux tux logo
+		// fallback to linux logo
 		file = "/home/david/Documents/Programmeer-projecten/Dfetch/logo/linux.txt"
-		// if that also fails just skip the ascii art
-		data, err = os.ReadFile(file)
-		if err != nil {
-			data = []byte("")
+		f, err = os.Open(file)
+	}
+
+	var data []string
+	var color string
+
+	if err == nil {
+		defer f.Close()
+
+		scanner := bufio.NewScanner(f)
+		for scanner.Scan() {
+
+			line := scanner.Text()
+
+			if strings.HasPrefix(line, "color:") {
+				colorName := strings.TrimSpace(strings.TrimPrefix(line, "color:"))
+				color = customization.GetColorCode(colorName)
+				continue
+			}
+
+			data = append(data, scanner.Text())
+		}
+
+		if err := scanner.Err(); err != nil {
+			data = []string{}
 		}
 	}
 
-	asciiLines := strings.Split(strings.ReplaceAll(string(data), "\r\n", "\n"), "\n")
+	asciiLines := data
 
 	userinfo := fmt.Sprintf("%s@%s", username, hostname)
 	separator := strings.Repeat("-", len(userinfo))
@@ -73,29 +99,6 @@ func main() {
 			right = infoLines[i]
 		}
 
-		fmt.Printf("%-*s   %s\n", maxLen, left, right)
-	}
-}
-
-func getANSIColor(name string) string {
-	switch strings.ToLower(name) {
-	case "black":
-		return "\033[30m"
-	case "red":
-		return "\033[31m"
-	case "green":
-		return "\033[32m"
-	case "yellow":
-		return "\033[33m"
-	case "blue":
-		return "\033[34m"
-	case "magenta":
-		return "\033[35m"
-	case "cyan":
-		return "\033[36m"
-	case "white":
-		return "\033[37m"
-	default:
-		return "\033[0m"
+		fmt.Printf("%s%-*s\x1b[0m %s\n", color, maxLen, left, right)
 	}
 }
