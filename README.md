@@ -44,7 +44,7 @@ Dfetch
 * [x] Add colors to ASCII art
 * [ ] Test on more distro's
 * [ ] Add support for more distro's
-* [ ] Improve error handeling
-* [ ] Add command-line flags
-
+* [x] Add color support to config
+* [ ] Make code more readable
+ 
 > Note: Ai did not write any code in this project, however it did help reorganize some files to make them more readable.
