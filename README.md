@@ -46,3 +46,5 @@ Dfetch
 * [ ] Add support for more distro's
 * [ ] Improve error handeling
 * [ ] Add command-line flags
+
+> Note: Ai did not write any code in this project, however it did help reorganize some files to make them more readable.
