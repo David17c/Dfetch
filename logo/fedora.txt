@@ -1,4 +1,4 @@
-color: light_blue
+color: bright_blue
         ,'''''.
        |   ,.  |
        |  |  '_'
