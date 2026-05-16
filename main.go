@@ -29,18 +29,20 @@ func main() {
 	hostname := getsysinfo.Hostname()
 	localip, version := getsysinfo.LocalIP()
 	uptime := getsysinfo.Uptime()
+	battery, batterystatus := getsysinfo.Battery()
 
 	userinfo := fmt.Sprintf("%s@%s", username, hostname)
 	separator := strings.Repeat("-", len(userinfo))
 
 	// Dictionary of valid config options
 	infoMap := map[string]string{
-		"os":     fmt.Sprintf("OS: %s", prettyName),
-		"kernel": fmt.Sprintf("Kernel: %s", kernel),
-		"cpu":    fmt.Sprintf("CPU: %s", cpu),
-		"memory": fmt.Sprintf("Memory: %s", mem),
-		"ip":     fmt.Sprintf("Local IP (%s): %s", version, localip),
-		"uptime": fmt.Sprintf("Uptime: %s", uptime),
+		"os":      fmt.Sprintf("OS: %s", prettyName),
+		"kernel":  fmt.Sprintf("Kernel: %s", kernel),
+		"cpu":     fmt.Sprintf("CPU: %s", cpu),
+		"memory":  fmt.Sprintf("Memory: %s", mem),
+		"ip":      fmt.Sprintf("Local IP (%s): %s", version, localip),
+		"uptime":  fmt.Sprintf("Uptime: %s", uptime),
+		"battery": fmt.Sprintf("Battery: %d%% [%s]", battery, batterystatus),
 	}
 
 	// Try to get distro specific ASCII art if that fails use Linux penguin ASCII art if that fails skip ASCII art

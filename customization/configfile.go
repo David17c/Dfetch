@@ -36,7 +36,7 @@ func ConfigFile() ([]string, error) {
 			defer file.Close()
 
 			_, err = file.WriteString(
-				"//Config file for Dfetch. Lines starting with '//' will be ignored. Default settings can be restored by removing this file and running Dfetch.\n\nos\nkernel\ncpu\nmemory\nlocalip\nuptime\n",
+				"//Config file for Dfetch. Lines starting with '//' will be ignored. Default settings can be restored by removing this file and running Dfetch.\n\nos\nkernel\ncpu\nmemory\nlocalip\nuptime\n//battery\n",
 			)
 			if err != nil {
 				return nil, err
