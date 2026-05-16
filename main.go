@@ -35,11 +35,11 @@ func main() {
 		return
 	}
 
-	color = customization.GetColorCode(color)
-
 	sys := collectSystemInfo()
 
 	asciiLines, color := loadASCII(sys.ID, color)
+
+	color = customization.GetColorCode(color)
 
 	infoLines := buildInfoLines(sys, lines)
 
@@ -87,11 +87,10 @@ func loadASCII(distroID, color string) ([]string, string) {
 	for scanner.Scan() {
 		line := scanner.Text()
 
-		// Load color from ASCII file if config color is empty
+		// Load color from ASCII file if config color is empty or false
 		if strings.HasPrefix(line, "color:") {
 			if color == "" {
-				colorName := strings.TrimSpace(strings.TrimPrefix(line, "color:"))
-				color = customization.GetColorCode(colorName)
+				color = strings.TrimSpace(strings.TrimPrefix(line, "color:"))
 			}
 			continue
 		}
