@@ -20,15 +20,16 @@ func main() {
 	localip, version := getsysinfo.LocalIP()
 	uptime := getsysinfo.Uptime()
 
+	// Try to get distro specific ASCII art
 	file := fmt.Sprintf(
-		"/home/david/Documents/Programmeer-projecten/Dfetch/logo/%s.txt",
+		"./logo/%s.txt",
 		strings.ToLower(ID),
 	)
 
 	f, err := os.Open(file)
 	if err != nil {
 		// fallback to linux logo
-		file = "/home/david/Documents/Programmeer-projecten/Dfetch/logo/linux.txt"
+		file = ",/logo/linux.txt"
 		f, err = os.Open(file)
 	}
 
