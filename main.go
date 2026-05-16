@@ -14,6 +14,13 @@ import (
 var logoFS embed.FS
 
 func main() {
+
+	lines, err := customization.ConfigFile()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
 	prettyName, ID := getsysinfo.Distro()
 	kernel := getsysinfo.Kernel()
 	cpu := getsysinfo.Cpu()
@@ -22,6 +29,19 @@ func main() {
 	hostname := getsysinfo.Hostname()
 	localip, version := getsysinfo.LocalIP()
 	uptime := getsysinfo.Uptime()
+
+	userinfo := fmt.Sprintf("%s@%s", username, hostname)
+	separator := strings.Repeat("-", len(userinfo))
+
+	// Dictionary of valid config options
+	infoMap := map[string]string{
+		"os":     fmt.Sprintf("OS: %s", prettyName),
+		"kernel": fmt.Sprintf("Kernel: %s", kernel),
+		"cpu":    fmt.Sprintf("CPU: %s", cpu),
+		"memory": fmt.Sprintf("Memory: %s", mem),
+		"ip":     fmt.Sprintf("Local IP (%s): %s", version, localip),
+		"uptime": fmt.Sprintf("Uptime: %s", uptime),
+	}
 
 	// Try to get distro specific ASCII art if that fails use Linux penguin ASCII art if that fails skip ASCII art
 	file := fmt.Sprintf(
@@ -63,19 +83,20 @@ func main() {
 
 	asciiLines := data
 
-	userinfo := fmt.Sprintf("%s@%s", username, hostname)
-	separator := strings.Repeat("-", len(userinfo))
+	var infoLines []string
 
-	// Prepare system info lines
-	infoLines := []string{
-		fmt.Sprintf("%s@%s", username, hostname),
-		fmt.Sprintf("%s", separator),
-		fmt.Sprintf("OS: %s", prettyName),
-		fmt.Sprintf("Kernel: %s", kernel),
-		fmt.Sprintf("CPU: %s", cpu),
-		fmt.Sprintf("Memory: %s", mem),
-		fmt.Sprintf("Local IP (%s): %s", version, localip),
-		fmt.Sprintf("Uptime: %s", uptime),
+	// Add hostname, username and seperator to the infolines to always be displayed
+	infoLines = append(infoLines,
+		userinfo,
+		separator,
+	)
+
+	for _, line := range lines {
+
+		line = strings.TrimSpace(strings.ToLower(line))
+		if value, exists := infoMap[line]; exists {
+			infoLines = append(infoLines, value)
+		}
 	}
 
 	// Find max width of ASCII art for padding

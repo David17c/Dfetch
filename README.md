@@ -11,35 +11,36 @@ A minimal and lightweight command-line tool inspired by [Neofetch](https://githu
 ```
 Dfetch
 ├── cusomization
-│   └── colors.go    # Supported colors
+│   ├── configfile.go    # Handles config file operations
+│   └── colors.go        # Supported colors
 │
 ├── getsysinfo
-│   ├── cpu.go       # CPU information
-│   ├── distro.go    # Linux distribution
-│   ├── hostname.go  # System hostname
-│   ├── kernel.go    # Kernel version
-│   ├── localip.go   # Local IP address
-│   ├── memory.go    # Memory usage
-│   ├── uptime.go    # System uptime
-│   └── username.go  # Current username
+│   ├── cpu.go           # CPU information
+│   ├── distro.go        # Linux distribution
+│   ├── hostname.go      # System hostname
+│   ├── kernel.go        # Kernel version
+│   ├── localip.go       # Local IP address
+│   ├── memory.go        # Memory usage
+│   ├── uptime.go        # System uptime
+│   └── username.go      # Current username
 │
-├── go.mod           # Go module config
-├── LICENSE          # Project license
+├── go.mod               # Go module config
+├── LICENSE              # Project license
 │
-├── logo             # ASCII logos
+├── logo                 # ASCII logos
 │   ├── arch.txt
 │   ├── debian.txt
 │   ├── linuxmint.txt
 │   ├── ubuntu.txt
 │   └── ...
 │
-├── main.go          # Start / end of program
-└── README.md        # Project overview
+├── main.go             # Start / end of program
+└── README.md           # Project overview
 ```
 
 ### To do
 
-* [ ] Add configuration system
+* [x] Add configuration system
 * [x] Add colors to ASCII art
 * [ ] Test on more distro's
 * [ ] Add support for more distro's
