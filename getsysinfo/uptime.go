@@ -19,11 +19,22 @@ func Uptime() string {
 
 	totalSeconds, _ := strconv.ParseFloat(parts[0], 64)
 
-	hours := int(totalSeconds) / 3600
-	minutes := (int(totalSeconds) % 3600) / 60
-	seconds := int(totalSeconds) % 60
+	total := int(totalSeconds)
 
-	return strconv.Itoa(hours) + "h " +
+	days := total / 86400
+	hours := (total % 86400) / 3600
+	minutes := (total % 3600) / 60
+	seconds := total % 60
+
+	result := ""
+
+	if days >= 1 {
+		result += strconv.Itoa(days) + "d "
+	}
+
+	result += strconv.Itoa(hours) + "h " +
 		strconv.Itoa(minutes) + "m " +
 		strconv.Itoa(seconds) + "s"
+
+	return result
 }
