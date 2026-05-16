@@ -20,7 +20,7 @@ func main() {
 	localip, version := getsysinfo.LocalIP()
 	uptime := getsysinfo.Uptime()
 
-	// Try to get distro specific ASCII art
+	// Try to get distro specific ASCII art if that fails use Linux penguin ASCII art if that fails skip ASCII art
 	file := fmt.Sprintf(
 		"./logo/%s.txt",
 		strings.ToLower(ID),
@@ -28,14 +28,14 @@ func main() {
 
 	f, err := os.Open(file)
 	if err != nil {
-		// fallback to linux logo
-		file = ",/logo/linux.txt"
+		file = "./logo/linux.txt"
 		f, err = os.Open(file)
 	}
 
 	var data []string
 	var color string
 
+	// Read ASCII art file line by line if line starts with "color:" get the color and continue
 	if err == nil {
 		defer f.Close()
 
