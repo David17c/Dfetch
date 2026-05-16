@@ -1,4 +1,3 @@
-// getsysinfo/getlocalip.go
 package getsysinfo
 
 import (
@@ -6,23 +5,46 @@ import (
 )
 
 func LocalIP() (string, string) {
-	conn, err := net.Dial("udp", "1.1.1.1:80")
+	interfaces, err := net.Interfaces()
 	if err != nil {
 		return "unknown", "unknown"
 	}
-	defer conn.Close()
 
-	localAddr := conn.LocalAddr().(*net.UDPAddr)
-	ip := localAddr.IP.String()
+	for _, iface := range interfaces {
+		if iface.Flags&net.FlagUp == 0 {
+			continue
+		}
+		if iface.Flags&net.FlagLoopback != 0 {
+			continue
+		}
 
-	var version string
-	if localAddr.IP.To4() != nil {
-		version = "IPv4"
-	} else if localAddr.IP.To16() != nil {
-		version = "IPv6"
-	} else {
-		version = "unknown"
+		addrs, err := iface.Addrs()
+		if err != nil {
+			continue
+		}
+
+		for _, addr := range addrs {
+			var ip net.IP
+
+			switch v := addr.(type) {
+			case *net.IPNet:
+				ip = v.IP
+			case *net.IPAddr:
+				ip = v.IP
+			}
+
+			if ip == nil || ip.IsLoopback() {
+				continue
+			}
+
+			if ipv4 := ip.To4(); ipv4 != nil {
+				return ipv4.String(), "IPv4"
+			}
+
+			if ip.To16() != nil {
+				return ip.String(), "IPv6"
+			}
+		}
 	}
-
-	return ip, version
+	return "unknown", "unknown"
 }

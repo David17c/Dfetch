@@ -5,10 +5,13 @@ import (
 	"Dfetch/customization"
 	"Dfetch/getsysinfo"
 	"bufio"
+	"embed"
 	"fmt"
-	"os"
 	"strings"
 )
+
+//go:embed logo/*
+var logoFS embed.FS
 
 func main() {
 	prettyName, ID := getsysinfo.Distro()
@@ -22,14 +25,14 @@ func main() {
 
 	// Try to get distro specific ASCII art if that fails use Linux penguin ASCII art if that fails skip ASCII art
 	file := fmt.Sprintf(
-		"./logo/%s.txt",
+		"logo/%s.txt",
 		strings.ToLower(ID),
 	)
 
-	f, err := os.Open(file)
+	f, err := logoFS.Open(file)
 	if err != nil {
-		file = "./logo/linux.txt"
-		f, err = os.Open(file)
+		file = "logo/linux.txt"
+		f, err = logoFS.Open(file)
 	}
 
 	var data []string
