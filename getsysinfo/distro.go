@@ -1,4 +1,3 @@
-// getsysinfo/getdistro.go
 package getsysinfo
 
 import (
@@ -8,20 +7,32 @@ import (
 )
 
 func Distro() (string, string) {
-	file, err := os.Open("/etc/os-release")
+	prettyName, id, err := parseOSRelease("/etc/os-release")
+	if err == nil && prettyName != "" {
+		return prettyName, id
+	}
+
+	prettyName, id, err = parseOSRelease("/usr/lib/os-release")
+	if err == nil && prettyName != "" {
+		return prettyName, id
+	}
+
+	return "unknown", "unknown"
+}
+
+func parseOSRelease(path string) (string, string, error) {
+	file, err := os.Open(path)
 	if err != nil {
-		file, err = os.Open("/usr/lib/os-release")
-		if err != nil {
-			panic(err)
-		}
+		return "", "", err
 	}
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
 
 	var (
-		distroName string
-		distroID   string
+		prettyName string
+		name       string
+		id         string
 	)
 
 	for scanner.Scan() {
@@ -32,27 +43,37 @@ func Distro() (string, string) {
 		}
 
 		switch {
-		case strings.HasPrefix(line, "NAME="):
-			if distroName == "" {
-				distroName = strings.Trim(strings.TrimPrefix(line, "NAME="), `"`)
-			}
 		case strings.HasPrefix(line, "PRETTY_NAME="):
-			distroName = strings.Trim(strings.TrimPrefix(line, "PRETTY_NAME="), `"`)
+			prettyName = strings.Trim(
+				strings.TrimPrefix(line, "PRETTY_NAME="),
+				`"`,
+			)
+
+		case strings.HasPrefix(line, "NAME="):
+			name = strings.Trim(
+				strings.TrimPrefix(line, "NAME="),
+				`"`,
+			)
+
 		case strings.HasPrefix(line, "ID="):
-			distroID = strings.Trim(strings.TrimPrefix(line, "ID="), `"`)
+			id = strings.Trim(
+				strings.TrimPrefix(line, "ID="),
+				`"`,
+			)
 		}
 	}
 
 	if err := scanner.Err(); err != nil {
-		return "unknown", "unknown"
+		return "", "", err
 	}
 
-	if distroID == "" {
-		distroID = "unknown"
+	if prettyName == "" {
+		prettyName = name
 	}
 
-	if distroName != "" {
-		return distroName, distroID
+	if id == "" {
+		id = "unknown"
 	}
-	return "unknown", "unknown"
+
+	return prettyName, id, nil
 }
