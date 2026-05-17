@@ -1,18 +1,33 @@
-// getsysinfo/desktopenviroment.go
+// getsysinfo/desktopenvironment.go
 package getsysinfo
 
 import "os"
 
 func DesktopEnvironment() (string, string) {
-	de := os.Getenv("DESKTOP_SESSION")
-	if de == "" {
-		de = "unknown"
+	var DE string
+	var sessionType string
+
+	for _, key := range []string{
+		"DESKTOP_SESSION",
+		"GDMSESSION",
+		"XDG_CURRENT_DESKTOP",
+	} {
+		if value := os.Getenv(key); value != "" {
+			DE = value
+			break
+		}
 	}
 
-	sessionType := os.Getenv("XDG_SESSION_TYPE")
-	if sessionType == "" {
-		sessionType = "unknown"
+	for _, key := range []string{
+		"XDG_SESSION_TYPE",
+		"WAYLAND_DISPLAY",
+		"DISPLAY",
+	} {
+		if value := os.Getenv(key); value != "" {
+			sessionType = value
+			break
+		}
 	}
 
-	return de, sessionType
+	return DE, sessionType
 }
