@@ -4,7 +4,7 @@ Command-line tool inspired by [Neofetch](https://github.com/dylanaraps/neofetch)
 
 ![Dfetch output example](images/Output_example.png)
 
-Dfetch has a focus on being minimal and visually appealing while also being fast and very easy to configure.
+Dfetch has a focus on being minimal and visually appealing while also being fast and easy to configure.
 
 ## Installation
 
