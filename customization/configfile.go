@@ -39,7 +39,8 @@ func ConfigFile() ([]string, string, error) {
 				"// Config file for Dfetch\n" +
 					"// Lines starting with '//' will be ignored\n" +
 					"// Default settings can be restored by deleting this file\n\n" +
-					"// color: blue\n" +
+					"// color: blue\n\n" +
+					"// Info to fetch:\n" +
 					"os\n" +
 					"kernel\n" +
 					"cpu\n" +

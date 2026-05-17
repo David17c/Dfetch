@@ -107,7 +107,7 @@ func loadASCII(distroID, color string) ([]string, string) {
 
 func buildInfoLines(sys SystemInfo, configLines []string) []string {
 	userInfo := fmt.Sprintf("\x1b[1m%s@%s\x1b[0m", sys.Username, sys.Hostname)
-	separator := strings.Repeat("─", len(userInfo))
+	separator := strings.Repeat("-", len(userInfo))
 
 	infoMap := map[string]string{
 		"os":      fmt.Sprintf("OS: %s", sys.PrettyName),
