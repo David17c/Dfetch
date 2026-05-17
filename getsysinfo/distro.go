@@ -8,33 +8,38 @@ import (
 )
 
 func Distro() (string, string) {
-
 	file, err := os.Open("/etc/os-release")
 	if err != nil {
-		return "unknown", "unknown"
+		file, err = os.Open("/usr/lib/os-release")
+		if err != nil {
+			panic(err)
+		}
 	}
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
 
-	var name string
-	var prettyName string
-	var ID string
+	var (
+		distroName string
+		distroID   string
+	)
 
 	for scanner.Scan() {
 		line := scanner.Text()
 
-		switch {
-		case strings.HasPrefix(line, "NAME="):
-			name = strings.Trim(strings.TrimPrefix(line, "NAME="), `"`)
-		case strings.HasPrefix(line, "ID="):
-			ID = strings.Trim(strings.TrimPrefix(line, "ID="), `"`)
-		case strings.HasPrefix(line, "PRETTY_NAME="):
-			prettyName = strings.Trim(strings.TrimPrefix(line, "PRETTY_NAME="), `"`)
+		if line == "" || strings.HasPrefix(line, "#") {
+			continue
 		}
 
-		if ID != "" && prettyName != "" {
-			return prettyName, ID
+		switch {
+		case strings.HasPrefix(line, "NAME="):
+			if distroName == "" {
+				distroName = strings.Trim(strings.TrimPrefix(line, "NAME="), `"`)
+			}
+		case strings.HasPrefix(line, "PRETTY_NAME="):
+			distroName = strings.Trim(strings.TrimPrefix(line, "PRETTY_NAME="), `"`)
+		case strings.HasPrefix(line, "ID="):
+			distroID = strings.Trim(strings.TrimPrefix(line, "ID="), `"`)
 		}
 	}
 
@@ -42,13 +47,12 @@ func Distro() (string, string) {
 		return "unknown", "unknown"
 	}
 
-	if ID == "" {
-		return "unknown", "unknown"
+	if distroID == "" {
+		distroID = "unknown"
 	}
 
-	if name == "" {
-		return ID, ""
+	if distroName != "" {
+		return distroName, distroID
 	}
-
-	return ID, name
+	return "unknown", "unknown"
 }

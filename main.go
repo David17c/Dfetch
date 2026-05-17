@@ -14,7 +14,7 @@ import (
 var logoFS embed.FS
 
 type SystemInfo struct {
-	PrettyName   string
+	DistroName   string
 	ID           string
 	Kernel       string
 	CPU          string
@@ -49,14 +49,14 @@ func main() {
 }
 
 func collectSystemInfo() SystemInfo {
-	prettyName, id := getsysinfo.Distro()
+	DistroName, id := getsysinfo.Distro()
 	localIP, version := getsysinfo.LocalIP()
 	battery, batteryStatus := getsysinfo.Battery()
 
 	de, sessionType := getsysinfo.DesktopEnvironment()
 
 	return SystemInfo{
-		PrettyName:   prettyName,
+		DistroName:   DistroName,
 		ID:           id,
 		Kernel:       getsysinfo.Kernel(),
 		CPU:          getsysinfo.Cpu(),
@@ -116,7 +116,7 @@ func buildInfoLines(sys SystemInfo, configLines []string) []string {
 	separator := strings.Repeat("-", len(userInfo))
 
 	infoMap := map[string]string{
-		"os":      fmt.Sprintf("OS: %s", sys.PrettyName),
+		"os":      fmt.Sprintf("OS: %s", sys.DistroName),
 		"kernel":  fmt.Sprintf("Kernel: %s", sys.Kernel),
 		"cpu":     fmt.Sprintf("CPU: %s", sys.CPU),
 		"memory":  fmt.Sprintf("Memory: %s", sys.Memory),
