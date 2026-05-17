@@ -47,7 +47,8 @@ func ConfigFile() ([]string, string, error) {
 					"memory\n" +
 					"localip\n" +
 					"uptime\n" +
-					"//battery\n",
+					"//battery\n" +
+					"//de\n",
 			)
 			if err != nil {
 				return nil, "", err

@@ -26,6 +26,8 @@ type SystemInfo struct {
 	Uptime       string
 	Battery      int
 	BatteryState string
+	DE           string
+	SessionType  string
 }
 
 func main() {
@@ -51,6 +53,8 @@ func collectSystemInfo() SystemInfo {
 	localIP, version := getsysinfo.LocalIP()
 	battery, batteryStatus := getsysinfo.Battery()
 
+	de, sessionType := getsysinfo.DesktopEnvironment()
+
 	return SystemInfo{
 		PrettyName:   prettyName,
 		ID:           id,
@@ -64,6 +68,8 @@ func collectSystemInfo() SystemInfo {
 		Uptime:       getsysinfo.Uptime(),
 		Battery:      battery,
 		BatteryState: batteryStatus,
+		DE:           de,
+		SessionType:  sessionType,
 	}
 }
 
@@ -117,6 +123,7 @@ func buildInfoLines(sys SystemInfo, configLines []string) []string {
 		"ip":      fmt.Sprintf("Local IP (%s): %s", sys.IPVersion, sys.LocalIP),
 		"uptime":  fmt.Sprintf("Uptime: %s", sys.Uptime),
 		"battery": fmt.Sprintf("Battery: %d%% [%s]", sys.Battery, sys.BatteryState),
+		"de":      fmt.Sprintf("DE: %s (%s)", sys.DE, sys.SessionType),
 	}
 
 	infoLines := []string{

@@ -145,7 +145,8 @@ Dfetch
 │   ├── memory.go        # Memory usage
 │   ├── uptime.go        # System uptime
 │   ├── battery.go       # Battery percentage and status
-│   └── username.go      # Current username
+│   ├── username.go      # Current username
+│   └── de.go            # Current Desktop environment
 │
 ├── go.mod               # Go module config
 ├── LICENSE              # Project license
