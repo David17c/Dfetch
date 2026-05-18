@@ -1,23 +1,30 @@
-// getsysinfo/gethostname.go
 package getsysinfo
 
 import (
-	"io"
 	"os"
-	"strings"
 )
 
 func Hostname() string {
-	file, err := os.Open("/etc/hostname")
-	if err != nil {
-		return "unknown"
-	}
-	defer file.Close()
-
-	content, err := io.ReadAll(file)
-	if err != nil {
-		return "unknown"
+	if hostname, err := os.Hostname(); err == nil && hostname != "" {
+		return hostname
 	}
 
-	return strings.TrimSpace(string(content))
+	if hostname := tryenv(); hostname != "" {
+		return hostname
+	}
+
+	return "unknown"
+}
+
+func tryenv() string {
+	for _, key := range []string{
+		"HOST",
+		"HOSTNAME",
+	} {
+		if value := os.Getenv(key); value != "" {
+			return value
+		}
+	}
+
+	return ""
 }
