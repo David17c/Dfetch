@@ -1,10 +1,10 @@
 # Dfetch
 
-Command-line tool inspired by [Neofetch](https://github.com/dylanaraps/neofetch) and written in Go. Dfetch shows information relating to your OS, hardware, and software in a visually pleasing way.
+Command-line utility inspired by [Neofetch](https://github.com/dylanaraps/neofetch) and written in Go. Dfetch shows information relating to your OS, hardware, and software in a visually pleasing way.
 
 ![Dfetch output example](images/Output_example.png)
 
-Dfetch has a focus on being minimal and visually appealing while also being fast and easy to configure.
+Dfetch tries to be minimal and visually appealing while also being fast and very easy to configure.
 
 ## Installation
 

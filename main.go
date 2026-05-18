@@ -1,17 +1,14 @@
 package main
 
 import (
+	"Dfetch/internal/config"
 	"Dfetch/internal/customization"
 	"fmt"
 	"os"
 )
 
 func main() {
-	lines, color, err := customization.ConfigFile()
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
+	lines, color := config.ReadConfig()
 
 	noColor := false
 
