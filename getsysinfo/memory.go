@@ -12,7 +12,7 @@ import (
 func Mem() string {
 	file, err := os.Open("/proc/meminfo")
 	if err != nil {
-		return ""
+		return "unknown"
 	}
 	defer file.Close()
 
@@ -33,14 +33,14 @@ func Mem() string {
 		case "MemTotal:":
 			val, err := strconv.Atoi(fields[1])
 			if err != nil {
-				return ""
+				return "unknown"
 			}
 			memTotal = val
 
 		case "MemAvailable:":
 			val, err := strconv.Atoi(fields[1])
 			if err != nil {
-				return ""
+				return "unknown"
 			}
 			memAvailable = val
 		}

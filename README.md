@@ -128,6 +128,13 @@ The following is a list of supported distros. Dfetch definitely works on many mo
 - Linux Mint
 ```
 
+## Command-line options
+
+The following is a list of available command-line options.
+```
+--no-color          # Removes all color from output
+```
+
 ## File structure
 
 ```txt
@@ -156,10 +163,11 @@ Dfetch
 │   ├── debian.txt
 │   ├── linuxmint.txt
 │   ├── ubuntu.txt
+│   ├── fedora.txt
 │   └── ...
 │
 ├── main.go              # Start / end of program
 └── README.md            # Project overview
 ```
 
-> Note: AI tools were used for small changed and file organization, but the project’s code was written by humans.
+> Note: AI tools were used for small changes and file organization, but the project’s code was written by humans.

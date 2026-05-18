@@ -7,6 +7,7 @@ import (
 	"bufio"
 	"embed"
 	"fmt"
+	"os"
 	"strings"
 )
 
@@ -37,9 +38,21 @@ func main() {
 		return
 	}
 
+	noColor := false
+
+	if len(os.Args) > 1 {
+		if os.Args[1] == "--no-color" {
+			noColor = true
+			color = ""
+		} else {
+			fmt.Println("Invalid flag!")
+			return
+		}
+	}
+
 	sys := collectSystemInfo()
 
-	asciiLines, color := loadASCII(sys.ID, color)
+	asciiLines, color := loadASCII(sys.ID, color, noColor)
 
 	color = customization.GetColorCode(color)
 
@@ -73,7 +86,7 @@ func collectSystemInfo() SystemInfo {
 	}
 }
 
-func loadASCII(distroID, color string) ([]string, string) {
+func loadASCII(distroID, color string, noColor bool) ([]string, string) {
 	file := fmt.Sprintf("logo/%s.txt", strings.ToLower(distroID))
 
 	f, err := logoFS.Open(file)
@@ -93,7 +106,7 @@ func loadASCII(distroID, color string) ([]string, string) {
 	for scanner.Scan() {
 		line := scanner.Text()
 
-		// Load color from ASCII file if config color is empty or false
+		// Load color from ASCII file if no config color
 		if strings.HasPrefix(line, "color:") {
 			if color == "" {
 				color = strings.TrimSpace(strings.TrimPrefix(line, "color:"))
@@ -106,6 +119,10 @@ func loadASCII(distroID, color string) ([]string, string) {
 
 	if err := scanner.Err(); err != nil {
 		return []string{}, color
+	}
+
+	if noColor {
+		color = ""
 	}
 
 	return lines, color
