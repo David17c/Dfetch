@@ -33,6 +33,7 @@ func CreateConfigFile() error {
 				"// Lines starting with '//' will be ignored\n" +
 				"// Default settings can be restored by deleting this file\n\n" +
 				"// color: blue\n\n" +
+				"// ASCII: ubuntu\n\n" +
 				"// Info to fetch:\n" +
 				"os\n" +
 				"kernel\n" +

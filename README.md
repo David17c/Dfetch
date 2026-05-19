@@ -6,9 +6,9 @@ Dfetch tries to be minimal and visually appealing while also being fast and very
 
 ## Installation
 
-You can install Dfetch by going to the [releases page](https://github.com/David17c/Dfetch/releases) on GitHub and installing the right version for your distro.
+You can install Dfetch by going to the [releases page](https://github.com/David17c/Dfetch/releases) and installing the right version for your distro.
 
-If there is no release that works on your distro, you're going to have to compile Dfetch yourself.
+If there is no release that works on your distro, you're going to have to compile it yourself.
 
 ### Step 1
 
@@ -85,6 +85,8 @@ When you first run Dfetch it creates a config file in `~/.config/Dfetch/Dfetch.c
 * Lines starting with `//` are comments and are ignored by Dfetch.
 
 * Commented out by default, `color:` allows you to change the color of the ASCII art to any of the colors listed below.
+
+* Commented out by default, `ASCII:` allows you to change the ASCII logo that is displayed by default to another one. This file contains a list of supported distro's.
 
 * At the end of the file you will find a list labeled `// Info to fetch`. Here you can remove and add to the information that will be displayed when you run the program. You can also change the order in which those items appear.
 
