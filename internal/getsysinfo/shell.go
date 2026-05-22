@@ -1,23 +1,15 @@
 package getsysinfo
 
 import (
-	"os/exec"
-	"strings"
+	"os"
+	"path/filepath"
 )
 
 func Shell() string {
-	cmd := exec.Command(
-		"bash",
-		"-c",
-		`shell=$(basename "$SHELL"); echo "$shell"`,
-	)
-
-	output, err := cmd.CombinedOutput()
-	if err != nil {
+	shell := os.Getenv("SHELL")
+	if shell == "" {
 		return "unknown"
 	}
 
-	shellName := strings.TrimSpace(string(output))
-
-	return string(shellName)
+	return filepath.Base(shell)
 }
