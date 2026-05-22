@@ -7,24 +7,13 @@ import (
 	"strings"
 )
 
-func LoadASCII(fs embed.FS, distroID, color, ascii string) ([]string, string) {
-	file := fmt.Sprintf("logo/%s.txt", strings.ToLower(ascii))
+func LoadASCII(fs embed.FS, distroID, color string) ([]string, string) {
 
-	// Try configured ascii name first
+	file := fmt.Sprintf("logo/%s.txt", strings.ToLower(distroID))
+
+	// If distro logo also doesn't exist, fallback to linux
 	if _, err := fs.Open(file); err != nil {
-
-		// Fallback to distro ID
-		file = fmt.Sprintf("logo/%s.txt", strings.ToLower(distroID))
-
-		// If distro logo also doesn't exist, fallback to linux
-		if _, err := fs.Open(file); err != nil {
-			file = "logo/linux.txt"
-		}
-
-		if ascii != "" {
-			fmt.Printf("Configured ASCII logo: '%s' does not exist! Using default instead.\n", ascii)
-		}
-
+		file = "logo/linux.txt"
 	}
 
 	f, err := fs.Open(file)

@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	lines, color, ASCII := config.ReadConfig()
+	lines, color := config.ReadConfig()
 
 	sys := model.CollectSystemInfo()
 
@@ -17,7 +17,6 @@ func main() {
 		assets.LogoFS,
 		sys.ID,
 		color,
-		ASCII,
 	)
 
 	color = customization.GetColorCode(color)
