@@ -8,6 +8,8 @@ import (
 )
 
 func CreateConfigFile() error {
+
+	// Create config file / directory if doesnt exist
 	configDir, err := os.UserConfigDir()
 	if err != nil {
 		return err
@@ -15,18 +17,16 @@ func CreateConfigFile() error {
 
 	appConfigDir := filepath.Join(configDir, "dfetch")
 
-	// Create config directory if missing
 	if err := os.MkdirAll(appConfigDir, 0700); err != nil {
 		return err
 	}
 
 	configFile := filepath.Join(appConfigDir, "dfetch.conf")
-
-	// Only create if missing
 	if _, err := os.Stat(configFile); os.IsNotExist(err) {
 
 		var config strings.Builder
 
+		// Default config file
 		config.WriteString(
 			"// Config file for Dfetch\n" +
 				"// Lines starting with '//' will be ignored\n" +
@@ -61,7 +61,7 @@ func CreateConfigFile() error {
 				"//de\n",
 		)
 
-		// Add battery if available
+		// Enable battery in config if one is present
 		_, present := getsysinfo.Battery()
 		if present != "unknown" {
 			config.WriteString("battery\n")
