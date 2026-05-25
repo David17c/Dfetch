@@ -3,12 +3,20 @@ package render
 import (
 	"dfetch/internal/model"
 	"fmt"
+	"regexp"
 	"strings"
 )
 
+var ansiRegex = regexp.MustCompile(`\x1b\[[0-9;]*m`)
+
+func visibleLen(s string) int {
+	clean := ansiRegex.ReplaceAllString(s, "")
+	return len(clean)
+}
+
 func BuildInfoLines(sys model.SystemInfo, configLines []string) []string {
 	userInfo := fmt.Sprintf("\x1b[1m%s@%s\x1b[0m", sys.Username, sys.Hostname)
-	separator := strings.Repeat("-", len(userInfo))
+	separator := strings.Repeat("-", visibleLen(userInfo))
 
 	infoMap := map[string]string{
 		"os":      fmt.Sprintf("OS: %s", sys.DistroName),
@@ -66,8 +74,8 @@ func getMaxWidth(lines []string) int {
 	maxLen := 0
 
 	for _, line := range lines {
-		if len(line) > maxLen {
-			maxLen = len(line)
+		if visibleLen(line) > maxLen {
+			maxLen = visibleLen(line)
 		}
 	}
 
