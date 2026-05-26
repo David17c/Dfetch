@@ -87,19 +87,46 @@ Or, if you compiled it from source:
 
 ## Customization
 
-When you first run Dfetch it creates a config file in `~/.config/Dfetch/Dfetch.conf`. In this file you will find a few things.
+When you first run Dfetch it creates a config file in `~/.config/Dfetch/Dfetch.conf`.
 
-* Lines starting with `//` are comments and are ignored by Dfetch.
+Default config file:
 
-* Commented out by default, `color:` allows you to change the color of the ASCII art to any of the colors listed below.
+```
+// Lines starting with `//` are comments and are ignored by Dfetch.
+// In the System Information section you can change what info is displayed and in what order.
 
-* Commented out by default, `ASCII:` allows you to change the ASCII logo that is displayed by default to another one. This file contains a list of supported distro's.
+// ------------------------
+// Color
+//------------------------
 
-* At the end of the file you will find a list labeled `// Info to fetch`. Here you can remove and add to the information that will be displayed when you run the program. You can also change the order in which those items appear.
+// ASCII color
+labelcolor: default
+infocolor: default
+headercolor: default
+asciicolor: default
 
-Instead of just removing items, I'd recommend commenting them out to more easily get them back later.
+// Available colors:
+// black, red, green, yellow, blue,
+// magenta, cyan, white,
+// bright_black, bright_red,
+// bright_green, bright_yellow,
+// bright_blue, bright_magenta,
+// bright_cyan, bright_white
 
-If you ever want to return to the default settings, just remove the config file and run the program to generate a new one.
+// ------------------------
+// System Information
+// ------------------------
+
+os
+kernel
+uptime
+cpu
+memory
+localip
+//shell
+//de
+battery
+```
 
 ## Supported information:
 

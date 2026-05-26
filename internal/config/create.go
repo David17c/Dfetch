@@ -28,10 +28,15 @@ func CreateConfigFile() error {
 
 		// Default config file
 		config.WriteString(
-			"// ========================\n" +
+			"// Lines starting with `//` are comments and are ignored by Dfetch.\n" +
+				"// In the System Information section you can change what info is displayed and in what order.\n\n" +
+				"// ------------------------\n" +
 				"// Color\n" +
-				"// ========================\n\n" +
+				"//------------------------\n\n" +
 				"// ASCII color\n" +
+				"labelcolor: default\n" +
+				"infocolor: default\n" +
+				"headercolor: default\n" +
 				"asciicolor: default\n\n" +
 				"// Available colors:\n" +
 				"// black, red, green, yellow, blue,\n" +
@@ -40,9 +45,9 @@ func CreateConfigFile() error {
 				"// bright_green, bright_yellow,\n" +
 				"// bright_blue, bright_magenta,\n" +
 				"// bright_cyan, bright_white\n\n" +
-				"// ========================\n" +
+				"// ------------------------\n" +
 				"// System Information\n" +
-				"// ========================\n\n" +
+				"// ------------------------\n\n" +
 				"os\n" +
 				"kernel\n" +
 				"uptime\n" +

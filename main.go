@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	lines, asciicolor := config.ReadConfig()
+	lines, asciicolor, headercolor, infocolor, labelcolor := config.ReadConfig()
 
 	sys := model.CollectSystemInfo()
 
@@ -20,8 +20,17 @@ func main() {
 	)
 
 	asciicolor = customization.GetColorCode(asciicolor)
+	headercolor = customization.GetColorCode(headercolor)
+	infocolor = customization.GetColorCode(infocolor)
+	labelcolor = customization.GetColorCode(labelcolor)
 
-	infoLines := render.BuildInfoLines(sys, lines)
+	infoLines := render.BuildInfoLines(
+		sys,
+		lines,
+		headercolor,
+		infocolor,
+		labelcolor,
+	)
 
 	render.PrintOutput(asciiLines, infoLines, asciicolor)
 }
