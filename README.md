@@ -14,8 +14,6 @@ This program does not currently provide official packages for any platform. You 
 
 When you first run Dfetch it creates a config file in `~/.config/Dfetch/Dfetch.conf`.
 
-Default config file:
-
 ```
 // Lines starting with `//` are comments and are ignored by Dfetch.
 // In the System Information section you can change what info is displayed and in what order.
@@ -54,8 +52,6 @@ localip
 ```
 
 ## Supported distros
-
-The following is a list of supported distros. Dfetch definitely works on many more distros, however these distros have been tested and have their own ASCII art. More distros will be added in the future.
 
 ```txt
 - Debian
