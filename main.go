@@ -27,6 +27,10 @@ func main() {
 		labelcolor = asciicolor
 	}
 
+	if headercolor == "" || headercolor == "default" {
+		headercolor = asciicolor
+	}
+
 	// Get the colors corresponding ascii codes
 	asciicolor = customization.GetColorCode(asciicolor)
 	headercolor = customization.GetColorCode(headercolor)

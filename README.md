@@ -1,6 +1,6 @@
 # Dfetch
 
-Dfetch allows you to display system information in a simple, fast and visually appealing way. Dfetch focuses on looking clean and compact by default while still showing usefull info. It also tries to be very fast so you can autostart it with your terminal without having to wait. Dfetch also avoids using external dependencies.
+Dfetch allows you to display system information in a simple, fast and visually appealing way. It focuses on looking clean and compact by default while still showing usefull info. Dfetch also tries to be fast enough so the user could autostart it with the terminal and not wait.
 
 ## Why use this?
 

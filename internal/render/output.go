@@ -16,8 +16,7 @@ func visibleLen(s string) int {
 
 func BuildInfoLines(sys model.SystemInfo, configLines []string, headercolor string, infocolor string, labelcolor string) []string {
 
-	userInfo := fmt.Sprintf("\x1b[1m%s%s@%s\x1b[0m", headercolor, sys.Username, sys.Hostname)
-	separator := fmt.Sprintf("%s%s\x1b[0m", headercolor, strings.Repeat("-", visibleLen(userInfo)))
+	userInfo := fmt.Sprintf("\x1b[1m%s[%s@%s]\x1b[0m", headercolor, sys.Username, sys.Hostname)
 
 	infoMap := map[string]string{
 		"os": fmt.Sprintf(
@@ -49,7 +48,7 @@ func BuildInfoLines(sys model.SystemInfo, configLines []string, headercolor stri
 		),
 
 		"localip": fmt.Sprintf(
-			"%sLocal IP:\x1b[0m (%s) %s%s\x1b[0m",
+			"%sLocal IP (%s):\x1b[0m %s%s\x1b[0m",
 			labelcolor,
 			sys.IPVersion,
 			infocolor,
@@ -89,7 +88,6 @@ func BuildInfoLines(sys model.SystemInfo, configLines []string, headercolor stri
 
 	infoLines := []string{
 		userInfo,
-		separator,
 	}
 
 	for _, line := range configLines {
