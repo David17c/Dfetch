@@ -1,4 +1,4 @@
-package render
+package output
 
 import (
 	"dfetch/internal/model"

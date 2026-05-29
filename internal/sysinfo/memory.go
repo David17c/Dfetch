@@ -1,5 +1,4 @@
-// getsysinfo/getmemory.go
-package getsysinfo
+package sysinfo
 
 import (
 	"bufio"

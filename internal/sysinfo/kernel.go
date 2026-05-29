@@ -1,5 +1,4 @@
-// getsysinfo/getkernel.go
-package getsysinfo
+package sysinfo
 
 import (
 	"bufio"

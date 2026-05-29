@@ -3,7 +3,7 @@ package main
 import (
 	"dfetch/internal/config"
 	"dfetch/internal/model"
-	"dfetch/internal/render"
+	"dfetch/internal/output"
 )
 
 func main() {
@@ -15,8 +15,8 @@ func main() {
 	sys := model.CollectSystemInfo()
 
 	// Load and format the ascii art
-	asciiLines, asciicolor := render.LoadASCII(
-		render.LogoFS,
+	asciiLines, asciicolor := output.LoadASCII(
+		output.LogoFS,
 		sys.ID,
 		asciicolor,
 	)
@@ -30,12 +30,12 @@ func main() {
 	accentcolor = config.GetColorCode(accentcolor)
 
 	// Build the info lines
-	infoLines := render.BuildInfoLines(
+	infoLines := output.BuildInfoLines(
 		sys,
 		lines,
 		accentcolor,
 	)
 
 	// Put everything together and print it
-	render.PrintOutput(asciiLines, infoLines, asciicolor)
+	output.PrintOutput(asciiLines, infoLines, asciicolor)
 }

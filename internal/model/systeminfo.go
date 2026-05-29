@@ -1,6 +1,6 @@
 package model
 
-import "dfetch/internal/getsysinfo"
+import sysinfo "dfetch/internal/sysinfo"
 
 type SystemInfo struct {
 	DistroName   string
@@ -21,26 +21,26 @@ type SystemInfo struct {
 }
 
 func CollectSystemInfo() SystemInfo {
-	DistroName, id := getsysinfo.Distro()
-	localIP := getsysinfo.LocalIP()
-	battery, batteryStatus := getsysinfo.Battery()
+	DistroName, id := sysinfo.Distro()
+	localIP := sysinfo.LocalIP()
+	battery, batteryStatus := sysinfo.Battery()
 
-	de, sessionType := getsysinfo.DesktopEnvironment()
+	de, sessionType := sysinfo.DesktopEnvironment()
 
 	return SystemInfo{
 		DistroName:   DistroName,
 		ID:           id,
-		Kernel:       getsysinfo.Kernel(),
-		CPU:          getsysinfo.Cpu(),
-		Memory:       getsysinfo.Memory(),
-		Username:     getsysinfo.Username(),
-		Hostname:     getsysinfo.Hostname(),
+		Kernel:       sysinfo.Kernel(),
+		CPU:          sysinfo.Cpu(),
+		Memory:       sysinfo.Memory(),
+		Username:     sysinfo.Username(),
+		Hostname:     sysinfo.Hostname(),
 		LocalIP:      localIP,
-		Uptime:       getsysinfo.Uptime(),
+		Uptime:       sysinfo.Uptime(),
 		Battery:      battery,
 		BatteryState: batteryStatus,
 		DE:           de,
 		SessionType:  sessionType,
-		Shell:        getsysinfo.Shell(),
+		Shell:        sysinfo.Shell(),
 	}
 }

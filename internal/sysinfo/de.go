@@ -1,5 +1,4 @@
-// getsysinfo/desktopenvironment.go
-package getsysinfo
+package sysinfo
 
 import "os"
 

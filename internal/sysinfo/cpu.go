@@ -1,5 +1,4 @@
-// getsysinfo/getcpu.go
-package getsysinfo
+package sysinfo
 
 import (
 	"bufio"
