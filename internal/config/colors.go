@@ -1,5 +1,5 @@
 // customization/colors.go
-package customization
+package config
 
 import (
 	"strings"

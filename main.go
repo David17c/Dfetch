@@ -1,9 +1,7 @@
 package main
 
 import (
-	"dfetch/internal/assets"
 	"dfetch/internal/config"
-	"dfetch/internal/customization"
 	"dfetch/internal/model"
 	"dfetch/internal/render"
 )
@@ -17,8 +15,8 @@ func main() {
 	sys := model.CollectSystemInfo()
 
 	// Load and format the ascii art
-	asciiLines, asciicolor := assets.LoadASCII(
-		assets.LogoFS,
+	asciiLines, asciicolor := render.LoadASCII(
+		render.LogoFS,
 		sys.ID,
 		asciicolor,
 	)
@@ -28,8 +26,8 @@ func main() {
 	}
 
 	// Get the colors corresponding ascii codes
-	asciicolor = customization.GetColorCode(asciicolor)
-	accentcolor = customization.GetColorCode(accentcolor)
+	asciicolor = config.GetColorCode(asciicolor)
+	accentcolor = config.GetColorCode(accentcolor)
 
 	// Build the info lines
 	infoLines := render.BuildInfoLines(
