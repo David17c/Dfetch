@@ -10,119 +10,64 @@ import (
 var ansiRegex = regexp.MustCompile(`\x1b\[[0-9;]*m`)
 
 func visibleLen(s string) int {
-	clean := ansiRegex.ReplaceAllString(s, "")
-	return len(clean)
+	return len(ansiRegex.ReplaceAllString(s, ""))
 }
 
-func BuildInfoLines(sys model.SystemInfo, configLines []string, accentcolor string) []string {
-
-	userInfo := fmt.Sprintf("%s%s@%s\x1b[0m ", accentcolor, sys.Username, sys.Hostname)
-
-	infoMap := map[string]string{
-		"os": fmt.Sprintf(
-			"%sOS:\x1b[0m %s",
-			accentcolor,
-			sys.DistroName,
-		),
-
-		"kernel": fmt.Sprintf(
-			"%sKernel:\x1b[0m %s",
-			accentcolor,
-			sys.Kernel,
-		),
-
-		"cpu": fmt.Sprintf(
-			"%sCPU:\x1b[0m %s",
-			accentcolor,
-			sys.CPU,
-		),
-
-		"memory": fmt.Sprintf(
-			"%sMemory:\x1b[0m %s",
-			accentcolor,
-			sys.Memory,
-		),
-
-		"localip": fmt.Sprintf(
-			"%sIP:\x1b[0m %s",
-			accentcolor,
-			sys.LocalIP,
-		),
-
-		"uptime": fmt.Sprintf(
-			"%sUptime:\x1b[0m %s",
-			accentcolor,
-			sys.Uptime,
-		),
-
-		"battery": fmt.Sprintf(
-			"%sBattery:\x1b[0m %d%% [%s]",
-			accentcolor,
-			sys.Battery,
-			sys.BatteryState,
-		),
-
-		"de": fmt.Sprintf(
-			"%sDE:\x1b[0m %s (%s)",
-			accentcolor,
-			sys.DE,
-			sys.SessionType,
-		),
-
-		"shell": fmt.Sprintf(
-			"%sShell:\x1b[0m %s",
-			accentcolor,
-			sys.Shell,
-		),
+func BuildInfoLines(sys model.SystemInfo, configLines []string, accent string) []string {
+	info := map[string]string{
+		"os":      field(accent, "OS", sys.DistroName),
+		"kernel":  field(accent, "Kernel", sys.Kernel),
+		"cpu":     field(accent, "CPU", sys.CPU),
+		"memory":  field(accent, "Memory", sys.Memory),
+		"localip": field(accent, "IP", sys.LocalIP),
+		"uptime":  field(accent, "Uptime", sys.Uptime),
+		"shell":   field(accent, "Shell", sys.Shell),
+		"battery": fmt.Sprintf("%sBattery:\x1b[0m %d%% [%s]", accent, sys.Battery, sys.BatteryState),
+		"de":      fmt.Sprintf("%sDE:\x1b[0m %s (%s)", accent, sys.DE, sys.SessionType),
 	}
 
-	infoLines := []string{
-		userInfo,
+	lines := []string{
+		fmt.Sprintf("%s%s@%s\x1b[0m", accent, sys.Username, sys.Hostname),
 	}
 
-	for _, line := range configLines {
-		line = strings.TrimSpace(strings.ToLower(line))
-
-		if value, exists := infoMap[line]; exists {
-			infoLines = append(infoLines, value)
+	for _, key := range configLines {
+		if v, ok := info[strings.ToLower(strings.TrimSpace(key))]; ok {
+			lines = append(lines, v)
 		}
 	}
 
-	return infoLines
+	return lines
 }
 
-func PrintOutput(asciiLines, infoLines []string, asciicolor string) {
-	maxLen := getMaxWidth(asciiLines)
+func field(color, label, value string) string {
+	return fmt.Sprintf("%s%s:\x1b[0m %s", color, label, value)
+}
 
-	totalLines := len(asciiLines)
-	if len(infoLines) > totalLines {
-		totalLines = len(infoLines)
-	}
+func PrintOutput(asciiLines, infoLines []string, asciiColor string) {
+	width := getMaxWidth(asciiLines)
 
-	for i := 0; i < totalLines; i++ {
-		left := ""
-		right := ""
+	total := max(len(asciiLines), len(infoLines))
+
+	for i := 0; i < total; i++ {
+		var left, right string
 
 		if i < len(asciiLines) {
 			left = asciiLines[i]
 		}
-
 		if i < len(infoLines) {
 			right = infoLines[i]
 		}
 
-		fmt.Printf("\x1b[1m%s%-*s\x1b[0m %s\n", asciicolor, maxLen, left, right)
+		fmt.Printf("\x1b[1m%s%-*s\x1b[0m %s\n", asciiColor, width, left, right)
 	}
 }
 
 func getMaxWidth(lines []string) int {
-	maxLen := 0
-
+	maxWidth := 0
 	for _, line := range lines {
-		if visibleLen(line) > maxLen {
-			maxLen = visibleLen(line)
+		if w := visibleLen(line); w > maxWidth {
+			maxWidth = w
 		}
 	}
-
-	return maxLen
+	return maxWidth
 }

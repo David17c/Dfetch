@@ -9,10 +9,10 @@ import (
 func main() {
 
 	// Read / create the config file
-	lines, asciicolor, accentcolor := config.ReadConfig()
+	enabledModules, asciicolor, accentcolor := config.ReadConfig()
 
 	// Collect the users system info
-	sys := model.CollectSystemInfo()
+	sys := model.CollectSystemInfo(enabledModules)
 
 	// Load and format the ascii art
 	asciiLines, asciicolor := output.LoadASCII(
@@ -32,7 +32,7 @@ func main() {
 	// Build the info lines
 	infoLines := output.BuildInfoLines(
 		sys,
-		lines,
+		enabledModules,
 		accentcolor,
 	)
 

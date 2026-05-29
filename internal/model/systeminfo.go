@@ -1,6 +1,8 @@
 package model
 
-import sysinfo "dfetch/internal/sysinfo"
+import (
+	sysinfo "dfetch/internal/sysinfo"
+)
 
 type SystemInfo struct {
 	DistroName   string
@@ -11,7 +13,6 @@ type SystemInfo struct {
 	Username     string
 	Hostname     string
 	LocalIP      string
-	IPVersion    string
 	Uptime       string
 	Battery      int
 	BatteryState string
@@ -20,27 +21,43 @@ type SystemInfo struct {
 	Shell        string
 }
 
-func CollectSystemInfo() SystemInfo {
-	DistroName, id := sysinfo.Distro()
-	localIP := sysinfo.LocalIP()
-	battery, batteryStatus := sysinfo.Battery()
+func CollectSystemInfo(enabledModules []string) SystemInfo {
+	var sys SystemInfo
 
-	de, sessionType := sysinfo.DesktopEnvironment()
+	// Always collected
+	sys.DistroName, sys.ID = sysinfo.Distro()
+	sys.Username = sysinfo.Username()
+	sys.Hostname = sysinfo.Hostname()
 
-	return SystemInfo{
-		DistroName:   DistroName,
-		ID:           id,
-		Kernel:       sysinfo.Kernel(),
-		CPU:          sysinfo.Cpu(),
-		Memory:       sysinfo.Memory(),
-		Username:     sysinfo.Username(),
-		Hostname:     sysinfo.Hostname(),
-		LocalIP:      localIP,
-		Uptime:       sysinfo.Uptime(),
-		Battery:      battery,
-		BatteryState: batteryStatus,
-		DE:           de,
-		SessionType:  sessionType,
-		Shell:        sysinfo.Shell(),
+	// Optional modules
+	for _, module := range enabledModules {
+		switch module {
+
+		case "kernel":
+			sys.Kernel = sysinfo.Kernel()
+
+		case "cpu":
+			sys.CPU = sysinfo.Cpu()
+
+		case "memory":
+			sys.Memory = sysinfo.Memory()
+
+		case "localip":
+			sys.LocalIP = sysinfo.LocalIP()
+
+		case "uptime":
+			sys.Uptime = sysinfo.Uptime()
+
+		case "battery":
+			sys.Battery, sys.BatteryState = sysinfo.Battery()
+
+		case "de":
+			sys.DE, sys.SessionType = sysinfo.DesktopEnvironment()
+
+		case "shell":
+			sys.Shell = sysinfo.Shell()
+		}
 	}
+
+	return sys
 }

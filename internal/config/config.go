@@ -12,7 +12,7 @@ func ReadConfig() ([]string, string, string) {
 	configpath := filepath.Join(home, ".config", "dfetch", "dfetch.conf")
 
 	if _, err := os.Stat(configpath); os.IsNotExist(err) {
-		err := CreateConfigFile()
+		err = CreateConfigFile()
 		if err != nil {
 			return nil, "", ""
 		}
@@ -24,7 +24,7 @@ func ReadConfig() ([]string, string, string) {
 	}
 	defer file.Close()
 
-	var lines []string
+	var enabledmodules []string
 
 	var asciicolor string
 	var accentcolor string
@@ -48,14 +48,14 @@ func ReadConfig() ([]string, string, string) {
 			continue
 		}
 
-		lines = append(lines, line)
+		enabledmodules = append(enabledmodules, line)
 	}
 
 	if err := scanner.Err(); err != nil {
 		return nil, "", ""
 	}
 
-	return lines, asciicolor, accentcolor
+	return enabledmodules, asciicolor, accentcolor
 }
 
 func CreateConfigFile() error {
