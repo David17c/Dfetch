@@ -1,26 +1,20 @@
 package sysinfo
 
 import (
-	"bufio"
 	"os"
+	"strings"
 )
 
 func Kernel() string {
-	file, err := os.Open("/proc/sys/kernel/osrelease")
+	b, err := os.ReadFile("/proc/sys/kernel/osrelease")
 	if err != nil {
 		return "unknown"
 	}
-	defer file.Close()
 
-	scanner := bufio.NewScanner(file)
-
-	if scanner.Scan() {
-		firstLine := scanner.Text()
-		return firstLine
-	}
-
-	if err := scanner.Err(); err != nil {
+	s := strings.TrimSpace(string(b))
+	if s == "" {
 		return "unknown"
 	}
-	return ""
+
+	return s
 }

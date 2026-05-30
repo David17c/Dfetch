@@ -16,6 +16,9 @@ func DesktopEnvironment() (string, string) {
 			break
 		}
 	}
+	if DE == "" {
+		DE = "unknown"
+	}
 
 	for _, key := range []string{
 		"XDG_SESSION_TYPE",
@@ -26,6 +29,9 @@ func DesktopEnvironment() (string, string) {
 			sessionType = value
 			break
 		}
+	}
+	if sessionType == "" {
+		sessionType = "unknown"
 	}
 
 	return DE, sessionType
