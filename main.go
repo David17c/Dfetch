@@ -9,7 +9,7 @@ import (
 func main() {
 
 	// Read or create the config file
-	enabledModules, asciicolor, accentcolor := config.ReadConfig()
+	enabledModules, asciicolor, accentcolor, asciisize := config.ReadConfig()
 
 	// Collect necessary system info
 	sys := sysinfo.CollectSystemInfo(enabledModules)
@@ -19,6 +19,7 @@ func main() {
 		output.LogoFS,
 		sys.ID,
 		asciicolor,
+		asciisize,
 	)
 
 	if accentcolor == "" || accentcolor == "default" {

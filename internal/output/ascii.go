@@ -7,9 +7,14 @@ import (
 	"strings"
 )
 
-func LoadASCII(fs embed.FS, distroID, asciicolor string) ([]string, string) {
+func LoadASCII(fs embed.FS, distroID, asciicolor string, asciisize string) ([]string, string) {
+	var file string
 
-	file := fmt.Sprintf("logo/%s.txt", strings.ToLower(distroID))
+	if asciisize == "small" {
+		file = fmt.Sprintf("logo/%s_small.txt", strings.ToLower(distroID))
+	} else {
+		file = fmt.Sprintf("logo/%s_big.txt", strings.ToLower(distroID))
+	}
 
 	// If distro logo doesn't exist use Linux logo
 	if _, err := fs.Open(file); err != nil {

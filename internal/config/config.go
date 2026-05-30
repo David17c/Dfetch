@@ -7,20 +7,20 @@ import (
 	"strings"
 )
 
-func ReadConfig() ([]string, string, string) {
+func ReadConfig() ([]string, string, string, string) {
 	home, _ := os.UserHomeDir()
 	configpath := filepath.Join(home, ".config", "dfetch", "dfetch.conf")
 
 	if _, err := os.Stat(configpath); os.IsNotExist(err) {
 		err = CreateConfigFile()
 		if err != nil {
-			return nil, "", ""
+			return nil, "", "", ""
 		}
 	}
 
 	file, err := os.Open(configpath)
 	if err != nil {
-		return nil, "", ""
+		return nil, "", "", ""
 	}
 	defer file.Close()
 
@@ -28,6 +28,8 @@ func ReadConfig() ([]string, string, string) {
 
 	var asciicolor string
 	var accentcolor string
+
+	var asciisize string
 
 	scanner := bufio.NewScanner(file)
 
@@ -46,16 +48,19 @@ func ReadConfig() ([]string, string, string) {
 		case strings.HasPrefix(line, "accentcolor:"):
 			accentcolor = strings.TrimSpace(strings.TrimPrefix(line, "accentcolor:"))
 			continue
+		case strings.HasPrefix(line, "asciisize:"):
+			asciisize = strings.TrimSpace(strings.TrimPrefix(line, "asciisize:"))
+			continue
 		}
 
 		enabledmodules = append(enabledmodules, line)
 	}
 
 	if err := scanner.Err(); err != nil {
-		return nil, "", ""
+		return nil, "", "", ""
 	}
 
-	return enabledmodules, asciicolor, accentcolor
+	return enabledmodules, asciicolor, accentcolor, asciisize
 }
 
 func CreateConfigFile() error {
@@ -100,10 +105,14 @@ func CreateConfigFile() error {
 				"cpu\n" +
 				"memory\n" +
 				"localip\n" +
-				"// shell\n" +
-				"// de\n" +
+				"shell\n" +
+				"de\n" +
 				"// battery\n" +
-				"// terminal\n",
+				"terminal\n\n" +
+				"// ------------------------\n" +
+				"// Options\n\n" +
+				"// Ascii size can be either 'big', 'default' or 'small'. Default is big.\n" +
+				"asciisize: default\n",
 		)
 
 		err = os.WriteFile(configFile, []byte(config.String()), 0600)

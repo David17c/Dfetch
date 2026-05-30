@@ -47,6 +47,12 @@ localip
 // de
 // battery
 // terminal
+
+// ------------------------
+// Options
+
+// Ascii size can be either 'big', 'default' or 'small' anything else will make it small.
+asciisize: default
 ```
 
 ## Supported distros
