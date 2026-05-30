@@ -59,4 +59,5 @@ localip
 - Fedora
 - Ubuntu
 - Linux Mint
+- Pop! OS
 ```

@@ -24,12 +24,10 @@ type SystemInfo struct {
 func CollectSystemInfo(enabledModules []string) SystemInfo {
 	var sys SystemInfo
 
-	// Always collected
 	sys.DistroName, sys.ID = sysinfo.Distro()
 	sys.Username = sysinfo.Username()
 	sys.Hostname = sysinfo.Hostname()
 
-	// Optional modules
 	for _, module := range enabledModules {
 		switch module {
 

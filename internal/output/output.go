@@ -18,7 +18,7 @@ func BuildInfoLines(sys model.SystemInfo, configLines []string, accent string) [
 		"os":      field(accent, "OS", sys.DistroName),
 		"kernel":  field(accent, "Kernel", sys.Kernel),
 		"cpu":     field(accent, "CPU", sys.CPU),
-		"memory":  field(accent, "Memory", sys.Memory),
+		"memory":  field(accent, "RAM", sys.Memory),
 		"localip": field(accent, "IP", sys.LocalIP),
 		"uptime":  field(accent, "Uptime", sys.Uptime),
 		"shell":   field(accent, "Shell", sys.Shell),
