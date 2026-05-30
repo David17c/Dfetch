@@ -1,6 +1,9 @@
 package sysinfo
 
-import "os"
+import (
+	"os"
+	"path/filepath"
+)
 
 func DesktopEnvironment() (string, string) {
 	var DE string
@@ -34,5 +37,5 @@ func DesktopEnvironment() (string, string) {
 		sessionType = "unknown"
 	}
 
-	return DE, sessionType
+	return filepath.Base(DE), sessionType
 }

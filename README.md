@@ -58,4 +58,5 @@ localip
 - Ubuntu
 - Linux Mint
 - Pop! OS
+- CachyOS
 ```
