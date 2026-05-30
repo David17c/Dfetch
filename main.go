@@ -8,13 +8,13 @@ import (
 
 func main() {
 
-	// Read / create the config file
+	// Read or create the config file
 	enabledModules, asciicolor, accentcolor := config.ReadConfig()
 
-	// Collect the users system info
+	// Collect necessary system info
 	sys := sysinfo.CollectSystemInfo(enabledModules)
 
-	// Load and format the ascii art
+	// Prepare the ASCII art
 	asciiLines, asciicolor := output.LoadASCII(
 		output.LogoFS,
 		sys.ID,
@@ -25,7 +25,7 @@ func main() {
 		accentcolor = asciicolor
 	}
 
-	// Get the colors corresponding ascii codes
+	// Get the ANSI codes correspondig to the colors
 	asciicolor = config.GetColorCode(asciicolor)
 	accentcolor = config.GetColorCode(accentcolor)
 

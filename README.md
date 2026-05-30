@@ -20,13 +20,12 @@ Currently no official package for any platform is provided. You can either build
 // Lines starting with `//` are comments and are ignored by Dfetch.
 // In the System Information section you can change what info is displayed and in what order.
 
-// ------------------------
-// Color
 //------------------------
+// Colors
 
-// ASCII color
 asciicolor: default
 accentcolor: default
+
 // Available colors:
 // black, red, green, yellow, blue,
 // magenta, cyan, white,
@@ -36,8 +35,7 @@ accentcolor: default
 // bright_cyan, bright_white
 
 // ------------------------
-// System Information
-// ------------------------
+// System info modules
 
 os
 kernel
