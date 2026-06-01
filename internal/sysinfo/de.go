@@ -1,11 +1,12 @@
 package sysinfo
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 )
 
-func DesktopEnvironment() (string, string) {
+func DesktopEnvironment() string {
 	var DE string
 	var sessionType string
 
@@ -34,8 +35,8 @@ func DesktopEnvironment() (string, string) {
 		}
 	}
 	if sessionType == "" {
-		sessionType = "unknown"
+		return fmt.Sprintf("%s", filepath.Base(DE))
 	}
 
-	return filepath.Base(DE), sessionType
+	return fmt.Sprintf("%s [%s]", filepath.Base(DE), sessionType)
 }
