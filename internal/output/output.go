@@ -48,7 +48,6 @@ func PrintOutput(asciiLines, infoLines []string, asciiColor string) {
 	width := getMaxWidth(asciiLines)
 
 	total := max(len(asciiLines), len(infoLines))
-
 	for i := 0; i < total; i++ {
 		var left, right string
 

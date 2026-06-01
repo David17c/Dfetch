@@ -18,7 +18,7 @@ func LoadASCII(fs embed.FS, distroID, asciicolor, asciisize, customascii string)
 			scanner = bufio.NewScanner(f)
 			closer = func() { f.Close() }
 		} else {
-			fmt.Printf("Error: Customascii path '%s' doesn't seem to exist.\n", customascii)
+			fmt.Printf("Error: Custom ascii art path '%s' doesn't seem to exist.\n", customascii)
 		}
 	}
 
