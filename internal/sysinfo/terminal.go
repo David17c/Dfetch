@@ -16,7 +16,5 @@ func Terminal() string {
 		return term
 	}
 
-	terminal := fmt.Sprintf("%s (%s)", term, colorterm)
-
-	return terminal
+	return fmt.Sprintf("%s [%s]", term, colorterm)
 }

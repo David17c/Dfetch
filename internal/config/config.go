@@ -121,13 +121,13 @@ func CreateConfigFile() error {
 				"os\n" +
 				"kernel\n" +
 				"uptime\n" +
-				"cpu\n" +
-				"memory\n" +
-				"localip\n" +
 				"shell\n" +
 				"de\n" +
+				"terminal\n" +
+				"cpu\n" +
+				"memory\n" +
 				"// battery\n" +
-				"terminal\n\n" +
+				"localip\n\n" +
 				"// ------------------------\n" +
 				"// Options\n\n" +
 				"asciisize: default\n" +

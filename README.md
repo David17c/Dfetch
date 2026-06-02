@@ -68,4 +68,6 @@ customascii: default
 - Linux Mint
 - Pop! OS
 - CachyOS
+- OpenSUSE Leap
+- OpenSUSE Tumbleweed
 ```
