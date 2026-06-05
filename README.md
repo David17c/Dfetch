@@ -28,13 +28,36 @@ Currently no official package for any platform is provided. You can either build
 
 ```
 // Lines starting with `//` are comments and are ignored by Dfetch.
-// In the System Information section you can change what info is displayed and in what order.
+// In the modules section you can change what info is displayed and in what order.
 
-//------------------------
-// Colors
+modules {
+	userinfo
+	os
+	kernel
+	uptime
+	shell
+	de
+	terminal
+	cpu
+	memory
+	disk
+	// battery
+	localip
+	// time
+	// date
+}
+
+asciisize: default
+// Ascii size can be either 'big', 'default' or 'small'. Default is big.
+
+customascii: default
+// Set a custom ascii logo by providing a path to the txt file containing it.
 
 asciicolor: default
+// Color of ascii art
+
 accentcolor: default
+// Color used by the info labels
 
 // Available colors:
 // black, red, green, yellow, blue,
@@ -43,35 +66,6 @@ accentcolor: default
 // bright_green, bright_yellow,
 // bright_blue, bright_magenta,
 // bright_cyan, bright_white
-
-// ------------------------
-// System info modules
-
-userinfo
-// Username and hostname show above the info
-
-os
-kernel
-uptime
-shell
-de
-terminal
-cpu
-memory
-disk
-// battery
-localip
-// time
-// date
-
-// ------------------------
-// Options
-
-asciisize: default
-// Ascii size can be either 'big', 'default' or 'small'. Default is big.
-
-customascii: default
-// Set your own custom ascii logo by providing a path to it.
 ```
 
 ## Supported Linux distros

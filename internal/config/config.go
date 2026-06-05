@@ -2,6 +2,7 @@ package config
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -9,10 +10,11 @@ import (
 
 type Config struct {
 	EnabledModules []string
-	AsciiColor     string
-	AccentColor    string
-	AsciiSize      string
-	CustomAscii    string
+
+	AsciiColor  string
+	AccentColor string
+	AsciiSize   string
+	CustomAscii string
 }
 
 func configPath() (string, error) {
@@ -25,6 +27,8 @@ func configPath() (string, error) {
 }
 
 func ReadConfig() (*Config, error) {
+	var inModules bool
+
 	path, err := configPath()
 	if err != nil {
 		return nil, err
@@ -42,25 +46,49 @@ func ReadConfig() (*Config, error) {
 	}
 	defer file.Close()
 
-	cfg := &Config{}
+	// Give option variables default values
+	cfg := &Config{
+		AsciiSize:   "default",
+		AsciiColor:  "default",
+		AccentColor: "default",
+		CustomAscii: "default",
+	}
 
 	scanner := bufio.NewScanner(file)
 
 	for scanner.Scan() {
 		line := strings.TrimSpace(scanner.Text())
 
-		// Skip empty lines and comments
+		// Skip comments
 		if idx := strings.Index(line, "//"); idx != -1 {
 			line = strings.TrimSpace(line[:idx])
 		}
 
+		// Skip empty lines
 		if line == "" {
+			continue
+		}
+
+		// Detects start of modules block
+		if strings.EqualFold(line, "modules {") {
+			inModules = true
+			continue
+		}
+
+		// Collects contents of modules block and the detects the end of this block
+		if inModules {
+			if line == "}" {
+				inModules = false
+				continue
+			}
+
+			cfg.EnabledModules = append(cfg.EnabledModules, strings.ToLower(line))
 			continue
 		}
 
 		if idx := strings.Index(line, ":"); idx != -1 {
 			key := strings.ToLower(strings.TrimSpace(line[:idx]))
-			value := strings.TrimSpace(line[idx+1:])
+			value := strings.ToLower(strings.TrimSpace(line[idx+1:]))
 
 			switch key {
 			case "asciicolor":
@@ -68,6 +96,9 @@ func ReadConfig() (*Config, error) {
 			case "accentcolor":
 				cfg.AccentColor = value
 			case "asciisize":
+				if value != "default" && value != "small" && value != "big" {
+					return nil, fmt.Errorf("invalid asciisize in config")
+				}
 				cfg.AsciiSize = value
 			case "customascii":
 				cfg.CustomAscii = value
@@ -75,18 +106,23 @@ func ReadConfig() (*Config, error) {
 
 			continue
 		}
-
-		cfg.EnabledModules = append(cfg.EnabledModules, strings.ToLower(line))
 	}
 
+	// Error if scanner fails
 	if err := scanner.Err(); err != nil {
 		return nil, err
+	}
+
+	// Error if modules block was never closed
+	if inModules {
+		return nil, fmt.Errorf("unterminated block in config")
 	}
 
 	return cfg, nil
 }
 
 func CreateConfigFile() error {
+	// Detects default config path
 	path, err := configPath()
 	if err != nil {
 		return err
@@ -103,40 +139,38 @@ func CreateConfigFile() error {
 
 		config.WriteString(
 			"// Lines starting with `//` are comments and are ignored by Dfetch.\n" +
-				"// In the System Information section you can change what info is displayed and in what order.\n\n" +
-				"//------------------------\n" +
-				"// Colors\n\n" +
+				"// In the modules section you can change what info is displayed and in what order.\n\n" +
+				"modules {\n" +
+				"	userinfo\n" +
+				"	os\n" +
+				"	kernel\n" +
+				"	uptime\n" +
+				"	shell\n" +
+				"	de\n" +
+				"	terminal\n" +
+				"	cpu\n" +
+				"	memory\n" +
+				"	disk\n" +
+				"	// battery\n" +
+				"	localip\n" +
+				"	// time\n" +
+				"	// date\n" +
+				"}\n\n" +
+				"asciisize: default\n" +
+				"// Ascii size can be either 'big', 'default' or 'small'. Default is big.\n\n" +
+				"customascii: default\n" +
+				"// Set a custom ascii logo by providing a path to the txt file containing it.\n\n" +
 				"asciicolor: default\n" +
-				"accentcolor: default\n\n" +
+				"// Color of ascii art\n\n" +
+				"accentcolor: default\n" +
+				"// Color used by the info labels\n\n" +
 				"// Available colors:\n" +
 				"// black, red, green, yellow, blue,\n" +
 				"// magenta, cyan, white,\n" +
 				"// bright_black, bright_red,\n" +
 				"// bright_green, bright_yellow,\n" +
 				"// bright_blue, bright_magenta,\n" +
-				"// bright_cyan, bright_white\n\n" +
-				"// ------------------------\n" +
-				"// System info modules\n\n" +
-				"userinfo // Username and hostname show above the info\n\n" +
-				"os\n" +
-				"kernel\n" +
-				"uptime\n" +
-				"shell\n" +
-				"de\n" +
-				"terminal\n" +
-				"cpu\n" +
-				"memory\n" +
-				"disk\n" +
-				"// battery\n" +
-				"localip\n" +
-				"// time\n" +
-				"// date\n\n" +
-				"// ------------------------\n" +
-				"// Options\n\n" +
-				"asciisize: default\n" +
-				"// Ascii size can be either 'big', 'default' or 'small'. Default is big.\n\n" +
-				"customascii: default\n" +
-				"// Set your own custom ascii logo by providing a path to it.",
+				"// bright_cyan, bright_white\n\n",
 		)
 
 		if err := os.WriteFile(path, []byte(config.String()), 0600); err != nil {
