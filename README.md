@@ -61,13 +61,13 @@ customascii: default
 ## Supported distros
 
 ```txt
-- Debian
 - Arch
-- Fedora
-- Ubuntu
-- Linux Mint
-- Pop! OS
 - CachyOS
+- Debian
+- Fedora
+- Linux Mint
 - OpenSUSE Leap
 - OpenSUSE Tumbleweed
+- Pop! OS
+- Ubuntu
 ```
