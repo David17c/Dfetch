@@ -15,6 +15,7 @@ func visibleLen(s string) int {
 
 func BuildInfoLines(sys sysinfo.SystemInfo, configLines []string, accent string) []string {
 	info := map[string]string{
+		"userinfo": fmt.Sprintf("%s%s", accent, sys.Userinfo),
 		"os":       field(accent, "OS", sys.DistroName),
 		"kernel":   field(accent, "Kernel", sys.Kernel),
 		"cpu":      field(accent, "CPU", sys.CPU),
@@ -30,9 +31,7 @@ func BuildInfoLines(sys sysinfo.SystemInfo, configLines []string, accent string)
 		"date":     field(accent, "Date", sys.Date),
 	}
 
-	lines := []string{
-		fmt.Sprintf("%s%s@%s\x1b[0m", accent, sys.Username, sys.Hostname),
-	}
+	lines := []string{}
 
 	for _, key := range configLines {
 		if v, ok := info[strings.ToLower(strings.TrimSpace(key))]; ok {

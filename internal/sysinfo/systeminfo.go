@@ -6,8 +6,7 @@ type SystemInfo struct {
 	Kernel     string
 	CPU        string
 	Memory     string
-	Username   string
-	Hostname   string
+	Userinfo   string
 	LocalIP    string
 	Uptime     string
 	Battery    string
@@ -24,11 +23,12 @@ func CollectSystemInfo(enabledModules []string) SystemInfo {
 	var sys SystemInfo
 
 	sys.DistroName, sys.ID = Distro()
-	sys.Username = Username()
-	sys.Hostname = Hostname()
 
 	for _, module := range enabledModules {
 		switch module {
+
+		case "userinfo":
+			sys.Userinfo = Userinfo()
 
 		case "kernel":
 			sys.Kernel = Kernel()

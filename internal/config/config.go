@@ -76,7 +76,7 @@ func ReadConfig() (*Config, error) {
 			)
 
 		default:
-			cfg.EnabledModules = append(cfg.EnabledModules, line)
+			cfg.EnabledModules = append(cfg.EnabledModules, strings.ToLower(line))
 		}
 	}
 
@@ -118,6 +118,8 @@ func CreateConfigFile() error {
 				"// bright_cyan, bright_white\n\n" +
 				"// ------------------------\n" +
 				"// System info modules\n\n" +
+				"userinfo\n" +
+				"// Username and hostname show above the info\n\n" +
 				"os\n" +
 				"kernel\n" +
 				"uptime\n" +
@@ -127,8 +129,8 @@ func CreateConfigFile() error {
 				"cpu\n" +
 				"memory\n" +
 				"disk\n" +
-				"localip\n" +
 				"// battery\n" +
+				"localip\n" +
 				"// time\n" +
 				"// date\n\n" +
 				"// ------------------------\n" +

@@ -61,7 +61,7 @@ customascii: default
 // Set your own custom ascii logo by providing a path to it.
 ```
 
-## Supported distros
+## Supported Linux distros
 
 ```txt
 - Arch
