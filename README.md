@@ -45,9 +45,11 @@ de
 terminal
 cpu
 memory
-// battery
 disk
 localip
+// battery
+// time
+// date
 
 // ------------------------
 // Options

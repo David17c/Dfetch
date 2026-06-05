@@ -126,9 +126,11 @@ func CreateConfigFile() error {
 				"terminal\n" +
 				"cpu\n" +
 				"memory\n" +
-				"// battery\n" +
 				"disk\n" +
-				"localip\n\n" +
+				"localip\n" +
+				"// battery\n" +
+				"// time\n" +
+				"// date\n\n" +
 				"// ------------------------\n" +
 				"// Options\n\n" +
 				"asciisize: default\n" +
