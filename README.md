@@ -82,7 +82,7 @@ accentcolor: default
 
 ## How to make a custom ascii art
 
-first put the ASCII art you want to use into a `txt` file. it should look something like:
+first put the ASCII art you want to use into a `txt` file. it should look something like this.
 
 ```
 MMMMMMMMMMMMMMMMMMMMMMMMMmds+.
@@ -102,7 +102,7 @@ ddddMMh  dMM   :hNMNMNhNMNMNh:  NMm
        \ydNMMMMMMMMMMMMMMMMMMMMM
 ```
 
-Now where gonna give it color by adding color tags. For a list of supported colors look in the default config file.
+Now you can give it color by adding color tags. For a list of supported colors look at the default config file.
 
 ```
 ${green}MMMMMMMMMMMMMMMMMMMMMMMMMmds+.
@@ -122,7 +122,7 @@ ${green}     \dMNmy+/:-------------:/yMMM
 ${green}       \ydNMMMMMMMMMMMMMMMMMMMMM
 ```
 
-At the bottom of the file we will add an accentcolor `accentcolor: green`. This is the color given to the info module labels.
+At the bottom of the file add an accentcolor: `accentcolor: green`. This is the color given to the info module labels.
 
 
 Now in the config file add / edit `customascii: PATH_TO_FILE`. Dfetch should now be using your ASCII art.
