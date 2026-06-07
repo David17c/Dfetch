@@ -1,13 +1,13 @@
         ${black}#####
        ${black}#######
        ${black}##${white}O${black}#${white}O${black}##
-       ${black}#${yellow}#####${black}#
-     ${black}##${white}##${yellow}###${white}##${black}##
+       ${black}#${bright_yellow}#####${black}#
+     ${black}##${white}##${bright_yellow}###${white}##${black}##
     ${black}#${white}##########${black}##
    ${black}#${white}############${black}##
    ${black}#${white}############${black}###
-  ${yellow}##${black}#${white}###########${black}##${yellow}#
-${yellow}######${black}#${white}#######${black}#${yellow}######
-${yellow}#######${black}#${white}#####${black}#${yellow}#######
-  ${yellow}#####${black}#######${yellow}#####
-accentcolor: yellow
+  ${bright_yellow}##${black}#${white}###########${black}##${bright_yellow}#
+${bright_yellow}######${black}#${white}#######${black}#${bright_yellow}######
+${bright_yellow}#######${black}#${white}#####${black}#${bright_yellow}#######
+  ${bright_yellow}#####${black}#######${bright_yellow}#####
+accentcolor: bright_yellow

@@ -4,12 +4,12 @@ A clean and practical system information tool focused on clean, easy to understa
 
 <table>
   <tr>
-    <td><img src="image/default_output_example_mint.png" alt="default Linux mint output example" width="100%"></td>
-    <td><img src="image/default_output_example_debian.png" alt="default Debian output example" width="100%"></td>
+    <td><img src="image/default_output_example_linuxmint.png" alt="default Linux mint output example" width="100%"></td>
+    <td><img src="image/default_output_example_pop.png" alt="default Pop!_OS output example" width="100%"></td>
   </tr>
   <tr>
     <td><img src="image/default_output_example_arch.png" alt="default Arch output example" width="100%"></td>
-    <td><img src="image/default_output_example_ubuntu.png" alt="default Ubuntu output example" width="100%"></td>
+    <td><img src="image/default_output_example_tux.png" alt="default Ubuntu output example" width="100%"></td>
   </tr>
 </table>
 
