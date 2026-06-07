@@ -1,15 +1,15 @@
 ${green}MMMMMMMMMMMMMMMMMMMMMMMMMmds+.
 ${green}MMm                       ymNMd+
-${green}MMd      ${white}/++                ${green}-sNMd:
-${green}MMNso\   ${white}dMM    `.::-. .-::.${green}   hMN:
-${green}ddddMMh  ${white}dMM   :hNMNMNhNMNMNh:  ${green}NMm
-${green}    NMm  ${white}dMM   NMN/-+MMM+-/NMN  ${green}dMM
-${green}    NMm  ${white}dMM   MMm   MMM   dMM  ${green}dMM
-${green}    NMm  ${white}dMM   MMm   MMM   dMM  ${green}dMM
-${green}    NMm  ${white}dMM   mmd   mmm   yMM  ${green}dMM
-${green}    NMm  ${white}dMM.              ydm  ${green}dMM
-${green}    hMM  ${white}+MMd/-------...-:sdds  ${green}dMM
-${green}    -NMm  ${white}:hNMNNNmdddddddddy/   ${green}dMM
+${green}MMd      ${bright_white}/++                ${green}-sNMd:
+${green}MMNso\   ${bright_white}dMM    `.::-. .-::.${green}   hMN:
+${green}ddddMMh  ${bright_white}dMM   :hNMNMNhNMNMNh:  ${green}NMm
+${green}    NMm  ${bright_white}dMM   NMN/-+MMM+-/NMN  ${green}dMM
+${green}    NMm  ${bright_white}dMM   MMm   MMM   dMM  ${green}dMM
+${green}    NMm  ${bright_white}dMM   MMm   MMM   dMM  ${green}dMM
+${green}    NMm  ${bright_white}dMM   mmd   mmm   yMM  ${green}dMM
+${green}    NMm  ${bright_white}dMM.              ydm  ${green}dMM
+${green}    hMM  ${bright_white}+MMd/-------...-:sdds  ${green}dMM
+${green}    -NMm  ${bright_white}:hNMNNNmdddddddddy/   ${green}dMM
 ${green}    -dMNs                      dMM
 ${green}     \dMNmy+/:-------------:/yMMM
 ${green}       \ydNMMMMMMMMMMMMMMMMMMMMM

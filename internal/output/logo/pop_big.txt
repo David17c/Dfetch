@@ -1,20 +1,20 @@
 ${magenta}             /////////////
 ${magenta}         /////////////////////
-${magenta}      ///////${white}*767${magenta}////////////////
-${magenta}    //////${white}7676767676*${magenta}//////////////
-${magenta}   /////${white}76767${magenta}//${white}7676767${magenta}//////////////
-${magenta}  /////${white}767676${magenta}///${white}*76767${magenta}///////////////
-${magenta} ///////${white}767676${magenta}///${white}76767${magenta}.///${white}7676*${magenta}///////
-${magenta}/////////${white}767676${magenta}//${white}76767${magenta}///${white}767676${magenta}////////
-${magenta}//////////${white}76767676767${magenta}////${white}76767${magenta}/////////
-${magenta}///////////${white}76767676${magenta}//////${white}7676${magenta}//////////
-${magenta}////////////,${white}7676${magenta},///////${white}767${magenta}///////////
-${magenta}/////////////*${white}7676${magenta}///////${white}76${magenta}////////////
-${magenta}///////////////${white}7676${magenta}////////////////////
-${magenta} ///////////////${white}7676${magenta}///${white}767${magenta}////////////
-${magenta}  //////////////////////${white}'${magenta}////////////
-${magenta}   //////${white}.7676767676767676767,${magenta}//////
-${magenta}    /////${white}767676767676767676767${magenta}/////
+${magenta}      ///////${bright_white}*767${magenta}////////////////
+${magenta}    //////${bright_white}7676767676*${magenta}//////////////
+${magenta}   /////${bright_white}76767${magenta}//${bright_white}7676767${magenta}//////////////
+${magenta}  /////${bright_white}767676${magenta}///${bright_white}*76767${magenta}///////////////
+${magenta} ///////${bright_white}767676${magenta}///${bright_white}76767${magenta}.///${bright_white}7676*${magenta}///////
+${magenta}/////////${bright_white}767676${magenta}//${bright_white}76767${magenta}///${bright_white}767676${magenta}////////
+${magenta}//////////${bright_white}76767676767${magenta}////${bright_white}76767${magenta}/////////
+${magenta}///////////${bright_white}76767676${magenta}//////${bright_white}7676${magenta}//////////
+${magenta}////////////,${bright_white}7676${magenta},///////${bright_white}767${magenta}///////////
+${magenta}/////////////*${bright_white}7676${magenta}///////${bright_white}76${magenta}////////////
+${magenta}///////////////${bright_white}7676${magenta}////////////////////
+${magenta} ///////////////${bright_white}7676${magenta}///${bright_white}767${magenta}////////////
+${magenta}  //////////////////////${bright_white}'${magenta}////////////
+${magenta}   //////${bright_white}.7676767676767676767,${magenta}//////
+${magenta}    /////${bright_white}767676767676767676767${magenta}/////
 ${magenta}      ///////////////////////////
 ${magenta}         /////////////////////
 ${magenta}             /////////////

@@ -1,17 +1,17 @@
-asciicolor: bright_blue
-${blue}       :-------------------::
-${blue}     :-----------${white}/shhOHbmp${blue}---:\
-${blue}   /-----------${white}omMMMNNNMMD${blue}  ---:
-${blue}  :-----------${white}sMMMMNMNMP.${blue}    ---:
-${blue} :-----------${white}:MMMdP${blue}-------    ---\
-${blue},------------${white}:MMMd${blue}--------    ---:
-${blue}:------------${white}:MMMd${blue}-------    .---:
-${blue}:----    ${white}oNMMMMMMMMMNho${blue}     .----:
-${blue}:--     ${white}.+shhhMMMmhhy++${blue}   .------/
-${blue}:-    -------${white}:MMMd${blue}--------------:
-${blue}:-   --------${white}/MMMd${blue}-------------;
-${blue}:-    ------${white}/hMMMy${blue}------------:
-${blue}:-- ${white}:dMNdhhdNMMNo${blue}------------;
-${blue}:---${white}:sdNMMMMNds:${blue}------------:
-${blue}:------${white}:://:${blue}-------------::
-${blue}:----------------------:
+asciicolor: bright_bright_blue
+${bright_blue}       :-------------------::
+${bright_blue}     :-----------${bright_white}/shhOHbmp${bright_blue}---:\
+${bright_blue}   /-----------${bright_white}omMMMNNNMMD${bright_blue}  ---:
+${bright_blue}  :-----------${bright_white}sMMMMNMNMP.${bright_blue}    ---:
+${bright_blue} :-----------${bright_white}:MMMdP${bright_blue}-------    ---\
+${bright_blue},------------${bright_white}:MMMd${bright_blue}--------    ---:
+${bright_blue}:------------${bright_white}:MMMd${bright_blue}-------    .---:
+${bright_blue}:----    ${bright_white}oNMMMMMMMMMNho${bright_blue}     .----:
+${bright_blue}:--     ${bright_white}.+shhhMMMmhhy++${bright_blue}   .------/
+${bright_blue}:-    -------${bright_white}:MMMd${bright_blue}--------------:
+${bright_blue}:-   --------${bright_white}/MMMd${bright_blue}-------------;
+${bright_blue}:-    ------${bright_white}/hMMMy${bright_blue}------------:
+${bright_blue}:-- ${bright_white}:dMNdhhdNMMNo${bright_blue}------------;
+${bright_blue}:---${bright_white}:sdNMMMMNds:${bright_blue}------------:
+${bright_blue}:------${bright_white}:://:${bright_blue}-------------::
+${bright_blue}:----------------------:

@@ -122,4 +122,7 @@ ${green}     \dMNmy+/:-------------:/yMMM
 ${green}       \ydNMMMMMMMMMMMMMMMMMMMMM
 ```
 
-last at the bottom of the file we will add an accentcolor `accentcolor: green`. This is the color given to the info module labels.
+At the bottom of the file we will add an accentcolor `accentcolor: green`. This is the color given to the info module labels.
+
+
+Now in the config file add / edit `customascii: PATH_TO_FILE`. Dfetch should now be using your ASCII art.

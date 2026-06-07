@@ -1,8 +1,8 @@
 ${green} ___________
 ${green}|_          \
-${green}  | ${white}| _____ ${green}|
-${green}  | ${white}| | | | ${green}|
-${green}  | ${white}| | | | ${green}|
-${green}  | ${white}\_____/ ${green}|
+${green}  | ${bright_white}| _____ ${green}|
+${green}  | ${bright_white}| | | | ${green}|
+${green}  | ${bright_white}| | | | ${green}|
+${green}  | ${bright_white}\_____/ ${green}|
 ${green}  \_________/
 accentcolor: green
