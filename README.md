@@ -67,18 +67,21 @@ accentcolor: default
 // bright_cyan, bright_white
 ```
 
-## Supported Linux distros
+## Supported Operating systems
 
 ```txt
-- Arch
-- CachyOS
-- Debian
-- Fedora
-- Linux Mint
-- OpenSUSE Leap
-- OpenSUSE Tumbleweed
-- Pop! OS
-- Ubuntu
+- Linux
+  - Arch
+  - CachyOS
+  - Debian
+  - Fedora
+  - Linux Mint
+  - OpenSUSE Leap
+  - OpenSUSE Tumbleweed
+  - Pop! OS
+  - Ubuntu
+
+// Support for Macos and Windows may be added in the future but is not a priority
 ```
 
 ## How to make a custom ascii art
@@ -127,9 +130,3 @@ At the bottom of the file add an accentcolor: `accentcolor: green`. This is the 
 
 
 Now in the config file add / edit `customascii: PATH_TO_FILE`. Dfetch should now be using your ASCII art.
-
-![Last commit](https://img.shields.io/github/last-commit/David17c/dfetch?style=flat&color=%231e90ff)
-![Created At](https://img.shields.io/github/created-at/david17c/dfetch?style=flat&color=%231e90ff)
-![Repo stars](https://img.shields.io/github/stars/david17c/dfetch?style=flat&color=%231e90ff)
-![Code size in bytes](https://img.shields.io/github/languages/code-size/david17c/dfetch?style=flat&color=%231e90ff)
-
