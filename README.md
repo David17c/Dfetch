@@ -1,6 +1,6 @@
 # Dfetch
 
-A clean and practical system information tool focused on clean, easy to understand output and fast startup times. It is designed to provide useful system information while being lightweight enough to launch instantly with your terminal.
+A clean and practical system information tool with easy to understand output and fast startup times. It is designed to provide useful system information while being both lightweight enough to launch instantly with your terminal and very easy to configure.
 
 <table>
   <tr>
@@ -15,7 +15,7 @@ A clean and practical system information tool focused on clean, easy to understa
 
 ## Why use this?
 
-Dfetch does not try to compete with heavily customizable alternatives like [Neofetch](https://github.com/dylanaraps/neofetch) or [Fastfetch](https://github.com/fastfetch-cli/fastfetch). The project exists mainly as a fun project for myself, while still being useful for those who like: clean, easy to configure tools with good defaults.
+Dfetch does not try to compete with heavily customizable alternatives like [Neofetch](https://github.com/dylanaraps/neofetch) or [Fastfetch](https://github.com/fastfetch-cli/fastfetch). The project exists mainly as a fun project for myself, while still being useful for those who like: clean, easy to configure tools.
 
 
 ## Installation
@@ -49,13 +49,13 @@ modules {
 	// date
 }
 
-asciisize: default
+ascii_size: default
 // Ascii size can be either 'big', 'default' or 'small'. Default is big.
 
-customascii: default
+custom_ascii: default
 // Set a custom ascii logo by providing a path to the txt file containing it.
 
-accentcolor: default
+accent_color: default
 // Color used by the info labels
 
 // Available colors:
@@ -71,17 +71,16 @@ accentcolor: default
 
 ```txt
 - Linux
+  - Debian
   - Arch
   - CachyOS
-  - Debian
   - Fedora
   - Linux Mint
   - OpenSUSE Leap
   - OpenSUSE Tumbleweed
   - Pop! OS
   - Ubuntu
-
-// Support for Macos and Windows may be added in the future but is not a priority
+  - Manjaro
 ```
 
 ## How to make a custom ascii art
@@ -89,41 +88,50 @@ accentcolor: default
 first put the ASCII art you want to use into a `txt` file. it should look something like this.
 
 ```
-MMMMMMMMMMMMMMMMMMMMMMMMMmds+.
-MMm                       ymNMd+
-MMd      /++                -sNMd:
-MMNso\   dMM    `.::-. .-::.   hMN:
-ddddMMh  dMM   :hNMNMNhNMNMNh:  NMm
-    NMm  dMM   NMN/-+MMM+-/NMN  dMM
-    NMm  dMM   MMm   MMM   dMM  dMM
-    NMm  dMM   MMm   MMM   dMM  dMM
-    NMm  dMM   mmd   mmm   yMM  dMM
-    NMm  dMM.              ydm  dMM
-    hMM  +MMd/-------...-:sdds  dMM
-    -NMm  :hNMNNNmdddddddddy/   dMM
-    -dMNs                      dMM
-     \dMNmy+/:-------------:/yMMM
-       \ydNMMMMMMMMMMMMMMMMMMMMM
+             ...-:::::-...
+          .-MMMMMMMMMMMMMMM-.
+      .-MMMM`..-:::::::-..`MMMM-.
+    .:MMMM.:MMMMMMMMMMMMMMM:.MMMM:.
+   -MMM-M---MMMMMMMMMMMMMMMMMMM.MMM-
+  :MMM:MM`  :MMMM:....::-...-MMMM:MMM:
+ :MMM:MMM`  :MM:`  ``    ``  `:MMM:MMM:
+.MMM.MMMM`  :MM.  -MM.  .MM-  `MMMM.MMM.
+:MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM-MMM:
+:MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM:MMM:
+:MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM-MMM:
+.MMM.MMMM`  :MM:--:MM:--:MM:  `MMMM.MMM.
+ :MMM:MMM-  `-MMMMMMMMMMMM-`  -MMM-MMM:
+  :MMM:MMM:`                `:MMM:MMM:
+   .MMM.MMMM:--------------:MMMM.MMM.
+     '-MMMM.-MMMMMMMMMMMMMMM-.MMMM-'
+       '.-MMMM``--:::::--``MMMM-.'
+            '-MMMMMMMMMMMMM-'
+               ``-:::::-``
 ```
 
 Now you can give it color by adding color tags. For a list of supported colors look at the default config file.
 
 ```
-${green}MMMMMMMMMMMMMMMMMMMMMMMMMmds+.
-${green}MMm                       ymNMd+
-${green}MMd      ${white}/++                ${green}-sNMd:
-${green}MMNso\   ${white}dMM    `.::-. .-::.${green}   hMN:
-${green}ddddMMh  ${white}dMM   :hNMNMNhNMNMNh:  ${green}NMm
-${green}    NMm  ${white}dMM   NMN/-+MMM+-/NMN  ${green}dMM
-${green}    NMm  ${white}dMM   MMm   MMM   dMM  ${green}dMM
-${green}    NMm  ${white}dMM   MMm   MMM   dMM  ${green}dMM
-${green}    NMm  ${white}dMM   mmd   mmm   yMM  ${green}dMM
-${green}    NMm  ${white}dMM.              ydm  ${green}dMM
-${green}    hMM  ${white}+MMd/-------...-:sdds  ${green}dMM
-${green}    -NMm  ${white}:hNMNNNmdddddddddy/   ${green}dMM
-${green}    -dMNs                      dMM
-${green}     \dMNmy+/:-------------:/yMMM
-${green}       \ydNMMMMMMMMMMMMMMMMMMMMM
+             ${bright_white}...-:::::-...
+${bright_white}          .-MMMMMMMMMMMMMMM-.
+${bright_white}      .-MMMM${green}`..-:::::::-..`${bright_white}MMMM-.
+${bright_white}    .:MMMM${green}.:MMMMMMMMMMMMMMM:.${bright_white}MMMM:.
+${bright_white}   -MMM${green}-M---MMMMMMMMMMMMMMMMMMM.${bright_white}MMM-
+${bright_white}  :MMM${green}:MM`  :MMMM:....::-...-MMMM:${bright_white}MMM:
+${bright_white} :MMM${green}:MMM`  :MM:`  ``    ``  `:MMM:${bright_white}MMM:
+${bright_white}.MMM${green}.MMMM`  :MM.  -MM.  .MM-  `MMMM.${bright_white}MMM.
+${bright_white}:MMM${green}:MMMM`  :MM.  -MM-  .MM:  `MMMM-${bright_white}MMM:
+${bright_white}:MMM${green}:MMMM`  :MM.  -MM-  .MM:  `MMMM:${bright_white}MMM:
+${bright_white}:MMM${green}:MMMM`  :MM.  -MM-  .MM:  `MMMM-${bright_white}MMM:
+${bright_white}.MMM${green}.MMMM`  :MM:--:MM:--:MM:  `MMMM.${bright_white}MMM.
+${bright_white} :MMM${green}:MMM-  `-MMMMMMMMMMMM-`  -MMM-${bright_white}MMM:
+${bright_white}  :MMM${green}:MMM:`                `:MMM:${bright_white}MMM:
+${bright_white}   .MMM${green}.MMMM:--------------:MMMM.${bright_white}MMM.
+${bright_white}     '-MMMM${green}.-MMMMMMMMMMMMMMM-.${bright_white}MMMM-'
+${bright_white}       '.-MMMM${green}``--:::::--``${bright_white}MMMM-.'
+${bright_white}            '-MMMMMMMMMMMMM-'
+${bright_white}               ``-:::::-``
+accentcolor: green
 ```
 
 At the bottom of the file add an accentcolor: `accentcolor: green`. This is the color given to the info module labels.

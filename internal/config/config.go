@@ -89,14 +89,14 @@ func ReadConfig() (*Config, error) {
 			value := strings.ToLower(strings.TrimSpace(line[idx+1:]))
 
 			switch key {
-			case "accentcolor":
+			case "accent_color":
 				cfg.AccentColor = value
-			case "asciisize":
+			case "ascii_size":
 				if value != "default" && value != "small" && value != "big" {
 					return nil, fmt.Errorf("invalid asciisize in config")
 				}
 				cfg.AsciiSize = value
-			case "customascii":
+			case "custom_ascii":
 				cfg.CustomAscii = value
 			}
 
@@ -154,11 +154,11 @@ func CreateConfigFile() error {
 				"	// time\n" +
 				"	// date\n" +
 				"}\n\n" +
-				"asciisize: default\n" +
+				"ascii_size: default\n" +
 				"// Ascii size can be either 'big', 'default' or 'small'. Default is big.\n\n" +
-				"customascii: default\n" +
+				"custom_ascii: default\n" +
 				"// Set a custom ascii logo by providing a path to the txt file containing it.\n\n" +
-				"accentcolor: default\n" +
+				"accent_color: default\n" +
 				"// Color used by the info labels\n\n" +
 				"// Available colors:\n" +
 				"// black, red, green, yellow, blue,\n" +

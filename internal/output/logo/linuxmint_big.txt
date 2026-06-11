@@ -1,16 +1,20 @@
-${green}MMMMMMMMMMMMMMMMMMMMMMMMMmds+.
-${green}MMm                       ymNMd+
-${green}MMd      ${bright_white}/++                ${green}-sNMd:
-${green}MMNso\   ${bright_white}dMM    `.::-. .-::.${green}   hMN:
-${green}ddddMMh  ${bright_white}dMM   :hNMNMNhNMNMNh:  ${green}NMm
-${green}    NMm  ${bright_white}dMM   NMN/-+MMM+-/NMN  ${green}dMM
-${green}    NMm  ${bright_white}dMM   MMm   MMM   dMM  ${green}dMM
-${green}    NMm  ${bright_white}dMM   MMm   MMM   dMM  ${green}dMM
-${green}    NMm  ${bright_white}dMM   mmd   mmm   yMM  ${green}dMM
-${green}    NMm  ${bright_white}dMM.              ydm  ${green}dMM
-${green}    hMM  ${bright_white}+MMd/-------...-:sdds  ${green}dMM
-${green}    -NMm  ${bright_white}:hNMNNNmdddddddddy/   ${green}dMM
-${green}    -dMNs                      dMM
-${green}     \dMNmy+/:-------------:/yMMM
-${green}       \ydNMMMMMMMMMMMMMMMMMMMMM
+             ${bright_white}...-:::::-...
+${bright_white}          .-MMMMMMMMMMMMMMM-.
+${bright_white}      .-MMMM${green}`..-:::::::-..`${bright_white}MMMM-.
+${bright_white}    .:MMMM${green}.:MMMMMMMMMMMMMMM:.${bright_white}MMMM:.
+${bright_white}   -MMM${green}-M---MMMMMMMMMMMMMMMMMMM.${bright_white}MMM-
+${bright_white}  :MMM${green}:MM`  :MMMM:....::-...-MMMM:${bright_white}MMM:
+${bright_white} :MMM${green}:MMM`  :MM:`  ``    ``  `:MMM:${bright_white}MMM:
+${bright_white}.MMM${green}.MMMM`  :MM.  -MM.  .MM-  `MMMM.${bright_white}MMM.
+${bright_white}:MMM${green}:MMMM`  :MM.  -MM-  .MM:  `MMMM-${bright_white}MMM:
+${bright_white}:MMM${green}:MMMM`  :MM.  -MM-  .MM:  `MMMM:${bright_white}MMM:
+${bright_white}:MMM${green}:MMMM`  :MM.  -MM-  .MM:  `MMMM-${bright_white}MMM:
+${bright_white}.MMM${green}.MMMM`  :MM:--:MM:--:MM:  `MMMM.${bright_white}MMM.
+${bright_white} :MMM${green}:MMM-  `-MMMMMMMMMMMM-`  -MMM-${bright_white}MMM:
+${bright_white}  :MMM${green}:MMM:`                `:MMM:${bright_white}MMM:
+${bright_white}   .MMM${green}.MMMM:--------------:MMMM.${bright_white}MMM.
+${bright_white}     '-MMMM${green}.-MMMMMMMMMMMMMMM-.${bright_white}MMMM-'
+${bright_white}       '.-MMMM${green}``--:::::--``${bright_white}MMMM-.'
+${bright_white}            '-MMMMMMMMMMMMM-'
+${bright_white}               ``-:::::-``
 accentcolor: green
