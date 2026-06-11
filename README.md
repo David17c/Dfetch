@@ -136,5 +136,6 @@ accentcolor: green
 
 At the bottom of the file add an accentcolor: `accentcolor: green`. This is the color given to the info module labels.
 
-
 Now in the config file add / edit `customascii: PATH_TO_FILE`. Dfetch should now be using your ASCII art.
+
+Instead of making your own you could also get custom ascii art from: https://github.com/David17c/ASCII-art-for-Dfetch
