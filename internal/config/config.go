@@ -140,6 +140,7 @@ func CreateConfigFile() error {
 				"modules {\n" +
 				"	userinfo\n" +
 				"	os\n" +
+				"	Host\n" +
 				"	kernel\n" +
 				"	uptime\n" +
 				"	shell\n" +

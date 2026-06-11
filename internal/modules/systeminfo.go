@@ -21,6 +21,7 @@ type Modules struct {
 	Date       string
 	Emptyline  string
 	Packages   string
+	Host       string
 }
 
 func CollectSystemInfo(enabledModules []string) Modules {
@@ -78,6 +79,9 @@ func CollectSystemInfo(enabledModules []string) Modules {
 
 		case "packages":
 			sys.Packages = Packages()
+
+		case "host":
+			sys.Host = Host()
 
 		default:
 			fmt.Printf("Module '%s' defined in config does not exist\n", module)
