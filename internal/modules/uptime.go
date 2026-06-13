@@ -12,23 +12,26 @@ func Uptime() string {
 		return "unknown"
 	}
 
-	parts := strings.SplitN(string(content), " ", 2)
-	if len(parts) == 0 {
+	parts := strings.Fields(string(content))
+	if len(parts) < 1 {
 		return "unknown"
 	}
 
-	totalSeconds, _ := strconv.ParseFloat(parts[0], 64)
+	secondsFloat, err := strconv.ParseFloat(parts[0], 64)
+	if err != nil {
+		return "unknown"
+	}
 
-	total := int(totalSeconds)
+	total := int(secondsFloat)
 
 	days := total / 86400
 	hours := (total % 86400) / 3600
 	minutes := (total % 3600) / 60
 	seconds := total % 60
 
-	result := ""
+	var result string
 
-	if days >= 1 {
+	if days > 0 {
 		result += strconv.Itoa(days) + "d "
 	}
 

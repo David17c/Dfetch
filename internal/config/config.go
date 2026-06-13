@@ -134,31 +134,32 @@ func CreateConfigFile() error {
 		var config strings.Builder
 
 		config.WriteString(
-			"// Lines starting with `//` are comments and are ignored by Dfetch.\n" +
+			"// Lines starting with `//` are comments, they are ignored by Dfetch.\n" +
 				"// In the modules section you can change what info is displayed and in what order.\n\n" +
-				"// 'Emptyline' module can be used to get an empty line in between modules\n" +
+				"// 'emptyline' module can be used to get an empty line in between modules\n" +
 				"modules {\n" +
 				"	userinfo\n" +
 				"	os\n" +
-				"	Host\n" +
+				"	host\n" +
 				"	kernel\n" +
 				"	uptime\n" +
+				"	packages\n" +
 				"	shell\n" +
 				"	de\n" +
 				"	terminal\n" +
 				"	cpu\n" +
 				"	memory\n" +
 				"	disk\n" +
-				"	packages\n" +
-				"	// motherboard\n" +
+				"	motherboard\n" +
 				"	// battery\n" +
-				"	localip\n" +
+				"	// localip\n" +
 				"	// time\n" +
 				"	// date\n" +
 				"}\n\n" +
 				"ascii_size: default\n" +
-				"// Ascii size can be either 'big', 'default' or 'small'. Default is big.\n\n" +
-				"custom_ascii: default\n" +
+				"// Only works with build in ascii.\n" +
+				"// Ascii size can be either 'big' or 'small'.\n\n" +
+				"custom_ascii: big\n" +
 				"// Set a custom ascii logo by providing a path to the txt file containing it.\n\n" +
 				"accent_color: default\n" +
 				"// Color used by the info labels\n\n" +

@@ -18,11 +18,11 @@ func LoadASCII(fs embed.FS, distroID, asciisize, customascii string) ([]string, 
 			scanner = bufio.NewScanner(f)
 			closer = func() { f.Close() }
 		} else {
-			fmt.Printf("Error: Custom ascii art path '%s' doesn't seem to exist.\n", customascii)
+			fmt.Printf("Error: Custom ascii path '%s' doesn't seem to exist.\n", customascii)
 		}
 	}
 
-	// embedded fallback
+	// fallback
 	if scanner == nil {
 		var file string
 

@@ -17,3 +17,5 @@ func Host() string {
 
 	return fmt.Sprintf("%s", productName)
 }
+
+// can also be gotten from hostnamectl command

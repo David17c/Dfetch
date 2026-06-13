@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	// Read or create the config file
+	// Read or create config file
 	cfg, err := config.ReadConfig()
 	if err != nil {
 		log.Fatal(err)
@@ -28,6 +28,7 @@ func main() {
 		log.Fatal(err)
 	}
 
+	
 	if cfg.AccentColor == "" || cfg.AccentColor == "default" {
 		cfg.AccentColor = accentColor
 	}

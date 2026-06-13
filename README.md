@@ -27,31 +27,32 @@ Currently no official package for any platform is provided. You can either build
 `~/.config/Dfetch/Dfetch.conf`
 
 ```
-// Lines starting with `//` are comments and are ignored by Dfetch.
+// Lines starting with `//` are comments, they are ignored by Dfetch.
 // In the modules section you can change what info is displayed and in what order.
 
-// 'Emptyline' module can be used to get an empty line in between modules
+// 'emptyline' module can be used to get an empty line in between modules
 modules {
 	userinfo
 	os
 	Host
 	kernel
 	uptime
+	packages
 	shell
 	de
 	terminal
 	cpu
 	memory
 	disk
-	packages
-	// motherboard
+	motherboard
 	// battery
-	localip
+	// localip
 	// time
 	// date
 }
 
 ascii_size: default
+// Only works with build in ascii.
 // Ascii size can be either 'big', 'default' or 'small'. Default is big.
 
 custom_ascii: default
@@ -84,6 +85,8 @@ accent_color: default
   - Ubuntu
   - Manjaro
 ```
+
+While overtime support for more distro's will be added Dfetch does not try to support all distro's instead just focusing on the main ones people actually use.
 
 ## How to make a custom ascii art
 

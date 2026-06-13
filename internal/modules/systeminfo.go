@@ -88,7 +88,7 @@ func CollectSystemInfo(enabledModules []string) Modules {
 			sys.MotherBoard = MotherBoard()
 
 		default:
-			fmt.Printf("Module '%s' defined in config does not exist\n", module)
+			fmt.Printf("Unable to find module '%s'\n", module)
 		}
 
 	}

@@ -12,9 +12,24 @@ func Distro() (string, string) {
 		return prettyName, id
 	}
 
+	// First fallback
 	prettyName, id, err = parseOSRelease("/usr/lib/os-release")
 	if err == nil && prettyName != "" {
 		return prettyName, id
+	}
+
+	// Second fallback
+	data, err := os.ReadFile("/etc/issue")
+	if err == nil {
+		prettyName := strings.TrimSpace(string(data))
+
+		if idx := strings.IndexRune(prettyName, '\\'); idx != -1 {
+			prettyName = strings.TrimSpace(prettyName[:idx])
+		}
+
+		if prettyName != "" {
+			return prettyName, ""
+		}
 	}
 
 	return "unknown", "unknown"
@@ -46,19 +61,19 @@ func parseOSRelease(path string) (string, string, error) {
 		case strings.HasPrefix(line, "PRETTY_NAME="):
 			prettyName = strings.Trim(
 				strings.TrimPrefix(line, "PRETTY_NAME="),
-				`"`,
+				"\"",
 			)
 
 		case strings.HasPrefix(line, "NAME="):
 			name = strings.Trim(
 				strings.TrimPrefix(line, "NAME="),
-				`"`,
+				"\"",
 			)
 
 		case strings.HasPrefix(line, "ID="):
 			id = strings.Trim(
 				strings.TrimPrefix(line, "ID="),
-				`"`,
+				"\"",
 			)
 		}
 	}
