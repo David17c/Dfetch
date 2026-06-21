@@ -1,17 +1,20 @@
-${bright_blue}       :-------------------::
-${bright_blue}     :-----------${bright_white}/shhOHbmp${bright_blue}---:\
-${bright_blue}   /-----------${bright_white}omMMMNNNMMD${bright_blue}  ---:
-${bright_blue}  :-----------${bright_white}sMMMMNMNMP.${bright_blue}    ---:
-${bright_blue} :-----------${bright_white}:MMMdP${bright_blue}-------    ---\
-${bright_blue},------------${bright_white}:MMMd${bright_blue}--------    ---:
-${bright_blue}:------------${bright_white}:MMMd${bright_blue}-------    .---:
-${bright_blue}:----    ${bright_white}oNMMMMMMMMMNho${bright_blue}     .----:
-${bright_blue}:--     ${bright_white}.+shhhMMMmhhy++${bright_blue}   .------/
-${bright_blue}:-    -------${bright_white}:MMMd${bright_blue}--------------:
-${bright_blue}:-   --------${bright_white}/MMMd${bright_blue}-------------;
-${bright_blue}:-    ------${bright_white}/hMMMy${bright_blue}------------:
-${bright_blue}:-- ${bright_white}:dMNdhhdNMMNo${bright_blue}------------;
-${bright_blue}:---${bright_white}:sdNMMMMNds:${bright_blue}------------:
-${bright_blue}:------${bright_white}:://:${bright_blue}-------------::
-${bright_blue}:----------------------:
+${bright_blue}             .',;::::;,'.
+${bright_blue}         .';:cccccccccccc:;,.
+${bright_blue}      .;cccccccccccccccccccccc;.
+${bright_blue}    .:cccccccccccccccccccccccccc:.
+${bright_blue}  .;ccccccccccccc;${bright_white}.:dddl:.${bright_blue};ccccccc;.
+${bright_blue} .:ccccccccccccc;${bright_white}OWMKOOXMWd${bright_blue};ccccccc:.
+${bright_blue}.:ccccccccccccc;${bright_white}KMMc${bright_blue};cc;${bright_white}xMMc${bright_blue};ccccccc:.
+${bright_blue},cccccccccccccc;${bright_white}MMM.${bright_blue};cc;${bright_white};WW:${bright_blue};cccccccc,
+${bright_blue}:cccccccccccccc;${bright_white}MMM.${bright_blue};cccccccccccccccc:
+${bright_blue}:ccccccc;${bright_white}oxOOOo${bright_blue};${bright_white}MMM000k.${bright_blue};cccccccccccc:
+${bright_blue}cccccc;${bright_white}0MMKxdd:${bright_blue};${bright_white}MMMkddc.${bright_blue};cccccccccccc;
+${bright_blue}ccccc;${bright_white}XMO'${bright_blue};cccc;${bright_white}MMM.${bright_blue};cccccccccccccccc'
+${bright_blue}ccccc;${bright_white}MMo${bright_blue};ccccc;${bright_white}MMW.${bright_blue};ccccccccccccccc;
+${bright_blue}ccccc;${bright_white}0MNc.${bright_blue}ccc${bright_white}.xMMd${bright_blue};ccccccccccccccc;
+${bright_blue}cccccc;${bright_white}dNMWXXXWM0:${bright_blue};cccccccccccccc:,
+${bright_blue}cccccccc;${bright_white}.:odl:.${bright_blue};cccccccccccccc:,.
+${bright_blue}ccccccccccccccccccccccccccccc:'.
+${bright_blue}:ccccccccccccccccccccccc:;,..
+${bright_blue} ':cccccccccccccccc::;,.
 accent_color: bright_blue

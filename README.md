@@ -4,12 +4,12 @@ A clean and practical system information tool with easy to understand output and
 
 <table>
   <tr>
-    <td><img src="image/output_example_1.png" alt="Output example Linux mint" width="100%"></td>
+    <td><img src="image/output_example_1.png" alt="Output example Debian" width="100%"></td>
     <td><img src="image/output_example_2.png" alt="output example Arch" width="100%"></td>
   </tr>
   <tr>
     <td><img src="image/output_example_3.png" alt="Output example Linux mint" width="100%"></td>
-    <td><img src="image/output_example_4.png" alt="Output example Pop!_os" width="100%"></td>
+    <td><img src="image/output_example_4.png" alt="Output example Pop os" width="100%"></td>
   </tr>
 </table>
 
@@ -20,7 +20,7 @@ Dfetch does not try to compete with heavily customizable alternatives like [Neof
 
 ## Installation
 
-Currently, no official packages are available for any platform. You can either build Dfetch from source or [download the latest prebuilt binaries](https://github.com/David17c/Dfetch/releases). Platform-specific packages will be provided when version 1.0 is released.
+Currently, no official packages are available for any platform. You can either build Dfetch from source or [download the latest prebuilt binaries](https://github.com/David17c/Dfetch/releases). Platform-specific packages will be provided when version 1.0.0 is released.
 
 ## Customization
 
@@ -66,23 +66,25 @@ accent_color: default
 // bright_cyan, bright_white
 ```
 
-## Supported Linux distro's
+## Supported Linux distros
 
 ```txt
-- Debian
 - Arch
+- Bazzite
 - CachyOS
+- Debian
 - Fedora
 - Linux Mint
+- LMDE
+- Manjaro
 - OpenSUSE Leap
 - OpenSUSE Tumbleweed
-- Pop! OS
+- Pop!_OS
 - Ubuntu
-- Manjaro
-- Bazzite
+- Zorin OS
 ```
 
-While overtime support for more distro's will be added Dfetch does not try to support all distro's instead just focusing on the main ones people actually use.
+If your favorite distro isn't listed, it may still be supported. This list only includes distributions that have built-in ASCII art and have been tested.
 
 ## How to make a custom ascii art
 
