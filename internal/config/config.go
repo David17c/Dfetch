@@ -127,9 +127,9 @@ func CreateConfigFile() error {
 		var config strings.Builder
 
 		config.WriteString(
-			"// Lines starting with `//` are comments, they are ignored by Dfetch.\n" +
-				"// In the modules section you can change what info is displayed and in what order.\n\n" +
-				"// 'emptyline' module can be used to get an empty line in between modules\n" +
+			"// Lines starting with `//` are comments and are ignored by Dfetch.\n" +
+				"// In the modules section, you can change which information is displayed and in what order.\n\n" +
+				"// The 'emptyline' module can be used to insert an empty line between modules.\n" +
 				"modules {\n" +
 				"	userinfo\n" +
 				"	os\n" +
@@ -150,9 +150,9 @@ func CreateConfigFile() error {
 				"	// date\n" +
 				"}\n\n" +
 				"custom_ascii: default\n" +
-				"// Set a custom ascii logo by providing a path to the txt file containing it.\n\n" +
+				"// Set a custom ASCII logo by providing the path to a text file containing it.\n\n" +
 				"accent_color: default\n" +
-				"// Color used by the info labels\n\n" +
+				"// Color used for the information labels.\n\n" +
 				"// Available colors:\n" +
 				"// black, red, green, yellow, blue,\n" +
 				"// magenta, cyan, white,\n" +

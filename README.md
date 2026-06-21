@@ -1,6 +1,6 @@
 # Dfetch
 
-A clean and practical system information tool with easy to understand output and fast startup times. It is designed to provide useful system information while being both lightweight enough to launch instantly with your terminal and very easy to configure.
+Dfetch is a lightweight system information tool focused on clean output, fast startup times, and simple configuration. It provides useful system details without the complexity of heavily customizable alternatives.
 
 <table>
   <tr>
@@ -13,9 +13,21 @@ A clean and practical system information tool with easy to understand output and
   </tr>
 </table>
 
+## Features
+
+```txt
+- Fast startup time
+- Simple configuration file
+- Useful system information without clutter
+- Custom ASCII art support
+- Configurable module ordering
+- No external dependencies
+- Clean default look
+```
+
 ## Why use this?
 
-Dfetch does not try to compete with heavily customizable alternatives like [Neofetch](https://github.com/dylanaraps/neofetch) or [Fastfetch](https://github.com/fastfetch-cli/fastfetch). The project exists mainly as a fun project for myself, while still being useful for those who like: clean, easy to configure tools.
+Dfetch doesn't aim to compete with highly customizable tools such as Neofetch or Fastfetch. Instead, it focuses on providing clean output, sensible defaults, fast startup times, and straightforward configuration.
 
 
 ## Installation
@@ -27,10 +39,10 @@ Currently, no official packages are available for any platform. You can either b
 `~/.config/Dfetch/Dfetch.conf`
 
 ```
-// Lines starting with `//` are comments, they are ignored by Dfetch.
-// In the modules section you can change what info is displayed and in what order.
+// Lines starting with `//` are comments and are ignored by Dfetch.
+// In the modules section, you can change which information is displayed and in what order.
 
-// 'emptyline' module can be used to get an empty line in between modules
+// The 'emptyline' module can be used to insert an empty line between modules.
 modules {
 	userinfo
 	os
@@ -45,17 +57,17 @@ modules {
 	memory
 	disk
 	motherboard
+	localip
 	// battery
-	// localip
 	// time
 	// date
 }
 
 custom_ascii: default
-// Set a custom ascii logo by providing a path to the txt file containing it.
+// Set a custom ASCII logo by providing the path to a text file containing it.
 
 accent_color: default
-// Color used by the info labels
+// Color used for the information labels.
 
 // Available colors:
 // black, red, green, yellow, blue,
@@ -87,7 +99,7 @@ If your favorite distro isn't listed, it may still be supported. This list only 
 
 ## How to make a custom ascii art
 
-Put the ASCII art you want to use into a `txt` file. it should look something like this.
+Put the ASCII art you want to use into a `txt` file. It should look something like this.
 
 ```
              ...-:::::-...
@@ -111,7 +123,7 @@ Put the ASCII art you want to use into a `txt` file. it should look something li
                ``-:::::-``
 ```
 
-Now (optionally) give it color by adding color tags. For a list of supported colors look at the default config file.
+You can optionally add colors by using color tags. For a list of supported colors look at the default config file.
 
 ```
              ${bright_white}...-:::::-...
@@ -133,9 +145,9 @@ ${bright_white}     '-MMMM${green}.-MMMMMMMMMMMMMMM-.${bright_white}MMMM-'
 ${bright_white}       '.-MMMM${green}``--:::::--``${bright_white}MMMM-.'
 ${bright_white}            '-MMMMMMMMMMMMM-'
 ${bright_white}               ``-:::::-``
-accentcolor: green
+accent_color: green
 ```
 
-At the bottom of the file add an accentcolor: `accentcolor: green`. This is the color given to the info module labels.
+At the bottom of the file add an accent_color: `accent_color: green`. This is the color given to the info module labels.
 
-Now in the config file add / edit `customascii: PATH_TO_FILE`. Dfetch should now be using your ASCII art.
+Now in the config file add / edit `custom_ascii: PATH_TO_FILE`. Dfetch should now be using your ASCII art.
