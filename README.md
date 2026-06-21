@@ -15,7 +15,7 @@ Dfetch is a lightweight system information tool focused on clean output, fast st
 
 ## Features
 
-```txt
+```
 - Fast startup time
 - Simple configuration file
 - Useful system information without clutter
@@ -151,3 +151,6 @@ accent_color: green
 At the bottom of the file add an accent_color: `accent_color: green`. This is the color given to the info module labels.
 
 Now in the config file add / edit `custom_ascii: PATH_TO_FILE`. Dfetch should now be using your ASCII art.
+
+> [!NOTE]  
+> Ai was used to help find bugs but did not write any code in this project.
