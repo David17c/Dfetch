@@ -9,7 +9,20 @@ import (
 	"strings"
 )
 
-var versionRe = regexp.MustCompile(`\b\d+\.\d+\.\d+\b`)
+var versionRe = regexp.MustCompile(`\b\d+\.\d+(?:\.\d+)?\b`)
+
+func shellVersion(displayName, cmd string, args ...string) string {
+	out, err := exec.Command(cmd, args...).CombinedOutput()
+	if err != nil {
+		return displayName
+	}
+
+	if v := extractVersion(string(out)); v != "" {
+		return fmt.Sprintf("%s %s", displayName, v)
+	}
+
+	return displayName
+}
 
 func extractVersion(output string) string {
 	return versionRe.FindString(output)
@@ -25,39 +38,14 @@ func Shell() string {
 
 	switch shell {
 	case "bash":
-		out, err := exec.Command("bash", "--version").Output()
-		if err != nil {
-			return "Bash"
-		}
-
-		if v := extractVersion(string(out)); v != "" {
-			return fmt.Sprintf("Bash %s", v)
-		}
-		return "Bash"
-
+		return shellVersion("Bash", "bash", "--version")
 	case "zsh":
-		out, err := exec.Command("zsh", "--version").Output()
-		if err != nil {
-			return "Zsh"
-		}
-
-		if v := extractVersion(string(out)); v != "" {
-			return fmt.Sprintf("Zsh %s", v)
-		}
-		return "Zsh"
-
+		return shellVersion("Zsh", "zsh", "--version")
 	case "fish":
-		out, err := exec.Command("fish", "--version").Output()
-		if err != nil {
-			return "Fish"
-		}
-
-		if v := extractVersion(string(out)); v != "" {
-			return fmt.Sprintf("Fish %s", v)
-		}
-		return "Fish"
-
+		return shellVersion("Fish", "fish", "--version")
+	case "dash":
+		return shellVersion("Dash", "dash", "-V")
 	default:
-		return "unknown"
+		return shell
 	}
 }
