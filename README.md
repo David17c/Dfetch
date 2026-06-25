@@ -15,7 +15,7 @@ Dfetch is a lightweight system information tool focused on clean output, fast st
 
 ## Why use this?
 
-Dfetch is designed for users who want a simple system information tool with sensible defaults, clean output, and fast startup times. Rather than prioritizing extensive customization, Dfetch focuses on being lightweight, easy to configure, and pleasant to use.
+Dfetch is designed for those who want a simple system information tool with sensible defaults, clean output, and fast startup times. Rather than prioritizing extensive customization, Dfetch focuses on being lightweight, easy to configure, and pleasant to use.
 
 ## Features
 
