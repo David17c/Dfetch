@@ -44,7 +44,6 @@ func ReadConfig() (*Config, error) {
 	}
 	defer file.Close()
 
-	// Give option variables default values
 	cfg := &Config{
 		AccentColor: "default",
 		CustomAscii: "default",
@@ -53,35 +52,44 @@ func ReadConfig() (*Config, error) {
 	scanner := bufio.NewScanner(file)
 
 	for scanner.Scan() {
-		line := strings.TrimSpace(scanner.Text())
+		rawLine := scanner.Text()
+		line := strings.TrimSpace(rawLine)
 
-		// Skip comments
+		// Skip full-line comments
+		if strings.HasPrefix(line, "//") {
+			continue
+		}
+
+		// Strip inline comments
 		if idx := strings.Index(line, "//"); idx != -1 {
 			line = strings.TrimSpace(line[:idx])
 		}
 
-		// Detects start of modules block
+		// Detect start of modules block
 		if strings.EqualFold(line, "modules {") {
 			inModules = true
 			continue
 		}
 
-		// Collects contents of modules block and the detects the end of this block
+		// Parse modules block
 		if inModules {
+			// Detect end of modules block
 			if line == "}" {
 				inModules = false
 				continue
 			}
 
-			// Replace emptylines in the modules section with the emptyline module
+			// Empty lines become the emptyline module
 			if line == "" {
-				line = "emptyline"
+				cfg.EnabledModules = append(cfg.EnabledModules, "emptyline")
+				continue
 			}
 
 			cfg.EnabledModules = append(cfg.EnabledModules, strings.ToLower(line))
 			continue
 		}
 
+		// Parse key:value options
 		if idx := strings.Index(line, ":"); idx != -1 {
 			key := strings.ToLower(strings.TrimSpace(line[:idx]))
 			value := strings.ToLower(strings.TrimSpace(line[idx+1:]))
@@ -95,18 +103,17 @@ func ReadConfig() (*Config, error) {
 
 			continue
 		}
-		// Skip empty lines outside of the modules section
+
+		// Skip empty lines outside modules
 		if line == "" {
 			continue
 		}
 	}
 
-	// Error if scanner fails
 	if err := scanner.Err(); err != nil {
 		return nil, err
 	}
 
-	// Errror if modules block was not closed
 	if inModules {
 		return nil, fmt.Errorf("unclosed modules block in config file")
 	}
