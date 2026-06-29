@@ -13,7 +13,7 @@ type Modules struct {
 	Local_IP    string
 	Uptime      string
 	Battery     string
-	DE          string
+	Desktop     string
 	Shell       string
 	Terminal    string
 	colorterm   string
@@ -58,8 +58,8 @@ func CollectSystemInfo(enabledModules []string) Modules {
 		case "battery":
 			sys.Battery = Battery()
 
-		case "de":
-			sys.DE = DesktopEnvironment()
+		case "desktop":
+			sys.Desktop = DesktopEnvironment()
 
 		case "shell":
 			sys.Shell = Shell()

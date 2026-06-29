@@ -31,7 +31,7 @@ func BuildInfoLines(sys modules.Modules, enabledModules []string, accent string)
 		"shell":       field(accent, "Shell", sys.Shell),
 		"terminal":    field(accent, "Terminal", sys.Terminal),
 		"battery":     field(accent, "Battery", sys.Battery),
-		"de":          field(accent, "DE", sys.DE),
+		"desktop":     field(accent, "Desktop", sys.Desktop),
 		"disk":        field(accent, "Disk", sys.Disk),
 		"time":        field(accent, "Time", sys.Time),
 		"date":        field(accent, "Date", sys.Date),

@@ -144,7 +144,7 @@ func CreateConfigFile() error {
 				"    uptime\n" +
 				"    shell\n" +
 				"    terminal\n" +
-				"    de\n" +
+				"    desktop\n" +
 				"    packages\n" +
 				"    cpu\n" +
 				"    ram\n" +
