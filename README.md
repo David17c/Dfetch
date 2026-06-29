@@ -94,6 +94,7 @@ accent_color: default
 - Ubuntu
 - Zorin OS
 - EndeavourOS
+- Nix OS
 ```
 
 If your favorite distro isn't listed, it may still be supported. This list only includes distributions that Dfetch has built-in ASCII art for and that have been tested.

@@ -1,0 +1,18 @@
+${magenta}        __    ____    __
+${magenta}       /  \   \   \  /  \
+${magenta}       \   \   \   \/   /
+${magenta}     ___\   \___\      /
+${magenta}    /            \    /   /\
+${magenta}   /______________\   \  /  \
+${magenta}        /   /      \   \/   /
+${magenta} ______/   /        \  /   /___
+${magenta}/         /          \/        \
+${magenta}\____    /\          /   ______/
+${magenta}    /   /  \        /   /
+${magenta}   /   /\   \______/___/_____
+${magenta}   \  /  \   \              /
+${magenta}    \/   /    \____    ____/
+${magenta}        /      \   \   \
+${magenta}       /   /\   \   \   \
+${magenta}       \__/  \___\   \__/
+accent_color: magenta

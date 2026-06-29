@@ -52,7 +52,7 @@ func Packages() string {
 			count++
 		}
 
-		result = fmt.Sprintf("%d (%s)", count, pm.name)
+		result = fmt.Sprintf("%s - %d", pm.name, count)
 	})
 
 	return result
