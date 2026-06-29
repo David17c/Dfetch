@@ -19,7 +19,6 @@ Dfetch is designed for those who want a simple system information tool with sens
 
 ## Features
 
-```
 - Fast startup time
 - Simple configuration file
 - Useful, clutter-free system information
@@ -27,7 +26,6 @@ Dfetch is designed for those who want a simple system information tool with sens
 - Configurable modules
 - No external dependencies
 - Clean default look
-```
 
 ## Installation
 
@@ -153,6 +151,6 @@ ${bright_white}               ``-:::::-``
 accent_color: green
 ```
 
-At the bottom of the file add an accent color: `accent_color: green`. This is the color given to the info module labels.
+At the bottom of the file add an accent color: `accent_color: COLOR`. This is the color given to the info module labels.
 
 In your config file, set: `custom_ascii: PATH_TO_FILE`. Dfetch should now be using your ASCII art.
