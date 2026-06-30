@@ -67,6 +67,13 @@ func LoadASCII(fs embed.FS, id string, cfg *config.Config) []string {
 			continue
 		}
 
+		if strings.HasPrefix(lower, "info_color:") &&
+			(cfg.Info_color == "" || cfg.Info_color == "default") {
+
+			cfg.Info_color = strings.TrimSpace(line[len("info_color:"):])
+			continue
+		}
+
 		lines = append(lines, line)
 	}
 

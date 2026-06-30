@@ -19,27 +19,38 @@ func visibleLen(s string) int {
 func BuildInfoLines(sys modules.Modules, cfg config.Config, distroName string) []string {
 	cfg.LabelColor = config.GetColorCode(cfg.LabelColor)
 	cfg.UserinfoColor = config.GetColorCode(cfg.UserinfoColor)
+	cfg.Info_color = config.GetColorCode(cfg.Info_color)
+
+	fields := map[string]struct {
+		label string
+		value string
+	}{
+		"os":          {"OS", distroName},
+		"kernel":      {"Kernel", sys.Kernel},
+		"cpu":         {"CPU", sys.CPU},
+		"memory":      {"Memory", sys.Memory},
+		"swap":        {"Swap", sys.Swap},
+		"local_ip":    {"Local IP", sys.Local_IP},
+		"uptime":      {"Uptime", sys.Uptime},
+		"shell":       {"Shell", sys.Shell},
+		"terminal":    {"Terminal", sys.Terminal},
+		"battery":     {"Battery", sys.Battery},
+		"desktop":     {"Desktop", sys.Desktop},
+		"disk":        {"Disk", sys.Disk},
+		"time":        {"Time", sys.Time},
+		"date":        {"Date", sys.Date},
+		"packages":    {"Packages", sys.Packages},
+		"host":        {"Host", sys.Host},
+		"motherboard": {"Motherboard", sys.MotherBoard},
+	}
 
 	info := map[string]string{
-		"userinfo":    fmt.Sprintf("%s%s", cfg.UserinfoColor, sys.Userinfo),
-		"os":          field(cfg.LabelColor, "OS", distroName),
-		"kernel":      field(cfg.LabelColor, "Kernel", sys.Kernel),
-		"cpu":         field(cfg.LabelColor, "CPU", sys.CPU),
-		"memory":      field(cfg.LabelColor, "Memory", sys.Memory),
-		"swap":        field(cfg.LabelColor, "Swap", sys.Swap),
-		"local_ip":    field(cfg.LabelColor, "Local IP", sys.Local_IP),
-		"uptime":      field(cfg.LabelColor, "Uptime", sys.Uptime),
-		"shell":       field(cfg.LabelColor, "Shell", sys.Shell),
-		"terminal":    field(cfg.LabelColor, "Terminal", sys.Terminal),
-		"battery":     field(cfg.LabelColor, "Battery", sys.Battery),
-		"desktop":     field(cfg.LabelColor, "Desktop", sys.Desktop),
-		"disk":        field(cfg.LabelColor, "Disk", sys.Disk),
-		"time":        field(cfg.LabelColor, "Time", sys.Time),
-		"date":        field(cfg.LabelColor, "Date", sys.Date),
-		"packages":    field(cfg.LabelColor, "Packages", sys.Packages),
-		"host":        field(cfg.LabelColor, "Host", sys.Host),
-		"motherboard": field(cfg.LabelColor, "Motherboard", sys.MotherBoard),
-		"emptyline":   "",
+		"userinfo":  fmt.Sprintf("%s%s\x1b[0m", cfg.UserinfoColor, sys.Userinfo),
+		"emptyline": "",
+	}
+
+	for key, f := range fields {
+		info[key] = field(cfg.LabelColor, cfg.Info_color, f.label, f.value)
 	}
 
 	lines := make([]string, 0, len(cfg.EnabledModules))
@@ -54,8 +65,14 @@ func BuildInfoLines(sys modules.Modules, cfg config.Config, distroName string) [
 	return lines
 }
 
-func field(color, label, value string) string {
-	return fmt.Sprintf("%s%s:\x1b[0m %s", color, label, value)
+func field(labelColor, infoColor, label, value string) string {
+	return fmt.Sprintf(
+		"%s%s:\x1b[0m %s%s\x1b[0m",
+		labelColor,
+		label,
+		infoColor,
+		value,
+	)
 }
 
 func PrintOutput(asciiLines, infoLines []string) {

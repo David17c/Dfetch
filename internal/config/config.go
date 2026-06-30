@@ -14,6 +14,7 @@ type Config struct {
 	LabelColor    string
 	UserinfoColor string
 	CustomAscii   string
+	Info_color    string
 }
 
 func configPath() (string, error) {
@@ -49,6 +50,7 @@ func ReadConfig() (*Config, error) {
 		LabelColor:    "default",
 		UserinfoColor: "default",
 		CustomAscii:   "default",
+		Info_color:    "default",
 	}
 
 	scanner := bufio.NewScanner(file)
@@ -99,6 +101,8 @@ func ReadConfig() (*Config, error) {
 				cfg.CustomAscii = value
 			case "userinfo_color":
 				cfg.UserinfoColor = value
+			case "info_color":
+				cfg.Info_color = value
 			}
 
 			continue
@@ -166,6 +170,8 @@ func CreateConfigFile() error {
 				"// Color used for the information labels.\n\n" +
 				"userinfo_color: default\n" +
 				"// Color of the userinfo module.\n\n" +
+				"info_color: default\n" +
+				"// Color of the system info.\n\n" +
 				"// Available colors:\n" +
 				"// black, red, green, yellow, blue,\n" +
 				"// magenta, cyan, white,\n" +

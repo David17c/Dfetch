@@ -51,7 +51,7 @@ modules {
     desktop
     packages
     cpu
-    ram
+    memory
     swap
     disk
     motherboard
@@ -69,6 +69,9 @@ label_color: default
 
 userinfo_color: default
 // Color of the userinfo module.
+
+info_color: default
+// Color of the system info.
 
 // Available colors:
 // black, red, green, yellow, blue,
@@ -101,16 +104,16 @@ userinfo_color: default
 
 If your favorite distribution isn't listed, it may still be supported. This table only includes distributions that have built-in ASCII art.
 
-Most of the listed distributions have been tested, but bugs may still exist. Since Dfetch isn't continuously tested on every supported distribution, some issues may go unnoticed.
+Most listed distributions have been tested, but bugs may still exist. Since Dfetch is not continuously tested on every supported distribution, some issues may go unnoticed.
 
-## How to make a custom ascii art
+## Custom ASCII art
 
-Save your ASCII art in a text file. It should look something like this.
+Save your custom ASCII art in a text file. It should look something like this.
 
 ```
              ...-:::::-...
-          .-MMMMMMMMMMMMMMM-.
-      .-MMMM`..-:::::::-..`MMMM-.
+         .-MMMMMMMMMMMMMMMMM-.
+      .-MMMM`.-=:::::::=-.`MMMM-.
     .:MMMM.:MMMMMMMMMMMMMMM:.MMMM:.
    -MMM-M---MMMMMMMMMMMMMMMMMMM.MMM-
   :MMM:MM`  :MMMM:....::-...-MMMM:MMM:
@@ -125,7 +128,7 @@ Save your ASCII art in a text file. It should look something like this.
    .MMM.MMMM:--------------:MMMM.MMM.
      '-MMMM.-MMMMMMMMMMMMMMM-.MMMM-'
        '.-MMMM``--:::::--``MMMM-.'
-            '-MMMMMMMMMMMMM-'
+           '-MMMMMMMMMMMMMMM-'
                ``-:::::-``
 ```
 
@@ -133,8 +136,8 @@ You can then optionally add colors by using color tags. For a list of supported 
 
 ```
              ${bright_white}...-:::::-...
-${bright_white}          .-MMMMMMMMMMMMMMM-.
-${bright_white}      .-MMMM${green}`..-:::::::-..`${bright_white}MMMM-.
+${bright_white}         .-MMMMMMMMMMMMMMMMM-.
+${bright_white}      .-MMMM${green}`.-=:::::::=-.`${bright_white}MMMM-.
 ${bright_white}    .:MMMM${green}.:MMMMMMMMMMMMMMM:.${bright_white}MMMM:.
 ${bright_white}   -MMM${green}-M---MMMMMMMMMMMMMMMMMMM.${bright_white}MMM-
 ${bright_white}  :MMM${green}:MM`  :MMMM:....::-...-MMMM:${bright_white}MMM:
@@ -149,11 +152,14 @@ ${bright_white}  :MMM${green}:MMM:`                `:MMM:${bright_white}MMM:
 ${bright_white}   .MMM${green}.MMMM:--------------:MMMM.${bright_white}MMM.
 ${bright_white}     '-MMMM${green}.-MMMMMMMMMMMMMMM-.${bright_white}MMMM-'
 ${bright_white}       '.-MMMM${green}``--:::::--``${bright_white}MMMM-.'
-${bright_white}            '-MMMMMMMMMMMMM-'
+${bright_white}           '-MMMMMMMMMMMMMMM-'
 ${bright_white}               ``-:::::-``
-accent_color: green
+
+label_color: green
+userinfo_color: green
+info_color: default
 ```
 
-At the bottom of the file add an accent color: `accent_color: COLOR`. This is the color given to the info module labels.
+At the bottom of the ASCII art file, you can optionally specify the same color settings available in the configuration file. Color settings in the custom ASCII file override those in the configuration file.
 
 In your config file, set: `custom_ascii: PATH_TO_FILE`. Dfetch should now be using your ASCII art.
