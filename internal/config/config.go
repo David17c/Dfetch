@@ -59,12 +59,7 @@ func ReadConfig() (*Config, error) {
 		rawLine := scanner.Text()
 		line := strings.TrimSpace(rawLine)
 
-		// Skip full-line comments
-		if strings.HasPrefix(line, "//") {
-			continue
-		}
-
-		// Strip inline comments
+		// Skip comments
 		if idx := strings.Index(line, "//"); idx != -1 {
 			line = strings.TrimSpace(line[:idx])
 		}

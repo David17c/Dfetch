@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	// Get distro name
+	// Get distro name and id
 	distroName, id := modules.Distro()
 
 	// Read or create config file
