@@ -15,7 +15,7 @@ Dfetch is a lightweight system information tool focused on clean output, fast st
 
 ## Why use this?
 
-Dfetch is designed for those who want a simple system information tool with sensible defaults, clean output, and fast startup times. Rather than prioritizing extensive customization, Dfetch focuses on being lightweight, easy to configure, and pleasant to use.
+Dfetch is designed for those who want a simple system information tool with sensible defaults, clean output, and fast startup times. Rather than prioritizing extensive customization, Dfetch focuses on providing useful information in a readable format with minimal startup overhead.
 
 ## Features
 
@@ -30,6 +30,53 @@ Dfetch is designed for those who want a simple system information tool with sens
 ## Installation
 
 To install Dfetch, visit [the releases page](https://github.com/David17c/Dfetch/releases) and either download the package for your operating system, download a prebuilt binary, or build Dfetch from source.
+
+### For NixOS
+
+You can install Dfetch on NixOS using the provided flake.
+
+**Option 1: Using flakes in your system configuration**
+
+Add this to your `flake.nix` inputs:
+
+```nix
+inputs = {
+  dfetch.url = "github:crispdark/Dfetch";
+};
+```
+
+Then add to your `environment.systemPackages`:
+
+```nix
+environment.systemPackages = with pkgs; [
+  dfetch.packages.${system}.default
+];
+```
+
+**Option 2: Install directly from flake**
+
+```bash
+nix run github:crispdark/Dfetch
+```
+
+**Option 3: Using the Dfetch NixOS module**
+
+Add the flake-module to your system configuration for better integration and customization:
+
+```nix
+imports = [
+  inputs.dfetch.nixosModules.default
+];
+
+services.dfetch = {
+  enable = true;
+  config = {
+    # Your custom configuration here
+  };
+};
+```
+
+See the [NixOS Module section](#nixos-module-customization) for more details.
 
 ## Customization
 
@@ -81,6 +128,36 @@ info_color: default
 // bright_blue, bright_magenta,
 // bright_cyan, bright_white
 ```
+
+### NixOS Module Customization
+
+When using the NixOS module, you can customize Dfetch through your system configuration without manually managing the config file:
+
+```nix
+services.dfetch = {
+  enable = true;
+  
+  # Specify which modules to display
+  modules = [
+    "userinfo"
+    "os"
+    "kernel"
+    "uptime"
+    "packages"
+    "memory"
+  ];
+  
+  # Set colors
+  labelColor = "green";
+  userinfoColor = "green";
+  infoColor = "default";
+  
+  # Custom ASCII art (path in nix store)
+  customAscii = null; # or path to your ASCII file
+};
+```
+
+The module automatically generates the configuration file at `~/.config/Dfetch/Dfetch.conf` with your specified options.
 
 ## Supported Linux distributions
 
@@ -136,12 +213,12 @@ You can then optionally add colors by using color tags. For a list of supported 
 
 ```
              ${bright_white}...-:::::-...
-${bright_white}         .-MMMMMMMMMMMMMMMMM-.
-${bright_white}      .-MMMM${green}`.-=:::::::=-.`${bright_white}MMMM-.
-${bright_white}    .:MMMM${green}.:MMMMMMMMMMMMMMM:.${bright_white}MMMM:.
-${bright_white}   -MMM${green}-M---MMMMMMMMMMMMMMMMMMM.${bright_white}MMM-
-${bright_white}  :MMM${green}:MM`  :MMMM:....::-...-MMMM:${bright_white}MMM:
-${bright_white} :MMM${green}:MMM`  :MM:`  ``    ``  `:MMM:${bright_white}MMM:
+${bright_white}        .-MMMMMMMMMMMMMMMMM-.
+${bright_white}     .-MMMM${green}`.-=:::::::=-.`${bright_white}MMMM-.
+${bright_white}   .:MMMM${green}.:MMMMMMMMMMMMMMM:.${bright_white}MMMM:.
+${bright_white}  -MMM${green}-M---MMMMMMMMMMMMMMMMMMM.${bright_white}MMM-
+${bright_white} :MMM${green}:MM`  :MMMM:....::-...-MMMM:${bright_white}MMM:
+${bright_white}:MMM${green}:MMM`  :MM:`  ``    ``  `:MMM:${bright_white}MMM:
 ${bright_white}.MMM${green}.MMMM`  :MM.  -MM.  .MM-  `MMMM.${bright_white}MMM.
 ${bright_white}:MMM${green}:MMMM`  :MM.  -MM-  .MM:  `MMMM-${bright_white}MMM:
 ${bright_white}:MMM${green}:MMMM`  :MM.  -MM-  .MM:  `MMMM:${bright_white}MMM:
