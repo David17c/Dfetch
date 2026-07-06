@@ -3,16 +3,12 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-      {
-        packages.default = pkgs.buildGoModule {
+  outputs = { self, nixpkgs }:
+    {
+      packages.x86_64-linux = {
+        default = nixpkgs.legacyPackages.x86_64-linux.buildGoModule {
           pname = "dfetch";
           version = "1.0.0";
           src = self;
@@ -21,7 +17,7 @@
 
           subPackages = [ "." ];
 
-          meta = with pkgs.lib; {
+          meta = with nixpkgs.lib; {
             description = "A lightweight system information tool focused on clean output";
             homepage = "https://github.com/crispdark/Dfetch";
             license = licenses.mit;
@@ -29,13 +25,40 @@
             platforms = platforms.linux;
           };
         };
+      };
 
-        devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            go
-            git
-          ];
+      packages.aarch64-linux = {
+        default = nixpkgs.legacyPackages.aarch64-linux.buildGoModule {
+          pname = "dfetch";
+          version = "1.0.0";
+          src = self;
+
+          vendorHash = null;
+
+          subPackages = [ "." ];
+
+          meta = with nixpkgs.lib; {
+            description = "A lightweight system information tool focused on clean output";
+            homepage = "https://github.com/crispdark/Dfetch";
+            license = licenses.mit;
+            maintainers = [];
+            platforms = platforms.linux;
+          };
         };
-      }
-    );
+      };
+
+      devShells.x86_64-linux.default = nixpkgs.legacyPackages.x86_64-linux.mkShell {
+        buildInputs = with nixpkgs.legacyPackages.x86_64-linux; [
+          go
+          git
+        ];
+      };
+
+      devShells.aarch64-linux.default = nixpkgs.legacyPackages.aarch64-linux.mkShell {
+        buildInputs = with nixpkgs.legacyPackages.aarch64-linux; [
+          go
+          git
+        ];
+      };
+    };
 }
