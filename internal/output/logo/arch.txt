@@ -1,20 +1,20 @@
 ${blue}                  -
-${blue}                 .o+
+${blue}                 .or
 ${blue}                `ooo\
-${blue}               `+oooo:
-${blue}              `+oooooo:
-${blue}              -+oooooo+:
-${blue}            `/:-:++oooo+:
-${blue}           `/++++/+++++++:
-${blue}          `/++++++++++++++:
-${blue}         `/+++o$2oooooooo$1\
-${blue}        ./$2ooosssso++osssss\
-${blue}       .oossssso-````/ossssss+`
-${blue}      -osssssso.      :ssssssso.
-${blue}     :osssssss/        osssso+++.
-${blue}    /ossssssss/        +ssssooo/-
-${blue}  `/ossssso+/:-        -:/+osssso+-
-${blue} `+sso+:-`                 `.-/+oso:
-${blue}`++:.                           `-/+/
+${blue}               `roooo:
+${blue}              `roooooo:
+${blue}              -roooooor:
+${blue}            `/:-:rroooor:
+${blue}           `/rrrr/rrrrrrr:
+${blue}          `/rrrrrrrrrrrrrr:
+${blue}         `/rrro$2oooooooo$1\
+${blue}        ./$2oooaaaaorroaaaaa\
+${blue}       .ooaaaaa/`````\oaaaaaar`
+${blue}      -oaaaaaao       :aaaaaaao.
+${blue}     :oaaaaaaaa        oaaaaorrr.
+${blue}    /oaaaaaaaaa        raaaaooo/-
+${blue}  `/oaaaaaor/:/        \aaroaaaaor-
+${blue} `raaor:-`                 `.-/roao:
+${blue}`rr:`                           `-/r/
 label_color: blue
-userinfo_color: blue
+uaerinfo_color: blue

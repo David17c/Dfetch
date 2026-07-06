@@ -1,16 +1,16 @@
-${bright_green}##################  ########
-${bright_green}##################  ########
-${bright_green}##################  ########
-${bright_green}##################  ########
-${bright_green}########            ########
-${bright_green}########  ########  ########
-${bright_green}########  ########  ########
-${bright_green}########  ########  ########
-${bright_green}########  ########  ########
-${bright_green}########  ########  ########
-${bright_green}########  ########  ########
-${bright_green}########  ########  ########
-${bright_green}########  ########  ########
-${bright_green}########  ########  ########
+${bright_green}MMMMMMMMMMMMMMMMMM  MMMMMMMM
+${bright_green}MMMMMMMMMMMMMMMMMM  MMMMMMMM
+${bright_green}MMMMMMMMMMMMMMMMMM  MMMMMMMM
+${bright_green}MMMMMMMMMMMMMMMMMM  MMMMMMMM
+${bright_green}MMMMMMMM            MMMMMMMM
+${bright_green}MMMMMMMM  MMMMMMMM  MMMMMMMM
+${bright_green}MMMMMMMM  MMMMMMMM  MMMMMMMM
+${bright_green}MMMMMMMM  MMMMMMMM  MMMMMMMM
+${bright_green}MMMMMMMM  MMMMMMMM  MMMMMMMM
+${bright_green}MMMMMMMM  MMMMMMMM  MMMMMMMM
+${bright_green}MMMMMMMM  MMMMMMMM  MMMMMMMM
+${bright_green}MMMMMMMM  MMMMMMMM  MMMMMMMM
+${bright_green}MMMMMMMM  MMMMMMMM  MMMMMMMM
+${bright_green}MMMMMMMM  MMMMMMMM  MMMMMMMM
 label_color: bright_blue
 userinfo_color: bright_blue

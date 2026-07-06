@@ -15,5 +15,5 @@ ${magenta}      ##      ######  #################
 ${magenta}             ########      #####      
 ${magenta}            ####  ####      #####    
 ${magenta}           ####    ####      #####  
-label_color: bright_red
-userinfo_color: bright_red
+label_color: magenta
+userinfo_color: magenta

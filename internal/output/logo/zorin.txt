@@ -1,19 +1,19 @@
-${blue}         zZZZZZZZZZZZZZZZZZZZZz
-${blue}        zZZZZZZZZZZZZZZZZZZZZZZz
-${blue}       Zzzzzzzzzzzzzzzzzzzzzzzzzz
+${blue}         ZZZZZZZZZZZZZZZZZZZZZZ
+${blue}        ZZZZZZZZZZZZZZZZZZZZZZZZ
+${blue}       ZZZZZZZZZZZZZZZZZZZZZZZZZZ
 ${blue}                                  
 ${blue}                                   
-${blue}   ZZZZZZZZZZZZZZZZZZZZZZZz        _
-${blue}  ZZZZZZZZZZZZZZZZZZZZz          zZZZ
-${blue} zZZZZZZZZZZZZZZZZZz          zZZZZZZZ
-${blue}ZZZZZZZZZZZZZZZZz         zZZZZZZZZZZZZ
-${blue} zZZZZZZZZZZz         zZZZZZZZZZZZZZZZz
-${blue}  ZZZZZZZ          ZZZZZZZZZZZZZZZZZZz
-${blue}  zzz         zZZZZZZZZZZZZZZZZZZZZZZ
+${blue}   ZZZZZZZZZZZZZZZZZZZZZZZZ         
+${blue}  ZZZZZZZZZZZZZZZZZZZZZ          ZZZZ
+${blue} ZZZZZZZZZZZZZZZZZZZ          ZZZZZZZZ
+${blue}ZZZZZZZZZZZZZZZZZ         ZZZZZZZZZZZZZ
+${blue} ZZZZZZZZZZZZ         ZZZZZZZZZZZZZZZZZ
+${blue}  ZZZZZZZ          ZZZZZZZZZZZZZZZZZZZ
+${blue}   ZZZ        ZZZZZZZZZZZZZZZZZZZZZZZ
 ${blue}                                    
 ${blue}                                   
-${blue}      zzzzzzzzzzzzzzzzzzzzzzzzzzz
-${blue}       zzZZZZZZZZZZZZZZZZZZZZZZZ
-${blue}        zzZZZZZZZZZZZZZZZZZZZZZ
+${blue}      ZZZZZZZZZZZZZZZZZZZZZZZZZZZ
+${blue}       ZZZZZZZZZZZZZZZZZZZZZZZZZ
+${blue}        ZZZZZZZZZZZZZZZZZZZZZZZ
 label_color: bright_blue
 userinfo_color: bright_blue
