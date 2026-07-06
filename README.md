@@ -66,10 +66,10 @@ modules {
 }
 
 custom_ascii: default
-// Set a custom ASCII logo by providing the path to a text file containing it.
+// Set a custom ASCII logo by providing the path to the text file containing it.
 
 label_color: default
-// Color used for the information labels.
+// Color of the information labels.
 
 userinfo_color: default
 // Color of the userinfo module.
