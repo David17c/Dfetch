@@ -91,7 +91,7 @@ info_color: default
 | Distribution | Status |
 |--------------|--------|
 | Arch | Tested |
-| Artix | Untested |
+| Artix | Tested |
 | Bazzite | Tested |
 | CachyOS | Tested |
 | Debian | Tested |
