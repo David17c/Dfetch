@@ -103,6 +103,7 @@ info_color: default
 | OpenSUSE Leap | Tested |
 | OpenSUSE Tumbleweed | Tested |
 | Pop!_OS | Tested |
+| Tuxedo OS | Tested |
 | Ubuntu | Tested |
 | Zorin OS | Tested |
 
