@@ -20,7 +20,7 @@ Dfetch provides prebuilt packages for Fedora and Fedora-based distributions.
 
 Download the `.rpm` package from the [Releases page](https://github.com/David17c/Dfetch/releases) and install it. Alternatively, you can download the prebuilt binary from the Releases page, which works on Fedora-based distributions as well.
 
-## Arch-based distributions
+## Arch
 
 Dfetch does not currently provide a prebuilt package for Arch or Arch-based distributions. Instead, you can either:
 
@@ -133,8 +133,7 @@ modules {
 }
 ```
 
-> [!NOTE]
-> Credit to @crispdark for writing the NixOS instructions.
+> Credit to [@crispdark](https://github.com/crispdark) for writing the NixOS instructions.
 
 ## Build from source
 
