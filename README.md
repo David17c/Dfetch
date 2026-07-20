@@ -31,7 +31,7 @@ Dfetch is designed for those who want a simple system information tool with sens
 
 In order to install Dfetch, visit [the releases page](https://github.com/David17c/Dfetch/releases) and either download the package for your operating system, download a prebuilt binary, or build Dfetch from source.
 
-More detailed installation instructions can be found [here](INSTALLATION_INSTRUCTIONS.md).
+More detailed installation instructions can be found [here](INSTALL.md).
 
 ## Customization
 
