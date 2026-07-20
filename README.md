@@ -29,7 +29,9 @@ Dfetch is designed for those who want a simple system information tool with sens
 
 ## Installation
 
-To install Dfetch, visit [the releases page](https://github.com/David17c/Dfetch/releases) and either download the package for your operating system, download a prebuilt binary, or build Dfetch from source.
+In order to install Dfetch, visit [the releases page](https://github.com/David17c/Dfetch/releases) and either download the package for your operating system, download a prebuilt binary, or build Dfetch from source.
+
+More detailed installation instructions can be found [here](INSTALLATION_INSTRUCTIONS.md).
 
 ### For NixOS
 
@@ -40,8 +42,8 @@ For detailed NixOS installation and configuration instructions, see [NIXOS.md](N
 `~/.config/Dfetch/Dfetch.conf`
 
 ```
-// Lines starting with `//` are comments and are ignored by Dfetch.
-// In the modules section, you can change which information is displayed and in what order.
+// Everything after `//` is a comment and is ignored by Dfetch.
+// In the modules section, you can change whhat information is displayed and in what order.
 
 // Insert empty lines in the modules block to get empty lines in the final output.
 modules {
