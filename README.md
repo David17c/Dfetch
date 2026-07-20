@@ -88,24 +88,25 @@ info_color: default
 
 ## Supported Linux distributions
 
-| Distribution | Status |
-|--------------|--------|
-| Arch | Tested |
-| Artix | Tested |
-| Bazzite | Tested |
-| CachyOS | Tested |
-| Debian | Tested |
-| EndeavourOS | Tested |
-| Fedora | Tested |
-| Linux Mint | Tested |
-| Manjaro | Tested |
-| NixOS | Tested |
-| OpenSUSE Leap | Tested |
-| OpenSUSE Tumbleweed | Tested |
-| Pop!_OS | Tested |
-| Tuxedo OS | Tested |
-| Ubuntu | Tested |
-| Zorin OS | Tested |
+| Distribution        |
+|---------------------|
+| Arch                |
+| Artix               |
+| Bazzite             |
+| CachyOS             |
+| Debian              |
+| EndeavourOS         |
+| Fedora              |
+| Kali Linux          |
+| Linux Mint          |
+| Manjaro             |
+| NixOS               |
+| OpenSUSE Leap       |
+| OpenSUSE Tumbleweed |
+| Pop!_OS             |
+| Tuxedo OS           |
+| Ubuntu              |
+| Zorin OS            |
 
 If your favorite distribution isn't listed, it may still be supported. This table only includes distributions that have built-in ASCII art.
 

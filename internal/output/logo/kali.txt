@@ -1,0 +1,22 @@
+${bright_blue}..............
+${bright_blue}            ..,;:ccc,.
+${bright_blue}          ......''';lxO.
+${bright_blue}.....''''..........,:ld;
+${bright_blue}           .';;;:::;,,.x,
+${bright_blue}      ..'''.            0Xxoc:,.  ...
+${bright_blue}  ....                ,ONkc;,;cokOdc',.
+${bright_blue} .                   OMo           ':${white}dd${bright_blue}o.
+${bright_blue}                    dMc               :OO;
+${bright_blue}                    0M.                 .:o.
+${bright_blue}                    ;Wd
+${bright_blue}                     ;XO,
+${bright_blue}                       ,d0Odlc;,..
+${bright_blue}                           ..',;:cdOOd::,.
+${bright_blue}                                    .:d;.':;.
+${bright_blue}                                       'd,  .'
+${bright_blue}                                         ;l   ..
+${bright_blue}                                          .o
+${bright_blue}                                            c
+${bright_blue}                                            .'
+label_color: bright_blue
+userinfo_color: bright_blue
