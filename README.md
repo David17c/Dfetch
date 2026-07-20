@@ -33,10 +33,6 @@ In order to install Dfetch, visit [the releases page](https://github.com/David17
 
 More detailed installation instructions can be found [here](INSTALLATION_INSTRUCTIONS.md).
 
-### For NixOS
-
-For detailed NixOS installation and configuration instructions, see [NIXOS.md](NIXOS.md).
-
 ## Customization
 
 `~/.config/Dfetch/Dfetch.conf`
