@@ -9,14 +9,14 @@ import (
 	"os"
 )
 
+var version = "dev"
+
 func main() {
 
-	// Version command
-	if len(os.Args) > 1 {
-		if os.Args[1] == "--version" {
-			fmt.Printf("Dfetch 1.2.0\n")
-			return
-		}
+	// Print version number on request
+	if len(os.Args) > 1 && os.Args[1] == "--version" {
+		fmt.Println(version)
+		return
 	}
 
 	// Get distro name and id
