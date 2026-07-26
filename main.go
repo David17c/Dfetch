@@ -4,20 +4,10 @@ import (
 	"dfetch/internal/config"
 	"dfetch/internal/modules"
 	"dfetch/internal/output"
-	"fmt"
 	"log"
-	"os"
 )
 
-var version = "dev"
-
 func main() {
-
-	// Print version number on request
-	if len(os.Args) > 1 && os.Args[1] == "--version" {
-		fmt.Println(version)
-		return
-	}
 
 	// Get distro name and id
 	distroName, id := modules.Distro()
