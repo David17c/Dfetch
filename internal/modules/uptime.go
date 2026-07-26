@@ -53,7 +53,21 @@ func Uptime() string {
 	total %= Hour
 
 	minutes := total / Minute
-	seconds := total % Minute
+
+	if centuries == 0 && years == 0 && months == 0 && weeks == 0 {
+		var parts []string
+
+		if days > 0 {
+			parts = append(parts, strconv.FormatInt(days, 10)+" days")
+		}
+
+		parts = append(parts,
+			strconv.FormatInt(hours, 10)+" hours",
+			strconv.FormatInt(minutes, 10)+" minutes",
+		)
+
+		return strings.Join(parts, " ")
+	}
 
 	var result strings.Builder
 
@@ -79,9 +93,8 @@ func Uptime() string {
 
 	result.WriteString(
 		strconv.FormatInt(hours, 10) + "h " +
-			strconv.FormatInt(minutes, 10) + "m " +
-			strconv.FormatInt(seconds, 10) + "s",
+			strconv.FormatInt(minutes, 10) + "m",
 	)
 
-	return result.String()
+	return strings.TrimSpace(result.String())
 }
