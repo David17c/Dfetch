@@ -46,14 +46,14 @@ func Packages() string {
 			return
 		}
 
-		var count int
+		var pmCount int
 		var err error
 
 		// Special handling for NixOS
 		if pm.name == "nix" {
-			count, err = countNixPackages()
+			pmCount, err = countNixPackages()
 		} else {
-			count, err = countPackagesFromCommand(pm)
+			pmCount, err = countPackagesFromCommand(pm)
 		}
 
 		if err != nil {
@@ -61,7 +61,24 @@ func Packages() string {
 			return
 		}
 
-		result = fmt.Sprintf("%s - %d", pm.name, count)
+		flatpakCount, _ := countFlatpakPackages()
+		snapCount, _ := countSnapPackages()
+
+		total := pmCount + flatpakCount + snapCount
+
+		parts := []string{
+			fmt.Sprintf("%d %s", pmCount, pm.name),
+		}
+
+		if flatpakCount > 0 {
+			parts = append(parts, fmt.Sprintf("%d flatpak", flatpakCount))
+		}
+
+		if snapCount > 0 {
+			parts = append(parts, fmt.Sprintf("%d snap", snapCount))
+		}
+
+		result = fmt.Sprintf("%d (%s)", total, strings.Join(parts, ", "))
 	})
 
 	return result
@@ -254,4 +271,48 @@ func isNixOS() bool {
 func exists(name string) bool {
 	_, err := exec.LookPath(name)
 	return err == nil
+}
+
+func countFlatpakPackages() (int, error) {
+	if !exists("flatpak") {
+		return 0, nil
+	}
+
+	out, err := exec.Command("flatpak", "list", "--app").Output()
+	if err != nil {
+		return 0, err
+	}
+
+	count := bytes.Count(out, []byte{'\n'})
+	if len(out) > 0 && out[len(out)-1] != '\n' {
+		count++
+	}
+
+	return count, nil
+}
+
+func countSnapPackages() (int, error) {
+	if !exists("snap") {
+		return 0, nil
+	}
+
+	out, err := exec.Command("snap", "list").Output()
+	if err != nil {
+		return 0, err
+	}
+
+	lines := bytes.Count(out, []byte{'\n'})
+	if len(out) > 0 && out[len(out)-1] != '\n' {
+		lines++
+	}
+
+	if lines > 0 {
+		lines--
+	}
+
+	if lines < 0 {
+		lines = 0
+	}
+
+	return lines, nil
 }

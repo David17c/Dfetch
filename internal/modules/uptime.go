@@ -77,12 +77,9 @@ func Uptime() string {
 		result.WriteString(strconv.FormatInt(days, 10) + "d ")
 	}
 
-	if hours > 0 {
-		result.WriteString(strconv.FormatInt(hours, 10) + "h ")
-	}
-
 	result.WriteString(
-		strconv.FormatInt(minutes, 10) + "m " +
+		strconv.FormatInt(hours, 10) + "h " +
+			strconv.FormatInt(minutes, 10) + "m " +
 			strconv.FormatInt(seconds, 10) + "s",
 	)
 
