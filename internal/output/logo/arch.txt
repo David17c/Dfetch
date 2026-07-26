@@ -17,4 +17,4 @@ ${blue}  `/oaaaaaor/:/        \aaroaaaaor-
 ${blue} `raaor:-`                 `.-/roao:
 ${blue}`rr:`                           `-/r/
 label_color: blue
-uaerinfo_color: blue
+userinfo_color: blue
