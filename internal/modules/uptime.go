@@ -6,6 +6,16 @@ import (
 	"strings"
 )
 
+const (
+	Minute  int64 = 60
+	Hour          = 60 * Minute
+	Day           = 24 * Hour
+	Week          = 7 * Day
+	Month         = 30 * Day
+	Year          = 365 * Day
+	Century       = 100 * Year
+)
+
 func Uptime() string {
 	content, err := os.ReadFile("/proc/uptime")
 	if err != nil {
@@ -22,28 +32,58 @@ func Uptime() string {
 		return "unknown"
 	}
 
-	total := int(secondsFloat)
+	total := int64(secondsFloat)
 
-	weeks := total / 604800
-	days := (total % 604800) / 86400
-	hours := (total % 86400) / 3600
-	minutes := (total % 3600) / 60
-	seconds := total % 60
+	centuries := total / Century
+	total %= Century
+
+	years := total / Year
+	total %= Year
+
+	months := total / Month
+	total %= Month
+
+	weeks := total / Week
+	total %= Week
+
+	days := total / Day
+	total %= Day
+
+	hours := total / Hour
+	total %= Hour
+
+	minutes := total / Minute
+	seconds := total % Minute
 
 	var result strings.Builder
 
+	if centuries > 0 {
+		result.WriteString(strconv.FormatInt(centuries, 10) + "c ")
+	}
+
+	if years > 0 {
+		result.WriteString(strconv.FormatInt(years, 10) + "y ")
+	}
+
+	if months > 0 {
+		result.WriteString(strconv.FormatInt(months, 10) + "mo ")
+	}
+
 	if weeks > 0 {
-		result.WriteString(strconv.Itoa(weeks) + "w ")
+		result.WriteString(strconv.FormatInt(weeks, 10) + "w ")
 	}
 
 	if days > 0 {
-		result.WriteString(strconv.Itoa(days) + "d ")
+		result.WriteString(strconv.FormatInt(days, 10) + "d ")
+	}
+
+	if hours > 0 {
+		result.WriteString(strconv.FormatInt(hours, 10) + "h ")
 	}
 
 	result.WriteString(
-		strconv.Itoa(hours) + "h " +
-			strconv.Itoa(minutes) + "m " +
-			strconv.Itoa(seconds) + "s",
+		strconv.FormatInt(minutes, 10) + "m " +
+			strconv.FormatInt(seconds, 10) + "s",
 	)
 
 	return result.String()
