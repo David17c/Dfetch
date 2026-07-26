@@ -57,7 +57,7 @@ func Terminal() string {
 	switch strings.ToLower(strings.TrimSpace(os.Getenv("TERM_PROGRAM"))) {
 	case "":
 	case "vscode":
-		return "VSCode"
+		return "VSCode Integrated Terminal"
 	case "wezterm":
 		return terminalVersion("WezTerm", "wezterm", nil)
 	case "ghostty":

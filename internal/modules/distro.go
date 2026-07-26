@@ -2,6 +2,7 @@ package modules
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 	"strings"
 )
@@ -45,8 +46,10 @@ func parseOSRelease(path string) (string, string, error) {
 	scanner := bufio.NewScanner(file)
 
 	var (
+		distroName string
 		prettyName string
 		name       string
+		version    string
 		id         string
 	)
 
@@ -70,6 +73,12 @@ func parseOSRelease(path string) (string, string, error) {
 				"\"",
 			)
 
+		case strings.HasPrefix(line, "VERSION="):
+			version = strings.Trim(
+				strings.TrimPrefix(line, "VERSION="),
+				"\"",
+			)
+
 		case strings.HasPrefix(line, "ID="):
 			id = strings.Trim(
 				strings.TrimPrefix(line, "ID="),
@@ -82,13 +91,21 @@ func parseOSRelease(path string) (string, string, error) {
 		return "", "", err
 	}
 
-	if prettyName == "" {
-		prettyName = name
+	if name != "" && version != "" {
+		distroName = fmt.Sprintf("%s %s", name, version)
+	} else if prettyName != "" {
+		distroName = prettyName
+	} else if name != "" {
+		distroName = name
 	}
 
 	if id == "" {
-		id = "unknown"
+		if name != "" {
+			id = strings.ToLower(name)
+		} else {
+			id = "unknown"
+		}
 	}
 
-	return prettyName, id, nil
+	return distroName, id, nil
 }
