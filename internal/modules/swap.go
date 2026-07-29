@@ -8,15 +8,15 @@ import (
 	"strings"
 )
 
-func Swap() string {
+func Swap(format string) string {
 	file, err := os.Open("/proc/meminfo")
 	if err != nil {
 		return "unknown"
 	}
 	defer file.Close()
 
-	var SwapTotal uint64
-	var SwapFree uint64
+	var swapTotal uint64
+	var swapFree uint64
 
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
@@ -27,19 +27,19 @@ func Swap() string {
 
 		switch fields[0] {
 		case "SwapTotal:":
-			SwapTotal, err = strconv.ParseUint(fields[1], 10, 64)
+			swapTotal, err = strconv.ParseUint(fields[1], 10, 64)
 			if err != nil {
 				return "unknown"
 			}
 
 		case "SwapFree:":
-			SwapFree, err = strconv.ParseUint(fields[1], 10, 64)
+			swapFree, err = strconv.ParseUint(fields[1], 10, 64)
 			if err != nil {
 				return "unknown"
 			}
 		}
 
-		if SwapTotal != 0 && SwapFree != 0 {
+		if swapTotal != 0 && swapFree != 0 {
 			break
 		}
 	}
@@ -48,48 +48,45 @@ func Swap() string {
 		return "unknown"
 	}
 
-	if SwapTotal == 0 || SwapFree == 0 {
+	if swapTotal == 0 || swapFree == 0 {
 		return "unknown"
 	}
 
-	SwapUsed := SwapTotal - SwapFree
-	usedPercent := float64(SwapUsed) / float64(SwapTotal) * 100
+	swapUsed := swapTotal - swapFree
+	usedPercent := float64(swapUsed) / float64(swapTotal) * 100
 
 	const kbPerMB = 1024
 	const kbPerGB = 1024 * 1024
 	const kbPerTB = 1024 * 1024 * 1024
 
+	var base string
+
 	switch {
-	case SwapTotal >= kbPerTB:
-		return fmt.Sprintf(
-			"%.2f / %.2f TB (%.0f%%)",
-			float64(SwapUsed)/float64(kbPerTB),
-			float64(SwapTotal)/float64(kbPerTB),
-			usedPercent,
+	case swapTotal >= kbPerTB:
+		base = fmt.Sprintf(
+			"%.2f / %.2f TB",
+			float64(swapUsed)/float64(kbPerTB),
+			float64(swapTotal)/float64(kbPerTB),
 		)
-
-	case SwapTotal >= kbPerGB:
-		return fmt.Sprintf(
-			"%.2f / %.2f GB (%.0f%%)",
-			float64(SwapUsed)/float64(kbPerGB),
-			float64(SwapTotal)/float64(kbPerGB),
-			usedPercent,
+	case swapTotal >= kbPerGB:
+		base = fmt.Sprintf(
+			"%.2f / %.2f GB",
+			float64(swapUsed)/float64(kbPerGB),
+			float64(swapTotal)/float64(kbPerGB),
 		)
-
-	case SwapTotal >= kbPerMB:
-		return fmt.Sprintf(
-			"%.0f / %.0f MB (%.0f%%)",
-			float64(SwapUsed)/float64(kbPerMB),
-			float64(SwapTotal)/float64(kbPerMB),
-			usedPercent,
+	case swapTotal >= kbPerMB:
+		base = fmt.Sprintf(
+			"%.0f / %.0f MB",
+			float64(swapUsed)/float64(kbPerMB),
+			float64(swapTotal)/float64(kbPerMB),
 		)
-
 	default:
-		return fmt.Sprintf(
-			"%d / %d KB (%.0f%%)",
-			SwapUsed,
-			SwapTotal,
-			usedPercent,
-		)
+		base = fmt.Sprintf("%d / %d KB", swapUsed, swapTotal)
 	}
+
+	if format != "short" {
+		base += fmt.Sprintf(" (%.0f%%)", usedPercent)
+	}
+
+	return base
 }

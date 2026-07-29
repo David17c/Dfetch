@@ -16,7 +16,7 @@ const (
 	Century       = 100 * Year
 )
 
-func Uptime() string {
+func Uptime(format string) string {
 	content, err := os.ReadFile("/proc/uptime")
 	if err != nil {
 		return "unknown"

@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func Memory() string {
+func Memory(format string) string {
 	file, err := os.Open("/proc/meminfo")
 	if err != nil {
 		return "unknown"
@@ -59,37 +59,34 @@ func Memory() string {
 	const kbPerGB = 1024 * 1024
 	const kbPerTB = 1024 * 1024 * 1024
 
+	var base string
+
 	switch {
 	case memTotal >= kbPerTB:
-		return fmt.Sprintf(
-			"%.2f / %.2f TB (%.0f%%)",
+		base = fmt.Sprintf(
+			"%.2f / %.2f TB",
 			float64(memUsed)/float64(kbPerTB),
 			float64(memTotal)/float64(kbPerTB),
-			usedPercent,
 		)
-
 	case memTotal >= kbPerGB:
-		return fmt.Sprintf(
-			"%.2f / %.2f GB (%.0f%%)",
+		base = fmt.Sprintf(
+			"%.2f / %.2f GB",
 			float64(memUsed)/float64(kbPerGB),
 			float64(memTotal)/float64(kbPerGB),
-			usedPercent,
 		)
-
 	case memTotal >= kbPerMB:
-		return fmt.Sprintf(
-			"%.0f / %.0f MB (%.0f%%)",
+		base = fmt.Sprintf(
+			"%.0f / %.0f MB",
 			float64(memUsed)/float64(kbPerMB),
 			float64(memTotal)/float64(kbPerMB),
-			usedPercent,
 		)
-
 	default:
-		return fmt.Sprintf(
-			"%d / %d KB (%.0f%%)",
-			memUsed,
-			memTotal,
-			usedPercent,
-		)
+		base = fmt.Sprintf("%d / %d KB", memUsed, memTotal)
 	}
+
+	if format != "short" {
+		base += fmt.Sprintf(" (%.0f%%)", usedPercent)
+	}
+
+	return base
 }

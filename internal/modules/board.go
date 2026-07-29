@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func MotherBoard() string {
+func Board() string {
 	name, err := os.ReadFile("/sys/devices/virtual/dmi/id/board_name")
 	if err != nil {
 		return "unknown"

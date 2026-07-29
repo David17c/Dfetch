@@ -13,7 +13,7 @@ func readDMI(path string) (string, error) {
 	return strings.TrimSpace(string(b)), nil
 }
 
-func Host() string {
+func Host(format string) string {
 	if v, err := readDMI("/sys/devices/virtual/dmi/id/product_family"); err == nil && v != "" {
 		return v
 	}

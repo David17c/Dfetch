@@ -38,7 +38,7 @@ var (
 	result    string
 )
 
-func Packages() string {
+func Packages(format string) string {
 	countOnce.Do(func() {
 		pm := getPackageManager()
 		if pm == nil {
@@ -65,6 +65,11 @@ func Packages() string {
 		snapCount, _ := countSnapPackages()
 
 		total := pmCount + flatpakCount + snapCount
+
+		if format == "short" {
+			result = fmt.Sprintf("%d", total)
+			return
+		}
 
 		parts := []string{
 			fmt.Sprintf("%d %s", pmCount, pm.name),

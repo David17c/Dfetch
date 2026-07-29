@@ -16,5 +16,3 @@ ${bright_white}    l0Ko${green}.                    ${bright_white}.c00l'
 ${bright_white}     'l0Kk:.              ${bright_white}.;xK0l'
 ${bright_white}        'lkK0xl:;,,,,;:ldO0kl'
 ${bright_white}            '^:ldxkkkkxdl:^'
-label_color: green
-userinfo_color: green

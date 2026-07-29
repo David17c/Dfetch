@@ -18,5 +18,3 @@ ${bright_blue}                                         ;l   ..
 ${bright_blue}                                          .o
 ${bright_blue}                                            c
 ${bright_blue}                                            .'
-label_color: bright_blue
-userinfo_color: bright_blue

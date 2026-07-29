@@ -13,5 +13,3 @@ ${red}`-////+${magenta}ssssssssssssssssssssssssssso${bright_blue}++++-
  ${red}`..-+${magenta}oosssssssssssssssssssssssso${bright_blue}+++++/`
    ${bright_blue}./++++++++++++++++++++++++++++++/:.
   ${bright_blue}`:::::::::::::::::::::::::------``
-label_color: red
-userinfo_color: red

@@ -9,6 +9,7 @@ import (
 )
 
 func Battery() string {
+
 	batPath, err := findBattery()
 	if err != nil {
 		return "unknown"

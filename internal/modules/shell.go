@@ -28,7 +28,7 @@ func extractVersion(output string) string {
 	return versionRe.FindString(output)
 }
 
-func Shell() string {
+func Shell(format string) string {
 	shellPath := os.Getenv("SHELL")
 	shell := strings.ToLower(filepath.Base(shellPath))
 
@@ -38,12 +38,24 @@ func Shell() string {
 
 	switch shell {
 	case "bash":
+		if format == "short" {
+			return fmt.Sprintf("Bash")
+		}
 		return shellVersion("Bash", "bash", "--version")
 	case "zsh":
+		if format == "short" {
+			return fmt.Sprintf("Zsh")
+		}
 		return shellVersion("Zsh", "zsh", "--version")
 	case "fish":
+		if format == "short" {
+			return fmt.Sprintf("Fish")
+		}
 		return shellVersion("Fish", "fish", "--version")
 	case "dash":
+		if format == "short" {
+			return fmt.Sprintf("Dash")
+		}
 		return shellVersion("Dash", "dash", "-V")
 	default:
 		return shell

@@ -1,20 +1,18 @@
-${green}          ====
-${green}         ======
-${green}       ==== ====+
-${green}     +====    +====
-${green}   +===+        ====
-${green}  ====            ====
-${green}+===               +====
-${green}====               +====
-${green} =====            ====
-${green}   +===+        =====
-${green}==+  =====    +===+  ===
-${green}====   ==== =====  =====
-${green}  ====  =======   ====
-${green}    ====  ===   ====
-${green}     ====+    ====
-${green}       ==== =====
-${green}         ======
-${green}           ==
-label_color: green
-userinfo_color: green
+${bright_white}           .;ldkO0000Okdl;.
+${bright_white}       .;d00xl:^''''''^:ok00d;.
+${bright_white}     .d00l'                ${bright_white}'o00d.
+${bright_white}   .d0Kd${green}'  Okxol:;,.          ${bright_white}:O0d
+${bright_white}  .OKKK${green}K0kOKKKKKKKKKKOxo:,      ${bright_white}lKO.
+${bright_white} ,0KK${green}KKKKKKKKKKKKKK0P^${bright_white},,,${green}^dx:    ${bright_white};00,
+${bright_white}.OKK${green}KKKKKKKKKKKKKKk'${bright_white}.oOPPb.${green}'0k.   ${bright_white}cKO.
+${bright_white}:KKK${green}KKKKKKKKKKKKKK: ${bright_white}kKx..dd ${green}lKd   ${bright_white}'OK:
+${bright_white}dKK${green}KKKKKKKKKOx0KKKd ${bright_white}^0KKKO' ${green}kKKc   ${bright_white}dKd
+${bright_white}dKK${green}KKKKKKKKKK;.;oOKx,..^..;kKKK0.  ${bright_white}dKd
+${bright_white}:KKK${green}KKKKKKKKK0o;...^cdxxOK0O/^^'  ${bright_white}.0K:
+${bright_white} kKK${green}KKKKKKKKKKKKK0x;,,......,;od  ${bright_white}lKk
+${bright_white} '0KK${green}KKKKKKKKKKKKKKKKKKK00KKOo^  ${bright_white}c00'
+${bright_white}  'kKK${green}KOxddxkOO00000Okxoc;''   ${bright_white}.dKk'
+${bright_white}    l0Ko${green}.                    ${bright_white}.c00l'
+${bright_white}     'l0Kk:.              ${bright_white}.;xK0l'
+${bright_white}        'lkK0xl:;,,,,;:ldO0kl'
+${bright_white}            '^:ldxkkkkxdl:^'

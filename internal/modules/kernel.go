@@ -6,25 +6,34 @@ import (
 	"strings"
 )
 
-func Kernel() string {
-	var kernelType, kernelRelease string
+func Kernel(format string) string {
+	kernelRelease := readProcFile("/proc/sys/kernel/osrelease")
 
-	if b, err := os.ReadFile("/proc/sys/kernel/ostype"); err == nil {
-		kernelType = strings.TrimSpace(string(b))
+	if format == "short" {
+		if kernelRelease != "" {
+			return kernelRelease
+		}
+		return "unknown"
 	}
 
-	if b, err := os.ReadFile("/proc/sys/kernel/osrelease"); err == nil {
-		kernelRelease = strings.TrimSpace(string(b))
-	}
+	kernelType := readProcFile("/proc/sys/kernel/ostype")
 
 	switch {
 	case kernelType != "" && kernelRelease != "":
 		return fmt.Sprintf("%s %s", kernelType, kernelRelease)
-	case kernelType != "":
-		return kernelType
 	case kernelRelease != "":
 		return kernelRelease
+	case kernelType != "":
+		return kernelType
 	default:
 		return "unknown"
 	}
+}
+
+func readProcFile(path string) string {
+	b, err := os.ReadFile(path)
+	if err != nil {
+		return ""
+	}
+	return strings.TrimSpace(string(b))
 }

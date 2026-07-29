@@ -8,25 +8,31 @@ import (
 )
 
 func main() {
+	// Create the default config if it doesn't exist.
+	if err := config.CreateConfigFile(); err != nil {
+		log.Fatal(err)
+	}
 
-	// Get distro name and id
-	distroName, id := modules.Distro()
-
-	// Read or create config file
+	// Read the config.
 	cfg, err := config.ReadConfig()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	// Collect necessary system info
-	sys := modules.CollectSystemInfo(cfg.EnabledModules)
+	// Get distro name and ID.
+	distroName, id := modules.Distro("")
 
-	// Prepare the ASCII art
+	// Collect system information based on the configured modules.
+	sys := modules.CollectSystemInfo(cfg.Modules, distroName)
+
+	// Load the ASCII art.
 	asciiLines := output.LoadASCII(output.LogoFS, id, cfg)
 
-	// Build the info lines
-	infoLines := output.BuildInfoLines(sys, *cfg, distroName)
+	// Build the output lines.
+	infoLines := output.BuildInfoLines(sys)
 
-	// Put everything together and print it
+	// Print everything.
 	output.PrintOutput(asciiLines, infoLines)
+
+	_ = distroName
 }

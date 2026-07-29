@@ -17,5 +17,3 @@ ${bright_blue} cccccccc;${bright_white}.:odl:.${bright_blue};cccccccccccccc:,.
 ${bright_blue} ccccccccccccccccccccccccccccc:'.
 ${bright_blue} :ccccccccccccccccccccccc:;,..
 ${bright_blue}  ':cccccccccccccccc::;,.
-label_color: bright_blue
-userinfo_color: bright_blue

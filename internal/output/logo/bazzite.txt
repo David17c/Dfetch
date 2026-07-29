@@ -17,5 +17,3 @@ ${blue}      %#######${bright_white}==========${blue}#########
 ${blue}        #######################      
 ${blue}          ###################        
 ${blue}              ###########    
-label_color: magenta
-userinfo_color: magenta

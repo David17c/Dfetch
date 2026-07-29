@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func Cpu() string {
+func Cpu(format string) string {
 	file, err := os.Open("/proc/cpuinfo")
 	if err == nil {
 		defer file.Close()
@@ -15,12 +15,14 @@ func Cpu() string {
 		scanner := bufio.NewScanner(file)
 		for scanner.Scan() {
 			if cpu, ok := strings.CutPrefix(scanner.Text(), "model name\t: "); ok {
-				return cleanCPUName(cpu)
+				if format == "short" {
+					return cleanCPUName(cpu)
+				}
+				return cpu
 			}
 		}
 	}
 
-	// Fallback that only works with lscpu installed.
 	out, err := exec.Command("lscpu").Output()
 	if err != nil {
 		return "unknown"
@@ -28,7 +30,12 @@ func Cpu() string {
 
 	for _, line := range strings.Split(string(out), "\n") {
 		if model, ok := strings.CutPrefix(line, "Model name:"); ok {
-			return cleanCPUName(strings.TrimSpace(model))
+			model = strings.TrimSpace(model)
+
+			if format == "short" {
+				return cleanCPUName(model)
+			}
+			return model
 		}
 	}
 

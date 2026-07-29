@@ -1,19 +1,17 @@
-${blue}         ZZZZZZZZZZZZZZZZZZZZZZ
-${blue}        ZZZZZZZZZZZZZZZZZZZZZZZZ
-${blue}       ZZZZZZZZZZZZZZZZZZZZZZZZZZ
-${blue}                                  
-${blue}                                   
-${blue}   ZZZZZZZZZZZZZZZZZZZZZZZZ         
-${blue}  ZZZZZZZZZZZZZZZZZZZZZ          ZZZZ
-${blue} ZZZZZZZZZZZZZZZZZZZ          ZZZZZZZZ
-${blue}ZZZZZZZZZZZZZZZZZ         ZZZZZZZZZZZZZ
-${blue} ZZZZZZZZZZZZ         ZZZZZZZZZZZZZZZZZ
-${blue}  ZZZZZZZ          ZZZZZZZZZZZZZZZZZZZ
-${blue}   ZZZ        ZZZZZZZZZZZZZZZZZZZZZZZ
-${blue}                                    
-${blue}                                   
-${blue}      ZZZZZZZZZZZZZZZZZZZZZZZZZZZ
-${blue}       ZZZZZZZZZZZZZZZZZZZZZZZZZ
-${blue}        ZZZZZZZZZZZZZZZZZZZZZZZ
-label_color: bright_blue
-userinfo_color: bright_blue
+${bright_blue}         ZZZZZZZZZZZZZZZZZZZZZZ
+${bright_blue}        ZZZZZZZZZZZZZZZZZZZZZZZZ
+${bright_blue}       ZZZZZZZZZZZZZZZZZZZZZZZZZZ
+${bright_blue}                                  
+${bright_blue}                                   
+${bright_blue}   ZZZZZZZZZZZZZZZZZZZZZZZ=`        
+${bright_blue}  ZZZZZZZZZZZZZZZZZZZZ-`        _-ZZZ
+${bright_blue} ZZZZZZZZZZZZZZZZZZ-`        _-ZZZZZZZ
+${bright_blue}ZZZZZZZZZZZZZZZZ-`       _-ZZZZZZZZZZZZ
+${bright_blue} ZZZZZZZZZZZ-`       _-ZZZZZZZZZZZZZZZZ
+${bright_blue}  ZZZZZZ-`        _-ZZZZZZZZZZZZZZZZZZ
+${bright_blue}   ZZ-`        -ZZZZZZZZZZZZZZZZZZZZZ
+${bright_blue}                                    
+${bright_blue}                                   
+${bright_blue}      ZZZZZZZZZZZZZZZZZZZZZZZZZZZ
+${bright_blue}       ZZZZZZZZZZZZZZZZZZZZZZZZZ
+${bright_blue}        ZZZZZZZZZZZZZZZZZZZZZZZ

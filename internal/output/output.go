@@ -16,68 +16,73 @@ func visibleLen(s string) int {
 	return utf8.RuneCountInString(clean)
 }
 
-func BuildInfoLines(sys modules.Modules, cfg config.Config, distroName string) []string {
-	cfg.LabelColor = config.GetColorCode(cfg.LabelColor)
-	cfg.UserinfoColor = config.GetColorCode(cfg.UserinfoColor)
-	cfg.InfoColor = config.GetColorCode(cfg.InfoColor)
+func BuildInfoLines(info []modules.ModuleOutput) []string {
+	lines := make([]string, 0, len(info))
 
-	fields := map[string]struct {
-		label string
-		value string
-	}{
-		"os":          {"OS", distroName},
-		"kernel":      {"Kernel", sys.Kernel},
-		"cpu":         {"CPU", sys.CPU},
-		"memory":      {"Memory", sys.Memory},
-		"swap":        {"Swap", sys.Swap},
-		"local_ip":    {"Local IP", sys.Local_IP},
-		"uptime":      {"Uptime", sys.Uptime},
-		"shell":       {"Shell", sys.Shell},
-		"terminal":    {"Terminal", sys.Terminal},
-		"battery":     {"Battery", sys.Battery},
-		"desktop":     {"Desktop", sys.Desktop},
-		"disk":        {"Disk", sys.Disk},
-		"time":        {"Time", sys.Time},
-		"date":        {"Date", sys.Date},
-		"packages":    {"Packages", sys.Packages},
-		"host":        {"Host", sys.Host},
-		"motherboard": {"Motherboard", sys.MotherBoard},
-	}
-
-	info := map[string]string{
-		"userinfo":  fmt.Sprintf("%s%s%s@%s%s\x1b[0m", cfg.UserinfoColor, sys.Username, cfg.InfoColor, cfg.UserinfoColor, sys.Hostname),
-		"emptyline": "",
-	}
-
-	for key, f := range fields {
-		info[key] = field(cfg.LabelColor, cfg.InfoColor, f.label, f.value)
-	}
-
-	lines := make([]string, 0, len(cfg.EnabledModules))
-
-	for _, key := range cfg.EnabledModules {
-		k := strings.ToLower(strings.TrimSpace(key))
-		if v, ok := info[k]; ok {
-			lines = append(lines, v)
+	for _, module := range info {
+		if module.Name == "emptyline" {
+			lines = append(lines, "")
+			continue
 		}
+
+		if module.Value == "" {
+			continue
+		}
+
+		if module.Name == "userinfo" {
+			if module.Color != "" {
+				lines = append(
+					lines,
+					config.GetColorCode(module.Color)+module.Value+"\x1b[0m",
+				)
+			} else {
+				lines = append(lines, module.Value)
+			}
+
+			continue
+		}
+
+		label := module.Label
+
+		if module.Name == "disk" {
+			mount := module.Mount
+			if mount == "" {
+				mount = "/"
+			}
+
+			label = fmt.Sprintf("%s (%s)", label, mount)
+		}
+
+		lines = append(lines, field(
+			label,
+			module.Color,
+			module.Separator,
+			module.Value,
+		))
 	}
 
 	return lines
 }
 
-func field(labelColor, infoColor, label, value string) string {
+func field(label, color, separator, value string) string {
+	if label == "" && separator == "" {
+		return value
+	}
+
+	if color == "" {
+		return fmt.Sprintf("%s%s %s", label, separator, value)
+	}
+
 	return fmt.Sprintf(
-		"%s%s:\x1b[0m %s%s\x1b[0m",
-		labelColor,
+		"%s%s\x1b[0m%s %s",
+		config.GetColorCode(color),
 		label,
-		infoColor,
+		separator,
 		value,
 	)
 }
-
 func PrintOutput(asciiLines, infoLines []string) {
-	var renderedAscii []string
-	renderedAscii = make([]string, len(asciiLines))
+	renderedAscii := make([]string, len(asciiLines))
 
 	for i, line := range asciiLines {
 		renderedAscii[i] = ApplyColorTags(line)
@@ -90,8 +95,9 @@ func PrintOutput(asciiLines, infoLines []string) {
 		var left, right string
 
 		if i < len(asciiLines) {
-			left = ApplyColorTags(asciiLines[i])
+			left = renderedAscii[i]
 		}
+
 		if i < len(infoLines) {
 			right = infoLines[i]
 		}
@@ -101,7 +107,8 @@ func PrintOutput(asciiLines, infoLines []string) {
 			padding = 0
 		}
 
-		fmt.Printf("%s%s %s\x1b[0m\n",
+		fmt.Printf(
+			"%s%s %s\x1b[0m\n",
 			left,
 			strings.Repeat(" ", padding+2),
 			right,
@@ -111,11 +118,13 @@ func PrintOutput(asciiLines, infoLines []string) {
 
 func getMaxWidth(lines []string) int {
 	maxWidth := 0
+
 	for _, line := range lines {
 		if w := visibleLen(line); w > maxWidth {
 			maxWidth = w
 		}
 	}
+
 	return maxWidth
 }
 

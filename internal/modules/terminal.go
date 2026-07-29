@@ -26,7 +26,11 @@ var detectors = []terminalDetector{
 	{"GHOSTTY_RESOURCES_DIR", "Ghostty", "ghostty", ghosttyVersion},
 }
 
-func terminalVersion(name, binary string, parse func(string) string) string {
+func terminalVersion(name, binary string, parse func(string) string, format string) string {
+	if format == "short" {
+		return name
+	}
+
 	out, err := exec.Command(binary, "--version").Output()
 	if err != nil {
 		return name
@@ -43,14 +47,17 @@ func terminalVersion(name, binary string, parse func(string) string) string {
 	return name
 }
 
-func Terminal() string {
+func Terminal(format string) string {
 	for _, t := range detectors {
 		if os.Getenv(t.env) != "" {
-			return terminalVersion(t.name, t.binary, t.parse)
+			return terminalVersion(t.name, t.binary, t.parse, format)
 		}
 	}
 
 	if v := os.Getenv("KONSOLE_VERSION"); v != "" {
+		if format == "short" {
+			return "Konsole"
+		}
 		return "Konsole " + v
 	}
 
@@ -59,9 +66,9 @@ func Terminal() string {
 	case "vscode":
 		return "VSCode Integrated Terminal"
 	case "wezterm":
-		return terminalVersion("WezTerm", "wezterm", nil)
+		return terminalVersion("WezTerm", "wezterm", nil, format)
 	case "ghostty":
-		return terminalVersion("Ghostty", "ghostty", ghosttyVersion)
+		return terminalVersion("Ghostty", "ghostty", ghosttyVersion, format)
 	default:
 		return os.Getenv("TERM_PROGRAM")
 	}
@@ -69,10 +76,14 @@ func Terminal() string {
 	term := os.Getenv("TERM")
 
 	if strings.HasPrefix(term, "foot") {
-		return terminalVersion("Foot", "foot", nil)
+		return terminalVersion("Foot", "foot", nil, format)
 	}
 
 	if term == "xterm" {
+		if format == "short" {
+			return "XTerm"
+		}
+
 		out, err := exec.Command("xterm", "-v").Output()
 		if err != nil {
 			return "XTerm"

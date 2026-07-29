@@ -2,168 +2,30 @@
 
 Dfetch is a lightweight system information tool focused on clean output, fast startup times, and simple configuration. It provides useful system details without the complexity of heavily customizable alternatives.
 
-<table>
-  <tr>
-    <td><img src="image/opensuse_default_output.png" alt="Output example Opensuse" width="100%"></td>
-    <td><img src="image/artix_default_output.png" alt="output example Artix" width="100%"></td>
-  </tr>
-  <tr>
-    <td><img src="image/tuxedo_default_output.png" alt="Output example Tuxedo" width="100%"></td>
-    <td><img src="image/zorin_default_output.png" alt="Output example Zorin" width="100%"></td>
-  </tr>
-</table>
-
-## Why use this?
-
-Dfetch is designed for those who want a simple system information tool with sensible defaults, clean output, and fast startup times. Rather than prioritizing extensive customization, Dfetch focuses on providing useful information in a readable format with minimal startup overhead.
-
-## Features
-
-- Fast startup time
-- Simple configuration file
-- Useful, clutter-free system information
-- Custom ASCII art support
-- Configurable modules
-- No external dependencies
-- Clean default look
+![Default output on debian example image](image/debian_dfetch_output.png)
 
 ## Installation
 
-In order to install Dfetch, visit [the releases page](https://github.com/David17c/Dfetch/releases) and either download the package for your operating system, download a prebuilt binary, or build Dfetch from source.
+In order to install Dfetch, visit [the releases page](https://github.com/David17c/Dfetch/releases) and either download the package for your operating system or download a prebuilt binary. You could also build Dfetch from source.
 
-More detailed installation instructions can be found [here](INSTALL.md).
+More detailed installation instructions can be found [here](documentation/INSTALL.md).
 
-## Customization
+## Support
 
-`~/.config/Dfetch/Dfetch.conf`
+Dfetch currently only supports Linux with built-in ASCII art for:
 
-```
-// Everything after `//` is a comment and is ignored by Dfetch.
-// In the modules section, you can change whhat information is displayed and in what order.
+**Arch, Artix, Bazzite, CachyOS, Debian, EndeavourOS, Fedora, Kali Linux, Linux Mint, Manjaro, NixOS, OpenSUSE Leap, OpenSUSE Tumbleweed, Pop!_OS, Tuxedo OS, Ubuntu, and Zorin OS.**
 
-// Insert empty lines in the modules block to get empty lines in the final output.
-modules {
-    userinfo
-    os
-    host
-    kernel
-    uptime
-    shell
-    terminal
-    desktop
-    packages
-    cpu
-    memory
-    swap
-    disk
-    motherboard
-    local_ip
-    // battery
-    // time
-    // date
-}
+If your distribution isn't listed, it may still work this list only includes distributions with built-in ASCII art.
 
-custom_ascii: default
-// Set a custom ASCII logo by providing the path to the text file containing it.
+Supported distributions have been tested, but Dfetch isn't continuously being tested on every distribution, some issues may go unnoticed.
 
-label_color: default
-// Color of the information labels.
+## Documentation
 
-userinfo_color: default
-// Color of the userinfo module.
+- [Customization](documentation/CUSTOMIZATION.md)
+- [Installation instructions](documentation/INSTALL.md)
 
-info_color: default
-// Color of the system info.
-
-// Available colors:
-// black, red, green, yellow, blue,
-// magenta, cyan, white,
-// bright_black, bright_red,
-// bright_green, bright_yellow,
-// bright_blue, bright_magenta,
-// bright_cyan, bright_white
-```
-
-## Supported Linux distributions
-
-| Distribution        |
-|---------------------|
-| Arch                |
-| Artix               |
-| Bazzite             |
-| CachyOS             |
-| Debian              |
-| EndeavourOS         |
-| Fedora              |
-| Kali Linux          |
-| Linux Mint          |
-| Manjaro             |
-| NixOS               |
-| OpenSUSE Leap       |
-| OpenSUSE Tumbleweed |
-| Pop!_OS             |
-| Tuxedo OS           |
-| Ubuntu              |
-| Zorin OS            |
-
-If your favorite distribution isn't listed, it may still be supported. This table only includes distributions that have built-in ASCII art.
-
-Most listed distributions have been tested, but bugs may still exist. Since Dfetch is not continuously tested on every supported distribution, some issues may go unnoticed.
-
-## Custom ASCII art
-
-Save your custom ASCII art in a text file. It should look something like this.
-
-```
-             ...-:::::-...
-         .-MMMMMMMMMMMMMMMMM-.
-      .-MMMM`.-=:::::::=-.`MMMM-.
-    .:MMMM.:MMMMMMMMMMMMMMM:.MMMM:.
-   -MMM-M---MMMMMMMMMMMMMMMMMMM.MMM-
-  :MMM:MM`  :MMMM:....::-...-MMMM:MMM:
- :MMM:MMM`  :MM:`  ``    ``  `:MMM:MMM:
-.MMM.MMMM`  :MM.  -MM.  .MM-  `MMMM.MMM.
-:MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM-MMM:
-:MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM:MMM:
-:MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM-MMM:
-.MMM.MMMM`  :MM:--:MM:--:MM:  `MMMM.MMM.
- :MMM:MMM-  `-MMMMMMMMMMMM-`  -MMM-MMM:
-  :MMM:MMM:`                `:MMM:MMM:
-   .MMM.MMMM:--------------:MMMM.MMM.
-     '-MMMM.-MMMMMMMMMMMMMMM-.MMMM-'
-       '.-MMMM``--:::::--``MMMM-.'
-           '-MMMMMMMMMMMMMMM-'
-               ``-:::::-``
-```
-
-You can then optionally add colors by using color tags. For a list of supported colors look at the default config file.
-
-```
-             ${bright_white}...-:::::-...
-${bright_white}        .-MMMMMMMMMMMMMMMMM-.
-${bright_white}     .-MMMM${green}`.-=:::::::=-.`${bright_white}MMMM-.
-${bright_white}   .:MMMM${green}.:MMMMMMMMMMMMMMM:.${bright_white}MMMM:.
-${bright_white}  -MMM${green}-M---MMMMMMMMMMMMMMMMMMM.${bright_white}MMM-
-${bright_white} :MMM${green}:MM`  :MMMM:....::-...-MMMM:${bright_white}MMM:
-${bright_white}:MMM${green}:MMM`  :MM:`  ``    ``  `:MMM:${bright_white}MMM:
-${bright_white}.MMM${green}.MMMM`  :MM.  -MM.  .MM-  `MMMM.${bright_white}MMM.
-${bright_white}:MMM${green}:MMMM`  :MM.  -MM-  .MM:  `MMMM-${bright_white}MMM:
-${bright_white}:MMM${green}:MMMM`  :MM.  -MM-  .MM:  `MMMM:${bright_white}MMM:
-${bright_white}:MMM${green}:MMMM`  :MM.  -MM-  .MM:  `MMMM-${bright_white}MMM:
-${bright_white}.MMM${green}.MMMM`  :MM:--:MM:--:MM:  `MMMM.${bright_white}MMM.
-${bright_white} :MMM${green}:MMM-  `-MMMMMMMMMMMM-`  -MMM-${bright_white}MMM:
-${bright_white}  :MMM${green}:MMM:`                `:MMM:${bright_white}MMM:
-${bright_white}   .MMM${green}.MMMM:--------------:MMMM.${bright_white}MMM.
-${bright_white}     '-MMMM${green}.-MMMMMMMMMMMMMMM-.${bright_white}MMMM-'
-${bright_white}       '.-MMMM${green}``--:::::--``${bright_white}MMMM-.'
-${bright_white}           '-MMMMMMMMMMMMMMM-'
-${bright_white}               ``-:::::-``
-
-label_color: green
-userinfo_color: green
-info_color: default
-```
-
-At the bottom of the ASCII art file, you can optionally specify the same color settings available in the configuration file. Color settings in the custom ASCII file override those in the configuration file.
-
-In your config file, set: `custom_ascii: PATH_TO_FILE`. Dfetch should now be using your ASCII art.
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/David17c/dfetch)
+![GitHub top language](https://img.shields.io/github/languages/top/david17c/dfetch)
+![GitHub go.mod Go version (branch)](https://img.shields.io/github/go-mod/go-version/David17c/dfetch/main)
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/david17c/dfetch/total)

@@ -9,10 +9,14 @@ func formatBytesWithUnit(bytes uint64, divisor float64) string {
 	return fmt.Sprintf("%.1f", float64(bytes)/divisor)
 }
 
-func Disk() string {
+func Disk(format, mount string) string {
 	var stat syscall.Statfs_t
 
-	if err := syscall.Statfs("/", &stat); err != nil {
+	if mount == "" {
+		mount = "/"
+	}
+
+	if err := syscall.Statfs(mount, &stat); err != nil {
 		return "Unknown"
 	}
 
@@ -48,6 +52,13 @@ func Disk() string {
 		return fmt.Sprintf("%d / %d B", used, total)
 	}
 
+	if format == "short" {
+		return fmt.Sprintf("%s / %s %s",
+			formatBytesWithUnit(used, divisor),
+			formatBytesWithUnit(total, divisor),
+			unit,
+		)
+	}
 	return fmt.Sprintf("%s / %s %s (%.0f%%)",
 		formatBytesWithUnit(used, divisor),
 		formatBytesWithUnit(total, divisor),

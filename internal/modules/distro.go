@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func Distro() (string, string) {
+func Distro(format string) (string, string) {
 	prettyName, id, err := parseOSRelease("/etc/os-release")
 	if err == nil && prettyName != "" {
 		return prettyName, id

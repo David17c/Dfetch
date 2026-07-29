@@ -2,84 +2,62 @@ package output
 
 import (
 	"bufio"
-	"dfetch/internal/config"
 	"embed"
 	"fmt"
 	"os"
 	"strings"
+
+	"dfetch/internal/config"
 )
 
-func LoadASCII(fs embed.FS, id string, cfg *config.Config) []string {
-	var scanner *bufio.Scanner
-	var closer func()
-
-	// custom file
-	if cfg.CustomAscii != "" && cfg.CustomAscii != "default" {
-		if f, err := os.Open(cfg.CustomAscii); err == nil {
-			scanner = bufio.NewScanner(f)
-			closer = func() { f.Close() }
-		} else {
-			fmt.Printf("Error: Custom ascii path '%s' doesn't seem to exist.\n", cfg.CustomAscii)
-		}
+func LoadASCII(fs embed.FS, distroID string, cfg config.Config) []string {
+	if !cfg.ASCII.Enabled {
+		return nil
 	}
 
-	// Build in ascii
-	if scanner == nil {
-		var file string
+	var scanner *bufio.Scanner
+	var closeFn func()
 
-		file = fmt.Sprintf("logo/%s.txt", strings.ToLower(id))
+	if cfg.ASCII.Path == "builtin" {
+		path := fmt.Sprintf("logo/%s.txt", strings.ToLower(distroID))
 
-		// Fallback to Linux logo
-		if _, err := fs.Open(file); err != nil {
-			file = "logo/linux.txt"
-		}
-
-		// Fallback to no ascii
-		f, err := fs.Open(file)
+		f, err := fs.Open(path)
 		if err != nil {
 			return nil
 		}
 
 		scanner = bufio.NewScanner(f)
-		closer = func() { f.Close() }
+		closeFn = func() {
+			f.Close()
+		}
+	} else {
+		f, err := os.Open(cfg.ASCII.Path)
+		if err != nil {
+			return nil
+		}
+
+		scanner = bufio.NewScanner(f)
+		closeFn = func() {
+			f.Close()
+		}
 	}
 
-	defer closer()
+	defer closeFn()
 
 	var lines []string
 
 	for scanner.Scan() {
-		line := scanner.Text()
-		lower := strings.ToLower(line)
+		lines = append(lines, scanner.Text())
+	}
 
-		// grab the colors not set in the config file from the ascii file
-		if strings.HasPrefix(lower, "label_color:") &&
-			(cfg.LabelColor == "" || cfg.LabelColor == "default") {
+	if cfg.ASCII.PaddingTop > 0 {
+		padding := make([]string, cfg.ASCII.PaddingTop)
+		lines = append(padding, lines...)
+	}
 
-			cfg.LabelColor = strings.TrimSpace(line[len("label_color:"):])
-			continue
-		}
-
-		if strings.HasPrefix(lower, "userinfo_color:") &&
-			(cfg.UserinfoColor == "" || cfg.UserinfoColor == "default") {
-
-			cfg.UserinfoColor = strings.TrimSpace(line[len("userinfo_color:"):])
-			continue
-		}
-
-		if strings.HasPrefix(lower, "info_color:") &&
-			(cfg.InfoColor == "" || cfg.InfoColor == "default") {
-
-			cfg.InfoColor = strings.TrimSpace(line[len("info_color:"):])
-			continue
-		}
-
-		// Skip empty lines
-		if line == "" {
-			continue
-		}
-
-		lines = append(lines, line)
+	if cfg.ASCII.PaddingBottom > 0 {
+		padding := make([]string, cfg.ASCII.PaddingBottom)
+		lines = append(lines, padding...)
 	}
 
 	return lines

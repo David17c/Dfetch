@@ -18,5 +18,3 @@ ${cyan}   'ooooxooi::'`         .:iiixkxxo'
 ${cyan}  'ooooi:'`                `'';ioxxo'
 ${cyan} 'i:'`                          '':io'
 ${cyan}'`                                   `'
-label_color: cyan
-userinfo_color: cyan

@@ -1,126 +1,202 @@
 package config
 
 import (
-	"bufio"
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
-	"strings"
 )
 
 type Config struct {
-	EnabledModules []string
+	ASCII   ASCIIConfig `json:"ascii"`
+	Modules []Module    `json:"modules"`
+}
 
-	LabelColor    string
-	UserinfoColor string
-	CustomAscii   string
-	InfoColor     string
+type ASCIIConfig struct {
+	Enabled       bool   `json:"enabled"`
+	Path          string `json:"path"`
+	PaddingTop    int    `json:"padding_top"`
+	PaddingBottom int    `json:"padding_bottom"`
+}
+
+type Module struct {
+	Name      string `json:"name"`
+	Label     string `json:"label,omitempty"`
+	Text      string `json:"text,omitempty"`
+	Color     string `json:"color,omitempty"`
+	Format    string `json:"format,omitempty"`
+	Separator string `json:"separator,omitempty"`
+
+	// Disk module only
+	Mount string `json:"mount,omitempty"`
 }
 
 func configPath() (string, error) {
 	configDir, err := os.UserConfigDir()
 	if err != nil {
-		return "", err
+		return "", fmt.Errorf("unable to find config directory: %w", err)
 	}
 
-	return filepath.Join(configDir, "dfetch", "dfetch.conf"), nil
+	return filepath.Join(configDir, "dfetch", "dfetch.json"), nil
 }
 
-func ReadConfig() (*Config, error) {
-	var inModules bool
-
+func ReadConfig() (Config, error) {
 	path, err := configPath()
 	if err != nil {
-		return nil, err
-	}
-
-	if _, err := os.Stat(path); os.IsNotExist(err) {
-		if err := CreateConfigFile(); err != nil {
-			return nil, err
-		}
+		return Config{}, err
 	}
 
 	file, err := os.Open(path)
 	if err != nil {
-		return nil, err
+		return Config{}, fmt.Errorf("unable to open config file: %w", err)
 	}
 	defer file.Close()
 
-	cfg := &Config{
-		LabelColor:    "default",
-		UserinfoColor: "default",
-		CustomAscii:   "default",
-		InfoColor:     "default",
+	var cfg Config
+
+	decoder := json.NewDecoder(file)
+
+	if err := decoder.Decode(&cfg); err != nil {
+		return Config{}, fmt.Errorf("invalid config JSON: %w", err)
 	}
 
-	scanner := bufio.NewScanner(file)
-
-	for scanner.Scan() {
-		rawLine := scanner.Text()
-		line := strings.TrimSpace(rawLine)
-
-		// Skip comments
-		if idx := strings.Index(line, "//"); idx != -1 {
-			line = strings.TrimSpace(line[:idx])
-		}
-
-		// Detect start of modules block
-		if strings.EqualFold(line, "modules {") {
-			inModules = true
-			continue
-		}
-
-		if inModules {
-			if line == "}" {
-				inModules = false
-				continue
-			}
-
-			if line == "" {
-				cfg.EnabledModules = append(cfg.EnabledModules, "emptyline")
-				continue
-			}
-
-			cfg.EnabledModules = append(cfg.EnabledModules, strings.ToLower(line))
-			continue
-		}
-
-		if idx := strings.Index(line, ":"); idx != -1 {
-			key := strings.ToLower(strings.TrimSpace(line[:idx]))
-			value := strings.ToLower(strings.TrimSpace(line[idx+1:]))
-
-			switch key {
-			case "label_color":
-				cfg.LabelColor = value
-			case "custom_ascii":
-				cfg.CustomAscii = value
-			case "userinfo_color":
-				cfg.UserinfoColor = value
-			case "info_color":
-				cfg.InfoColor = value
-			}
-
-			continue
-		}
-
-		if line == "" {
-			continue
-		}
-	}
-
-	if err := scanner.Err(); err != nil {
-		return nil, err
-	}
-
-	if inModules {
-		return nil, fmt.Errorf("unclosed modules block in config file")
+	if err := cfg.Validate(); err != nil {
+		return Config{}, err
 	}
 
 	return cfg, nil
 }
 
+func (c Config) Validate() error {
+	if c.ASCII.Path == "" {
+		return fmt.Errorf("ascii path cannot be empty")
+	}
+
+	for i, module := range c.Modules {
+		if module.Name == "" {
+			return fmt.Errorf("module %d is missing a name", i+1)
+		}
+
+		// Empty line module
+		if module.Name == "emptyline" {
+			continue
+		}
+
+		// Text module
+		if module.Name == "text" {
+			if module.Text == "" {
+				return fmt.Errorf("text module is missing text")
+			}
+
+			if module.Label != "" {
+				return fmt.Errorf("text module cannot have a label")
+			}
+
+			if module.Separator != "" {
+				return fmt.Errorf("text module cannot have a separator")
+			}
+
+			if module.Format != "" {
+				return fmt.Errorf("text module cannot have a format")
+			}
+
+			if module.Mount != "" {
+				return fmt.Errorf("text module cannot have a mount")
+			}
+
+			if module.Color != "" && !IsValidColor(module.Color) {
+				return fmt.Errorf(
+					"text module has invalid color '%s'",
+					module.Color,
+				)
+			}
+
+			continue
+		}
+
+		// Userinfo module
+		if module.Name == "userinfo" {
+			if module.Label != "" {
+				return fmt.Errorf("module 'userinfo' cannot have a label")
+			}
+
+			if module.Separator != "" {
+				return fmt.Errorf("module 'userinfo' cannot have a separator")
+			}
+		} else {
+			if module.Label == "" {
+				return fmt.Errorf(
+					"module '%s' is missing a label",
+					module.Name,
+				)
+			}
+		}
+
+		if module.Color != "" && !IsValidColor(module.Color) {
+			return fmt.Errorf(
+				"module '%s' has invalid color '%s'",
+				module.Name,
+				module.Color,
+			)
+		}
+
+		if module.Name == "disk" && module.Mount != "" {
+			info, err := os.Stat(module.Mount)
+			if err != nil {
+				if os.IsNotExist(err) {
+					return fmt.Errorf(
+						"disk mount '%s' does not exist",
+						module.Mount,
+					)
+				}
+
+				return fmt.Errorf(
+					"unable to access disk mount '%s': %w",
+					module.Mount,
+					err,
+				)
+			}
+
+			if !info.IsDir() {
+				return fmt.Errorf(
+					"disk mount '%s' is not a directory",
+					module.Mount,
+				)
+			}
+		}
+	}
+
+	return nil
+}
+
+func IsValidColor(color string) bool {
+	switch color {
+	case
+		"black",
+		"red",
+		"green",
+		"yellow",
+		"blue",
+		"magenta",
+		"cyan",
+		"white",
+		"bright_black",
+		"grey",
+		"gray",
+		"bright_red",
+		"bright_green",
+		"bright_yellow",
+		"bright_blue",
+		"bright_magenta",
+		"bright_cyan",
+		"bright_white":
+		return true
+	}
+
+	return false
+}
+
 func CreateConfigFile() error {
-	// Detects default config path
 	path, err := configPath()
 	if err != nil {
 		return err
@@ -129,57 +205,149 @@ func CreateConfigFile() error {
 	configDir := filepath.Dir(path)
 
 	if err := os.MkdirAll(configDir, 0700); err != nil {
-		return err
+		return fmt.Errorf("unable to create config directory: %w", err)
 	}
 
-	if _, err := os.Stat(path); os.IsNotExist(err) {
-		var config strings.Builder
-
-		config.WriteString(
-			"// Everything after `//` is a comment and is ignored by Dfetch.\n" +
-				"// In the modules section, you can change whhat information is displayed and in what order.\n\n" +
-				"// Insert empty lines in the modules block to get empty lines in the final output.\n" +
-				"modules {\n" +
-				"    userinfo\n" +
-				"    os\n" +
-				"    host\n" +
-				"    kernel\n" +
-				"    uptime\n" +
-				"    shell\n" +
-				"    terminal\n" +
-				"    desktop\n" +
-				"    packages\n" +
-				"    cpu\n" +
-				"    memory\n" +
-				"    swap\n" +
-				"    disk\n" +
-				"    motherboard\n" +
-				"    local_ip\n" +
-				"    // battery\n" +
-				"    // time\n" +
-				"    // date\n" +
-				"}\n\n" +
-				"custom_ascii: default\n" +
-				"// Set a custom ASCII logo by providing the path to the text file containing it.\n\n" +
-				"label_color: default\n" +
-				"// Color of the information labels.\n\n" +
-				"userinfo_color: default\n" +
-				"// Color of the userinfo module.\n\n" +
-				"info_color: default\n" +
-				"// Color of the system info.\n\n" +
-				"// Available colors:\n" +
-				"// black, red, green, yellow, blue,\n" +
-				"// magenta, cyan, white,\n" +
-				"// bright_black, bright_red,\n" +
-				"// bright_green, bright_yellow,\n" +
-				"// bright_blue, bright_magenta,\n" +
-				"// bright_cyan, bright_white\n\n",
-		)
-
-		if err := os.WriteFile(path, []byte(config.String()), 0600); err != nil {
-			return err
-		}
+	if _, err := os.Stat(path); err == nil {
+		return nil
+	} else if !os.IsNotExist(err) {
+		return fmt.Errorf("unable to check config file: %w", err)
 	}
+
+	defaultConfig := Config{
+		ASCII: ASCIIConfig{
+			Enabled:       true,
+			Path:          "builtin",
+			PaddingTop:    1,
+			PaddingBottom: 1,
+		},
+
+		Modules: []Module{
+			{
+				Name: "emptyline",
+			},
+			{
+				Name:      "os",
+				Label:     "OS",
+				Color:     "blue",
+				Separator: ":",
+			},
+			{
+				Name:      "kernel",
+				Label:     "Kernel",
+				Color:     "blue",
+				Format:    "short",
+				Separator: ":",
+			},
+			{
+				Name:      "host",
+				Label:     "Host",
+				Color:     "blue",
+				Separator: ":",
+			},
+			{
+				Name:      "bios",
+				Label:     "BIOS",
+				Color:     "blue",
+				Separator: ":",
+				Format:    "short",
+			},
+			{
+				Name: "emptyline",
+			},
+			{
+				Name:      "shell",
+				Label:     "Shell",
+				Color:     "blue",
+				Separator: ":",
+			},
+			{
+				Name:      "terminal",
+				Label:     "Terminal",
+				Color:     "blue",
+				Separator: ":",
+			},
+			{
+				Name:  "text",
+				Text:  "-------------------------------------------------",
+				Color: "gray",
+			},
+			{
+				Name:      "cpu",
+				Label:     "CPU",
+				Color:     "green",
+				Format:    "short",
+				Separator: ":",
+			},
+			{
+				Name:      "memory",
+				Label:     "Memory",
+				Color:     "green",
+				Separator: ":",
+			},
+			{
+				Name:      "swap",
+				Label:     "Swap",
+				Color:     "green",
+				Separator: ":",
+			},
+			{
+				Name:      "disk",
+				Label:     "Disk",
+				Color:     "green",
+				Separator: ":",
+				Mount:     "/",
+			},
+			{
+				Name:      "board",
+				Label:     "Board",
+				Color:     "green",
+				Separator: ":",
+			},
+			{
+				Name: "text",
+				Text: "-------------------------------------------------",
+			},
+			{
+				Name:      "local_ip",
+				Label:     "Local IP",
+				Color:     "magenta",
+				Separator: ":",
+			},
+			{
+				Name:      "packages",
+				Label:     "Packages",
+				Color:     "magenta",
+				Separator: ":",
+			},
+			{
+				Name:      "uptime",
+				Label:     "Uptime",
+				Color:     "magenta",
+				Separator: ":",
+			},
+			{
+				Name:      "datetime",
+				Label:     "DateTime",
+				Color:     "magenta",
+				Separator: ":",
+			},
+			{
+				Name: "emptyline",
+			},
+		},
+	}
+
+	data, err := json.MarshalIndent(defaultConfig, "", "    ")
+	if err != nil {
+		return fmt.Errorf("unable to encode default config: %w", err)
+	}
+
+	if err := os.WriteFile(path, data, 0600); err != nil {
+		return fmt.Errorf("unable to write config file: %w", err)
+	}
+
+	fmt.Printf("succesfully created config file '%s'.\n", path)
 
 	return nil
 }

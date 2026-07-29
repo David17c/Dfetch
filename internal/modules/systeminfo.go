@@ -1,98 +1,114 @@
 package modules
 
-import "fmt"
+import (
+	"dfetch/internal/config"
+	"fmt"
+)
 
-type Modules struct {
-	Kernel      string
-	CPU         string
-	Memory      string
-	Swap        string
-	Username    string
-	Hostname    string
-	Local_IP    string
-	Uptime      string
-	Battery     string
-	Desktop     string
-	Shell       string
-	Terminal    string
-	colorterm   string
-	Disk        string
-	Time        string
-	Date        string
-	Emptyline   string
-	Packages    string
-	Host        string
-	MotherBoard string
+type ModuleOutput struct {
+	Name      string
+	Label     string
+	Color     string
+	Separator string
+	Value     string
+
+	// Disk only
+	Mount string
 }
 
-func CollectSystemInfo(enabledModules []string) Modules {
-	var sys Modules
+func CollectSystemInfo(modules []config.Module, distroName string) []ModuleOutput {
+	var output []ModuleOutput
 
-	for _, module := range enabledModules {
-		switch module {
+	for _, module := range modules {
+		var value string
 
+		switch module.Name {
 		case "userinfo":
-			sys.Username, sys.Hostname = Userinfo()
+			username, hostname := Userinfo()
+
+			if module.Color != "" {
+				c := config.GetColorCode(module.Color)
+				r := "\x1b[0m"
+
+				value = c + username + r + "@" + c + hostname + r
+			} else {
+				value = username + "@" + hostname
+			}
 
 		case "os":
-			continue
+			value = distroName
 
 		case "kernel":
-			sys.Kernel = Kernel()
+			value = Kernel(module.Format)
 
 		case "cpu":
-			sys.CPU = Cpu()
+			value = Cpu(module.Format)
 
 		case "memory":
-			sys.Memory = Memory()
-
-		case "local_ip":
-			sys.Local_IP = Local_IP()
-
-		case "uptime":
-			sys.Uptime = Uptime()
-
-		case "battery":
-			sys.Battery = Battery()
-
-		case "desktop":
-			sys.Desktop = DesktopEnvironment()
-
-		case "shell":
-			sys.Shell = Shell()
-
-		case "terminal":
-			sys.Terminal = Terminal()
-
-		case "disk":
-			sys.Disk = Disk()
-
-		case "time":
-			sys.Time = Time()
-
-		case "date":
-			sys.Date = Date()
-
-		case "emptyline":
-			sys.Emptyline = ""
-
-		case "packages":
-			sys.Packages = Packages()
-
-		case "host":
-			sys.Host = Host()
-
-		case "motherboard":
-			sys.MotherBoard = MotherBoard()
+			value = Memory(module.Format)
 
 		case "swap":
-			sys.Swap = Swap()
+			value = Swap(module.Format)
+
+		case "local_ip":
+			value = Local_IP()
+
+		case "uptime":
+			value = Uptime(module.Format)
+
+		case "battery":
+			value = Battery()
+
+		case "bios":
+			value = Bios(module.Format)
+
+		case "desktop":
+			value = DesktopEnvironment(module.Format)
+
+		case "shell":
+			value = Shell(module.Format)
+
+		case "terminal":
+			value = Terminal(module.Format)
+
+		case "disk":
+			value = Disk(module.Format, module.Mount)
+
+		case "datetime":
+			value = DateTime(module.Format)
+
+		case "packages":
+			value = Packages(module.Format)
+
+		case "host":
+			value = Host(module.Format)
+
+		case "board":
+			value = Board()
+
+		case "text":
+			value = module.Text
+
+		case "emptyline":
+			output = append(output, ModuleOutput{
+				Name: "emptyline",
+			})
+			continue
 
 		default:
-			fmt.Printf("Unable to find module '%s'\n", module)
+			fmt.Printf("Unknown module '%s'\n", module.Name)
+			continue
 		}
 
+		output = append(output, ModuleOutput{
+			Name:      module.Name,
+			Label:     module.Label,
+			Color:     module.Color,
+			Separator: module.Separator,
+			Value:     value,
+			Mount:     module.Mount,
+		})
 	}
 
-	return sys
+	return output
 }

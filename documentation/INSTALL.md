@@ -141,7 +141,7 @@ Dfetch is written in Go and has no external build dependencies beyond the Go too
 
 ### Requirements
 
-- Go 1.26.4
+- Go 1.24.4+
 - Git
 
 ### Build
@@ -151,17 +151,5 @@ Clone the repository and build the binary:
 ```bash
 git clone https://github.com/David17c/Dfetch.git
 cd Dfetch
-go build -o dfetch .
-```
-
-Alternatively, install it directly into your Go binary directory:
-
-```bash
-go install github.com/David17c/Dfetch@latest
-```
-
-If you built the binary with `go build`, you can optionally install it system-wide:
-
-```bash
-sudo install -Dm755 dfetch /usr/local/bin/dfetch
+go build .
 ```
