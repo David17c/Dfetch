@@ -8,8 +8,7 @@ import (
 	"strings"
 )
 
-func Battery() string {
-
+func Battery(format string) string {
 	batPath, err := findBattery()
 	if err != nil {
 		return "unknown"
@@ -25,6 +24,10 @@ func Battery() string {
 		return "No battery present"
 	}
 
+	if format == "short" {
+		return fmt.Sprintf("%d%%", capacity)
+	}
+
 	status, err := readString(filepath.Join(batPath, "status"))
 	if err != nil {
 		status = "unknown"
@@ -33,6 +36,7 @@ func Battery() string {
 	if status == "unknown" {
 		return fmt.Sprintf("%d%%", capacity)
 	}
+
 	return fmt.Sprintf("%d%% (%s)", capacity, status)
 }
 

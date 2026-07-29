@@ -57,7 +57,7 @@ func CollectSystemInfo(modules []config.Module, distroName string) []ModuleOutpu
 			value = Uptime(module.Format)
 
 		case "battery":
-			value = Battery()
+			value = Battery(module.Format)
 
 		case "bios":
 			value = Bios(module.Format)

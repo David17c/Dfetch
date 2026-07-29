@@ -11,5 +11,3 @@ func DateTime(format string) string {
 		return time.Now().Format("2006-01-02 15:04:05")
 	}
 }
-
-// Time and date are in the same file since there so simple

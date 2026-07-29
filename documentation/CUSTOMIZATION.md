@@ -90,6 +90,7 @@ Changes how a module formats its output.
 Only supported by:
 
 - `kernel` supported format options: `short`
+- `battery` supported format options: `short`
 - `cpu` supported format options: `short`
 - `memory` supported format options: `short`
 - `swap` supported format options: `short`
