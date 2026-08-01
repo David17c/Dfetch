@@ -2,6 +2,7 @@ package modules
 
 import (
 	"dfetch/internal/config"
+	"dfetch/internal/modules/gpu"
 	"fmt"
 )
 
@@ -43,6 +44,9 @@ func CollectSystemInfo(modules []config.Module, distroName string) []ModuleOutpu
 
 		case "cpu":
 			value = Cpu(module.Format)
+
+		case "gpu":
+			value = gpu.Name()
 
 		case "memory":
 			value = Memory(module.Format)

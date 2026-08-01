@@ -16,7 +16,7 @@ func Cpu(format string) string {
 		for scanner.Scan() {
 			if cpu, ok := strings.CutPrefix(scanner.Text(), "model name\t: "); ok {
 				if format == "short" {
-					return cleanCPUName(cpu)
+					return normalizeCPUName(cpu)
 				}
 				return cpu
 			}
@@ -33,7 +33,7 @@ func Cpu(format string) string {
 			model = strings.TrimSpace(model)
 
 			if format == "short" {
-				return cleanCPUName(model)
+				return normalizeCPUName(model)
 			}
 			return model
 		}
@@ -42,33 +42,29 @@ func Cpu(format string) string {
 	return "unknown"
 }
 
-func cleanCPUName(name string) string {
-	replacements := []string{
-		"(R)", "",
-		"(TM)", "",
-		" CPU", "",
-		" Processor", "",
-		" APU", "",
-		" with Radeon Graphics", "",
-		" with Radeon Vega Graphics", "",
-		" with Radeon", "",
-	}
+var cpuReplacer = strings.NewReplacer(
+    "(R)", "",
+    "(TM)", "",
+    "®", "",
+    "™", "",
+    " CPU", "",
+    " Processor", "",
+    " APU", "",
+    " with Radeon Vega Graphics", "",
+    " with Radeon Graphics", "",
+    " with Radeon", "",
+)
 
-	for i := 0; i < len(replacements); i += 2 {
-		name = strings.ReplaceAll(name, replacements[i], replacements[i+1])
-	}
+func normalizeCPUName(name string) string {
+    name = cpuReplacer.Replace(name)
 
-	// Remove everything after " @ " (clock speed).
-	if i := strings.Index(name, " @ "); i != -1 {
-		name = name[:i]
-	}
+    if before, _, found := strings.Cut(name, " @ "); found {
+        name = before
+    }
 
-	// Remove everything after " w/" or " W/".
-	lower := strings.ToLower(name)
-	if i := strings.Index(lower, " w/"); i != -1 {
-		name = name[:i]
-	}
+    if before, _, found := strings.Cut(strings.ToLower(name), " w/"); found {
+        name = name[:len(before)]
+    }
 
-	// Collapse duplicate whitespace.
-	return strings.Join(strings.Fields(name), " ")
+    return strings.Join(strings.Fields(name), " ")
 }

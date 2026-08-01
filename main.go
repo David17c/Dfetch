@@ -4,35 +4,36 @@ import (
 	"dfetch/internal/config"
 	"dfetch/internal/modules"
 	"dfetch/internal/output"
-	"log"
+	"os"
+	"fmt"
 )
 
 func main() {
-	// Create the default config if it doesn't exist.
+	// Create the default config file if it doesn't exist
 	if err := config.CreateConfigFile(); err != nil {
-		log.Fatal(err)
+	    fmt.Fprintln(os.Stderr, err)
+    	os.Exit(1)
 	}
 
-	// Read the config.
+	// Read the config
 	cfg, err := config.ReadConfig()
 	if err != nil {
-		log.Fatal(err)
+		fmt.Fprintln(os.Stderr, err)
+    	os.Exit(1)
 	}
 
-	// Get distro name and ID.
+	// Get distro name and ID
 	distroName, id := modules.Distro("")
 
-	// Collect system information based on the configured modules.
+	// Collect system information based on the configured modules
 	sys := modules.CollectSystemInfo(cfg.Modules, distroName)
 
-	// Load the ASCII art.
+	// Load the ASCII art
 	asciiLines := output.LoadASCII(output.LogoFS, id, cfg)
 
-	// Build the output lines.
+	// Build the output lines
 	infoLines := output.BuildInfoLines(sys)
 
-	// Print everything.
+	// Print final result
 	output.PrintOutput(asciiLines, infoLines)
-
-	_ = distroName
 }

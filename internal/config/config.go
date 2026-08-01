@@ -269,7 +269,7 @@ func CreateConfigFile() error {
 			},
 			{
 				Name:  "text",
-				Text:  "-------------------------------------------------",
+				Text:  "--------------------------------------------",
 				Color: "gray",
 			},
 			{
@@ -280,14 +280,14 @@ func CreateConfigFile() error {
 				Separator: ":",
 			},
 			{
-				Name:      "memory",
-				Label:     "Memory",
-				Color:     "green",
+				Name: "gpu",
+				Label: "GPU",
+				Color: "green",
 				Separator: ":",
 			},
 			{
-				Name:      "swap",
-				Label:     "Swap",
+				Name:      "memory",
+				Label:     "Memory",
 				Color:     "green",
 				Separator: ":",
 			},
@@ -306,7 +306,7 @@ func CreateConfigFile() error {
 			},
 			{
 				Name: "text",
-				Text: "-------------------------------------------------",
+				Text: "--------------------------------------------",
 			},
 			{
 				Name:      "local_ip",
