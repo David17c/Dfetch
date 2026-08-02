@@ -1,14 +1,14 @@
 # Dfetch
 
-Dfetch is a lightweight system information tool focused on clean output, fast startup times, and simple configuration. It provides useful system details without the complexity of heavily customizable alternatives.
+Dfetch is a lightweight command-line tool for displaying system information. It focuses on clean output, fast startup times, and simple configuration.
 
 ![Default output on Debian](image/debian_dfetch_output.png)
 
 ## Installation
 
-To install Dfetch, visit the [releases page](https://github.com/David17c/Dfetch/releases) and download either the package for your operating system or a prebuilt binary. You can also build Dfetch from source.
+To install Dfetch, visit the [releases page](https://github.com/David17c/Dfetch/releases) and download either the package for your operating system or a prebuilt binary.
 
-More detailed installation instructions are available [here](documentation/INSTALL.md).
+More detailed installation instructions and instruction on building Dfetch from source can be found [here](documentation/INSTALL.md).
 
 ## Supported distributions
 
@@ -25,7 +25,10 @@ The supported distributions have been tested, but Dfetch is not continuously tes
 * [Customization](documentation/CUSTOMIZATION.md)
 * [Installation Instructions](documentation/INSTALL.md)
 
+<br>
+
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/David17c/dfetch)
 ![GitHub top language](https://img.shields.io/github/languages/top/david17c/dfetch)
 ![GitHub go.mod Go version (branch)](https://img.shields.io/github/go-mod/go-version/David17c/dfetch/main)
 ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/david17c/dfetch/total)
+

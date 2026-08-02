@@ -10,6 +10,9 @@ import (
 	"dfetch/internal/config"
 )
 
+//go:embed logo/*
+var LogoFS embed.FS
+
 func LoadASCII(fs embed.FS, distroID string, cfg config.Config) []string {
 	if !cfg.ASCII.Enabled {
 		return nil
