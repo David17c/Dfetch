@@ -81,11 +81,19 @@ func field(label, color, separator, value string) string {
 		value,
 	)
 }
+
 func PrintOutput(asciiLines, infoLines []string) {
 	renderedAscii := make([]string, len(asciiLines))
 
 	for i, line := range asciiLines {
 		renderedAscii[i] = ApplyColorTags(line)
+	}
+
+	if len(renderedAscii) == 0 {
+		for _, line := range infoLines {
+			fmt.Println(line)
+		}
+		return
 	}
 
 	width := getMaxWidth(renderedAscii)
@@ -94,7 +102,7 @@ func PrintOutput(asciiLines, infoLines []string) {
 	for i := 0; i < total; i++ {
 		var left, right string
 
-		if i < len(asciiLines) {
+		if i < len(renderedAscii) {
 			left = renderedAscii[i]
 		}
 
@@ -107,8 +115,7 @@ func PrintOutput(asciiLines, infoLines []string) {
 			padding = 0
 		}
 
-		fmt.Printf(
-			"%s%s %s\x1b[0m\n",
+		fmt.Printf("%s%s %s\x1b[0m\n",
 			left,
 			strings.Repeat(" ", padding+2),
 			right,

@@ -27,12 +27,12 @@ func Uptime(format string) string {
 		return "unknown"
 	}
 
-	secondsFloat, err := strconv.ParseFloat(parts[0], 64)
-	if err != nil {
-		return "unknown"
+	sec := parts[0]
+	if dot := strings.IndexByte(sec, '.'); dot != -1 {
+		sec = sec[:dot]
 	}
 
-	total := int64(secondsFloat)
+	total, err := strconv.ParseInt(sec, 10, 64)
 
 	centuries := total / Century
 	total %= Century
@@ -71,6 +71,7 @@ func Uptime(format string) string {
 
 	var result strings.Builder
 
+	// Just in case
 	if centuries > 0 {
 		result.WriteString(strconv.FormatInt(centuries, 10))
 		result.WriteString("c ")

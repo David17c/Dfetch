@@ -1,5 +1,5 @@
 {
-  description = "Lightweight system information tool focused on clean output";
+  description = "Lightweight command-line tool for displaying system information";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -29,7 +29,7 @@
           subPackages = [ "." ];
 
           meta = with lib; {
-            description = "Lightweight system information tool focused on clean output";
+            description = "Lightweight command-line tool for displaying system information";
             homepage = "https://github.com/David17c/Dfetch";
             license = licenses.mit;
             platforms = platforms.linux;
