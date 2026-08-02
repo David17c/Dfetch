@@ -121,7 +121,6 @@ Used by the text module to set a custom text.
 | `os`          | Operating system                      |
 | `kernel`      | Current kernel                        |
 | `cpu`         | Processor information                 |
-| `gpu`         | Graphics card information             |
 | `memory`      | Memory usage                          |
 | `swap`        | Swap usage                            |
 | `local_ip`    | Local IP address                      |

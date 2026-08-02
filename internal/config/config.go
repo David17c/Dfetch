@@ -280,9 +280,9 @@ func CreateConfigFile() error {
 				Separator: ":",
 			},
 			{
-				Name: "gpu",
-				Label: "GPU",
-				Color: "green",
+				Name:      "gpu",
+				Label:     "GPU",
+				Color:     "green",
 				Separator: ":",
 			},
 			{
