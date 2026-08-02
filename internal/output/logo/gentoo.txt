@@ -1,0 +1,18 @@
+${bright_white}         -/oyddmdhs+:.
+${bright_white}     -o${magenta}dNMMMMMMMMNNmhy+${bright_white}-`
+${bright_white}   -y${magenta}NMMMMMMMMMMMNNNmmdhy${bright_white}+-
+${bright_white} `o${magenta}mMMMMMMMMMMMMNmdmmmmddhhy${bright_white}/`
+${bright_white} om${magenta}MMMMMMMMMMMN${bright_white}hhyyyo${magenta}hmdddhhhd${bright_white}o`
+${bright_white}.y${magenta}dMMMMMMMMMMd${bright_white}hs++so/s${magenta}mdddhhhhdm${bright_white}+`
+${bright_white} oy${magenta}hdmNMMMMMMMN${bright_white}dyooy${magenta}dmddddhhhhyhN${bright_white}d.
+${bright_white}  :o${magenta}yhhdNNMMMMMMMNNNmmdddhhhhhyym${bright_white}Mh
+${bright_white}    .:${magenta}+sydNMMMMMNNNmmmdddhhhhhhmM${bright_white}my
+${bright_white}       /m${magenta}MMMMMMNNNmmmdddhhhhhmMNh${bright_white}s:
+${bright_white}    `o${magenta}NMMMMMMMNNNmmmddddhhdmMNhs${bright_white}+`
+${bright_white}  `s${magenta}NMMMMMMMMNNNmmmdddddmNMmhs${bright_white}/.
+${bright_white} /N${magenta}MMMMMMMMNNNNmmmdddmNMNdso${bright_white}:`
+${bright_white}+M${magenta}MMMMMMNNNNNmmmmdmNMNdso${bright_white}/-
+${bright_white}yM${magenta}MNNNNNNNmmmmmNNMmhs+/${bright_white}-`
+${bright_white}/h${magenta}MMNNNNNNNNMNdhs++/${bright_white}-`
+${bright_white}`/${magenta}ohdmmddhys+++/:${bright_white}.`
+${bright_white}  `-//////:--.

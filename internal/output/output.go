@@ -1,12 +1,13 @@
 package output
 
 import (
-	"dfetch/internal/config"
-	"dfetch/internal/modules"
 	"fmt"
 	"regexp"
 	"strings"
 	"unicode/utf8"
+
+	"dfetch/internal/config"
+	"dfetch/internal/modules"
 )
 
 var ansiRegex = regexp.MustCompile(`\x1b\[[0-9;]*m`)

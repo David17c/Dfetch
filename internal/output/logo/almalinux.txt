@@ -1,0 +1,20 @@
+${red}         'c:.
+${red}        lkkkx, ..       ${yellow}..   ,cc,
+${red}        okkkk:ckkx'  ${yellow}.lxkkx.okkkkd
+${red}        .:llcokkx'  ${yellow}:kkkxkko:xkkd,
+${red}      .xkkkkdood:  ${yellow};kx,  .lkxlll;
+${red}       xkkx.       ${yellow}xk'     xkkkkk:
+${red}       'xkx.       ${yellow}xd      .....,.
+${blue}      .. ${red}:xkl'     ${yellow}:c      ..''..
+${blue}    .dkx'  ${red}.:ldl:'. ${yellow}'  ${bright_green}':lollldkkxo;
+${blue}  .''lkkko'                     ${bright_green}ckkkx.
+${blue}'xkkkd:kkd.       ..  ${bright_blue};'        ${bright_green}:kkxo.
+${blue},xkkkd;kk'      ,d;    ${bright_blue}ld.   ${bright_green}':dkd::cc,
+${blue} .,,.;xkko'.';lxo.      ${bright_blue}dx,  ${bright_green}:kkk'xkkkkc
+${blue}     'dkkkkkxo:.        ${bright_blue};kx  ${bright_green}.kkk:;xkkd.
+${blue}       .....   ${bright_blue}.;dk:.   ${bright_blue}lkk.  ${bright_green}:;,
+${bright_blue}             ${bright_blue}:kkkkkkkdoxkkx
+${bright_blue}              ,c,,;;;:xkkd.
+${bright_blue}                ;kkkkl...
+${bright_blue}                ;kkkkl
+${bright_blue}                 ,od;

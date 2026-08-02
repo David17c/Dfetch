@@ -58,7 +58,7 @@ func CollectSystemInfo(modules []config.Module, distroName string) []ModuleOutpu
 			value = Local_IP()
 
 		case "uptime":
-			value = Uptime(module.Format)
+			value = Uptime()
 
 		case "battery":
 			value = Battery(module.Format)

@@ -94,7 +94,6 @@ Only supported by:
 - `cpu` supported format options: `short`
 - `memory` supported format options: `short`
 - `swap` supported format options: `short`
-- `uptime`supported format options: `short`
 - `bios`supported format options: `short`
 - `desktop` supported format options: `short`
 - `shell` supported format options: `short`

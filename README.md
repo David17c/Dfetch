@@ -14,7 +14,7 @@ More detailed installation instructions and instruction on building Dfetch from 
 
 Dfetch currently supports Linux and includes built-in ASCII art for:
 
-**Arch, Artix, Bazzite, CachyOS, Debian, EndeavourOS, Fedora, Kali Linux, Linux Mint, Manjaro, NixOS, OpenSUSE Leap, OpenSUSE Tumbleweed, Pop!_OS, Tuxedo OS, Ubuntu, and Zorin OS.**
+**Alma Linux, Arch, Artix, Bazzite, CachyOS, Debian, EndeavourOS, Fedora, Gentoo, Kali Linux, Linux Mint, Manjaro, NixOS, OpenSUSE Leap, OpenSUSE Tumbleweed, Pop!_OS, Rocky Linux, Tuxedo OS, Ubuntu, Vanilla OS, Void Linux and Zorin OS.**
 
 If your distribution isn't listed, Dfetch may still work. This list only includes distributions with built-in ASCII art.
 
