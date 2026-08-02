@@ -126,6 +126,7 @@ Used by the text module to set a custom text.
 | `memory`      | Memory usage                          |
 | `swap`        | Swap usage                            |
 | `local_ip`    | Local IP address                      |
+| `locale`      | Systems locale settings
 | `uptime`      | System uptime                         |
 | `battery`     | Battery information                   |
 | `bios`        | BIOS information                      |

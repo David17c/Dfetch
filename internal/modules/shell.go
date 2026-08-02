@@ -39,22 +39,22 @@ func Shell(format string) string {
 	switch shell {
 	case "bash":
 		if format == "short" {
-			return fmt.Sprintf("Bash")
+			return "Bash"
 		}
 		return shellVersion("Bash", "bash", "--version")
 	case "zsh":
 		if format == "short" {
-			return fmt.Sprintf("Zsh")
+			return "Zsh"
 		}
 		return shellVersion("Zsh", "zsh", "--version")
 	case "fish":
 		if format == "short" {
-			return fmt.Sprintf("Fish")
+			return "Fish"
 		}
 		return shellVersion("Fish", "fish", "--version")
 	case "dash":
 		if format == "short" {
-			return fmt.Sprintf("Dash")
+			return "Dash"
 		}
 		return shellVersion("Dash", "dash", "-V")
 	default:

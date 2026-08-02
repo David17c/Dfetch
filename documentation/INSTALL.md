@@ -29,9 +29,9 @@ Dfetch does not currently provide a prebuilt package for Arch or Arch-based dist
 
 ## NixOS
 
-### Use the Flake
+### Install with Flakes
 
-Add Dfetch to your flake inputs:
+Add Dfetch as a flake input:
 
 ```nix
 {
@@ -42,7 +42,7 @@ Add Dfetch to your flake inputs:
 }
 ```
 
-Install the package in your NixOS configuration:
+Then add the package to your system configuration:
 
 ```nix
 { inputs, pkgs, ... }:
@@ -54,15 +54,15 @@ Install the package in your NixOS configuration:
 }
 ```
 
-Then rebuild:
+Rebuild your system:
 
 ```bash
 sudo nixos-rebuild switch --flake /path/to/your/flake#your-hostname
 ```
 
-### Use the NixOS Module
+### NixOS Module
 
-The flake also exposes a small NixOS module that installs Dfetch through `programs.dfetch`.
+Alternatively, the flake provides a NixOS module:
 
 ```nix
 {
@@ -85,55 +85,19 @@ The flake also exposes a small NixOS module that installs Dfetch through `progra
 }
 ```
 
-### Run Without Installing
+### Other Nix systems
 
-You can run Dfetch directly from the flake:
+You can run Dfetch directly without installing it:
 
 ```bash
 nix run github:David17c/Dfetch
 ```
 
-### Development Shell
-
-Enter a shell with Go and Git available:
+Or enter a development shell with the required build tools:
 
 ```bash
 nix develop github:David17c/Dfetch
 ```
-
-### Package Counting on Nix
-
-When the `packages` module is enabled in Dfetch's config, Nix package counting checks the standard system and user profile paths and combines their results. Dfetch queries each profile's Nix requisites and filters them with the same package-oriented rules used by Fastfetch, so it is not limited to executable links in `bin`.
-
-- `/run/current-system` for the active NixOS system profile
-- `~/.nix-profile` for the user's default Nix profile
-- `$XDG_STATE_HOME/nix/profile` or `~/.local/state/nix/profile` for the newer user profile location
-- `/etc/profiles/per-user/$USER` for the per-user profile
-
-Missing profile directories are ignored, so Dfetch still works on systems that only have some of these paths.
-
-### Dfetch Configuration
-
-Dfetch reads its runtime configuration from:
-
-```text
-~/.config/dfetch/dfetch.conf
-```
-
-Include `packages` in the modules block to show package information:
-
-```text
-modules {
-    userinfo
-    os
-    kernel
-    packages
-    memory
-    disk
-}
-```
-
-> Credit to [@crispdark](https://github.com/crispdark) for writing the NixOS instructions.
 
 ## Build from source
 

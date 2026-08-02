@@ -72,29 +72,35 @@ func Uptime(format string) string {
 	var result strings.Builder
 
 	if centuries > 0 {
-		result.WriteString(strconv.FormatInt(centuries, 10) + "c ")
+		result.WriteString(strconv.FormatInt(centuries, 10))
+		result.WriteString("c ")
 	}
 
 	if years > 0 {
-		result.WriteString(strconv.FormatInt(years, 10) + "y ")
+		result.WriteString(strconv.FormatInt(years, 10))
+		result.WriteString("y ")
 	}
 
 	if months > 0 {
-		result.WriteString(strconv.FormatInt(months, 10) + "mo ")
+		result.WriteString(strconv.FormatInt(months, 10))
+		result.WriteString("mo ")
 	}
 
 	if weeks > 0 {
-		result.WriteString(strconv.FormatInt(weeks, 10) + "w ")
+		result.WriteString(strconv.FormatInt(weeks, 10))
+		result.WriteString("w ")
 	}
 
 	if days > 0 {
-		result.WriteString(strconv.FormatInt(days, 10) + "d ")
+		result.WriteString(strconv.FormatInt(days, 10))
+		result.WriteString("d ")
 	}
 
-	result.WriteString(
-		strconv.FormatInt(hours, 10) + "h " +
-			strconv.FormatInt(minutes, 10) + "m",
-	)
+	result.WriteString(strconv.FormatInt(hours, 10))
+	result.WriteString("h ")
+	result.WriteString(strconv.FormatInt(minutes, 10))
+	result.WriteString("m")
 
 	return strings.TrimSpace(result.String())
+
 }

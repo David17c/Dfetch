@@ -21,6 +21,9 @@ func Cpu(format string) string {
 				return cpu
 			}
 		}
+
+		if err := scanner.Err(); err != nil {
+		}
 	}
 
 	out, err := exec.Command("lscpu").Output()
@@ -43,28 +46,28 @@ func Cpu(format string) string {
 }
 
 var cpuReplacer = strings.NewReplacer(
-    "(R)", "",
-    "(TM)", "",
-    "®", "",
-    "™", "",
-    " CPU", "",
-    " Processor", "",
-    " APU", "",
-    " with Radeon Vega Graphics", "",
-    " with Radeon Graphics", "",
-    " with Radeon", "",
+	"(R)", "",
+	"(TM)", "",
+	"®", "",
+	"™", "",
+	" CPU", "",
+	" Processor", "",
+	" APU", "",
+	" with Radeon Vega Graphics", "",
+	" with Radeon Graphics", "",
+	" with Radeon", "",
 )
 
 func normalizeCPUName(name string) string {
-    name = cpuReplacer.Replace(name)
+	name = cpuReplacer.Replace(name)
 
-    if before, _, found := strings.Cut(name, " @ "); found {
-        name = before
-    }
+	if before, _, found := strings.Cut(name, " @ "); found {
+		name = before
+	}
 
-    if before, _, found := strings.Cut(strings.ToLower(name), " w/"); found {
-        name = name[:len(before)]
-    }
+	if before, _, found := strings.Cut(strings.ToLower(name), " w/"); found {
+		name = name[:len(before)]
+	}
 
-    return strings.Join(strings.Fields(name), " ")
+	return strings.Join(strings.Fields(name), " ")
 }
