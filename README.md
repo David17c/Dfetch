@@ -4,6 +4,7 @@ Dfetch is a lightweight command-line tool for displaying system information. It 
 
 ![Default output on Debian](image/debian_dfetch_output.png)
 
+
 ## Installation
 
 To install Dfetch, visit the [releases page](https://github.com/David17c/Dfetch/releases) and download either the package for your operating system or a prebuilt binary.
@@ -19,6 +20,7 @@ Dfetch currently supports Linux and includes built-in ASCII art for:
 If your distribution isn't listed, Dfetch may still work. This list only includes distributions with built-in ASCII art.
 
 The supported distributions have been tested, but Dfetch is not continuously tested on every distribution, so some issues may go unnoticed.
+
 
 ## Documentation
 

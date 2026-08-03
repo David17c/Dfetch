@@ -13,8 +13,8 @@ import (
 //go:embed logo/*
 var LogoFS embed.FS
 
-func LoadASCII(fs embed.FS, distroID string, cfg config.Config) []string {
-	if !cfg.ASCII.Enabled {
+func LoadASCII(fs embed.FS, distroID string, cfg config.Config, NoASCII bool) []string {
+	if !cfg.ASCII.Enabled || NoASCII {
 		return nil
 	}
 

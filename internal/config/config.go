@@ -280,8 +280,8 @@ func CreateConfigFile() error {
 				Separator: ":",
 			},
 			{
-				Name:      "gpu",
-				Label:     "GPU",
+				Name:      "swap",
+				Label:     "Swap",
 				Color:     "green",
 				Separator: ":",
 			},
@@ -350,4 +350,23 @@ func CreateConfigFile() error {
 	fmt.Printf("succesfully created config file '%s'.\n", path)
 
 	return nil
+}
+
+// Removes existing config
+func RemoveConfigFile() {
+	path, err := configPath()
+	if err != nil {
+		return
+	}
+
+	if err := os.Remove(path); err != nil {
+		if os.IsNotExist(err) {
+			return
+		}
+
+		fmt.Printf("unable to remove config file: %w", err)
+		return
+	}
+
+	return
 }

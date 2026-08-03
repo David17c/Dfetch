@@ -1,6 +1,6 @@
 ${bright_white}       _,met$$$$$gg.
-${bright_white}   ,g$$$$$$$$$$$$$$$$P.
-${bright_white} ,$$P'              `$$$.
+${bright_white}    ,g$$$$$$$$$$$$$$$P.
+${bright_white}  ,$$P'             `$$$.
 ${bright_white}',$$P       ,ggs.     `$$:
 ${bright_white}`d$$'     ,$P"'   ${bright_red}.    ${bright_white}$$$
 ${bright_white} $$P      d$'     ${bright_red},    ${bright_white}$$P

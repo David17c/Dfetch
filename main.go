@@ -10,6 +10,15 @@ import (
 )
 
 func main() {
+
+	// Read flags and put them in a struct
+	flags := ParseFlags()
+
+	// Remove existing config file if user wants to regenerate it
+	if flags.ResetConfig {
+		config.RemoveConfigFile()
+	}
+
 	// Create the default config file if it doesn't exist
 	if err := config.CreateConfigFile(); err != nil {
 		fmt.Fprintln(os.Stderr, err)
@@ -30,7 +39,7 @@ func main() {
 	sys := modules.CollectSystemInfo(cfg.Modules, distroName)
 
 	// Load the ASCII art
-	asciiLines := output.LoadASCII(output.LogoFS, id, cfg)
+	asciiLines := output.LoadASCII(output.LogoFS, id, cfg, flags.NoASCII)
 
 	// Build the output lines
 	infoLines := output.BuildInfoLines(sys)
