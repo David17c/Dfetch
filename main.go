@@ -15,13 +15,13 @@ func main() {
 	flags := cmd.ParseFlags()
 
 	// Create the default config file if it doesn't exist
-	if err := config.CreateConfigFile(flags.ResetConfig); err != nil {
+	if err := config.CreateConfigFile(flags); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		return
 	}
 
 	// Read the config
-	cfg, err := config.ReadConfig()
+	cfg, err := config.ReadConfig(flags)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		return

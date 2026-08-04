@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+
+	"dfetch/internal/cmd"
 )
 
 type Config struct {
@@ -31,7 +33,16 @@ type Module struct {
 	Mount string `json:"mount,omitempty"`
 }
 
-func configPath() (string, error) {
+func configPath(flags cmd.Flags) (string, error) {
+	var configDir string
+
+	if flags.SetConfig != "" {
+		_, err := os.Stat(flags.SetConfig)
+		if err == nil {
+			configDir = flags.SetConfig
+			return configDir, nil
+		}
+	}
 	configDir, err := os.UserConfigDir()
 	if err != nil {
 		return "", fmt.Errorf("unable to find config directory: %w", err)
@@ -41,8 +52,8 @@ func configPath() (string, error) {
 }
 
 // Read the config file put everyting in the struct and validate the config
-func ReadConfig() (Config, error) {
-	path, err := configPath()
+func ReadConfig(flags cmd.Flags) (Config, error) {
+	path, err := configPath(flags)
 	if err != nil {
 		return Config{}, err
 	}
@@ -194,8 +205,8 @@ func IsValidColor(color string) bool {
 	return false
 }
 
-func CreateConfigFile(resetConfig bool) error {
-	path, err := configPath()
+func CreateConfigFile(flags cmd.Flags) error {
+	path, err := configPath(flags)
 	if err != nil {
 		return err
 	}
@@ -207,9 +218,8 @@ func CreateConfigFile(resetConfig bool) error {
 	}
 
 	if _, err := os.Stat(path); err == nil {
-		// if the user wants to reset the config remove it then continue the create function else return nil since it already exists
-		if resetConfig {
-			RemoveConfigFile()
+		if flags.ResetConfig {
+			RemoveConfigFile(flags)
 		} else {
 			return nil
 		}
@@ -356,8 +366,8 @@ func CreateConfigFile(resetConfig bool) error {
 }
 
 // Removes existing config
-func RemoveConfigFile() {
-	path, err := configPath()
+func RemoveConfigFile(flags cmd.Flags) {
+	path, err := configPath(flags)
 	if err != nil {
 		return
 	}
