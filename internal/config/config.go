@@ -40,6 +40,7 @@ func configPath() (string, error) {
 	return filepath.Join(configDir, "dfetch", "dfetch.json"), nil
 }
 
+// Read the config file put everyting in the struct and validate the config
 func ReadConfig() (Config, error) {
 	path, err := configPath()
 	if err != nil {
@@ -68,9 +69,6 @@ func ReadConfig() (Config, error) {
 }
 
 func (c Config) Validate() error {
-	if c.ASCII.Path == "" {
-		return fmt.Errorf("ascii path cannot be empty")
-	}
 
 	for i, module := range c.Modules {
 		if module.Name == "" {
