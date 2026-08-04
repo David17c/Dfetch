@@ -7,51 +7,70 @@ import (
 	"strings"
 )
 
-func Distro(format string) (string, string) {
-	prettyName, id, err := parseOSRelease("/etc/os-release")
-	if err == nil && prettyName != "" {
-		return prettyName, id
-	}
-
-	// First fallback
-	prettyName, id, err = parseOSRelease("/usr/lib/os-release")
-	if err == nil && prettyName != "" {
-		return prettyName, id
-	}
-
-	// Second fallback
-	data, err := os.ReadFile("/etc/issue")
-	if err == nil {
-		prettyName := strings.TrimSpace(string(data))
-
-		if idx := strings.IndexRune(prettyName, '\\'); idx != -1 {
-			prettyName = strings.TrimSpace(prettyName[:idx])
-		}
-
-		if prettyName != "" {
-			return prettyName, ""
-		}
-	}
-
-	return "unknown", "unknown"
+type DistroInfo struct {
+	PrettyName string
+	ID         string
+	Name       string
+	Version    string
+	IDLike     string
 }
 
-func parseOSRelease(path string) (string, string, error) {
+func (d DistroInfo) DisplayName() string {
+	switch {
+	case d.PrettyName != "":
+		return d.PrettyName
+	case d.Name != "" && d.Version != "":
+		return fmt.Sprintf("%s %s", d.Name, d.Version)
+	case d.Name != "":
+		return d.Name
+	default:
+		return d.ID
+	}
+}
+
+func Distro() (DistroInfo, error) {
+	info, err := parseOSRelease("/etc/os-release")
+	if err == nil && info.ID != "" {
+		return info, nil
+	}
+
+	// Fallback 1
+	info, err = parseOSRelease("/usr/lib/os-release")
+	if err == nil && info.ID != "" {
+		return info, nil
+	}
+
+	// Fallback 2
+	data, err := os.ReadFile("/etc/issue")
+	if err != nil {
+		return DistroInfo{}, err
+	}
+
+	name := strings.TrimSpace(string(data))
+
+	if idx := strings.IndexRune(name, '\\'); idx != -1 {
+		name = strings.TrimSpace(name[:idx])
+	}
+
+	if name == "" {
+		return DistroInfo{}, fmt.Errorf("unable to determine Linux distribution")
+	}
+
+	return DistroInfo{
+		PrettyName: name,
+	}, nil
+}
+
+func parseOSRelease(path string) (DistroInfo, error) {
 	file, err := os.Open(path)
 	if err != nil {
-		return "", "", err
+		return DistroInfo{}, err
 	}
 	defer file.Close()
 
-	scanner := bufio.NewScanner(file)
+	var info DistroInfo
 
-	var (
-		distroName string
-		prettyName string
-		name       string
-		version    string
-		id         string
-	)
+	scanner := bufio.NewScanner(file)
 
 	for scanner.Scan() {
 		line := scanner.Text()
@@ -60,52 +79,30 @@ func parseOSRelease(path string) (string, string, error) {
 			continue
 		}
 
-		switch {
-		case strings.HasPrefix(line, "PRETTY_NAME="):
-			prettyName = strings.Trim(
-				strings.TrimPrefix(line, "PRETTY_NAME="),
-				"\"",
-			)
+		key, value, ok := strings.Cut(line, "=")
+		if !ok {
+			continue
+		}
 
-		case strings.HasPrefix(line, "NAME="):
-			name = strings.Trim(
-				strings.TrimPrefix(line, "NAME="),
-				"\"",
-			)
+		value = strings.Trim(value, `"`)
 
-		case strings.HasPrefix(line, "VERSION="):
-			version = strings.Trim(
-				strings.TrimPrefix(line, "VERSION="),
-				"\"",
-			)
-
-		case strings.HasPrefix(line, "ID="):
-			id = strings.Trim(
-				strings.TrimPrefix(line, "ID="),
-				"\"",
-			)
+		switch key {
+		case "PRETTY_NAME":
+			info.PrettyName = value
+		case "NAME":
+			info.Name = value
+		case "VERSION":
+			info.Version = value
+		case "ID":
+			info.ID = value
+		case "ID_LIKE":
+			info.IDLike = value
 		}
 	}
 
 	if err := scanner.Err(); err != nil {
-		return "", "", err
+		return DistroInfo{}, err
 	}
 
-	if name != "" && version != "" {
-		distroName = fmt.Sprintf("%s %s", name, version)
-	} else if prettyName != "" {
-		distroName = prettyName
-	} else if name != "" {
-		distroName = name
-	}
-
-	if id == "" {
-		if name != "" {
-			id = strings.ToLower(name)
-		} else {
-			id = "unknown"
-		}
-	}
-
-	return distroName, id, nil
+	return info, nil
 }

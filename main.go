@@ -10,8 +10,7 @@ import (
 )
 
 func main() {
-
-	// Read flags and put them in a struct
+	// Parse command-line flags
 	flags := ParseFlags()
 
 	// Remove existing config file if user wants to regenerate it
@@ -32,14 +31,18 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Get distro name and ID
-	distroName, id := modules.Distro("")
+	// Get distro information
+	distro, err := modules.Distro()
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
 
 	// Collect system information based on the configured modules
-	sys := modules.CollectSystemInfo(cfg.Modules, distroName)
+	sys := modules.CollectSystemInfo(cfg.Modules, distro.DisplayName())
 
 	// Load the ASCII art
-	asciiLines := output.LoadASCII(output.LogoFS, id, cfg, flags.NoASCII)
+	asciiLines := output.LoadASCII(distro, cfg, flags.NoASCII)
 
 	// Build the output lines
 	infoLines := output.BuildInfoLines(sys)
