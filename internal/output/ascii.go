@@ -18,39 +18,33 @@ var LogoFS embed.FS
 func LoadASCII(distro modules.DistroInfo, cfg config.Config, flags cmd.Flags) []string {
 	var asciiArt []string
 
-	// if the user disabled ascii art
+	// If the user disabled ASCII art
 	if !cfg.ASCII.Enabled || flags.NoASCII {
 		return nil
 	}
 
-	// try ascii art specified using a command-line flag
+	// Try ASCII art specified using a command-line flag
 	if flags.SetASCII != "" && flags.SetASCII != "builtin" {
-		if lines, err := ReadASCII(flags.SetASCII); err == nil {
+		if lines, err := LoadASCIIByName(flags.SetASCII); err == nil {
 			asciiArt = lines
 		}
 	}
 
-	// try ascii art specified in the config file
+	// Try ASCII art specified in the config file
 	if asciiArt == nil && cfg.ASCII.Path != "" && cfg.ASCII.Path != "builtin" {
-		if lines, err := ReadASCII(cfg.ASCII.Path); err == nil {
+		if lines, err := LoadASCIIByName(cfg.ASCII.Path); err == nil {
 			asciiArt = lines
 		}
 	}
 
-	// use builtin ascii art
+	// Fall back to distro builtin ASCII art
 	if asciiArt == nil {
-		paths := []string{
-			fmt.Sprintf("logo/%s.txt", strings.ToLower(distro.ID)),
-		}
+		for _, name := range []string{distro.ID, distro.IDLike} {
+			if name == "" {
+				continue
+			}
 
-		if distro.IDLike != "" {
-			paths = append(paths,
-				fmt.Sprintf("logo/%s.txt", strings.ToLower(distro.IDLike)),
-			)
-		}
-
-		for _, path := range paths {
-			if lines, err := ReadASCII(path); err == nil {
+			if lines, err := ReadBuiltinASCII(name); err == nil {
 				asciiArt = lines
 				break
 			}
@@ -72,6 +66,18 @@ func LoadASCII(distro modules.DistroInfo, cfg config.Config, flags cmd.Flags) []
 	return asciiArt
 }
 
+func LoadASCIIByName(name string) ([]string, error) {
+	if lines, err := ReadASCII(name); err == nil {
+		return lines, nil
+	}
+
+	return ReadBuiltinASCII(name)
+}
+
+func ReadBuiltinASCII(name string) ([]string, error) {
+	return ReadASCII(fmt.Sprintf("logo/%s.txt", strings.ToLower(name)))
+}
+
 func ReadASCII(asciiPath string) ([]string, error) {
 	var (
 		scanner *bufio.Scanner
@@ -82,6 +88,7 @@ func ReadASCII(asciiPath string) ([]string, error) {
 		scanner = bufio.NewScanner(f)
 		closeFn = f.Close
 	} else {
+
 		f, err := LogoFS.Open(asciiPath)
 		if err != nil {
 			return nil, err

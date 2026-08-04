@@ -2,9 +2,9 @@
 
 With Dfetch installed you can get a list of flags using the `-help` flag.
 
-- `-list-all-modules` Print a list of available modules
-- `-no-ascii` Disable ASCII art
-- `-set-ascii "path"` Set custom ascii art
+- `-list-all-modules` Print a list of all modules
+- `-no-ascii` Disable ASCII art for current run
+- `-set-ascii "path / distro name"` Set custom ascii art or specify a builtin distro which ascii art should be used
 - `-set-config "path"` Specify config file to use
 - `-reset-config` Regenerate the default config
 
