@@ -24,9 +24,9 @@ The supported distributions have been tested, but Dfetch is not continuously tes
 
 ## Documentation
 
-* [Customization](documentation/CUSTOMIZATION.md)
-* [Installation Instructions](documentation/INSTALL.md)
-* [Command-line flags](documentation/FLAGS.md)
+- [Customization](documentation/CUSTOMIZATION.md)
+- [Installation Instructions](documentation/INSTALL.md)
+- [Command-line flags](documentation/FLAGS.md)
 
 <br>
 

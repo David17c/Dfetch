@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"dfetch/internal/cmd"
 	"dfetch/internal/config"
 	"dfetch/internal/modules"
 	"dfetch/internal/output"
@@ -11,7 +12,7 @@ import (
 
 func main() {
 	// Parse command-line flags
-	flags := ParseFlags()
+	flags := cmd.ParseFlags()
 
 	// Create the default config file if it doesn't exist
 	if err := config.CreateConfigFile(flags.ResetConfig); err != nil {
@@ -37,7 +38,7 @@ func main() {
 	sys := modules.CollectSystemInfo(cfg.Modules, distro.DisplayName())
 
 	// Load the ASCII art
-	asciiLines := output.LoadASCII(distro, cfg, flags.NoASCII)
+	asciiLines := output.LoadASCII(distro, cfg, flags)
 
 	// Build the output lines
 	infoLines := output.BuildInfoLines(sys)
