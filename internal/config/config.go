@@ -196,7 +196,7 @@ func IsValidColor(color string) bool {
 	return false
 }
 
-func CreateConfigFile() error {
+func CreateConfigFile(resetConfig bool) error {
 	path, err := configPath()
 	if err != nil {
 		return err
@@ -209,7 +209,12 @@ func CreateConfigFile() error {
 	}
 
 	if _, err := os.Stat(path); err == nil {
-		return nil
+		// if the user wants to reset the config remove it then continue the create function else return nil since it already exists
+		if resetConfig {
+			RemoveConfigFile()
+		} else {
+			return nil
+		}
 	} else if !os.IsNotExist(err) {
 		return fmt.Errorf("unable to check config file: %w", err)
 	}
@@ -364,9 +369,7 @@ func RemoveConfigFile() {
 			return
 		}
 
-		fmt.Printf("unable to remove config file: %w", err)
+		fmt.Printf("unable to remove config file: %s\n", err)
 		return
 	}
-
-	return
 }

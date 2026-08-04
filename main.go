@@ -13,29 +13,24 @@ func main() {
 	// Parse command-line flags
 	flags := ParseFlags()
 
-	// Remove existing config file if user wants to regenerate it
-	if flags.ResetConfig {
-		config.RemoveConfigFile()
-	}
-
 	// Create the default config file if it doesn't exist
-	if err := config.CreateConfigFile(); err != nil {
+	if err := config.CreateConfigFile(flags.ResetConfig); err != nil {
 		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
+		return
 	}
 
 	// Read the config
 	cfg, err := config.ReadConfig()
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
+		return
 	}
 
 	// Get distro information
 	distro, err := modules.Distro()
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
+		return
 	}
 
 	// Collect system information based on the configured modules
