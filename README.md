@@ -20,9 +20,9 @@ If your distribution isn't listed, Dfetch may still work. This list only include
 
 ## Documentation
 
-- [Customization](documentation/CUSTOMIZATION.md)
-- [Installation Instructions](documentation/INSTALL.md)
-- [Command-line flags](documentation/FLAGS.md)
+[Customization](documentation/CUSTOMIZATION.md)  
+[Installation Instructions](documentation/INSTALL.md)  
+[Command-line flags](documentation/FLAGS.md)  
 
 <br>
 
