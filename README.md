@@ -9,6 +9,8 @@ A lightweight command-line tool for displaying system information. It focuses on
 
 Visit the [releases page](https://github.com/David17c/Dfetch/releases) and download the package for your operating system or a prebuilt binary. More detailed installation instructions and instruction on building Dfetch from source can be found [here](documentation/INSTALL.md).
 
+
+
 ## Support
 
 Dfetch pretty much all modern Linux distrobutions and includes ascii art for the following:

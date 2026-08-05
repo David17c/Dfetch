@@ -5,22 +5,12 @@ import (
 	"strings"
 )
 
-func readDMI(path string) (string, error) {
-	b, err := os.ReadFile(path)
+func Host() string {
+	host, err := os.ReadFile("/sys/devices/virtual/dmi/id/product_family")
 	if err != nil {
-		return "", err
-	}
-	return strings.TrimSpace(string(b)), nil
-}
-
-func Host(format string) string {
-	if v, err := readDMI("/sys/devices/virtual/dmi/id/product_family"); err == nil && v != "" {
-		return v
+		return "unknown"
 	}
 
-	if v, err := readDMI("/sys/devices/virtual/dmi/id/product_name"); err == nil && v != "" {
-		return v
-	}
+	return strings.TrimSpace(string(host))
 
-	return "unknown"
 }

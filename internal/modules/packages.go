@@ -2,322 +2,230 @@ package modules
 
 import (
 	"bytes"
-	"errors"
 	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"strings"
-	"sync"
-	"unicode"
 )
 
-type packageManager struct {
-	name string
-	bin  string
-	args []string
+type PackageManager struct {
+	Name  string
+	Path  string
+	Dir   bool
+	Count func() int
 }
 
-var packageManagers = []packageManager{
-	{"dpkg", "dpkg-query", []string{"-f", "${binary:Package}\n", "-W"}},
-	{"rpm", "rpm", []string{"-qa"}},
-	{"pacman", "pacman", []string{"-Qq"}},
-	{"apk", "apk", []string{"info"}},
-	{"xbps", "xbps-query", []string{"-l"}},
-	{"eopkg", "eopkg", []string{"list-installed"}},
-	{"pkg", "pkg", []string{"info"}},
-	{"pkg_info", "pkg_info", nil},
-	{"nix", "nix", []string{"profile", "list"}},
+var PackageManagers = []PackageManager{
+	{
+		Name:  "dpkg",
+		Path:  "/var/lib/dpkg/info",
+		Dir:   true,
+		Count: countDpkg,
+	},
+	{
+		Name:  "pacman",
+		Path:  "/var/lib/pacman/local",
+		Dir:   true,
+		Count: countPacman,
+	},
+	{
+		Name:  "apk",
+		Path:  "/lib/apk/db/installed",
+		Dir:   false,
+		Count: countApk,
+	},
+	{
+		Name:  "eopkg",
+		Path:  "/var/lib/eopkg/package",
+		Dir:   true,
+		Count: countEopkg,
+	},
+	{
+		Name:  "rpm",
+		Path:  "/var/lib/rpm",
+		Dir:   true,
+		Count: countRpm,
+	},
+	{
+		Name:  "snap",
+		Path:  "/var/lib/snapd/snaps",
+		Dir:   true,
+		Count: countSnap,
+	},
+	{
+		Name:  "flatpak",
+		Path:  "/var/lib/flatpak/app",
+		Dir:   true,
+		Count: countFlatpak,
+	},
 }
-
-var (
-	detectOnce sync.Once
-	detected   *packageManager
-
-	countOnce sync.Once
-	result    string
-)
 
 func Packages(format string) string {
-	countOnce.Do(func() {
-		pm := getPackageManager()
-		if pm == nil {
-			result = "Unknown package manager"
-			return
-		}
-
-		var pmCount int
-		var err error
-
-		// Special handling for NixOS
-		if pm.name == "nix" {
-			pmCount, err = countNixPackages()
-		} else {
-			pmCount, err = countPackagesFromCommand(pm)
-		}
-
-		if err != nil {
-			result = "unknown"
-			return
-		}
-
-		flatpakCount, _ := countFlatpakPackages()
-		snapCount, _ := countSnapPackages()
-
-		total := pmCount + flatpakCount + snapCount
-
-		if format == "short" {
-			result = fmt.Sprintf("%d", total)
-			return
-		}
-
-		parts := []string{
-			fmt.Sprintf("%d %s", pmCount, pm.name),
-		}
-
-		if flatpakCount > 0 {
-			parts = append(parts, fmt.Sprintf("%d flatpak", flatpakCount))
-		}
-
-		if snapCount > 0 {
-			parts = append(parts, fmt.Sprintf("%d snap", snapCount))
-		}
-
-		result = fmt.Sprintf("%d (%s)", total, strings.Join(parts, ", "))
-	})
-
-	return result
-}
-
-func countPackagesFromCommand(pm *packageManager) (int, error) {
-	out, err := exec.Command(pm.bin, pm.args...).Output()
-	if err != nil {
-		return 0, err
-	}
-
-	count := bytes.Count(out, []byte{'\n'})
-
-	if len(out) > 0 && out[len(out)-1] != '\n' {
-		count++
-	}
-
-	return count, nil
-}
-
-func countNixPackages() (int, error) {
-	profiles := []string{
-		"/nix/var/nix/profiles/default",
-		"/run/current-system",
-	}
-
-	if home, err := os.UserHomeDir(); err == nil {
-		profiles = append(profiles,
-			filepath.Join(home, ".nix-profile"),
-			filepath.Join(userStateDir(home), "nix", "profile"),
-		)
-	}
-
-	if user := os.Getenv("USER"); user != "" {
-		profiles = append(profiles, filepath.Join("/etc/profiles/per-user", user))
-	}
-
+	var results []string
 	total := 0
-	found := false
-	seen := make(map[string]struct{})
 
-	for _, profile := range profiles {
-		resolved := profile
-		if realPath, err := filepath.EvalSymlinks(profile); err == nil {
-			resolved = realPath
-		}
+	for _, pm := range getPackageManagers() {
+		count := pm.Count()
 
-		if _, ok := seen[resolved]; ok {
-			continue
+		if count > 0 {
+			total += count
+			results = append(results, fmt.Sprintf("%s %d", pm.Name, count))
 		}
-		seen[resolved] = struct{}{}
-
-		count, ok, err := countNixProfilePackages(profile)
-		if err != nil {
-			return 0, err
-		}
-		if !ok {
-			continue
-		}
-
-		found = true
-		total += count
 	}
 
-	if !found {
-		return 0, errors.New("no nix profiles found")
+	if strings.ToLower(format) == "short" {
+		return fmt.Sprintf("%d", total)
 	}
 
-	return total, nil
+	return strings.Join(results, ", ")
 }
 
-func userStateDir(home string) string {
-	if stateHome := os.Getenv("XDG_STATE_HOME"); stateHome != "" {
-		return stateHome
-	}
+func getPackageManagers() []PackageManager {
+	var detected []PackageManager
 
-	return filepath.Join(home, ".local", "state")
-}
-
-func countNixProfilePackages(profile string) (int, bool, error) {
-	if info, err := os.Stat(profile); err != nil {
-		if errors.Is(err, os.ErrNotExist) {
-			return 0, false, nil
-		}
-		return 0, false, err
-	} else if !info.IsDir() {
-		return 0, false, nil
-	}
-
-	out, err := exec.Command("nix-store", "--query", "--requisites", profile).Output()
-	if err != nil {
-		return 0, false, err
-	}
-
-	count := 0
-	for _, line := range bytes.Split(out, []byte{'\n'}) {
-		if isValidNixPackagePath(string(line)) {
-			count++
-		}
-	}
-
-	return count, true, nil
-}
-
-func isValidNixPackagePath(path string) bool {
-	if path == "" {
-		return false
-	}
-
-	info, err := os.Stat(path)
-	if err != nil || !info.IsDir() {
-		return false
-	}
-
-	name := filepath.Base(path)
-	if strings.HasPrefix(name, "nixos-system-nixos-") ||
-		strings.HasSuffix(name, "-doc") ||
-		strings.HasSuffix(name, "-man") ||
-		strings.HasSuffix(name, "-info") ||
-		strings.HasSuffix(name, "-dev") ||
-		strings.HasSuffix(name, "-bin") {
-		return false
-	}
-
-	return containsVersion(name)
-}
-
-func containsVersion(name string) bool {
-	state := 0
-	for _, char := range name {
-		switch state {
-		case 0:
-			if unicode.IsDigit(char) {
-				state = 1
-			}
-		case 1:
-			if unicode.IsDigit(char) {
+	for _, pm := range PackageManagers {
+		switch pm.Name {
+		case "rpm", "dpkg", "pacman", "apk", "eopkg", "flatpak", "snap":
+			if _, err := exec.LookPath(pm.Name); err != nil {
 				continue
 			}
-			if char == '.' {
-				state = 2
-			} else {
-				state = 0
+		}
+
+		if pm.Dir {
+			if dirExists(pm.Path) {
+				detected = append(detected, pm)
 			}
-		case 2:
-			if unicode.IsDigit(char) {
-				state = 3
-			} else {
-				state = 0
+		} else {
+			if fileExists(pm.Path) {
+				detected = append(detected, pm)
 			}
-		case 3:
-			return true
 		}
 	}
-
-	return state == 3
-}
-
-func getPackageManager() *packageManager {
-	detectOnce.Do(func() {
-		// Check for NixOS first via /etc/os-release
-		if isNixOS() {
-			detected = &packageManagers[8] // nix package manager
-			return
-		}
-
-		// Fall back to other package managers
-		for i := range packageManagers {
-			if i == 8 { // Skip nix here, already handled above
-				continue
-			}
-			if exists(packageManagers[i].bin) {
-				detected = &packageManagers[i]
-				return
-			}
-		}
-	})
 
 	return detected
 }
 
-func isNixOS() bool {
-	data, err := os.ReadFile("/etc/os-release")
+func countDpkg() int {
+	data, err := os.ReadFile("/var/lib/dpkg/status")
 	if err != nil {
-		return false
+		return 0
 	}
-	return bytes.Contains(data, []byte("ID=nixos"))
+
+	return bytes.Count(data, []byte("Status: install ok installed"))
 }
 
-func exists(name string) bool {
-	_, err := exec.LookPath(name)
-	return err == nil
+func countPacman() int {
+	entries, err := os.ReadDir("/var/lib/pacman/local")
+	if err != nil {
+		return 0
+	}
+
+	count := 0
+	for _, entry := range entries {
+		if entry.IsDir() && entry.Name() != "ALPM_DB_VERSION" {
+			count++
+		}
+	}
+	return count
 }
 
-func countFlatpakPackages() (int, error) {
-	if !exists("flatpak") {
-		return 0, nil
-	}
-
-	out, err := exec.Command("flatpak", "list", "--app").Output()
+func countApk() int {
+	data, err := os.ReadFile("/lib/apk/db/installed")
 	if err != nil {
-		return 0, err
+		return 0
 	}
 
-	count := bytes.Count(out, []byte{'\n'})
-	if len(out) > 0 && out[len(out)-1] != '\n' {
-		count++
+	count := 0
+	for _, line := range strings.Split(string(data), "\n") {
+		if strings.HasPrefix(line, "P:") {
+			count++
+		}
 	}
-
-	return count, nil
+	return count
 }
 
-func countSnapPackages() (int, error) {
-	if !exists("snap") {
-		return 0, nil
-	}
-
-	out, err := exec.Command("snap", "list").Output()
+func countEopkg() int {
+	entries, err := os.ReadDir("/var/lib/eopkg/package")
 	if err != nil {
-		return 0, err
+		return 0
 	}
 
-	lines := bytes.Count(out, []byte{'\n'})
-	if len(out) > 0 && out[len(out)-1] != '\n' {
-		lines++
+	count := 0
+	for _, entry := range entries {
+		if entry.IsDir() {
+			count++
+		}
+	}
+	return count
+}
+
+func countRpm() int {
+	if _, err := os.Stat("/var/lib/rpm/Packages"); err != nil {
+		return 0
 	}
 
-	if lines > 0 {
-		lines--
+	out, err := exec.Command("rpm", "-qa").Output()
+	if err != nil {
+		return 0
 	}
 
-	if lines < 0 {
-		lines = 0
+	lines := strings.Split(strings.TrimSpace(string(out)), "\n")
+	if len(lines) == 1 && lines[0] == "" {
+		return 0
 	}
 
-	return lines, nil
+	return len(lines)
+}
+
+func countSnap() int {
+	entries, err := os.ReadDir("/var/lib/snapd/snaps")
+	if err != nil {
+		return 0
+	}
+
+	count := 0
+	for _, entry := range entries {
+		if !entry.IsDir() && strings.HasSuffix(entry.Name(), ".snap") {
+			count++
+		}
+	}
+	return count
+}
+
+func countFlatpak() int {
+	count := 0
+	paths := []string{"/var/lib/flatpak/app"}
+
+	if homeDir, err := os.UserHomeDir(); err == nil {
+		paths = append(paths, filepath.Join(homeDir, ".local/share/flatpak/app"))
+	}
+
+	seen := make(map[string]bool)
+
+	for _, p := range paths {
+		entries, err := os.ReadDir(p)
+		if err != nil {
+			continue
+		}
+
+		for _, entry := range entries {
+			if entry.IsDir() && !seen[entry.Name()] {
+				seen[entry.Name()] = true
+				count++
+			}
+		}
+	}
+
+	return count
+}
+
+func fileExists(path string) bool {
+	info, err := os.Stat(path)
+	return err == nil && !info.IsDir()
+}
+
+func dirExists(path string) bool {
+	info, err := os.Stat(path)
+	return err == nil && info.IsDir()
 }

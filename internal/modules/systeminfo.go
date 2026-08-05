@@ -81,7 +81,7 @@ func CollectSystemInfo(modules []config.Module, distroName string) []ModuleOutpu
 			value = Packages(module.Format)
 
 		case "host":
-			value = Host(module.Format)
+			value = Host()
 
 		case "locale":
 			value = Locale()

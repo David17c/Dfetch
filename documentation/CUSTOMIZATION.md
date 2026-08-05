@@ -101,7 +101,6 @@ Only supported by:
 - `disk` supported format options: `short`
 - `datetime` supported format options: `time`, `date`
 - `packages` supported format options: `short`
-- `host` supported format options: `short`
 
 #### `mount`
 

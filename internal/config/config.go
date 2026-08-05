@@ -282,7 +282,7 @@ func CreateConfigFile(flags cmd.Flags) error {
 			},
 			{
 				Name:  "text",
-				Text:  "--------------------------------------------",
+				Text:  "---------------------------------------",
 				Color: "gray",
 			},
 			{
@@ -319,30 +319,30 @@ func CreateConfigFile(flags cmd.Flags) error {
 			},
 			{
 				Name: "text",
-				Text: "--------------------------------------------",
+				Text: "---------------------------------------",
 			},
 			{
 				Name:      "local_ip",
 				Label:     "Local IP",
-				Color:     "magenta",
+				Color:     "yellow",
 				Separator: ":",
 			},
 			{
 				Name:      "packages",
 				Label:     "Packages",
-				Color:     "magenta",
+				Color:     "yellow",
 				Separator: ":",
 			},
 			{
 				Name:      "uptime",
 				Label:     "Uptime",
-				Color:     "magenta",
+				Color:     "yellow",
 				Separator: ":",
 			},
 			{
 				Name:      "datetime",
 				Label:     "DateTime",
-				Color:     "magenta",
+				Color:     "yellow",
 				Separator: ":",
 			},
 			{
