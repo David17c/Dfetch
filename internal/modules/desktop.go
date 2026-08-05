@@ -17,7 +17,9 @@ func DesktopEnvironment(format string) string {
 
 	if id == "" {
 		id = os.Getenv("GDMSESSION")
-	} else {
+	}
+
+	if id == "" {
 		return "unknown"
 	}
 
