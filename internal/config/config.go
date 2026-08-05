@@ -247,7 +247,7 @@ func CreateConfigFile(flags cmd.Flags) error {
 			{Name: "emptyline"},
 
 			// Hardware
-			{Name: "cpu", Label: "CPU", Color: "green", Separator: ":"},
+			{Name: "cpu", Label: "CPU", Color: "green", Format: "short", Separator: ":"},
 			{Name: "memory", Label: "Memory", Color: "green", Separator: ":"},
 			{Name: "disk", Label: "Disk", Color: "green", Mount: "/", Separator: ":"},
 			{Name: "board", Label: "Board", Color: "green", Separator: ":"},
