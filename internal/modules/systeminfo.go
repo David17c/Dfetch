@@ -62,8 +62,11 @@ func CollectSystemInfo(modules []config.Module, distroName string) []ModuleOutpu
 		case "bios":
 			value = Bios(module.Format)
 
-		case "desktop":
+		case "de":
 			value = DesktopEnvironment(module.Format)
+
+		case "wm":
+			value = windowManager(module.Format)
 
 		case "shell":
 			value = Shell(module.Format)

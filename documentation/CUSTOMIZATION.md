@@ -95,7 +95,8 @@ Only supported by:
 - `memory` supported format options: `short`
 - `swap` supported format options: `short`
 - `bios`supported format options: `short`
-- `desktop` supported format options: `short`
+- `de` supported format options: `short`
+- `wm` supported format options: `short`
 - `shell` supported format options: `short`
 - `terminal` supported format options: `short`
 - `disk` supported format options: `short`
@@ -123,11 +124,12 @@ Used by the text module to set a custom text.
 | `memory`      | Memory usage                          |
 | `swap`        | Swap usage                            |
 | `local_ip`    | Local IP address                      |
-| `locale`      | Systems locale settings
+| `locale`      | Systems locale settings               |
 | `uptime`      | System uptime                         |
 | `battery`     | Battery information                   |
 | `bios`        | BIOS information                      |
-| `desktop`     | Desktop environment or window manager |
+| `de`          | Desktop environment                   |
+| `wm`          | Window manager                        |
 | `shell`       | Current shell                         |
 | `terminal`    | Current terminal                      |
 | `disk`        | Disk usage                            |
@@ -135,7 +137,7 @@ Used by the text module to set a custom text.
 | `date`        | Current date                          |
 | `packages`    | Installed packages                    |
 | `host`        | Device model                          |
-| `motherboard` | Motherboard name                      |
+| `board`       | Motherboard name                      |
 | `emptyline`   | Inserts a blank line                  |
 | `text`        | Custom text                           |
 

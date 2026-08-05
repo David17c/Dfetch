@@ -236,118 +236,39 @@ func CreateConfigFile(flags cmd.Flags) error {
 		},
 
 		Modules: []Module{
-			{
-				Name: "emptyline",
-			},
-			{
-				Name:      "os",
-				Label:     "OS",
-				Color:     "blue",
-				Separator: ":",
-			},
-			{
-				Name:      "kernel",
-				Label:     "Kernel",
-				Color:     "blue",
-				Format:    "short",
-				Separator: ":",
-			},
-			{
-				Name:      "host",
-				Label:     "Host",
-				Color:     "blue",
-				Separator: ":",
-			},
-			{
-				Name:      "bios",
-				Label:     "BIOS",
-				Color:     "blue",
-				Separator: ":",
-				Format:    "short",
-			},
-			{
-				Name: "emptyline",
-			},
-			{
-				Name:      "shell",
-				Label:     "Shell",
-				Color:     "blue",
-				Separator: ":",
-			},
-			{
-				Name:      "terminal",
-				Label:     "Terminal",
-				Color:     "blue",
-				Separator: ":",
-			},
-			{
-				Name:  "text",
-				Text:  "---------------------------------------",
-				Color: "gray",
-			},
-			{
-				Name:      "cpu",
-				Label:     "CPU",
-				Color:     "green",
-				Format:    "short",
-				Separator: ":",
-			},
-			{
-				Name:      "swap",
-				Label:     "Swap",
-				Color:     "green",
-				Separator: ":",
-			},
-			{
-				Name:      "memory",
-				Label:     "Memory",
-				Color:     "green",
-				Separator: ":",
-			},
-			{
-				Name:      "disk",
-				Label:     "Disk",
-				Color:     "green",
-				Separator: ":",
-				Mount:     "/",
-			},
-			{
-				Name:      "board",
-				Label:     "Board",
-				Color:     "green",
-				Separator: ":",
-			},
-			{
-				Name: "text",
-				Text: "---------------------------------------",
-			},
-			{
-				Name:      "local_ip",
-				Label:     "Local IP",
-				Color:     "yellow",
-				Separator: ":",
-			},
-			{
-				Name:      "packages",
-				Label:     "Packages",
-				Color:     "yellow",
-				Separator: ":",
-			},
-			{
-				Name:      "uptime",
-				Label:     "Uptime",
-				Color:     "yellow",
-				Separator: ":",
-			},
-			{
-				Name:      "datetime",
-				Label:     "DateTime",
-				Color:     "yellow",
-				Separator: ":",
-			},
-			{
-				Name: "emptyline",
-			},
+			{Name: "emptyline"},
+
+			// System
+			{Name: "os", Label: "OS", Color: "blue", Separator: ":"},
+			{Name: "host", Label: "Host", Color: "blue", Separator: ":"},
+			{Name: "kernel", Label: "Kernel", Color: "blue", Format: "short", Separator: ":"},
+			{Name: "bios", Label: "BIOS", Color: "blue", Format: "short", Separator: ":"},
+
+			{Name: "emptyline"},
+
+			// Hardware
+			{Name: "cpu", Label: "CPU", Color: "green", Separator: ":"},
+			{Name: "memory", Label: "Memory", Color: "green", Separator: ":"},
+			{Name: "disk", Label: "Disk", Color: "green", Mount: "/", Separator: ":"},
+			{Name: "board", Label: "Board", Color: "green", Separator: ":"},
+
+			{Name: "emptyline"},
+
+			// Environment
+			{Name: "packages", Label: "Packages", Color: "yellow", Separator: ":"},
+			{Name: "shell", Label: "Shell", Color: "yellow", Separator: ":"},
+			{Name: "terminal", Label: "Terminal", Color: "yellow", Separator: ":"},
+			{Name: "de", Label: "DE", Color: "yellow", Separator: ":"},
+			{Name: "wm", Label: "WM", Color: "yellow", Separator: ":"},
+
+			{Name: "emptyline"},
+
+			// Runtime
+			{Name: "uptime", Label: "Uptime", Color: "magenta", Separator: ":"},
+			{Name: "local_ip", Label: "Local IP", Color: "magenta", Separator: ":"},
+			{Name: "locale", Label: "Locale", Color: "magenta", Separator: ":"},
+
+			{Name: "emptyline"},
 		},
 	}
 
