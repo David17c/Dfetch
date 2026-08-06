@@ -91,12 +91,12 @@ Only supported by:
 
 - `battery` supported format options: `short`
 - `cpu` supported format options: `short`
-- `memory` supported format options: `short`
-- `swap` supported format options: `short`
+- `memory` supported format options: `long`
+- `swap` supported format options: `long`
 - `de` supported format options: `short`
 - `wm` supported format options: `short`
 - `shell` supported format options: `short`
-- `disk` supported format options: `short`
+- `disk` supported format options: `long`
 - `datetime` supported format options: `time`, `date`
 - `packages` supported format options: `short`
 

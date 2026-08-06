@@ -52,17 +52,18 @@ func Disk(format, mount string) string {
 		return fmt.Sprintf("%d / %d B", used, total)
 	}
 
-	if format == "short" {
-		return fmt.Sprintf("%s / %s %s",
+	if format == "long" {
+		return fmt.Sprintf("%s / %s %s (%.0f%%)",
 			formatBytesWithUnit(used, divisor),
 			formatBytesWithUnit(total, divisor),
 			unit,
+			percent,
 		)
 	}
-	return fmt.Sprintf("%s / %s %s (%.0f%%)",
+
+	return fmt.Sprintf("%s / %s %s",
 		formatBytesWithUnit(used, divisor),
 		formatBytesWithUnit(total, divisor),
 		unit,
-		percent,
 	)
 }

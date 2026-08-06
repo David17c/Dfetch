@@ -248,8 +248,8 @@ func CreateConfigFile(flags cmd.Flags) error {
 
 			// Hardware
 			{Name: "cpu", Label: "CPU", Color: "green", Format: "short", Separator: ":"},
-			{Name: "memory", Label: "RAM", Color: "green", Separator: ":"},
-			{Name: "disk", Label: "Disk", Color: "green", Separator: ":", Mount: "/"},
+			{Name: "memory", Label: "RAM", Color: "green", Separator: ":", Format: "long"},
+			{Name: "disk", Label: "Disk", Color: "green", Separator: ":", Mount: "/", Format: "long"},
 			{Name: "board", Label: "Board", Color: "green", Separator: ":"},
 
 			{Name: "emptyline"},
@@ -266,7 +266,7 @@ func CreateConfigFile(flags cmd.Flags) error {
 			// Runtime
 			{Name: "uptime", Label: "Uptime", Color: "magenta", Separator: ":"},
 			{Name: "local_ip", Label: "Local IP", Color: "magenta", Separator: ":"},
-			{Name: "locale", Label: "Locale", Color: "magenta", Separator: ":"},
+			{Name: "locale", Label: "Lang", Color: "magenta", Separator: ":"},
 
 			{Name: "emptyline"},
 		},

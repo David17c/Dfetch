@@ -107,5 +107,5 @@ func Uptime() string {
 		parts = append(parts, strconv.FormatInt(u.value, 10)+" "+name)
 	}
 
-	return strings.Join(parts, " ")
+	return strings.Join(parts, ", ")
 }
