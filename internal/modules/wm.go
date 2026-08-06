@@ -36,6 +36,7 @@ func windowManager(format string) string {
 		if format == "short" {
 			return wm
 		}
+
 		return fmt.Sprintf("%s (X11)", wm)
 
 	default:
@@ -47,33 +48,29 @@ func WMOnWayland() string {
 	switch {
 	case os.Getenv("HYPRLAND_INSTANCE_SIGNATURE") != "":
 		return "Hyprland"
-
 	case os.Getenv("SWAYSOCK") != "":
 		return "Sway"
-
 	case os.Getenv("NIRI_SOCKET") != "":
 		return "Niri"
-
 	case os.Getenv("WAYFIRE_SOCKET") != "":
 		return "Wayfire"
-
 	case os.Getenv("LABWC_PID") != "":
 		return "labwc"
 	}
 
-	processes := getRunningProcesses()
-
-	switch {
-	case hasProcess(processes, "kwin_wayland"):
+	switch processExists(
+		"kwin_wayland",
+		"gnome-shell",
+		"river",
+		"cosmic-comp",
+	) {
+	case "kwin_wayland":
 		return "KWin"
-
-	case hasProcess(processes, "gnome-shell"):
+	case "gnome-shell":
 		return "Mutter"
-
-	case hasProcess(processes, "river"):
+	case "river":
 		return "River"
-
-	case hasProcess(processes, "cosmic-comp"):
+	case "cosmic-comp":
 		return "COSMIC"
 	}
 
@@ -84,77 +81,75 @@ func WMOnX11() string {
 	switch {
 	case os.Getenv("I3SOCK") != "":
 		return "i3"
-
 	case os.Getenv("BSPWM_SOCKET") != "":
 		return "bspwm"
 	}
 
-	processes := getRunningProcesses()
-
-	switch {
-	case hasProcess(processes, "kwin_x11"):
+	switch processExists(
+		"kwin_x11",
+		"gnome-shell",
+		"xfwm4",
+		"i3",
+		"bspwm",
+		"openbox",
+		"awesome",
+		"fluxbox",
+		"icewm",
+		"dwm",
+	) {
+	case "kwin_x11":
 		return "KWin"
-
-	case hasProcess(processes, "gnome-shell"):
+	case "gnome-shell":
 		return "Mutter"
-
-	case hasProcess(processes, "xfwm4"):
+	case "xfwm4":
 		return "Xfwm4"
-
-	case hasProcess(processes, "i3"):
+	case "i3":
 		return "i3"
-
-	case hasProcess(processes, "bspwm"):
+	case "bspwm":
 		return "bspwm"
-
-	case hasProcess(processes, "openbox"):
+	case "openbox":
 		return "Openbox"
-
-	case hasProcess(processes, "awesome"):
+	case "awesome":
 		return "awesome"
-
-	case hasProcess(processes, "fluxbox"):
+	case "fluxbox":
 		return "Fluxbox"
-
-	case hasProcess(processes, "icewm"):
+	case "icewm":
 		return "IceWM"
-
-	case hasProcess(processes, "dwm"):
+	case "dwm":
 		return "dwm"
 	}
 
 	return "unknown"
 }
 
-func getRunningProcesses() map[string]bool {
-	processes := make(map[string]bool)
+func processExists(names ...string) string {
+	wanted := make(map[string]struct{}, len(names))
+	for _, name := range names {
+		wanted[name] = struct{}{}
+	}
 
 	entries, err := os.ReadDir("/proc")
 	if err != nil {
-		return processes
+		return ""
 	}
 
 	for _, entry := range entries {
-		name := entry.Name()
+		pid := entry.Name()
 
-		if name == "" || name[0] < '0' || name[0] > '9' {
+		if pid == "" || pid[0] < '0' || pid[0] > '9' {
 			continue
 		}
 
-		data, err := os.ReadFile("/proc/" + name + "/comm")
+		data, err := os.ReadFile("/proc/" + pid + "/comm")
 		if err != nil {
 			continue
 		}
 
-		process := strings.TrimSpace(string(data))
-		if process != "" {
-			processes[process] = true
+		proc := strings.TrimSpace(string(data))
+		if _, ok := wanted[proc]; ok {
+			return proc
 		}
 	}
 
-	return processes
-}
-
-func hasProcess(processes map[string]bool, name string) bool {
-	return processes[name]
+	return ""
 }

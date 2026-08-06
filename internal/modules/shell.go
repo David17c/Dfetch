@@ -41,22 +41,22 @@ func Shell(format string) string {
 		if format == "short" {
 			return "Bash"
 		}
-		return shellVersion("Bash", "bash", "--version")
+		return shellVersion("Bash", shellPath, "--version")
 	case "zsh":
 		if format == "short" {
 			return "Zsh"
 		}
-		return shellVersion("Zsh", "zsh", "--version")
+		return shellVersion("Zsh", shellPath, "--version")
 	case "fish":
 		if format == "short" {
 			return "Fish"
 		}
-		return shellVersion("Fish", "fish", "--version")
+		return shellVersion("Fish", shellPath, "--version")
 	case "dash":
 		if format == "short" {
 			return "Dash"
 		}
-		return shellVersion("Dash", "dash", "-V")
+		return shellVersion("Dash", shellPath, "-V")
 	default:
 		return shell
 	}
