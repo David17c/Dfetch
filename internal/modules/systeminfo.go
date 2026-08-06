@@ -39,7 +39,7 @@ func CollectSystemInfo(modules []config.Module, distroName string) []ModuleOutpu
 			value = distroName
 
 		case "kernel":
-			value = Kernel(module.Format)
+			value = Kernel()
 
 		case "cpu":
 			value = Cpu(module.Format)
@@ -60,7 +60,7 @@ func CollectSystemInfo(modules []config.Module, distroName string) []ModuleOutpu
 			value = Battery(module.Format)
 
 		case "bios":
-			value = Bios(module.Format)
+			value = Bios()
 
 		case "de":
 			value = DesktopEnvironment(module.Format)
@@ -72,7 +72,7 @@ func CollectSystemInfo(modules []config.Module, distroName string) []ModuleOutpu
 			value = Shell(module.Format)
 
 		case "terminal":
-			value = Terminal(module.Format)
+			value = Terminal()
 
 		case "disk":
 			value = Disk(module.Format, module.Mount)

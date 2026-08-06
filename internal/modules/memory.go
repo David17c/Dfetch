@@ -84,7 +84,7 @@ func Memory(format string) string {
 		base = fmt.Sprintf("%d / %d KB", memUsed, memTotal)
 	}
 
-	if format != "short" {
+	if format == "long" {
 		base += fmt.Sprintf(" (%.0f%%)", usedPercent)
 	}
 

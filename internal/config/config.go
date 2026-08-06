@@ -248,16 +248,16 @@ func CreateConfigFile(flags cmd.Flags) error {
 
 			// Hardware
 			{Name: "cpu", Label: "CPU", Color: "green", Format: "short", Separator: ":"},
-			{Name: "memory", Label: "Memory", Color: "green", Separator: ":"},
-			{Name: "disk", Label: "Disk", Color: "green", Mount: "/", Separator: ":"},
+			{Name: "memory", Label: "RAM", Color: "green", Separator: ":"},
+			{Name: "disk", Label: "Disk", Color: "green", Separator: ":", Mount: "/"},
 			{Name: "board", Label: "Board", Color: "green", Separator: ":"},
 
 			{Name: "emptyline"},
 
 			// Environment
-			{Name: "packages", Label: "Packages", Color: "yellow", Separator: ":"},
+			{Name: "packages", Label: "Pkgs", Color: "yellow", Separator: ":"},
 			{Name: "shell", Label: "Shell", Color: "yellow", Separator: ":"},
-			{Name: "terminal", Label: "Terminal", Color: "yellow", Separator: ":"},
+			{Name: "terminal", Label: "Term", Color: "yellow", Separator: ":"},
 			{Name: "de", Label: "DE", Color: "yellow", Separator: ":"},
 			{Name: "wm", Label: "WM", Color: "yellow", Separator: ":"},
 

@@ -89,16 +89,13 @@ Changes how a module formats its output.
 
 Only supported by:
 
-- `kernel` supported format options: `short`
 - `battery` supported format options: `short`
 - `cpu` supported format options: `short`
 - `memory` supported format options: `short`
 - `swap` supported format options: `short`
-- `bios`supported format options: `short`
 - `de` supported format options: `short`
 - `wm` supported format options: `short`
 - `shell` supported format options: `short`
-- `terminal` supported format options: `short`
 - `disk` supported format options: `short`
 - `datetime` supported format options: `time`, `date`
 - `packages` supported format options: `short`

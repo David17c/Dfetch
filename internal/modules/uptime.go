@@ -22,86 +22,90 @@ func Uptime() string {
 		return "unknown"
 	}
 
-	parts := strings.Fields(string(content))
-	if len(parts) == 0 {
+	fields := strings.Fields(string(content))
+	if len(fields) == 0 {
 		return "unknown"
 	}
 
-	sec := parts[0]
+	sec := fields[0]
 	if dot := strings.IndexByte(sec, '.'); dot != -1 {
 		sec = sec[:dot]
 	}
 
 	total, err := strconv.ParseInt(sec, 10, 64)
+	if err != nil {
+		return "unknown"
+	}
 
-	centuries := total / Century
+	type unit struct {
+		value int64
+		long  string
+		short string
+	}
+
+	units := []unit{
+		{total / Century, "century", "c"},
+		{0, "year", "y"},
+		{0, "month", "mo"},
+		{0, "week", "w"},
+		{0, "day", "d"},
+		{0, "hour", "h"},
+		{0, "minute", "m"},
+	}
+
 	total %= Century
-
-	years := total / Year
+	units[1].value = total / Year
 	total %= Year
 
-	months := total / Month
+	units[2].value = total / Month
 	total %= Month
 
-	weeks := total / Week
+	units[3].value = total / Week
 	total %= Week
 
-	days := total / Day
+	units[4].value = total / Day
 	total %= Day
 
-	hours := total / Hour
+	units[5].value = total / Hour
 	total %= Hour
 
-	minutes := total / Minute
+	units[6].value = total / Minute
 
-	if centuries == 0 && years == 0 && months == 0 && weeks == 0 {
-		var parts []string
+	count := 0
+	for _, u := range units {
+		if u.value > 0 {
+			count++
+		}
+	}
 
-		if days > 0 {
-			parts = append(parts, strconv.FormatInt(days, 10)+" days")
+	if count == 0 {
+		return "0 minutes"
+	}
+
+	short := count > 3
+
+	var parts []string
+	for _, u := range units {
+		if u.value == 0 {
+			continue
 		}
 
-		parts = append(parts,
-			strconv.FormatInt(hours, 10)+" hours",
-			strconv.FormatInt(minutes, 10)+" minutes",
-		)
+		if short {
+			parts = append(parts, strconv.FormatInt(u.value, 10)+u.short)
+			continue
+		}
 
-		return strings.Join(parts, " ")
+		name := u.long
+		if u.value != 1 {
+			if name == "minute" {
+				name = "mins"
+			} else {
+				name += "s"
+			}
+		}
+
+		parts = append(parts, strconv.FormatInt(u.value, 10)+" "+name)
 	}
 
-	var result strings.Builder
-
-	// Just in case
-	if centuries > 0 {
-		result.WriteString(strconv.FormatInt(centuries, 10))
-		result.WriteString("c ")
-	}
-
-	if years > 0 {
-		result.WriteString(strconv.FormatInt(years, 10))
-		result.WriteString("y ")
-	}
-
-	if months > 0 {
-		result.WriteString(strconv.FormatInt(months, 10))
-		result.WriteString("mo ")
-	}
-
-	if weeks > 0 {
-		result.WriteString(strconv.FormatInt(weeks, 10))
-		result.WriteString("w ")
-	}
-
-	if days > 0 {
-		result.WriteString(strconv.FormatInt(days, 10))
-		result.WriteString("d ")
-	}
-
-	result.WriteString(strconv.FormatInt(hours, 10))
-	result.WriteString("h ")
-	result.WriteString(strconv.FormatInt(minutes, 10))
-	result.WriteString("m")
-
-	return strings.TrimSpace(result.String())
-
+	return strings.Join(parts, " ")
 }

@@ -1,64 +1,31 @@
 package modules
 
 import (
-	"fmt"
 	"os"
-	"os/exec"
 	"strings"
 )
 
 type terminalDetector struct {
-	env    string
-	name   string
-	binary string
-	parse  func(string) string
-}
-
-var ghosttyVersion = func(out string) string {
-	line := strings.TrimSpace(strings.SplitN(out, "\n", 2)[0])
-	return strings.TrimPrefix(line, "Ghostty ")
+	env  string
+	name string
 }
 
 var detectors = []terminalDetector{
-	{"ALACRITTY_SOCKET", "Alacritty", "alacritty", extractVersion},
-	{"GNOME_TERMINAL_SCREEN", "GNOME Terminal", "gnome-terminal", extractVersion},
-	{"KITTY_PID", "Kitty", "kitty", extractVersion},
-	{"GHOSTTY_RESOURCES_DIR", "Ghostty", "ghostty", ghosttyVersion},
+	{"ALACRITTY_SOCKET", "Alacritty"},
+	{"GNOME_TERMINAL_SCREEN", "GNOME Terminal"},
+	{"KITTY_PID", "Kitty"},
+	{"GHOSTTY_RESOURCES_DIR", "Ghostty"},
 }
 
-func terminalVersion(name, binary string, parse func(string) string, format string) string {
-	if format == "short" {
-		return name
-	}
-
-	out, err := exec.Command(binary, "--version").Output()
-	if err != nil {
-		return name
-	}
-
-	if parse == nil {
-		parse = extractVersion
-	}
-
-	if v := parse(string(out)); v != "" {
-		return fmt.Sprintf("%s %s", name, v)
-	}
-
-	return name
-}
-
-func Terminal(format string) string {
+func Terminal() string {
 	for _, t := range detectors {
 		if os.Getenv(t.env) != "" {
-			return terminalVersion(t.name, t.binary, t.parse, format)
+			return t.name
 		}
 	}
 
-	if v := os.Getenv("KONSOLE_VERSION"); v != "" {
-		if format == "short" {
-			return "Konsole"
-		}
-		return "Konsole " + v
+	if os.Getenv("KONSOLE_VERSION") != "" {
+		return "Konsole"
 	}
 
 	switch strings.ToLower(strings.TrimSpace(os.Getenv("TERM_PROGRAM"))) {
@@ -66,9 +33,9 @@ func Terminal(format string) string {
 	case "vscode":
 		return "Code"
 	case "wezterm":
-		return terminalVersion("WezTerm", "wezterm", nil, format)
+		return "WezTerm"
 	case "ghostty":
-		return terminalVersion("Ghostty", "ghostty", ghosttyVersion, format)
+		return "Ghostty"
 	default:
 		return os.Getenv("TERM_PROGRAM")
 	}
@@ -76,24 +43,10 @@ func Terminal(format string) string {
 	term := os.Getenv("TERM")
 
 	if strings.HasPrefix(term, "foot") {
-		return terminalVersion("Foot", "foot", nil, format)
+		return "Foot"
 	}
 
 	if term == "xterm" {
-		if format == "short" {
-			return "XTerm"
-		}
-
-		out, err := exec.Command("xterm", "-v").Output()
-		if err != nil {
-			return "XTerm"
-		}
-
-		var version int
-		if _, err := fmt.Sscanf(strings.TrimSpace(string(out)), "XTerm(%d)", &version); err == nil {
-			return fmt.Sprintf("XTerm %d", version)
-		}
-
 		return "XTerm"
 	}
 
