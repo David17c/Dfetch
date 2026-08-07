@@ -35,14 +35,14 @@ func main() {
 	}
 
 	// Collect system information based on the configured modules
-	sys := modules.CollectSystemInfo(cfg.Modules, distro.DisplayName())
+	sys := modules.CollectSystemInfo(cfg.Modules, distro.DisplayName(), flags.NoColor)
 
 	// Load the ASCII art
 	asciiLines := output.LoadASCII(distro, cfg, flags)
 
 	// Build the output lines
-	infoLines := output.BuildInfoLines(sys)
+	infoLines := output.BuildInfoLines(sys, flags.NoColor)
 
 	// Print final result
-	output.PrintOutput(asciiLines, infoLines)
+	output.PrintOutput(asciiLines, infoLines, flags.NoColor)
 }

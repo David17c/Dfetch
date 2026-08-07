@@ -4,7 +4,12 @@ import (
 	"strings"
 )
 
-func GetColorCode(accentColor string) string {
+func GetColorCode(accentColor string, NoColor bool) string {
+
+	if NoColor {
+		return ""
+	}
+
 	switch strings.ToLower(accentColor) {
 	case "black":
 		return "\x1b[30m"
@@ -41,6 +46,6 @@ func GetColorCode(accentColor string) string {
 		return "\x1b[97m"
 
 	default:
-		return "\x1b[0m"
+		return "ESC[0m"
 	}
 }

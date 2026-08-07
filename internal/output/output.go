@@ -17,7 +17,7 @@ func visibleLen(s string) int {
 	return utf8.RuneCountInString(clean)
 }
 
-func BuildInfoLines(info []modules.ModuleOutput) []string {
+func BuildInfoLines(info []modules.ModuleOutput, NoColor bool) []string {
 	lines := make([]string, 0, len(info))
 
 	for _, module := range info {
@@ -34,7 +34,7 @@ func BuildInfoLines(info []modules.ModuleOutput) []string {
 			if module.Color != "" {
 				lines = append(
 					lines,
-					config.GetColorCode(module.Color)+module.Value+"\x1b[0m",
+					config.GetColorCode(module.Color, NoColor)+module.Value+config.GetColorCode("reset", NoColor),
 				)
 			} else {
 				lines = append(lines, module.Value)
@@ -59,13 +59,14 @@ func BuildInfoLines(info []modules.ModuleOutput) []string {
 			module.Color,
 			module.Separator,
 			module.Value,
+			NoColor,
 		))
 	}
 
 	return lines
 }
 
-func field(label, color, separator, value string) string {
+func field(label, color, separator, value string, NoColor bool) string {
 	if label == "" && separator == "" {
 		return value
 	}
@@ -76,18 +77,18 @@ func field(label, color, separator, value string) string {
 
 	return fmt.Sprintf(
 		"%s%s\x1b[0m%s %s",
-		config.GetColorCode(color),
+		config.GetColorCode(color, NoColor),
 		label,
 		separator,
 		value,
 	)
 }
 
-func PrintOutput(asciiLines, infoLines []string) {
+func PrintOutput(asciiLines, infoLines []string, NoColor bool) {
 	renderedAscii := make([]string, len(asciiLines))
 
 	for i, line := range asciiLines {
-		renderedAscii[i] = ApplyColorTags(line)
+		renderedAscii[i] = ApplyColorTags(line, NoColor)
 	}
 
 	if len(renderedAscii) == 0 {
@@ -138,7 +139,8 @@ func getMaxWidth(lines []string) int {
 
 var colorTagRE = regexp.MustCompile(`\$\{([^}]+)\}`)
 
-func ApplyColorTags(line string) string {
+func ApplyColorTags(line string, NoColor bool) string {
+
 	result := colorTagRE.ReplaceAllStringFunc(line, func(tag string) string {
 		name := strings.TrimSuffix(strings.TrimPrefix(tag, "${"), "}")
 
@@ -146,7 +148,7 @@ func ApplyColorTags(line string) string {
 			return "\x1b[0m"
 		}
 
-		return config.GetColorCode(name)
+		return config.GetColorCode(name, NoColor)
 	})
 
 	return result + "\x1b[0m"

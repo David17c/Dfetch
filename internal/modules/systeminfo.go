@@ -16,7 +16,7 @@ type ModuleOutput struct {
 	Mount string
 }
 
-func CollectSystemInfo(modules []config.Module, distroName string) []ModuleOutput {
+func CollectSystemInfo(modules []config.Module, distroName string, NoColor bool) []ModuleOutput {
 	var output []ModuleOutput
 
 	for _, module := range modules {
@@ -27,8 +27,8 @@ func CollectSystemInfo(modules []config.Module, distroName string) []ModuleOutpu
 			username, hostname := Userinfo()
 
 			if module.Color != "" {
-				c := config.GetColorCode(module.Color)
-				r := "\x1b[0m"
+				c := config.GetColorCode(module.Color, NoColor)
+				r := config.GetColorCode("reset", NoColor)
 
 				value = c + username + r + "@" + c + hostname + r
 			} else {

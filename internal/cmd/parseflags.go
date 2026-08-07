@@ -6,6 +6,7 @@ import (
 
 type Flags struct {
 	NoASCII        bool
+	NoColor        bool
 	ResetConfig    bool
 	ListAllModules bool
 	SetASCII       string
@@ -17,6 +18,7 @@ func ParseFlags() Flags {
 
 	flag.BoolVar(&flags.NoASCII, "no-ascii", false, "Disable ASCII art")
 	flag.StringVar(&flags.SetASCII, "set-ascii", "", "Set custom ascii art")
+	flag.BoolVar(&flags.NoColor, "no-color", false, "Disable color")
 	flag.StringVar(&flags.SetConfig, "set-config", "", "Specify config file to use")
 	flag.BoolVar(&flags.ResetConfig, "reset-config", false, "Regenerate the config file")
 	flag.BoolVar(&flags.ListAllModules, "list-all-modules", false, "Print a list of available modules")
