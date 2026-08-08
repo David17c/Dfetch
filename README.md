@@ -1,4 +1,7 @@
-# Dfetch
+<h1>
+Dfetch
+  <img src="image/Dfetch_logo.png" width="50" height="50" alt="Dfetch logo">
+</h1>
 
 A lightweight command-line tool for displaying system information. It focuses on clean output, fast startup times, and simple configuration.
 

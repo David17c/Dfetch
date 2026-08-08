@@ -6,7 +6,8 @@ import (
 )
 
 func ListAllModules() {
-	fmt.Print(`| Module         | Description                           |
+	fmt.Print(`
+| Module         | Description                           |
 | -------------- | ------------------------------------- |
 | userinfo       | Username and hostname                 |
 | os             | Operating system                      |
@@ -30,6 +31,7 @@ func ListAllModules() {
 | motherboard    | Motherboard name                      |
 | emptyline      | Inserts a blank line                  |
 | text           | Custom text                           |
+
 `)
 	os.Exit(0)
 }
