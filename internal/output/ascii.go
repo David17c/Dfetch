@@ -12,8 +12,8 @@ import (
 	"dfetch/internal/modules"
 )
 
-//go:embed logo/*
-var LogoFS embed.FS
+//go:embed art/*
+var ArtFS embed.FS
 
 func LoadASCII(distro modules.DistroInfo, cfg config.Config, flags cmd.Flags) []string {
 	var asciiArt []string
@@ -75,7 +75,7 @@ func LoadASCIIByName(name string) ([]string, error) {
 }
 
 func ReadBuiltinASCII(name string) ([]string, error) {
-	return ReadASCII(fmt.Sprintf("logo/%s.txt", strings.ToLower(name)))
+	return ReadASCII(fmt.Sprintf("art/%s.txt", strings.ToLower(name)))
 }
 
 func ReadASCII(asciiPath string) ([]string, error) {
@@ -89,7 +89,7 @@ func ReadASCII(asciiPath string) ([]string, error) {
 		closeFn = f.Close
 	} else {
 
-		f, err := LogoFS.Open(asciiPath)
+		f, err := ArtFS.Open(asciiPath)
 		if err != nil {
 			return nil, err
 		}
