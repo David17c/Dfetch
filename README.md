@@ -13,7 +13,7 @@ Visit the [releases page](https://github.com/David17c/Dfetch/releases) and downl
 
 Dfetch pretty much all decently modern Linux distrobutions and includes ascii art for the following:
 
-**Alma Linux, Arch, Artix, Bazzite, CachyOS, Debian, EndeavourOS, Fedora, Gentoo, Kali Linux, Linux Mint, Manjaro, NixOS, OpenSUSE Leap, OpenSUSE Tumbleweed, Pop!_OS, Rocky Linux, Tuxedo OS, Ubuntu, Vanilla OS, Void Linux and Zorin OS.**
+**Alma Linux, Arch, Artix, Bazzite, CachyOS, CentOS, Debian, EndeavourOS, Fedora, Gentoo, Kali Linux, Linux Mint, Manjaro, NixOS, OpenSUSE Leap, OpenSUSE Tumbleweed, Pop!_OS, Rhel, Rocky Linux, Tuxedo OS, Ubuntu, Vanilla OS, Void Linux and Zorin OS.**
 
 If your distribution isn't listed, Dfetch probably still works. This list only includes distributions with built-in ASCII art.
 
