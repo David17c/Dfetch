@@ -96,6 +96,7 @@ func WMOnX11() string {
 		"fluxbox",
 		"icewm",
 		"dwm",
+		"muffin",
 	) {
 	case "kwin_x11":
 		return "KWin"
@@ -117,6 +118,8 @@ func WMOnX11() string {
 		return "IceWM"
 	case "dwm":
 		return "dwm"
+	case "muffin":
+		return "Muffin"
 	}
 
 	return "unknown"
