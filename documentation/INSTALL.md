@@ -1,11 +1,9 @@
 # Installation
 
-This guide covers installation instructions for the base operating systems that most supported Linux distributions are derived from. If you're using a derivative distribution, you can usually follow the instructions for its corresponding base distribution.
-
 * [Debian-based distributions](#debian)
 * [Fedora-based distributions](#fedora)
 * [Arch-based distributions](#arch)
-* [NixOS](#nixos)
+* [Nix](#nix)
 * [Build from source](#build-from-source)
 
 ## Debian
@@ -27,7 +25,7 @@ Dfetch does not currently provide a prebuilt package for Arch or Arch-based dist
 * Download the prebuilt binary from the [Releases page](https://github.com/David17c/Dfetch/releases), or
 * Build Dfetch from source by following the [build instructions](#build-from-source).
 
-## NixOS
+## Nix
 
 ### Install with Flakes
 

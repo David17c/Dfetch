@@ -1,6 +1,6 @@
 # Command-line flags
 
-With Dfetch installed you can get a list of flags using the `--help` flag.
+`--help` List flags
 
 `--list-all-modules` Print a list of all modules
 
@@ -13,7 +13,3 @@ With Dfetch installed you can get a list of flags using the `--help` flag.
 `--set-config "path"` Specify config file to use
 
 `--reset-config` Regenerate the default config
-
-`--help` List flags
-
-More flags will be added over time.

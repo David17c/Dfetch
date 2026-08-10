@@ -11,9 +11,7 @@ type ModuleOutput struct {
 	Color     string
 	Separator string
 	Value     string
-
-	// Disk only
-	Mount string
+	Mount     string
 }
 
 func CollectSystemInfo(modules []config.Module, distroName string, NoColor bool) []ModuleOutput {
