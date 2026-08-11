@@ -61,7 +61,7 @@ func CollectSystemInfo(modules []config.Module, distroName string, NoColor bool)
 			value = Bios()
 
 		case "de":
-			value = DesktopEnvironment(module.Format)
+			value = DesktopEnvironment()
 
 		case "wm":
 			value = windowManager(module.Format)

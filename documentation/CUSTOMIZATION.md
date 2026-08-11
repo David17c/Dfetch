@@ -93,7 +93,6 @@ Only supported by:
 - `cpu` supported format options: `short`
 - `memory` supported format options: `long`
 - `swap` supported format options: `long`
-- `de` supported format options: `short`
 - `wm` supported format options: `short`
 - `shell` supported format options: `short`
 - `disk` supported format options: `long`

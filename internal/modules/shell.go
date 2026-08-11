@@ -57,6 +57,11 @@ func Shell(format string) string {
 			return "Dash"
 		}
 		return shellVersion("Dash", shellPath, "-V")
+	case "ksh":
+		if format == "short" {
+			return "Ksh"
+		}
+		return shellVersion("Ksh", shellPath, "--version")
 	default:
 		return shell
 	}

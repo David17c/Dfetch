@@ -1,6 +1,6 @@
 # Dfetch
 
-A lightweight command-line tool for displaying system information. It focuses on clean output, actually usefull info, and simple configuration.
+Lightweight command-line tool for displaying system information. It focuses on clean output, actually usefull info, and simple configuration.
 
 ![Default output on Debian](image/debian_dfetch_output.png)
 
@@ -18,6 +18,6 @@ If your distribution isn't listed, Dfetch probably still works. This list only i
 
 ## Documentation
 
-[Customization](documentation/CUSTOMIZATION.md)  
+[Customization guide](documentation/CUSTOMIZATION.md)  
 [Installation Instructions](documentation/INSTALL.md)  
 [Command-line flags](documentation/FLAGS.md)  

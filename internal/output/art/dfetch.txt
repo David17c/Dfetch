@@ -2,13 +2,13 @@ ${Blue}DDDDDDDDDDDDDDDDDDDD
 ${Blue}DDDDDDDDDDDDDDDDDDDDDDD
 ${Blue}DDDD              DDDDDD
 ${Blue}DDDD                DDDDD
-${Blue}DDDD             ${bright_white}DD  ${Blue}DDDDD
-${Blue}DDDD         ${bright_white}DD       ${Blue}DDDD
+${Blue}DDDD                 DDDDD
 ${Blue}DDDD                  DDDD
 ${Blue}DDDD                  DDDD
 ${Blue}DDDD                  DDDD
-${Blue}DDDD              ${bright_white}DD  ${Blue}DDDD
-${Blue}DDDD         ${bright_white}DDDDD    ${Blue}DDDD
+${Blue}DDDD                  DDDD
+${Blue}DDDD                  DDDD
+${Blue}DDDD                  DDDD
 ${Blue}DDDD                 DDDD
 ${Blue}DDDD                DDDDD
 ${Blue}DDDD              DDDDDD

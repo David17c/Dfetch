@@ -9,7 +9,7 @@ ${green}jliililiiilililiiili@`  ~ililiiiiiL
 ${green}iiiliiiiliiiiiiili>`      ~liililii
 ${green}liliiiliiilililii`         -9liiiil
 ${green}iiiiiliiliiiiii~             "4lili
-${green}4ililiiiiilil~|      -w,       )4lf
+${green}4ililiiiiilil~|      /w,       )4lf
 ${green}-liiiiililiF'       _liig,       )'
 ${green} )iiiliii@`       _QIililig,
 ${green}  )iiii>`       .Qliliiiililw
