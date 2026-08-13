@@ -12,16 +12,16 @@ import (
 
 func main() {
 	// Parse command-line flags
-	flags := cmd.ParseFlags()
+	opts := cmd.ParseFlags()
 
 	// Create the default config file if it doesn't exist
-	if err := config.CreateConfigFile(flags); err != nil {
+	if err := config.CreateConfigFile(opts); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		return
 	}
 
 	// Read the config
-	cfg, err := config.ReadConfig(flags)
+	cfg, err := config.ReadConfig(opts)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		return
@@ -35,14 +35,14 @@ func main() {
 	}
 
 	// Collect system information based on the configured modules
-	sys := modules.CollectSystemInfo(cfg.Modules, distro.DisplayName(), flags.NoColor)
+	sys := modules.CollectSystemInfo(cfg.Modules, distro.DisplayName(), opts.NoColor)
 
 	// Load the ASCII art
-	asciiLines := output.LoadASCII(distro, cfg, flags)
+	asciiLines := output.LoadASCII(distro, cfg, opts)
 
 	// Build the output lines
-	infoLines := output.BuildInfoLines(sys, flags.NoColor)
+	infoLines := output.BuildInfoLines(sys, opts.NoColor)
 
 	// Print final result
-	output.PrintOutput(asciiLines, infoLines, flags.NoColor)
+	output.PrintOutput(asciiLines, infoLines, opts.NoColor)
 }

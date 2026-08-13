@@ -33,13 +33,13 @@ type Module struct {
 	Mount string `json:"mount,omitempty"`
 }
 
-func configPath(flags cmd.Flags) (string, error) {
+func configPath(opts cmd.Options) (string, error) {
 	var configDir string
 
-	if flags.SetConfig != "" {
-		_, err := os.Stat(flags.SetConfig)
+	if opts.SetConfig != "" {
+		_, err := os.Stat(opts.SetConfig)
 		if err == nil {
-			configDir = flags.SetConfig
+			configDir = opts.SetConfig
 			return configDir, nil
 		}
 	}
@@ -52,8 +52,8 @@ func configPath(flags cmd.Flags) (string, error) {
 }
 
 // Read the config file put everyting in the struct and validate the config
-func ReadConfig(flags cmd.Flags) (Config, error) {
-	path, err := configPath(flags)
+func ReadConfig(opts cmd.Options) (Config, error) {
+	path, err := configPath(opts)
 	if err != nil {
 		return Config{}, err
 	}
@@ -205,8 +205,8 @@ func IsValidColor(color string) bool {
 	return false
 }
 
-func CreateConfigFile(flags cmd.Flags) error {
-	path, err := configPath(flags)
+func CreateConfigFile(opts cmd.Options) error {
+	path, err := configPath(opts)
 	if err != nil {
 		return err
 	}
@@ -218,8 +218,8 @@ func CreateConfigFile(flags cmd.Flags) error {
 	}
 
 	if _, err := os.Stat(path); err == nil {
-		if flags.ResetConfig {
-			RemoveConfigFile(flags)
+		if opts.ResetConfig {
+			RemoveConfigFile(opts)
 		} else {
 			return nil
 		}
@@ -287,8 +287,8 @@ func CreateConfigFile(flags cmd.Flags) error {
 }
 
 // Removes existing config
-func RemoveConfigFile(flags cmd.Flags) {
-	path, err := configPath(flags)
+func RemoveConfigFile(opts cmd.Options) {
+	path, err := configPath(opts)
 	if err != nil {
 		return
 	}

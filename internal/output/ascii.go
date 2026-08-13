@@ -15,17 +15,17 @@ import (
 //go:embed art/*
 var ArtFS embed.FS
 
-func LoadASCII(distro modules.DistroInfo, cfg config.Config, flags cmd.Flags) []string {
+func LoadASCII(distro modules.DistroInfo, cfg config.Config, opts cmd.Options) []string {
 	var asciiArt []string
 
 	// If the user disabled ASCII art
-	if !cfg.ASCII.Enabled || flags.NoASCII {
+	if !cfg.ASCII.Enabled || opts.NoLogo {
 		return nil
 	}
 
 	// Try ASCII art specified using a command-line flag
-	if flags.SetASCII != "" && flags.SetASCII != "builtin" {
-		if lines, err := LoadASCIIByName(flags.SetASCII); err == nil {
+	if opts.SetLogo != "" && opts.SetLogo != "builtin" {
+		if lines, err := LoadASCIIByName(opts.SetLogo); err == nil {
 			asciiArt = lines
 		}
 	}

@@ -4,35 +4,35 @@ import (
 	"fmt"
 	"os"
 
-	flag "github.com/spf13/pflag"
+	flags "github.com/spf13/pflag"
 )
 
-type Flags struct {
-	NoASCII        bool
-	NoColor        bool
-	ResetConfig    bool
-	ListAllModules bool
-	SetASCII       string
-	SetConfig      string
+type Options struct {
+	NoLogo      bool
+	NoColor     bool
+	ResetConfig bool
+	ListModules bool
+	SetLogo     string
+	SetConfig   string
 }
 
-func ParseFlags() Flags {
-	var flags Flags
+func ParseFlags() Options {
+	var opts Options
 
-	flag.BoolVar(&flags.NoASCII, "no-ascii", false, "Disable ASCII art")
-	flag.BoolVar(&flags.NoColor, "no-color", false, "Disable color")
-	flag.StringVar(&flags.SetASCII, "set-ascii", "", "Set custom ascii art")
-	flag.StringVar(&flags.SetConfig, "set-config", "", "Specify config file to use")
-	flag.BoolVar(&flags.ResetConfig, "reset-config", false, "Regenerate the config file")
-	flag.BoolVar(&flags.ListAllModules, "list-all-modules", false, "Print a list of available modules")
+	flags.BoolVar(&opts.NoLogo, "no-ascii", false, "Disable ASCII art")
+	flags.BoolVar(&opts.NoColor, "no-color", false, "Disable color")
+	flags.StringVar(&opts.SetLogo, "set-ascii", "", "Set custom ascii art")
+	flags.StringVar(&opts.SetConfig, "set-config", "", "Specify config file to use")
+	flags.BoolVar(&opts.ResetConfig, "reset-config", false, "Regenerate the config file")
+	flags.BoolVar(&opts.ListModules, "list-all-modules", false, "Print a list of available modules")
 
-	flag.Parse()
+	flags.Parse()
 
-	if flags.ListAllModules {
+	if opts.ListModules {
 		ListAllModules()
 	}
 
-	return flags
+	return opts
 }
 
 func ListAllModules() {

@@ -2,14 +2,14 @@
 
 `--help` List flags
 
-`--list-all-modules` Print a list of all modules
+`--list-modules` List all modules
 
-`--no-ascii` Disable ASCII art for now
+`--no-logo` Disable ASCII art for this run
 
-`--no-color` Disable color for now (some ascii art may become unrecognizable)
+`--no-color` Disable color for current run (some ascii art may become unrecognizable)
 
-`--set-ascii "path / distro name"` Set custom ascii art or specify a builtin distro which ascii art should be used
+`--set-logo <path / distro name>` File path to [custom ascii art](CUSTOMIZATION.md#custom-ascii-art) or name of distro
 
-`--set-config "path"` Specify config file to use
+`--set-config <path>` Specify config file to use
 
 `--reset-config` Regenerate the default config
