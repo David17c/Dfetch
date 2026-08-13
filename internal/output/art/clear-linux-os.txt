@@ -1,0 +1,20 @@
+${bold_bright_blue}          BBB
+${bold_bright_blue}       BBBBBBBBB
+${bold_bright_blue}     BBBBBBBBBBBBBBB
+${bold_bright_blue}   BBBBBBBBBBBBBBBBBBBB
+${bold_bright_blue}   BBBBBBBBBBB         BBB
+${bold_bright_blue}  BBBBBBBB${bold_yellow}YYYYY
+${bold_bright_blue}  BBBBBBBB${bold_yellow}YYYYYY
+${bold_bright_blue}  BBBBBBBB${bold_yellow}YYYYYYY
+${bold_bright_blue}  BBBBBBBBB${bold_yellow}YYYYY${bold_bright_white}W
+ GG${blue}BBBBBBBY${bold_yellow}YYYY${bold_bright_white}WWW
+ GGG${blue}BBBBBBB${bold_yellow}YY${bold_bright_white}WWWWWWWW
+ GGGGGG${blue}BBBBBB${bold_bright_white}WWWWWWWW
+ GGGGGGGG${blue}BBBB${bold_bright_white}WWWWWWWW
+GGGGGGGGGGG${blue}BBB${bold_bright_white}WWWWWWW
+GGGGGGGGGGGGG${blue}B${bold_bright_white}WWWWWW
+GGGGGGGG${bold_bright_white}WWWWWWWWWWW
+GG${bold_bright_white}WWWWWWWWWWWWWWWW
+ WWWWWWWWWWWWWWWW
+      WWWWWWWWWW
+          WWW

@@ -1,20 +1,20 @@
-${yellow}             --+oossssssoo+--
-${yellow}         .:+ssssssssssssssssss+:.
-${yellow}       -+ssssssssssssssssssyyssss+-
-${yellow}     .ossssssssssssssssssd${bright_white}MMMNy${yellow}sssso.
-${yellow}   /sssssssssss${bright_white}hdmmNNmmyNMMMMh${yellow}ssssss/
-${yellow}  +sssssssss${bright_white}hm${yellow}yd${bright_white}MMMMMMMNddddy${yellow}ssssssss+
-${yellow} /ssssssss${bright_white}hNMMM${yellow}yh${bright_white}hyyyyhmNMMMNh${yellow}ssssssss/
-${yellow}.ssssssss${bright_white}dMMMNh${yellow}ssssssssss${bright_white}hNMMMd${yellow}ssssssss.
-${yellow}+ssss${bright_white}hhhyNMMNy${yellow}ssssssssssss${bright_white}yNMMMy${yellow}sssssss+
-${yellow}oss${bright_white}yNMMMNyMMh${yellow}ssssssssssssss${bright_white}hmmmh${yellow}ssssssso
-${yellow}oss${bright_white}yNMMMNyMMh${yellow}sssssssssssssshmmmhssssssso
-${yellow}+ssss${bright_white}hhhyNMMNy${yellow}ssssssssssss${bright_white}yNMMMy${yellow}sssssss+
-${yellow}.ssssssss${bright_white}dMMMNh${yellow}ssssssssss${bright_white}hNMMMd${yellow}ssssssss.
-${yellow} /ssssssss${bright_white}hNMMM${yellow}yh${bright_white}hyyyyhdNMMMNh${yellow}ssssssss/
-${yellow}  +sssssssss${bright_white}dm${yellow}yd${bright_white}MMMMMMMMddddy${yellow}ssssssss+
-${yellow}   /sssssssssss${bright_white}hdmNNNNmyNMMMMh${yellow}ssssss/
-${yellow}    .ossssssssssssssssss${bright_white}dMMMNy${yellow}sssso.
-${yellow}     -+sssssssssssssssss${bright_white}yyy${yellow}ssss+-
-${yellow}       `:+ssssssssssssssssss+:´
-${yellow}           --+oossssssoo+--
+${bold_yellow}             --+oossssssoo+--
+${bold_yellow}         .:+ssssssssssssssssss+:.
+${bold_yellow}       -+ssssssssssssssssssyyssss+-
+${bold_yellow}     .ossssssssssssssssssd${bold_bright_white}MMMNy${bold_yellow}sssso.
+${bold_yellow}   /sssssssssss${bold_bright_white}hdmmNNmmyNMMMMh${bold_yellow}ssssss/
+${bold_yellow}  +sssssssss${bold_bright_white}hm${bold_yellow}yd${bold_bright_white}MMMMMMMNddddy${bold_yellow}ssssssss+
+${bold_yellow} /ssssssss${bold_bright_white}hNMMM${bold_yellow}yh${bold_bright_white}hyyyyhmNMMMNh${bold_yellow}ssssssss/
+${bold_yellow}.ssssssss${bold_bright_white}dMMMNh${bold_yellow}ssssssssss${bold_bright_white}hNMMMd${bold_yellow}ssssssss.
+${bold_yellow}+ssss${bold_bright_white}hhhyNMMNy${bold_yellow}ssssssssssss${bold_bright_white}yNMMMy${bold_yellow}sssssss+
+${bold_yellow}oss${bold_bright_white}yNMMMNyMMh${bold_yellow}ssssssssssssss${bold_bright_white}hmmmh${bold_yellow}ssssssso
+${bold_yellow}oss${bold_bright_white}yNMMMNyMMh${bold_yellow}sssssssssssssshmmmhssssssso
+${bold_yellow}+ssss${bold_bright_white}hhhyNMMNy${bold_yellow}ssssssssssss${bold_bright_white}yNMMMy${bold_yellow}sssssss+
+${bold_yellow}.ssssssss${bold_bright_white}dMMMNh${bold_yellow}ssssssssss${bold_bright_white}hNMMMd${bold_yellow}ssssssss.
+${bold_yellow} /ssssssss${bold_bright_white}hNMMM${bold_yellow}yh${bold_bright_white}hyyyyhdNMMMNh${bold_yellow}ssssssss/
+${bold_yellow}  +sssssssss${bold_bright_white}dm${bold_yellow}yd${bold_bright_white}MMMMMMMMddddy${bold_yellow}ssssssss+
+${bold_yellow}   /sssssssssss${bold_bright_white}hdmNNNNmyNMMMMh${bold_yellow}ssssss/
+${bold_yellow}    .ossssssssssssssssss${bold_bright_white}dMMMNy${bold_yellow}sssso.
+${bold_yellow}     -+sssssssssssssssss${bold_bright_white}yyy${bold_yellow}ssss+-
+${bold_yellow}       `:+ssssssssssssssssss+:´
+${bold_yellow}           --+oossssssoo+--

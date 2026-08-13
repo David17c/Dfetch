@@ -1,20 +1,20 @@
-${bright_blue}..............
-${bright_blue}            ..,;:ccc,.
-${bright_blue}          ......''';lxO.
-${bright_blue}.....''''..........,:ld;
-${bright_blue}           .';;;:::;,,.x,
-${bright_blue}      ..'''.            0Xxoc:,.  ...
-${bright_blue}  ....                ,ONkc;,;cokOdc',.
-${bright_blue} .                   OMo           ':${white}dd${bright_blue}o.
-${bright_blue}                    dMc               :OO;
-${bright_blue}                    0M.                 .:o.
-${bright_blue}                    ;Wd
-${bright_blue}                     ;XO,
-${bright_blue}                       ,d0Odlc;,..
-${bright_blue}                           ..',;:cdOOd::,.
-${bright_blue}                                    .:d;.':;.
-${bright_blue}                                       'd,  .'
-${bright_blue}                                         ;l   ..
-${bright_blue}                                          .o
-${bright_blue}                                            c
-${bright_blue}                                            .'
+${bold_bright_blue}..............
+${bold_bright_blue}            ..,;:ccc,.
+${bold_bright_blue}          ......''';lxO.
+${bold_bright_blue}.....''''..........,:ld;
+${bold_bright_blue}           .';;;:::;,,.x,
+${bold_bright_blue}      ..'''.            0Xxoc:,.  ...
+${bold_bright_blue}  ....                ,ONkc;,;cokOdc',.
+${bold_bright_blue} .                   OMo           ':${white}dd${bright_blue}o.
+${bold_bright_blue}                    dMc               :OO;
+${bold_bright_blue}                    0M.                 .:o.
+${bold_bright_blue}                    ;Wd
+${bold_bright_blue}                     ;XO,
+${bold_bright_blue}                       ,d0Odlc;,..
+${bold_bright_blue}                           ..',;:cdOOd::,.
+${bold_bright_blue}                                    .:d;.':;.
+${bold_bright_blue}                                       'd,  .'
+${bold_bright_blue}                                         ;l   ..
+${bold_bright_blue}                                          .o
+${bold_bright_blue}                                            c
+${bold_bright_blue}                                            .'

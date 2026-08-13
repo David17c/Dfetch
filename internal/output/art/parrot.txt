@@ -1,0 +1,24 @@
+${bold_cyan}  `:oho/-`
+${bold_cyan}`mMMMMMMMMMMMNmmdhy-
+${bold_cyan} dMMMMMMMMMMMMMMMMMMs`
+${bold_cyan} +MMsohNMMMMMMMMMMMMMm/
+${bold_cyan} .My   .+dMMMMMMMMMMMMMh.
+${bold_cyan}  +       :NMMMMMMMMMMMMNo
+${bold_cyan}           `yMMMMMMMMMMMMMm:
+${bold_cyan}             /NMMMMMMMMMMMMMy`
+${bold_cyan}              .hMMMMMMMMMMMMMN+
+${bold_cyan}                  ``-NMMMMMMMMMd-
+${bold_cyan}                     /MMMMMMMMMMMs`
+${bold_cyan}                      mMMMMMMMsyNMN/
+${bold_cyan}                      +MMMMMMMo  :sNh.
+${bold_cyan}                      `NMMMMMMm     -o/
+${bold_cyan}                       oMMMMMMM.
+${bold_cyan}                       `NMMMMMM+
+${bold_cyan}                        +MMd/NMh
+${bold_cyan}                         mMm -mN`
+${bold_cyan}                         /MM  `h:
+${bold_cyan}                          dM`   .
+${bold_cyan}                          :M-
+${bold_cyan}                           d:
+${bold_cyan}                           -+
+${bold_cyan}                            -

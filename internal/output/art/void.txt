@@ -1,18 +1,18 @@
-${green}                __.;=====;.__
-${green}            _.=+==++=++=+=+===;.
-${green}             -=+++=+===+=+=+++++=_
-${green}        .     -=:``     `--==+=++==.
-${green}       _vi,    `            --+=++++:
-${green}      .uvnvi.       _._       -==+==+.
-${green}     .vvnvnI`    .;==|==;.     :|=||=|.
-${bright_white}+QmQQmpvvnv; _yYsyQQWUUQQQm #QmQ#:QQQWUV$QQm.
-${bright_white} -QQWQWpvvowZ?.wQQQE==<QWWQ/QWQW.QQWW(: jQWQE
-${bright_white}  -$QQQQmmU'  jQQQ@+=<QWQQ)mQQQ.mQQQC+;jWQQ@'
-${bright_white}   -$WQ8YnI:   QWQQwgQQWV`mWQQ.jQWQQgyyWW@!
-${green}     -1vvnvv.     `~+++`        ++|+++
-${green}      +vnvnnv,                 `-|===
-${green}       +vnvnvns.           .      :=-
-${green}        -Invnvvnsi..___..=sv=.     `
-${green}          +Invnvnvnnnnnnnnvvnn;.
-${green}            ~|Invnvnvvnvvvnnv}+`
-${green}               -~|{*l}*|~
+${bold_green}                __.;=====;.__
+${bold_green}            _.=+==++=++=+=+===;.
+${bold_green}             -=+++=+===+=+=+++++=_
+${bold_green}        .     -=:``     `--==+=++==.
+${bold_green}       _vi,    `            --+=++++:
+${bold_green}      .uvnvi.       _._       -==+==+.
+${bold_green}     .vvnvnI`    .;==|==;.     :|=||=|.
+${bold_bright_white}+QmQQmpvvnv; _yYsyQQWUUQQQm #QmQ#:QQQWUV$QQm.
+${bold_bright_white} -QQWQWpvvowZ?.wQQQE==<QWWQ/QWQW.QQWW(: jQWQE
+${bold_bright_white}  -$QQQQmmU'  jQQQ@+=<QWQQ)mQQQ.mQQQC+;jWQQ@'
+${bold_bright_white}   -$WQ8YnI:   QWQQwgQQWV`mWQQ.jQWQQgyyWW@!
+${bold_green}     -1vvnvv.     `~+++`        ++|+++
+${bold_green}      +vnvnnv,                 `-|===
+${bold_green}       +vnvnvns.           .      :=-
+${bold_green}        -Invnvvnsi..___..=sv=.     `
+${bold_green}          +Invnvnvnnnnnnnnvvnn;.
+${bold_green}            ~|Invnvnvvnvvvnnv}+`
+${bold_green}               -~|{*l}*|~

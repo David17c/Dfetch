@@ -1,21 +1,21 @@
-${bright_blue}                  :::::::::
-${bright_blue}            :::::::::::::::::::
-${bright_blue}         :::::::::::::::::::::::::
-${bright_blue}       ::::::::${bright_white}cllcccccllllllll${bright_blue}::::::
-${bright_blue}    :::::::::${bright_white}lc               dc${bright_blue}:::::::
-${bright_blue}   ::::::::${bright_white}cl   clllccllll    oc${bright_blue}:::::::::
-${bright_blue}  :::::::::${bright_white}o   lc${bright_blue}::::::::${bright_white}co   oc${bright_blue}::::::::::
-${bright_blue} ::::::::::${bright_white}o    cccclc${bright_blue}:::::${bright_white}clcc${bright_blue}::::::::::::
-${bright_blue} :::::::::::${bright_white}lc        cclccclc${bright_blue}:::::::::::::
-${bright_blue}::::::::::::::${bright_white}lcclcc          lc${bright_blue}::::::::::::
-${bright_blue}::::::::::${bright_white}cclcc${bright_blue}:::::${bright_white}lccclc     oc${bright_blue}:::::::::::
-${bright_blue}::::::::::${bright_white}o    l${bright_blue}::::::::::${bright_white}l    lc${bright_blue}:::::::::::
-${bright_blue} :::::${bright_white}cll${bright_blue}:${bright_white}o     clcllcccll     o${bright_blue}:::::::::::
-${bright_blue} :::::${bright_white}occ${bright_blue}:${bright_white}o                  clc${bright_blue}:::::::::::
-${bright_blue}  ::::${bright_white}ocl${bright_blue}:${bright_white}ccslclccclclccclclc${bright_blue}:::::::::::::
-${bright_blue}   :::${bright_white}oclcccccccccccccllllllllllllll${bright_blue}:::::
-${bright_blue}    ::${bright_white}lcc1lcccccccccccccccccccccccco${bright_blue}::::
-${bright_blue}      ::::::::::::::::::::::::::::::::
-${bright_blue}        ::::::::::::::::::::::::::::
-${bright_blue}           ::::::::::::::::::::::
-${bright_blue}                ::::::::::::
+${bold_bright_blue}                  :::::::::
+${bold_bright_blue}            :::::::::::::::::::
+${bold_bright_blue}         :::::::::::::::::::::::::
+${bold_bright_blue}       ::::::::${bold_bright_white}cllcccccllllllll${bold_bright_blue}::::::
+${bold_bright_blue}    :::::::::${bold_bright_white}lc               dc${bold_bright_blue}:::::::
+${bold_bright_blue}   ::::::::${bold_bright_white}cl   clllccllll    oc${bold_bright_blue}:::::::::
+${bold_bright_blue}  :::::::::${bold_bright_white}o   lc${bold_bright_blue}::::::::${bold_bright_white}co   oc${bold_bright_blue}::::::::::
+${bold_bright_blue} ::::::::::${bold_bright_white}o    cccclc${bold_bright_blue}:::::${bold_bright_white}clcc${bold_bright_blue}::::::::::::
+${bold_bright_blue} :::::::::::${bold_bright_white}lc        cclccclc${bold_bright_blue}:::::::::::::
+${bold_bright_blue}::::::::::::::${bold_bright_white}lcclcc          lc${bold_bright_blue}::::::::::::
+${bold_bright_blue}::::::::::${bold_bright_white}cclcc${bold_bright_blue}:::::${bold_bright_white}lccclc     oc${bold_bright_blue}:::::::::::
+${bold_bright_blue}::::::::::${bold_bright_white}o    l${bold_bright_blue}::::::::::${bold_bright_white}l    lc${bold_bright_blue}:::::::::::
+${bold_bright_blue} :::::${bold_bright_white}cll${bold_bright_blue}:${bold_bright_white}o     clcllcccll     o${bold_bright_blue}:::::::::::
+${bold_bright_blue} :::::${bold_bright_white}occ${bold_bright_blue}:${bold_bright_white}o                  clc${bold_bright_blue}:::::::::::
+${bold_bright_blue}  ::::${bold_bright_white}ocl${bold_bright_blue}:${bold_bright_white}ccslclccclclccclclc${bold_bright_blue}:::::::::::::
+${bold_bright_blue}   :::${bold_bright_white}oclcccccccccccccllllllllllllll${bold_bright_blue}:::::
+${bold_bright_blue}    ::${bold_bright_white}lcc1lcccccccccccccccccccccccco${bold_bright_blue}::::
+${bold_bright_blue}      ::::::::::::::::::::::::::::::::
+${bold_bright_blue}        ::::::::::::::::::::::::::::
+${bold_bright_blue}           ::::::::::::::::::::::
+${bold_bright_blue}                ::::::::::::

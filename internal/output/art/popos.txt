@@ -1,20 +1,20 @@
-${magenta}             /////////////
-${magenta}         /////////////////////
-${magenta}      ///////${bright_white}*767${magenta}////////////////
-${magenta}    //////${bright_white}7676767676*${magenta}//////////////
-${magenta}   /////${bright_white}76767${magenta}//${bright_white}7676767${magenta}//////////////
-${magenta}  /////${bright_white}767676${magenta}///${bright_white}*76767${magenta}///////////////
-${magenta} ///////${bright_white}767676${magenta}///${bright_white}76767${magenta}.///${bright_white}7676*${magenta}///////
-${magenta}/////////${bright_white}767676${magenta}//${bright_white}76767${magenta}///${bright_white}767676${magenta}////////
-${magenta}//////////${bright_white}76767676767${magenta}////${bright_white}76767${magenta}/////////
-${magenta}///////////${bright_white}76767676${magenta}//////${bright_white}7676${magenta}//////////
-${magenta}////////////,${bright_white}7676${magenta},///////${bright_white}767${magenta}///////////
-${magenta}//////////////${bright_white}7676${magenta}///////${bright_white}76${magenta}////////////
-${magenta}///////////////${bright_white}7676${magenta}////////////////////
-${magenta} ///////////////${bright_white}7676${magenta}///${bright_white}767${magenta}////////////
-${magenta}  ///////////////////////////////////
-${magenta}   //////${bright_white}.7676767676767676767,${magenta}//////
-${magenta}    /////${bright_white}767676767676767676767${magenta}/////
-${magenta}      ///////////////////////////
-${magenta}         /////////////////////
-${magenta}             /////////////
+${bold_magenta}             /////////////
+${bold_magenta}         /////////////////////
+${bold_magenta}      ///////${bold_bright_white}*767${bold_magenta}////////////////
+${bold_magenta}    //////${bold_bright_white}7676767676*${bold_magenta}//////////////
+${bold_magenta}   /////${bold_bright_white}76767${bold_magenta}//${bold_bright_white}7676767${bold_magenta}//////////////
+${bold_magenta}  /////${bold_bright_white}767676${bold_magenta}///${bold_bright_white}*76767${bold_magenta}///////////////
+${bold_magenta} ///////${bold_bright_white}767676${bold_magenta}///${bold_bright_white}76767${bold_magenta}.///${bold_bright_white}7676*${bold_magenta}///////
+${bold_magenta}/////////${bold_bright_white}767676${bold_magenta}//${bold_bright_white}76767${bold_magenta}///${bold_bright_white}767676${bold_magenta}////////
+${bold_magenta}//////////${bold_bright_white}76767676767${bold_magenta}////${bold_bright_white}76767${bold_magenta}/////////
+${bold_magenta}///////////${bold_bright_white}76767676${bold_magenta}//////${bold_bright_white}7676${bold_magenta}//////////
+${bold_magenta}////////////,${bold_bright_white}7676${bold_magenta},///////${bold_bright_white}767${bold_magenta}///////////
+${bold_magenta}//////////////${bold_bright_white}7676${bold_magenta}///////${bold_bright_white}76${bold_magenta}////////////
+${bold_magenta}///////////////${bold_bright_white}7676${bold_magenta}////////////////////
+${bold_magenta} ///////////////${bold_bright_white}7676${bold_magenta}///${bold_bright_white}767${bold_magenta}////////////
+${bold_magenta}  ///////////////////////////////////
+${bold_magenta}   //////${bold_bright_white}.7676767676767676767,${bold_magenta}//////
+${bold_magenta}    /////${bold_bright_white}767676767676767676767${bold_magenta}/////
+${bold_magenta}      ///////////////////////////
+${bold_magenta}         /////////////////////
+${bold_magenta}             /////////////

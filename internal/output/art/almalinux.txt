@@ -1,20 +1,20 @@
-${red}         'c:.
-${red}        lkkkx, ..       ${yellow}..   ,cc,
-${red}        okkkk:ckkx'  ${yellow}.lxkkx.okkkkd
-${red}        .:llcokkx'  ${yellow}:kkkxkko:xkkd,
-${red}      .xkkkkdood:  ${yellow};kx,  .lkxlll;
-${red}       xkkx.       ${yellow}xk'     xkkkkk:
-${red}       'xkx.       ${yellow}xd      .....,.
-${blue}      .. ${red}:xkl'     ${yellow}:c      ..''..
-${blue}    .dkx'  ${red}.:ldl:'. ${yellow}'  ${bright_green}':lollldkkxo;
-${blue}  .''lkkko'                     ${bright_green}ckkkx.
-${blue}'xkkkd:kkd.       ..  ${bright_blue};'        ${bright_green}:kkxo.
-${blue},xkkkd;kk'      ,d;    ${bright_blue}ld.   ${bright_green}':dkd::cc,
-${blue} .,,.;xkko'.';lxo.      ${bright_blue}dx,  ${bright_green}:kkk'xkkkkc
-${blue}     'dkkkkkxo:.        ${bright_blue};kx  ${bright_green}.kkk:;xkkd.
-${blue}       .....   ${bright_blue}.;dk:.   ${bright_blue}lkk.  ${bright_green}:;,
-${bright_blue}             ${bright_blue}:kkkkkkkdoxkkx
-${bright_blue}              ,c,,;;;:xkkd.
-${bright_blue}                ;kkkkl...
-${bright_blue}                ;kkkkl
-${bright_blue}                 ,od;
+${bold_red}         'c:.
+${bold_red}        lkkkx, ..       ${bold_yellow}..   ,cc,
+${bold_red}        okkkk:ckkx'  ${bold_yellow}.lxkkx.okkkkd
+${bold_red}        .:llcokkx'  ${bold_yellow}:kkkxkko:xkkd,
+${bold_red}      .xkkkkdood:  ${bold_yellow};kx,  .lkxlll;
+${bold_red}       xkkx.       ${bold_yellow}xk'     xkkkkk:
+${bold_red}       'xkx.       ${bold_yellow}xd      .....,.
+${bold_blue}      .. ${bold_red}:xkl'     ${bold_yellow}:c      ..''..
+${bold_blue}    .dkx'  ${bold_red}.:ldl:'. ${bold_yellow}'  ${bold_bright_green}':lollldkkxo;
+${bold_blue}  .''lkkko'                     ${bold_bright_green}ckkkx.
+${bold_blue}'xkkkd:kkd.       ..  ${bold_bright_blue};'        ${bold_bright_green}:kkxo.
+${bold_blue},xkkkd;kk'      ,d;    ${bold_bright_blue}ld.   ${bold_bright_green}':dkd::cc,
+${bold_blue} .,,.;xkko'.';lxo.      ${bold_bright_blue}dx,  ${bold_bright_green}:kkk'xkkkkc
+${bold_blue}     'dkkkkkxo:.        ${bold_bright_blue};kx  ${bold_bright_green}.kkk:;xkkd.
+${bold_blue}       .....   ${bold_bright_blue}.;dk:.   ${bold_bright_blue}lkk.  ${bold_bright_green}:;,
+${bold_bright_blue}             ${bold_bright_blue}:kkkkkkkdoxkkx
+${bold_bright_blue}              ,c,,;;;:xkkd.
+${bold_bright_blue}                ;kkkkl...
+${bold_bright_blue}                ;kkkkl
+${bold_bright_blue}                 ,od;

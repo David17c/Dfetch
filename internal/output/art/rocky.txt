@@ -1,19 +1,19 @@
-${green}          __wgliliiligw_,
-${green}       _williiiiiiliilililw,
-${green}     _%iiiiiilililiiiiiiiiiii_
-${green}   .Qliiiililiiiiiiililililiilm.
-${green}  _iiiiiliiiiiililiiiiiiiiiiliil,
-${green} .lililiiilililiiiilililililiiiii,
-${green}_liiiiiiliiiiiiiliiiiiF{iiiiiilili,
-${green}jliililiiilililiiili@`  ~ililiiiiiL
-${green}iiiliiiiliiiiiiili>`      ~liililii
-${green}liliiiliiilililii`         -9liiiil
-${green}iiiiiliiliiiiii~             "4lili
-${green}4ililiiiiilil~|      /w,       )4lf
-${green}-liiiiililiF'       _liig,       )'
-${green} )iiiliii@`       _QIililig,
-${green}  )iiii>`       .Qliliiiililw
-${green}   )<>~       .mliiiiiliiiiiil,
-${green}            _gllilililiililii~
-${green}           giliiiiiiiiiiiiT`
-${green}          -^~$ililili@~~'
+${bold_green}          __wgliliiligw_,
+${bold_green}       _williiiiiiliilililw,
+${bold_green}     _%iiiiiilililiiiiiiiiiii_
+${bold_green}   .Qliiiililiiiiiiililililiilm.
+${bold_green}  _iiiiiliiiiiililiiiiiiiiiiliil,
+${bold_green} .lililiiilililiiiilililililiiiii,
+${bold_green}_liiiiiiliiiiiiiliiiiiF{iiiiiilili,
+${bold_green}jliililiiilililiiili@`  ~ililiiiiiL
+${bold_green}iiiliiiiliiiiiiili>`      ~liililii
+${bold_green}liliiiliiilililii`         -9liiiil
+${bold_green}iiiiiliiliiiiii~             "4lili
+${bold_green}4ililiiiiilil~|      /w,       )4lf
+${bold_green}-liiiiililiF'       _liig,       )'
+${bold_green} )iiiliii@`       _QIililig,
+${bold_green}  )iiii>`       .Qliliiiililw
+${bold_green}   )<>~       .mliiiiiliiiiiil,
+${bold_green}            _gllilililiililii~
+${bold_green}           giliiiiiiiiiiiiT`
+${bold_green}          -^~$ililili@~~'

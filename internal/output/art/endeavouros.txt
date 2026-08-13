@@ -1,15 +1,15 @@
-                     ${red}./${magenta}o.
-                   ${red}./${magenta}sssso${bright_blue}-
-                 ${red}`:${magenta}osssssss+${bright_blue}-
-               ${red}`:+${magenta}sssssssssso${bright_blue}/.
-             ${red}`-/o${magenta}ssssssssssssso${bright_blue}/.
-           ${red}`-/+${magenta}sssssssssssssssso${bright_blue}+:`
-         ${red}`-:/+${magenta}sssssssssssssssssso${bright_blue}+/.
-       ${red}`.://o${magenta}sssssssssssssssssssso${bright_blue}++-
-      ${red}.://+${magenta}ssssssssssssssssssssssso${bright_blue}++:
-    ${red}.:///o${magenta}ssssssssssssssssssssssssso${bright_blue}++:
-  ${red}`:////${magenta}ssssssssssssssssssssssssssso${bright_blue}+++.
-${red}`-////+${magenta}ssssssssssssssssssssssssssso${bright_blue}++++-
- ${red}`..-+${magenta}oosssssssssssssssssssssssso${bright_blue}+++++/`
-   ${bright_blue}./++++++++++++++++++++++++++++++/:.
-  ${bright_blue}`:::::::::::::::::::::::::------``
+                     ${bold_red}./${bold_magenta}o.
+                   ${bold_red}./${bold_magenta}sssso${bold_bright_blue}-
+                 ${bold_red}`:${bold_magenta}osssssss+${bold_bright_blue}-
+               ${bold_red}`:+${bold_magenta}sssssssssso${bold_bright_blue}/.
+             ${bold_red}`-/o${bold_magenta}ssssssssssssso${bold_bright_blue}/.
+           ${bold_red}`-/+${bold_magenta}sssssssssssssssso${bold_bright_blue}+:`
+         ${bold_red}`-:/+${bold_magenta}sssssssssssssssssso${bold_bright_blue}+/.
+       ${bold_red}`.://o${bold_magenta}sssssssssssssssssssso${bold_bright_blue}++-
+      ${bold_red}.://+${bold_magenta}ssssssssssssssssssssssso${bold_bright_blue}++:
+    ${bold_red}.:///o${bold_magenta}ssssssssssssssssssssssssso${bold_bright_blue}++:
+  ${bold_red}`:////${bold_magenta}ssssssssssssssssssssssssssso${bold_bright_blue}+++.
+${bold_red}`-////+${bold_magenta}ssssssssssssssssssssssssssso${bold_bright_blue}++++-
+ ${bold_red}`..-+${bold_magenta}oosssssssssssssssssssssssso${bold_bright_blue}+++++/`
+   ${bold_bright_blue}./++++++++++++++++++++++++++++++/:.
+  ${bold_bright_blue}`:::::::::::::::::::::::::------``

@@ -53,7 +53,7 @@ func Distro() (DistroInfo, error) {
 	}
 
 	if name == "" {
-		return DistroInfo{}, fmt.Errorf("unable to determine Linux distribution")
+		return DistroInfo{}, fmt.Errorf("unable to determine distribution")
 	}
 
 	return DistroInfo{

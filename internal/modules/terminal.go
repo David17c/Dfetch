@@ -175,6 +175,9 @@ func Terminal() string {
 		case "deepin-terminal":
 			return "Deepin Terminal"
 
+		case "cool-retro-term":
+			return "Cool Retro Term"
+
 		case "qterminal":
 			return "QTerminal"
 

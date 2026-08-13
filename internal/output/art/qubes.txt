@@ -1,0 +1,21 @@
+${bold_bright_blue}               `..--..`
+${bold_bright_blue}            `.----------.`
+${bold_bright_blue}        `..----------------..`
+${bold_bright_blue}     `.------------------------.``
+${bold_bright_blue} `..-------------....-------------..`
+${bold_bright_blue}.::----------..``    ``..----------:+:
+${bold_bright_blue}:////:----..`            `..---:/ossso
+${bold_bright_blue}:///////:`                  `/osssssso
+${bold_bright_blue}:///////:                    /ssssssso
+${bold_bright_blue}:///////:                    /ssssssso
+${bold_bright_blue}:///////:                    /ssssssso
+${bold_bright_blue}:///////:                    /ssssssso
+${bold_bright_blue}:///////:                    /ssssssso
+${bold_bright_blue}:////////-`                .:sssssssso
+${bold_bright_blue}:///////////-.`        `-/osssssssssso
+${bold_bright_blue}`//////////////:-```.:+ssssssssssssso-
+${bold_bright_blue}  .-://////////////sssssssssssssso/-`
+${bold_bright_blue}     `.:///////////sssssssssssssso:.
+${bold_bright_blue}         .-:///////ssssssssssssssssss/`
+${bold_bright_blue}            `.:////ssss+/+ssssssssssss.
+${bold_bright_blue}                `--//-    `-/osssso/.

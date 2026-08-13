@@ -1,15 +1,15 @@
-${bright_white}       _,met$$$$$gg.
-${bright_white}    ,g$$$$$$$$$$$$$$$P.
-${bright_white}  ,$$P'             `$$$.
-${bright_white}',$$P       ,ggs.     `$$:
-${bright_white}`d$$'     ,$P"'   ${bright_red}.    ${bright_white}$$$
-${bright_white} $$P      d$'     ${bright_red},    ${bright_white}$$P
-${bright_white} $$:      $$.   ${bright_red}-    ${bright_white},d$$'
-${bright_white} $$;      Y$b._   _,d$P'
-${bright_white} Y$$.    ${bright_red}`.${bright_white}`"Y$$$$P"'
-${bright_white} `$$b      ${bright_red}"-.__
-${bright_white}  `Y$$
-${bright_white}   `Y$$.
-${bright_white}     `$$b.
-${bright_white}       `Y$$b.
-${bright_white}          `"Y$b._
+${bold_bright_white}       _,met$$$$$gg.
+${bold_bright_white}    ,g$$$$$$$$$$$$$$$P.
+${bold_bright_white}  ,$$P'             `$$$.
+${bold_bright_white}',$$P       ,ggs.     `$$:
+${bold_bright_white}`d$$'     ,$P"'   ${bold_bright_red}.    ${bold_bright_white}$$$
+${bold_bright_white} $$P      d$'     ${bold_bright_red},    ${bold_bright_white}$$P
+${bold_bright_white} $$:      $$.   ${bold_bright_red}-    ${bold_bright_white},d$$'
+${bold_bright_white} $$;      Y$b._   _,d$P'
+${bold_bright_white} Y$$.    ${bold_bright_red}`.${bold_bright_white}`"Y$$$$P"'
+${bold_bright_white} `$$b      ${bold_bright_red}"-.__
+${bold_bright_white}  `Y$$
+${bold_bright_white}   `Y$$.
+${bold_bright_white}     `$$b.
+${bold_bright_white}       `Y$$b.
+${bold_bright_white}          `"Y$b._

@@ -10,7 +10,7 @@ import (
 )
 
 type Config struct {
-	ASCII   ASCIIConfig `json:"ascii"`
+	Logo    ASCIIConfig `json:"ascii"`
 	Modules []Module    `json:"modules"`
 }
 
@@ -183,22 +183,40 @@ func IsValidColor(color string) bool {
 	case
 		"black",
 		"red",
-		"green",
-		"yellow",
+		"bold_green",
+		"bold_yellow",
 		"blue",
-		"magenta",
+		"bold_magenta",
 		"cyan",
 		"white",
 		"bright_black",
 		"grey",
 		"gray",
 		"bright_red",
-		"bright_green",
-		"bright_yellow",
+		"bright_bold_green",
+		"bright_bold_yellow",
 		"bright_blue",
-		"bright_magenta",
+		"bright_bold_magenta",
 		"bright_cyan",
-		"bright_white":
+		"bright_white",
+		"bold_black",
+		"bold_red",
+		"bold_bold_green",
+		"bold_bold_yellow",
+		"bold_blue",
+		"bold_bold_magenta",
+		"bold_cyan",
+		"bold_white",
+		"bold_bright_black",
+		"bold_grey",
+		"bold_gray",
+		"bold_bright_red",
+		"bold_bright_bold_green",
+		"bold_bright_bold_yellow",
+		"bold_bright_blue",
+		"bold_bright_bold_magenta",
+		"bold_bright_cyan",
+		"bold_bright_white":
 		return true
 	}
 
@@ -228,7 +246,7 @@ func CreateConfigFile(opts cmd.Options) error {
 	}
 
 	defaultConfig := Config{
-		ASCII: ASCIIConfig{
+		Logo: ASCIIConfig{
 			Enabled:       true,
 			Path:          "builtin",
 			PaddingTop:    1,
@@ -238,35 +256,31 @@ func CreateConfigFile(opts cmd.Options) error {
 		Modules: []Module{
 			{Name: "emptyline"},
 
-			// System
-			{Name: "os", Label: "OS", Color: "blue", Separator: ":"},
-			{Name: "host", Label: "Host", Color: "blue", Separator: ":"},
-			{Name: "kernel", Label: "Kernel", Color: "blue", Format: "short", Separator: ":"},
-			{Name: "bios", Label: "BIOS", Color: "blue", Format: "short", Separator: ":"},
+			{Name: "os", Label: "OS", Color: "bold_blue", Separator: ":"},
+			{Name: "host", Label: "Host", Color: "bold_blue", Separator: ":"},
+			{Name: "kernel", Label: "Kernel", Color: "bold_blue", Format: "short", Separator: ":"},
+			{Name: "bios", Label: "BIOS", Color: "bold_blue", Format: "short", Separator: ":"},
 
 			{Name: "emptyline"},
 
-			// Hardware
-			{Name: "cpu", Label: "CPU", Color: "green", Format: "short", Separator: ":"},
-			{Name: "memory", Label: "RAM", Color: "green", Separator: ":", Format: "long"},
-			{Name: "disk", Label: "Disk", Color: "green", Separator: ":", Mount: "/", Format: "long"},
-			{Name: "board", Label: "Board", Color: "green", Separator: ":"},
+			{Name: "cpu", Label: "CPU", Color: "bold_green", Format: "short", Separator: ":"},
+			{Name: "memory", Label: "RAM", Color: "bold_green", Separator: ":", Format: "long"},
+			{Name: "disk", Label: "Disk", Color: "bold_green", Separator: ":", Mount: "/", Format: "long"},
+			{Name: "board", Label: "Board", Color: "bold_green", Separator: ":"},
 
 			{Name: "emptyline"},
 
-			// Environment
-			{Name: "packages", Label: "Pkgs", Color: "yellow", Separator: ":"},
-			{Name: "shell", Label: "Shell", Color: "yellow", Separator: ":"},
-			{Name: "terminal", Label: "Term", Color: "yellow", Separator: ":"},
-			{Name: "de", Label: "DE", Color: "yellow", Separator: ":"},
-			{Name: "wm", Label: "WM", Color: "yellow", Separator: ":"},
+			{Name: "packages", Label: "Pkgs", Color: "bold_yellow", Separator: ":"},
+			{Name: "shell", Label: "Shell", Color: "bold_yellow", Separator: ":"},
+			{Name: "terminal", Label: "Term", Color: "bold_yellow", Separator: ":"},
+			{Name: "de", Label: "DE", Color: "bold_yellow", Separator: ":"},
+			{Name: "wm", Label: "WM", Color: "bold_yellow", Separator: ":"},
 
 			{Name: "emptyline"},
 
-			// Runtime
-			{Name: "uptime", Label: "Uptime", Color: "magenta", Separator: ":"},
-			{Name: "local_ip", Label: "Local IP", Color: "magenta", Separator: ":"},
-			{Name: "locale", Label: "Lang", Color: "magenta", Separator: ":"},
+			{Name: "uptime", Label: "Uptime", Color: "bold_magenta", Separator: ":"},
+			{Name: "local_ip", Label: "Local IP", Color: "bold_magenta", Separator: ":"},
+			{Name: "locale", Label: "Lang", Color: "bold_magenta", Separator: ":"},
 
 			{Name: "emptyline"},
 		},

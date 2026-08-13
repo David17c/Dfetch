@@ -1,0 +1,18 @@
+${bold_bright_green}             ............
+${bold_bright_green}         .';;;;;.       .,;,.
+${bold_bright_green}      .,;;;;;;;.       ';;;;;;;.
+${bold_bright_green}    .;::::::::'     .,::;;,''''',.
+${bold_bright_green}   ,'.::::::::    .;;'.          ';
+${bold_bright_green}  ;'  'cccccc,   ,' :: '..        .:
+${bold_bright_green} ,,    :ccccc.  ;: .c, '' :.       ,;
+${bold_bright_green}.l.     cllll' ., .lc  :; .l'       l.
+${bold_bright_green}.c       :lllc  ;cl:  .l' .ll.      :'
+${bold_bright_green}.l        'looc. .   ,o:  'oo'      c,
+${bold_bright_green}.o.         .:ool::coc'  .ooo'      o.
+${bold_bright_green} ::            .....   .;dddo      ;c
+${bold_bright_green}  l:...            .';lddddo.     ,o
+${bold_bright_green}   lxxxxxdoolllodxxxxxxxxxc      :l
+${bold_bright_green}    ,dxxxxxxxxxxxxxxxxxxl.     'o,
+${bold_bright_green}      ,dkkkkkkkkkkkkko;.    .;o;
+${bold_bright_green}        .;okkkkkdl;.    .,cl:.
+${bold_bright_green}            .,:cccccccc:,.

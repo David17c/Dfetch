@@ -1,0 +1,17 @@
+${bold_bright_white}         eeeeeeeeeeeeeeeee
+${bold_bright_white}      eeeeeeeeeeeeeeeeeeeeeee
+${bold_bright_white}    eeeee  eeeeeeeeeeee   eeeee
+${bold_bright_white}  eeee   eeeee       eee     eeee
+${bold_bright_white} eeee   eeee          eee     eeee
+${bold_bright_white}eee    eee            eee       eee
+${bold_bright_white}eee   eee            eee        eee
+${bold_bright_white}ee    eee           eeee       eeee
+${bold_bright_white}ee    eee         eeeee      eeeeee
+${bold_bright_white}ee    eee       eeeee      eeeee ee
+${bold_bright_white}eee   eeee   eeeeee      eeeee  eee
+${bold_bright_white}eee    eeeeeeeeee     eeeeee    eee
+${bold_bright_white} eeeeeeeeeeeeeeeeeeeeeeee    eeeee
+${bold_bright_white}  eeeeeeee eeeeeeeeeeee      eeee
+${bold_bright_white}    eeeee                 eeeee
+${bold_bright_white}      eeeeeee         eeeeeee
+${bold_bright_white}         eeeeeeeeeeeeeeeee

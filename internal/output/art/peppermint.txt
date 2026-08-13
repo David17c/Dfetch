@@ -1,0 +1,21 @@
+${bold_bright_red}             PPPPPPPPPPPPPP
+${bold_bright_red}         PPPP${bold_bright_white}MMMMMMM${bold_bright_red}PPPPPPPPPPP
+${bold_bright_red}       PPPP${bold_bright_white}MMMMMMMMMM${bold_bright_red}PPPPPPPP${bold_bright_white}MM${bold_bright_red}PP
+${bold_bright_red}     PPPPPPPP${bold_bright_white}MMMMMMM${bold_bright_red}PPPPPPPP${bold_bright_white}MMMMM${bold_bright_red}PP
+${bold_bright_red}   PPPPPPPPPPPP${bold_bright_white}MMMMMM${bold_bright_red}PPPPPPP${bold_bright_white}MMMMMMM${bold_bright_red}PP
+${bold_bright_red}  PPPPPPPPPPPP${bold_bright_white}MMMMMMM${bold_bright_red}PPPP${bold_bright_white}M${bold_bright_red}P${bold_bright_white}MMMMMMMMM${bold_bright_red}PP
+${bold_bright_red} PP${bold_bright_white}MMMM${bold_bright_red}PPPPPPPPPP${bold_bright_white}MMM${bold_bright_red}PPPPP${bold_bright_white}MMMMMMM${bold_bright_red}P${bold_bright_white}MM${bold_bright_red}PPPP
+${bold_bright_red} P${bold_bright_white}MMMMMMMMMM${bold_bright_red}PPPPPP${bold_bright_white}MM${bold_bright_red}PPPPP${bold_bright_white}MMMMMM${bold_bright_red}PPPPPPPP
+${bold_bright_red}P${bold_bright_white}MMMMMMMMMMMM${bold_bright_red}PPPPP${bold_bright_white}MM${bold_bright_red}PP${bold_bright_white}M${bold_bright_red}P${bold_bright_white}MM${bold_bright_red}P${bold_bright_white}MM${bold_bright_red}PPPPPPPPPPP
+${bold_bright_red}P${bold_bright_white}MMMMMMMMMMMMMMMM${bold_bright_red}PP${bold_bright_white}M${bold_bright_red}P${bold_bright_white}MMM${bold_bright_red}PPPPPPPPPPPPPPPP
+${bold_bright_red}P${bold_bright_white}MMM${bold_bright_red}PPPPPPPPPPPPPPPPPPPPPPPPPPPPPP${bold_bright_white}MMMMM${bold_bright_red}P
+${bold_bright_red}PPPPPPPPPPPPPPPP${bold_bright_white}MMM${bold_bright_red}P${bold_bright_white}M${bold_bright_red}P${bold_bright_white}MMMMMMMMMMMMMMMM${bold_bright_red}PP
+${bold_bright_red}PPPPPPPPPPP${bold_bright_white}MM${bold_bright_red}P${bold_bright_white}MM${bold_bright_red}PPPP${bold_bright_white}MM${bold_bright_red}PPPPP${bold_bright_white}MMMMMMMMMMM${bold_bright_red}PP
+${bold_bright_red} PPPPPPPP${bold_bright_white}MMMMMM${bold_bright_red}PPPPP${bold_bright_white}MM${bold_bright_red}PPPPPP${bold_bright_white}MMMMMMMMM${bold_bright_red}PP
+${bold_bright_red} PPPP${bold_bright_white}MM${bold_bright_red}P${bold_bright_white}MMMMMMM${bold_bright_red}PPPPPP${bold_bright_white}MM${bold_bright_red}PPPPPPPPPP${bold_bright_white}MMMM${bold_bright_red}PP
+${bold_bright_red}  PP${bold_bright_white}MMMMMMMMM${bold_bright_red}P${bold_bright_white}M${bold_bright_red}PPPP${bold_bright_white}MMMMMM${bold_bright_red}PPPPPPPPPPPPP
+${bold_bright_red}   PP${bold_bright_white}MMMMMMM${bold_bright_red}PPPPPPP${bold_bright_white}MMMMMM${bold_bright_red}PPPPPPPPPPPP
+${bold_bright_red}     PP${bold_bright_white}MMMM${bold_bright_red}PPPPPPPPP${bold_bright_white}MMMMMMM${bold_bright_red}PPPPPPPP
+${bold_bright_red}       PP${bold_bright_white}MM${bold_bright_red}PPPPPPPP${bold_bright_white}MMMMMMMMMM${bold_bright_red}PPPP
+${bold_bright_red}         PPPPPPPPPP${bold_bright_white}MMMMMMMM${bold_bright_red}PPPP
+${bold_bright_red}             PPPPPPPPPPPPPP

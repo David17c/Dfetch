@@ -16,33 +16,33 @@ func main() {
 
 	// Create the default config file if it doesn't exist
 	if err := config.CreateConfigFile(opts); err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		return
+		fmt.Fprintf(os.Stderr, "Dfetch: %v\n", err)
+		os.Exit(1)
 	}
 
-	// Read the config
+	// Read / create the config
 	cfg, err := config.ReadConfig(opts)
 	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		return
+		fmt.Fprintf(os.Stderr, "Dfetch: %v\n", err)
+		os.Exit(1)
 	}
 
-	// Get distro information
+	// Collect distro info
 	distro, err := modules.Distro()
 	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		return
+		fmt.Fprintf(os.Stderr, "Dfetch: %v\n", err)
+		os.Exit(1)
 	}
 
-	// Collect system information based on the configured modules
+	// Collect required system info
 	sys := modules.CollectSystemInfo(cfg.Modules, distro.DisplayName(), opts.NoColor)
 
-	// Load the ASCII art
-	asciiLines := output.LoadASCII(distro, cfg, opts)
+	// Load ascii art
+	asciiLines := output.LoadLogo(distro, cfg, opts)
 
-	// Build the output lines
+	// Build output lines
 	infoLines := output.BuildInfoLines(sys, opts.NoColor)
 
-	// Print final result
+	// Print result
 	output.PrintOutput(asciiLines, infoLines, opts.NoColor)
 }

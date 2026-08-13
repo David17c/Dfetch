@@ -19,12 +19,12 @@ type Options struct {
 func ParseFlags() Options {
 	var opts Options
 
-	flags.BoolVar(&opts.NoLogo, "no-ascii", false, "Disable ASCII art")
+	flags.BoolVar(&opts.NoLogo, "no-logo", false, "Disable ASCII art")
 	flags.BoolVar(&opts.NoColor, "no-color", false, "Disable color")
-	flags.StringVar(&opts.SetLogo, "set-ascii", "", "Set custom ascii art")
+	flags.StringVar(&opts.SetLogo, "set-logo", "", "Set custom ascii art")
 	flags.StringVar(&opts.SetConfig, "set-config", "", "Specify config file to use")
 	flags.BoolVar(&opts.ResetConfig, "reset-config", false, "Regenerate the config file")
-	flags.BoolVar(&opts.ListModules, "list-all-modules", false, "Print a list of available modules")
+	flags.BoolVar(&opts.ListModules, "list-modules", false, "Print a list of available modules")
 
 	flags.Parse()
 

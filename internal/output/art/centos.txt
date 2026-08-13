@@ -1,19 +1,19 @@
-              ${yellow}   ..
-              ${yellow} .PLTJ.
-              ${yellow}<><><><>
-     ${green}KKSSV' 4KKK ${yellow}LJ ${magenta}KKKL.'VSSKK
-     ${green}KKV' 4KKKKK ${yellow}LJ ${magenta}KKKKAL 'VKK
-     ${green}V' ' 'VKKKK ${yellow}LJ ${magenta}KKKKV' ' 'V
-     ${green}.4MA.' 'VKK ${yellow}LJ ${magenta}KKV' '.4Mb.
-${magenta}   . ${green}KKKKKA.' 'V ${yellow}LJ ${magenta}V' '.4KKKKK ${bright_blue}.
-${magenta} .4D ${green}KKKKKKKA.'' ${yellow}LJ ${magenta}''.4KKKKKKK ${bright_blue}FA.
-${magenta}<QDD ++++++++++++  ${bright_blue}++++++++++++ GFD>
-${magenta} 'VD ${bright_blue}KKKKKKKK'.. ${green}LJ ${yellow}..'KKKKKKKK ${bright_blue}FV
-${magenta}   ' ${bright_blue}VKKKKK'. .4 ${green}LJ ${yellow}K. .'KKKKKV ${bright_blue}'
-     ${bright_blue} 'VK'. .4KK ${green}LJ ${yellow}KKA. .'KV'
-     ${bright_blue}A. . .4KKKK ${green}LJ ${yellow}KKKKA. . .4
-     ${bright_blue}KKA. 'KKKKK ${green}LJ ${yellow}KKKKK' .4KK
-     ${bright_blue}KKSSA. VKKK ${green}LJ ${yellow}KKKV .4SSKK
-              ${green}<><><><>
-              ${green} 'MKKM'
-              ${green}   ''
+              ${bold_yellow}   ..
+              ${bold_yellow} .PLTJ.
+              ${bold_yellow}<><><><>
+     ${bold_green}KKSSV' 4KKK ${bold_yellow}LJ ${bold_magenta}KKKL.'VSSKK
+     ${bold_green}KKV' 4KKKKK ${bold_yellow}LJ ${bold_magenta}KKKKAL 'VKK
+     ${bold_green}V' ' 'VKKKK ${bold_yellow}LJ ${bold_magenta}KKKKV' ' 'V
+     ${bold_green}.4MA.' 'VKK ${bold_yellow}LJ ${bold_magenta}KKV' '.4Mb.
+${bold_magenta}   . ${bold_green}KKKKKA.' 'V ${bold_yellow}LJ ${bold_magenta}V' '.4KKKKK ${bold_bright_blue}.
+${bold_magenta} .4D ${bold_green}KKKKKKKA.'' ${bold_yellow}LJ ${bold_magenta}''.4KKKKKKK ${bold_bright_blue}FA.
+${bold_magenta}<QDD ++++++++++++  ${bold_bright_blue}++++++++++++ GFD>
+${bold_magenta} 'VD ${bold_bright_blue}KKKKKKKK'.. ${bold_green}LJ ${bold_yellow}..'KKKKKKKK ${bold_bright_blue}FV
+${bold_magenta}   ' ${bold_bright_blue}VKKKKK'. .4 ${bold_green}LJ ${bold_yellow}K. .'KKKKKV ${bold_bright_blue}'
+     ${bold_bright_blue} 'VK'. .4KK ${bold_green}LJ ${bold_yellow}KKA. .'KV'
+     ${bold_bright_blue}A. . .4KKKK ${bold_green}LJ ${bold_yellow}KKKKA. . .4
+     ${bold_bright_blue}KKA. 'KKKKK ${bold_green}LJ ${bold_yellow}KKKKK' .4KK
+     ${bold_bright_blue}KKSSA. VKKK ${bold_green}LJ ${bold_yellow}KKKV .4SSKK
+              ${bold_green}<><><><>
+              ${bold_green} 'MKKM'
+              ${bold_green}   ''

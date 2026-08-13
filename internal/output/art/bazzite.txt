@@ -1,19 +1,19 @@
-${blue}     %%%%%%${bright_white}====${blue}%%%%%%%%%%            
-${blue}   %%%%%%%%    %%%%%%%%%%%%%%        
-${blue}  %%%%%%%%%    %%%%%%%%%%%%%%%%      
-${blue}  %%%%%%%%%    %%%%%%%%%%%%%%%###    
-${blue}  %%%%%%%%%    %%%%%%%%%%%%%######   
-${bright_white}  ==                  =======${blue}######  
-${bright_white}  ==                  =========${blue}##### 
-${blue}  %%%%%%%%%    ${blue}%%%%%%%####${bright_white}======${blue}#####
-${blue}  %%%%%%%%%    ${blue}%%%%%#######${bright_white}=====${blue}#####
-${blue}  %%%%%%%%%    ${blue}%%%#########${bright_white}=====${blue}#####
-${blue}  %%%%%%%%%    ${blue}%%##########${bright_white}=====${blue}#####
-${blue}  %%%%%%%%%${bright_white}====${blue}###########${bright_white}=====${blue}######
-${blue}   %%%%%%%%${bright_white}====${blue}#########${bright_white}======${blue}###### 
-${blue}    %%%%%%%${bright_white}=====${blue}#####${bright_white}========${blue}######  
-${blue}     %%%%###${bright_white}===============${blue}#######   
-${blue}      %#######${bright_white}==========${blue}#########    
-${blue}        #######################      
-${blue}          ###################        
-${blue}              ###########    
+${bold_blue}     %%%%%%${bold_bright_white}====${bold_blue}%%%%%%%%%%            
+${bold_blue}   %%%%%%%%    %%%%%%%%%%%%%%        
+${bold_blue}  %%%%%%%%%    %%%%%%%%%%%%%%%%      
+${bold_blue}  %%%%%%%%%    %%%%%%%%%%%%%%%###    
+${bold_blue}  %%%%%%%%%    %%%%%%%%%%%%%######   
+${bold_bright_white}  ==                  =======${bold_blue}######  
+${bold_bright_white}  ==                  =========${bold_blue}##### 
+${bold_blue}  %%%%%%%%%    ${bold_blue}%%%%%%%####${bold_bright_white}======${bold_blue}#####
+${bold_blue}  %%%%%%%%%    ${bold_blue}%%%%%#######${bold_bright_white}=====${bold_blue}#####
+${bold_blue}  %%%%%%%%%    ${bold_blue}%%%#########${bold_bright_white}=====${bold_blue}#####
+${bold_blue}  %%%%%%%%%    ${bold_blue}%%##########${bold_bright_white}=====${bold_blue}#####
+${bold_blue}  %%%%%%%%%${bold_bright_white}====${bold_blue}###########${bold_bright_white}=====${bold_blue}######
+${bold_blue}   %%%%%%%%${bold_bright_white}====${bold_blue}#########${bold_bright_white}======${bold_blue}###### 
+${bold_blue}    %%%%%%%${bold_bright_white}=====${bold_blue}#####${bold_bright_white}========${bold_blue}######  
+${bold_blue}     %%%%###${bold_bright_white}===============${bold_blue}#######   
+${bold_blue}      %#######${bold_bright_white}==========${bold_blue}#########    
+${bold_blue}        #######################      
+${bold_blue}          ###################        
+${bold_blue}              ###########    

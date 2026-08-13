@@ -15,11 +15,11 @@ import (
 //go:embed art/*
 var ArtFS embed.FS
 
-func LoadASCII(distro modules.DistroInfo, cfg config.Config, opts cmd.Options) []string {
+func LoadLogo(distro modules.DistroInfo, cfg config.Config, opts cmd.Options) []string {
 	var asciiArt []string
 
 	// If the user disabled ASCII art
-	if !cfg.ASCII.Enabled || opts.NoLogo {
+	if !cfg.Logo.Enabled || opts.NoLogo {
 		return nil
 	}
 
@@ -31,8 +31,8 @@ func LoadASCII(distro modules.DistroInfo, cfg config.Config, opts cmd.Options) [
 	}
 
 	// Try ASCII art specified in the config file
-	if asciiArt == nil && cfg.ASCII.Path != "" && cfg.ASCII.Path != "builtin" {
-		if lines, err := LoadASCIIByName(cfg.ASCII.Path); err == nil {
+	if asciiArt == nil && cfg.Logo.Path != "" && cfg.Logo.Path != "builtin" {
+		if lines, err := LoadASCIIByName(cfg.Logo.Path); err == nil {
 			asciiArt = lines
 		}
 	}
@@ -52,14 +52,14 @@ func LoadASCII(distro modules.DistroInfo, cfg config.Config, opts cmd.Options) [
 	}
 
 	// Top padding.
-	if cfg.ASCII.PaddingTop > 0 {
-		padding := make([]string, cfg.ASCII.PaddingTop)
+	if cfg.Logo.PaddingTop > 0 {
+		padding := make([]string, cfg.Logo.PaddingTop)
 		asciiArt = append(padding, asciiArt...)
 	}
 
 	// Bottom padding.
-	if cfg.ASCII.PaddingBottom > 0 {
-		padding := make([]string, cfg.ASCII.PaddingBottom)
+	if cfg.Logo.PaddingBottom > 0 {
+		padding := make([]string, cfg.Logo.PaddingBottom)
 		asciiArt = append(asciiArt, padding...)
 	}
 
