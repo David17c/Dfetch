@@ -1,0 +1,19 @@
+${bold_bright_blue}            mhhhyyyyhhhdN
+${bold_bright_blue}        dyssyhhhhhhhhhhhssyhN
+${bold_bright_blue}     Nysyhhyo/:-.....-/oyhhhssd
+${bold_bright_blue}   Nsshhy+.              `/shhysm
+${bold_bright_blue}  dohhy/                    -shhsy
+${bold_bright_blue} dohhs`                       /hhys
+${bold_bright_blue}N+hho   ${bold_bright_white}+ssssss+-   .+syhys+   ${bold_bright_blue}/hhsy
+${bold_bright_blue}ohhh`   ${bold_bright_white}ymmo++hmm+`smmy/::+y`   ${bold_bright_blue}shh+
+${bold_bright_blue}+hho    ${bold_bright_white}ymm-  /mmy+mms          ${bold_bright_blue}:hhod
+${bold_bright_blue}/hh+    ${bold_bright_white}ymmhhdmmh.smm/          ${bold_bright_blue}.hhsh
+${bold_bright_blue}+hhs    ${bold_bright_white}ymm+::-`  /mmy`    `    ${bold_bright_blue}/hh+m
+${bold_bright_blue}yyhh-   ${bold_bright_white}ymm-       /dmdyosyd`  ${bold_bright_blue}`yhh+
+${bold_bright_blue} ohhy`  ${bold_bright_white}://`         -/+++/-   ${bold_bright_blue}ohhom
+${bold_bright_blue} N+hhy-                      `shhoh
+${bold_bright_blue}   sshho.                  `+hhyom
+${bold_bright_blue}    dsyhhs/.            `:ohhhoy
+${bold_bright_blue}      dysyhhhso///://+syhhhssh
+${bold_bright_blue}         dhyssyhhhhhhyssyyhN
+${bold_bright_blue}              mddhblue

@@ -1,0 +1,17 @@
+${bold_bright_white}MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNMMMMMMMMM
+${bold_bright_white}MMMMMMMMMMNs..yMMMMMMMMMMMMMm: +NMMMMMMM
+${bold_bright_white}MMMMMMMMMN+    :mMMMMMMMMMNo` -dMMMMMMMM
+${bold_bright_white}MMMMMMMMMMMs.   `oNMMMMMMh- `sNMMMMMMMMM
+${bold_bright_white}MMMMMMMMMMMMN/    -hMMMN+  :dMMMMMMMMMMM
+${bold_bright_white}MMMMMMMMMMMMMMh-    +ms. .sMMMMMMMMMMMMM
+${bold_bright_white}MMMMMMMMMMMMMMMN+`   `  +NMMMMMMMMMMMMMM
+${bold_bright_white}MMMMMMMMMMMMMMNMMd:    .dMMMMMMMMMMMMMMM
+${bold_bright_white}MMMMMMMMMMMMm/-hMd-     `sNMMMMMMMMMMMMM
+${bold_bright_white}MMMMMMMMMMNo`   -` :h/    -dMMMMMMMMMMMM
+${bold_bright_white}MMMMMMMMMd:       /NMMh-   `+NMMMMMMMMMM
+${bold_bright_white}MMMMMMMNo`         :mMMN+`   `-hMMMMMMMM
+${bold_bright_white}MMMMMMh.            `oNMMd:    `/mMMMMMM
+${bold_bright_white}MMMMm/                -hMd-      `sNMMMM
+${bold_bright_white}MMNs`                   -          :dMMM
+${bold_bright_white}Mm:                                 `oMM
+${bold_bright_white}MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM

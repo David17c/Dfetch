@@ -98,7 +98,6 @@ func PrintOutput(asciiLines, infoLines []string, NoColor bool) {
 		return
 	}
 
-	// Expand multiline modules into physical output rows.
 	infoLines = expandInfoLines(infoLines)
 
 	width := getMaxWidth(renderedAscii)
@@ -159,6 +158,7 @@ func ApplyColorTags(line string, NoColor bool) string {
 	return result + "\x1b[0m"
 }
 
+// helps make it so modules spanning multiple lines don't cut through the ascii art
 func expandInfoLines(infoLines []string) []string {
 	var result []string
 

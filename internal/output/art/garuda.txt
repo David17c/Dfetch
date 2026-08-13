@@ -1,0 +1,18 @@
+${bold_red}                   .%;888:8898898:
+${bold_red}                 x;XxXB%89b8:b8%b88:
+${bold_red}              .8Xxd                8X:.
+${bold_red}            .8Xx;                    8x:.
+${bold_red}          .tt8x          .d            x88;
+${bold_red}       .@8x8;          .db:              xx@;
+${bold_red}     ,tSXX°          .bbbbbbbbbbbbbbbbbbbB8x@;
+${bold_red}   .SXxx            bBBBBBBBBBBBBBBBBBBBbSBX8;
+${bold_red} ,888S                                     pd!
+${bold_red}8X88/                                       q
+${bold_red}8X88/
+${bold_red}GBB.
+${bold_red} x%88        d888@8@X@X@X88X@@XX@@X@8@X.
+${bold_red}   dxXd    dB8b8b8B8B08bB88b998888b88x.
+${bold_red}    dxx8o                      .@@;.
+${bold_red}      dx88                   .t@x.
+${bold_red}        d:SS@8ba89aa67a853Sxxad.
+${bold_red}          .d988999889889899dd.
