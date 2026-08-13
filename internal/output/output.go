@@ -98,8 +98,11 @@ func PrintOutput(asciiLines, infoLines []string, NoColor bool) {
 		return
 	}
 
+	// Expand multiline modules into physical output rows.
+	infoLines = expandInfoLines(infoLines)
+
 	width := getMaxWidth(renderedAscii)
-	total := max(len(asciiLines), len(infoLines))
+	total := max(len(renderedAscii), len(infoLines))
 
 	for i := 0; i < total; i++ {
 		var left string
@@ -108,32 +111,22 @@ func PrintOutput(asciiLines, infoLines []string, NoColor bool) {
 			left = renderedAscii[i]
 		}
 
-		padding := width - visibleLen(left) + 2
-		if padding < 0 {
-			padding = 0
-		}
-
 		if i >= len(infoLines) {
 			fmt.Printf("%s\n", left)
 			continue
 		}
 
-		rightLines := strings.Split(infoLines[i], "\n")
-
-		for j, right := range rightLines {
-			if j == 0 {
-				fmt.Printf("%s%s%s\x1b[0m\n",
-					left,
-					strings.Repeat(" ", padding),
-					right,
-				)
-			} else {
-				fmt.Printf("%s%s\x1b[0m\n",
-					strings.Repeat(" ", width+2),
-					right,
-				)
-			}
+		padding := width - visibleLen(left) + 2
+		if padding < 0 {
+			padding = 0
 		}
+
+		fmt.Printf(
+			"%s%s%s\x1b[0m\n",
+			left,
+			strings.Repeat(" ", padding),
+			infoLines[i],
+		)
 	}
 }
 
@@ -164,4 +157,14 @@ func ApplyColorTags(line string, NoColor bool) string {
 	})
 
 	return result + "\x1b[0m"
+}
+
+func expandInfoLines(infoLines []string) []string {
+	var result []string
+
+	for _, line := range infoLines {
+		result = append(result, strings.Split(line, "\n")...)
+	}
+
+	return result
 }

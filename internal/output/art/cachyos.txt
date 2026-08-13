@@ -1,18 +1,22 @@
-${bold_green}          .+======================
-${bold_green}         :++===++===============-       :++-
-${bold_green}        :*++====+++++==========-        .==:
-${bold_green}       -*+++=====+***++=======:
-${bold_green}      =*++++======-
-${bold_green}     =*+++++=====-                  ...
-${bold_green}    +*+++++=-===:                 .=+++=:
-${bold_green}   ++++=====-==:                  -*****+
-${bold_green}  ++========-=.                   .=+**+.
-${bold_green} +==========-.                       .
-${bold_green}  +++++++====-                             .--==-.
-${bold_green}   ++==========.                          :+++++++:
-${bold_green}    -===========.                         =*****+*+
-${bold_green}     -===========:                        .+*****+:
-${bold_green}      -=======++++::::::::::::::::::::-:  .---:
-${bold_green}       ======++++====+++*************=.
-${bold_green}        =====+++==========+++++++++*-
-${bold_green}         ====++============+++++++*-
+${bold_cyan}           ${bold_cyan}.${bold_cyan}-------------------------:
+${bold_cyan}          .${bold_green}+=${bold_cyan}========================.
+${bold_cyan}         :${bold_green}++${bold_cyan}===${bold_green}++===${bold_cyan}===============-       :${bold_green}++${bold_cyan}-
+${bold_cyan}        :${bold_green}*++${bold_cyan}====${bold_green}+++++==${bold_cyan}===========-        .==:
+${bold_cyan}       -${bold_green}*+++${bold_cyan}=====${bold_green}+***++=${bold_cyan}=========:
+${bold_cyan}      =${bold_green}*++++=${bold_cyan}=======------------:
+${bold_cyan}     =${bold_green}*+++++=${bold_cyan}====-                     ${bold_cyan}...${bold_cyan}
+${bold_cyan}   .${bold_green}+*+++++${bold_cyan}=-===:                    .${bold_green}=+++=${bold_cyan}:
+${bold_cyan}  :${bold_green}++++${bold_cyan}=====-==:                     -***${bold_green}**${bold_cyan}+
+${bold_cyan} :${bold_green}++=${bold_cyan}=======-=.                      .=+**+${bold_cyan}.${bold_cyan}
+${bold_cyan}.${bold_green}+${bold_cyan}==========-.                          ${bold_cyan}.${bold_cyan}
+${bold_cyan} :${bold_green}+++++++${bold_cyan}====-                                ${bold_cyan}.${bold_cyan}--==-${bold_cyan}.${bold_cyan}
+${bold_cyan}  :${bold_green}++${bold_cyan}==========.                             ${bold_cyan}:${bold_green}+++++++${bold_cyan}${bold_cyan}:
+   ${bold_cyan}.-===========.                            =*****+*+
+    ${bold_cyan}.-===========:                           .+*****+:
+      ${bold_cyan}-=======${bold_green}++++${bold_cyan}:::::::::::::::::::::::::-:  ${bold_cyan}.${bold_cyan}---:
+${bold_cyan}       :======${bold_green}++++${bold_cyan}====${bold_green}+++******************=.
+        ${bold_cyan}:=====${bold_green}+++${bold_cyan}==========${bold_green}++++++++++++++*-
+         ${bold_cyan}.====${bold_green}++${bold_cyan}==============${bold_green}++++++++++*-
+          ${bold_cyan}.===${bold_green}+${bold_cyan}==================${bold_green}+++++++:
+           ${bold_cyan}.-=======================${bold_green}+++:
+             ${bold_cyan}..........................

@@ -197,31 +197,32 @@ func CreateConfigFile(opts cmd.Options) error {
 		Modules: []Module{
 			{Name: "emptyline"},
 
-			{Name: "os", Label: "OS", Color: "bold_blue", Separator: ":"},
-			{Name: "host", Label: "Host", Color: "bold_blue", Separator: ":"},
-			{Name: "kernel", Label: "Kernel", Color: "bold_blue", Format: "short", Separator: ":"},
-			{Name: "bios", Label: "BIOS", Color: "bold_blue", Format: "short", Separator: ":"},
+			{Name: "os", Label: "OS", Color: "bold_cyan", Separator: ":"},
+			{Name: "host", Label: "Host", Color: "bold_cyan", Separator: ":"},
+			{Name: "kernel", Label: "Kernel", Color: "bold_cyan", Format: "short", Separator: ":"},
+			{Name: "bios", Label: "BIOS", Color: "bold_cyan", Format: "short", Separator: ":"},
 
 			{Name: "emptyline"},
 
-			{Name: "cpu", Label: "CPU", Color: "bold_green", Format: "short", Separator: ":"},
-			{Name: "memory", Label: "RAM", Color: "bold_green", Separator: ":", Format: "long"},
-			{Name: "disk", Label: "Disk", Color: "bold_green", Separator: ":", Mount: "/", Format: "long"},
-			{Name: "board", Label: "Board", Color: "bold_green", Separator: ":"},
+			{Name: "cpu", Label: "CPU", Color: "bold_cyan", Format: "short", Separator: ":"},
+			{Name: "memory", Label: "RAM", Color: "bold_cyan", Separator: ":", Format: "long"},
+			{Name: "disk", Label: "Disk", Color: "bold_cyan", Separator: ":", Mount: "/", Format: "long"},
+			{Name: "board", Label: "Board", Color: "bold_cyan", Separator: ":"},
 
 			{Name: "emptyline"},
 
-			{Name: "packages", Label: "Pkgs", Color: "bold_yellow", Separator: ":"},
-			{Name: "shell", Label: "Shell", Color: "bold_yellow", Separator: ":"},
-			{Name: "terminal", Label: "Term", Color: "bold_yellow", Separator: ":"},
-			{Name: "de", Label: "DE", Color: "bold_yellow", Separator: ":"},
-			{Name: "wm", Label: "WM", Color: "bold_yellow", Separator: ":"},
+			{Name: "packages", Label: "Pkgs", Color: "bold_cyan", Separator: ":"},
+			{Name: "shell", Label: "Shell", Color: "bold_cyan", Separator: ":"},
+			{Name: "terminal", Label: "Term", Color: "bold_cyan", Separator: ":"},
+			{Name: "de", Label: "DE", Color: "bold_cyan", Separator: ":"},
+			{Name: "wm", Label: "WM", Color: "bold_cyan", Separator: ":"},
+			{Name: "uptime", Label: "Uptime", Color: "bold_cyan", Separator: ":"},
+			{Name: "local_ip", Label: "Local IP", Color: "bold_cyan", Separator: ":"},
+			{Name: "locale", Label: "Lang", Color: "bold_cyan", Separator: ":"},
 
 			{Name: "emptyline"},
 
-			{Name: "uptime", Label: "Uptime", Color: "bold_magenta", Separator: ":"},
-			{Name: "local_ip", Label: "Local IP", Color: "bold_magenta", Separator: ":"},
-			{Name: "locale", Label: "Lang", Color: "bold_magenta", Separator: ":"},
+			{Name: "color"},
 
 			{Name: "emptyline"},
 		},
