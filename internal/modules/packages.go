@@ -70,7 +70,7 @@ func Packages(format string) string {
 
 		if count > 0 {
 			total += count
-			results = append(results, fmt.Sprintf("%s %d", pm.Name, count))
+			results = append(results, fmt.Sprintf("%d %s", count, pm.Name))
 		}
 	}
 

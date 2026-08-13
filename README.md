@@ -20,4 +20,6 @@ If your distribution isn't listed, Dfetch probably still works.
 
 [Customization guide](documentation/CUSTOMIZATION.md)  
 [Installation Instructions](documentation/INSTALL.md)  
-[Command-line flags](documentation/FLAGS.md)  
+[Command-line flags](documentation/FLAGS.md)
+
+**Inspired by [Fastfetch](https://github.com/fastfetch-cli/fastfetch) and [Screenfetch](https://github.com/KittyKatt/screenFetch)**
