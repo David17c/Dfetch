@@ -122,6 +122,7 @@ func WMOnX11() string {
 	return "unknown"
 }
 
+// Check if a process exists
 func processExists(names ...string) string {
 	wanted := make(map[string]struct{}, len(names))
 	for _, name := range names {
