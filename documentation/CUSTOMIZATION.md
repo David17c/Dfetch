@@ -1,6 +1,8 @@
 # Customization
 
-Dfetch stores its configuration in `~/.config/Dfetch`. Every time Dfetch starts, it checks if this file exists. If it doesn't, a default configuration file is created automatically.
+The configuration file is stored in `~/.config/Dfetch`. Every time Dfetch is started, it checks if this file exists. If it doesn't, a default configuration file is created automatically.
+
+The configuration file can be reset by running Dfetch with the `--reset-config`.
 
 The configuration file contains two sections:
 
@@ -18,24 +20,7 @@ The configuration file contains two sections:
 }
 ```
 
-### `enabled`
-
-Enables or disables the ASCII art.
-
-### `path`
-
-Sets which ASCII art Dfetch should use.
-
-- `"builtin"` uses the built-in ASCII art.
-- Any other value should be the path to a custom ASCII art file.
-
-### `padding_top`
-
-Adds empty lines above the ASCII art.
-
-### `padding_bottom`
-
-Adds empty lines below the ASCII art.
+This section allows you to set: if a logo is displayed, which is displayed (builtin, distro name or path to custom) and the distance between the logo and the top or bottom (padding)
 
 ## Modules
 
@@ -55,23 +40,50 @@ For example,
 
 displays the CPU module.
 
-Modules are displayed in the same order they appear in the configuration file.
+### Available modules
+
+| Module      | Description             |
+| ------------| ------------------------|
+| `userinfo`  | Username and hostname   |
+| `os`        | Operating system        |
+| `kernel`    | Current kernel          |
+| `cpu`       | Processor information   |
+| `memory`    | Memory usage            |
+| `swap`      | Swap usage              |
+| `local_ip`  | Local IP address        |
+| `locale`    | Systems locale settings |
+| `uptime`    | System uptime           |
+| `battery`   | Battery information     |
+| `bios`      | BIOS information        |
+| `de`        | Desktop environment     |
+| `wm`        | Window manager          |
+| `shell`     | Current shell           |
+| `terminal`  | Current terminal        |
+| `disk`      | Disk usage              |
+| `time`      | Current time            |
+| `date`      | Current date            |
+| `packages`  | Installed packages      |
+| `host`      | Device model            |
+| `board`     | Motherboard name        |
+| `emptyline` | Inserts a blank line    |
+| `text`      | Custom text             |
+| `color`     | Terminal color pallet   |
 
 ### Common options
 
-#### `name`
+`name`
 
 The module Dfetch should display.
 
-#### `label`
+`label`
 
 The text displayed before the module's information.
 
-#### `color`
+`color`
 
-Sets the label color.
+Sets the label color. A list of supported colors can be found [here](#supported-colors).
 
-#### `separator`
+`separator`
 
 Sets the text between the label and the information.
 
@@ -83,7 +95,7 @@ CPU: AMD Ryzen 7 250
 
 uses `:` as the separator.
 
-#### `format`
+`format`
 
 Changes how a module formats its output.
 
@@ -99,50 +111,19 @@ Only supported by:
 - `datetime` supported format options: `time`, `date`
 - `packages` supported format options: `short`
 
-#### `mount`
+`mount`
 
-Only used by the `disk` module.
+Sets which mount point or file system should be displayed. Only used by the `disk` module.
 
-Sets which mount point or file system should be displayed.
-
-#### `text`
+`text`
 
 Used by the text module to set a custom text.
-
-## Available modules
-
-| Module        | Description                           |
-| ---------------| ---------------------------------------|
-| `userinfo`    | Username and hostname                 |
-| `os`          | Operating system                      |
-| `kernel`      | Current kernel                        |
-| `cpu`         | Processor information                 |
-| `memory`      | Memory usage                          |
-| `swap`        | Swap usage                            |
-| `local_ip`    | Local IP address                      |
-| `locale`      | Systems locale settings               |
-| `uptime`      | System uptime                         |
-| `battery`     | Battery information                   |
-| `bios`        | BIOS information                      |
-| `de`          | Desktop environment                   |
-| `wm`          | Window manager                        |
-| `shell`       | Current shell                         |
-| `terminal`    | Current terminal                      |
-| `disk`        | Disk usage                            |
-| `time`        | Current time                          |
-| `date`        | Current date                          |
-| `packages`    | Installed packages                    |
-| `host`        | Device model                          |
-| `board`       | Motherboard name                      |
-| `emptyline`   | Inserts a blank line                  |
-| `text`        | Custom text                           |
-| `color`       | Display terminals color pallet        |
 
 ## Custom ASCII art
 
 To use a custom ASCII art, create a text file containing your ASCII art.
 
-You can also add color tags such as `${bright_blue}` inside the file.
+You can then optionally add color tags such as `${bright_blue}` inside the file
 
 ```
 ${bright_white}       _,met$$$$$gg.
@@ -162,7 +143,7 @@ ${bright_white}       `Y$$b.
 ${bright_white}          `"Y$b._
 ```
 
-Change
+In the configuration file change
 
 ```json
 "path": "builtin"
@@ -178,40 +159,15 @@ to use it.
 
 ## Supported colors
 
-```
-black
-red
-green
-yellow
-blue
-magenta
-cyan
-white
+| Color     | Bright color      | Bold color      | Bright bold color      |
+|-----------|-------------------|-----------------|------------------------|
+| 1 black   | 9 bright_black    | 17 bold_black   | 25 bold_bright_black   |
+| 2 red     | 10 bright_red     | 18 bold_red     | 26 bold_bright_red     |
+| 3 green   | 11 bright_green   | 19 bold_green   | 27 bold_bright_green   |
+| 4 yellow  | 12 bright_yellow  | 20 bold_yellow  | 28 bold_bright_yellow  |
+| 5 blue    | 13 bright_blue    | 21 bold_blue    | 29 bold_bright_blue    |
+| 6 magenta | 14 bright_magenta | 22 bold_magenta | 30 bold_bright_magenta |
+| 7 cyan    | 15 bright_cyan    | 23 bold_cyan    | 31 bold_bright_cyan    |
+| 8 white   | 16 bright_white   | 24 bold_white   | 32 bold_bright_white   |
 
-bright_black
-bright_red
-bright_green
-bright_yellow
-bright_blue
-bright_magenta
-bright_cyan
-bright_white
-
-bold_black
-bold_red
-bold_green
-bold_yellow
-bold_blue
-bold_magenta
-bold_cyan
-bold_white
-
-bold_bright_black
-bold_bright_red
-bold_bright_green
-bold_bright_yellow
-bold_bright_blue
-bold_bright_magenta
-bold_bright_cyan
-bold_bright_white
-```
+The number in front of the color can be used as a replacement for the color.
