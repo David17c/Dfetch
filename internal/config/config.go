@@ -86,8 +86,22 @@ func (c Config) Validate() error {
 			return fmt.Errorf("module %d is missing a name", i+1)
 		}
 
+		if module.Mount != "" && module.Name != "disk" {
+			return fmt.Errorf("module %s does cannot have a mount", module.Name)
+		}
+
 		// Empty line module
 		if module.Name == "emptyline" {
+			if module.HasOptions() {
+				return fmt.Errorf("%s module does not support any options", module.Name)
+			}
+			continue
+		}
+
+		if module.Name == "color" {
+			if module.HasOptions() {
+				return fmt.Errorf("%s module does not support any options", module.Name)
+			}
 			continue
 		}
 
@@ -97,29 +111,9 @@ func (c Config) Validate() error {
 				return fmt.Errorf("text module is missing text")
 			}
 
-			if module.Label != "" {
-				return fmt.Errorf("text module cannot have a label")
+			if module.Label != "" || module.Separator != "" || module.Format != "" {
+				return fmt.Errorf("Text module only supports text option")
 			}
-
-			if module.Separator != "" {
-				return fmt.Errorf("text module cannot have a separator")
-			}
-
-			if module.Format != "" {
-				return fmt.Errorf("text module cannot have a format")
-			}
-
-			if module.Mount != "" {
-				return fmt.Errorf("text module cannot have a mount")
-			}
-
-			if module.Color != "" && !IsValidColor(module.Color) {
-				return fmt.Errorf(
-					"text module has invalid color '%s'",
-					module.Color,
-				)
-			}
-
 			continue
 		}
 
@@ -139,14 +133,6 @@ func (c Config) Validate() error {
 					module.Name,
 				)
 			}
-		}
-
-		if module.Color != "" && !IsValidColor(module.Color) {
-			return fmt.Errorf(
-				"module '%s' has invalid color '%s'",
-				module.Name,
-				module.Color,
-			)
 		}
 
 		if module.Name == "disk" && module.Mount != "" {
@@ -176,51 +162,6 @@ func (c Config) Validate() error {
 	}
 
 	return nil
-}
-
-func IsValidColor(color string) bool {
-	switch color {
-	case
-		"black",
-		"red",
-		"bold_green",
-		"bold_yellow",
-		"blue",
-		"bold_magenta",
-		"cyan",
-		"white",
-		"bright_black",
-		"grey",
-		"gray",
-		"bright_red",
-		"bright_bold_green",
-		"bright_bold_yellow",
-		"bright_blue",
-		"bright_bold_magenta",
-		"bright_cyan",
-		"bright_white",
-		"bold_black",
-		"bold_red",
-		"bold_bold_green",
-		"bold_bold_yellow",
-		"bold_blue",
-		"bold_bold_magenta",
-		"bold_cyan",
-		"bold_white",
-		"bold_bright_black",
-		"bold_grey",
-		"bold_gray",
-		"bold_bright_red",
-		"bold_bright_bold_green",
-		"bold_bright_bold_yellow",
-		"bold_bright_blue",
-		"bold_bright_bold_magenta",
-		"bold_bright_cyan",
-		"bold_bright_white":
-		return true
-	}
-
-	return false
 }
 
 func CreateConfigFile(opts cmd.Options) error {
@@ -315,4 +256,13 @@ func RemoveConfigFile(opts cmd.Options) {
 		fmt.Printf("unable to remove config file: %s\n", err)
 		return
 	}
+}
+
+func (m Module) HasOptions() bool {
+	return m.Label != "" ||
+		m.Text != "" ||
+		m.Color != "" ||
+		m.Format != "" ||
+		m.Separator != "" ||
+		m.Mount != ""
 }

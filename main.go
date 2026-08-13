@@ -35,7 +35,7 @@ func main() {
 	}
 
 	// Collect required system info
-	sys := modules.CollectSystemInfo(cfg.Modules, distro.DisplayName(), opts.NoColor)
+	sys := modules.CollectSystemInfo(cfg.Modules, distro.DisplayName(), opts)
 
 	// Load ascii art
 	asciiLines := output.LoadLogo(distro, cfg, opts)

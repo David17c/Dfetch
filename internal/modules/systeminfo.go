@@ -1,6 +1,7 @@
 package modules
 
 import (
+	"dfetch/internal/cmd"
 	"dfetch/internal/config"
 	"fmt"
 )
@@ -14,7 +15,7 @@ type ModuleOutput struct {
 	Mount     string
 }
 
-func CollectSystemInfo(modules []config.Module, distroName string, NoColor bool) []ModuleOutput {
+func CollectSystemInfo(modules []config.Module, distroName string, opts cmd.Options) []ModuleOutput {
 	var output []ModuleOutput
 
 	for _, module := range modules {
@@ -25,8 +26,8 @@ func CollectSystemInfo(modules []config.Module, distroName string, NoColor bool)
 			username, hostname := Userinfo()
 
 			if module.Color != "" {
-				c := config.GetColorCode(module.Color, NoColor)
-				r := config.GetColorCode("reset", NoColor)
+				c := config.GetColorCode(module.Color, opts.NoColor)
+				r := config.GetColorCode("reset", opts.NoColor)
 
 				value = c + username + r + "@" + c + hostname + r
 			} else {
@@ -98,6 +99,9 @@ func CollectSystemInfo(modules []config.Module, distroName string, NoColor bool)
 				Name: "emptyline",
 			})
 			continue
+
+		case "color":
+			value = Color(opts.NoColor)
 
 		default:
 			fmt.Printf("Unknown module '%s'\n", module.Name)

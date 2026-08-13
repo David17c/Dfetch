@@ -136,6 +136,7 @@ Used by the text module to set a custom text.
 | `board`       | Motherboard name                      |
 | `emptyline`   | Inserts a blank line                  |
 | `text`        | Custom text                           |
+| `color`       | Display terminals color pallet        |
 
 ## Custom ASCII art
 

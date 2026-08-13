@@ -102,26 +102,38 @@ func PrintOutput(asciiLines, infoLines []string, NoColor bool) {
 	total := max(len(asciiLines), len(infoLines))
 
 	for i := 0; i < total; i++ {
-		var left, right string
+		var left string
 
 		if i < len(renderedAscii) {
 			left = renderedAscii[i]
 		}
 
-		if i < len(infoLines) {
-			right = infoLines[i]
-		}
-
-		padding := width - visibleLen(left)
+		padding := width - visibleLen(left) + 2
 		if padding < 0 {
 			padding = 0
 		}
 
-		fmt.Printf("%s%s %s\x1b[0m\n",
-			left,
-			strings.Repeat(" ", padding+2),
-			right,
-		)
+		if i >= len(infoLines) {
+			fmt.Printf("%s\n", left)
+			continue
+		}
+
+		rightLines := strings.Split(infoLines[i], "\n")
+
+		for j, right := range rightLines {
+			if j == 0 {
+				fmt.Printf("%s%s%s\x1b[0m\n",
+					left,
+					strings.Repeat(" ", padding),
+					right,
+				)
+			} else {
+				fmt.Printf("%s%s\x1b[0m\n",
+					strings.Repeat(" ", width+2),
+					right,
+				)
+			}
+		}
 	}
 }
 
