@@ -20,7 +20,7 @@ The configuration file contains two sections:
 }
 ```
 
-This section allows you to set: if a logo is displayed, which is displayed (builtin, distro name or path to custom) and the distance between the logo and the top or bottom (padding)
+This section allows you to set: if a logo is displayed, which is displayed (builtin, distro name or path to custom) and the distance between the logo and the top or bottom (padding).
 
 ## Modules
 
@@ -44,62 +44,46 @@ displays the CPU module.
 
 | Module      | Description             |
 | ------------| ------------------------|
-| `userinfo`  | Username and hostname   |
-| `os`        | Operating system        |
-| `kernel`    | Current kernel          |
-| `cpu`       | Processor information   |
-| `memory`    | Memory usage            |
-| `swap`      | Swap usage              |
-| `local_ip`  | Local IP address        |
-| `locale`    | Systems locale settings |
-| `uptime`    | System uptime           |
-| `battery`   | Battery information     |
-| `bios`      | BIOS information        |
-| `de`        | Desktop environment     |
-| `wm`        | Window manager          |
-| `shell`     | Current shell           |
-| `terminal`  | Current terminal        |
-| `disk`      | Disk usage              |
-| `time`      | Current time            |
-| `date`      | Current date            |
-| `packages`  | Installed packages      |
-| `host`      | Device model            |
-| `board`     | Motherboard name        |
-| `emptyline` | Inserts a blank line    |
-| `text`      | Custom text             |
-| `color`     | Terminal color pallet   |
+|  userinfo   | Username and hostname   |
+|  os         | Operating system        |
+|  kernel     | Current kernel          |
+|  cpu        | Processor information   |
+|  memory     | Memory usage            |
+|  swap       | Swap usage              |
+|  local_ip   | Local IP address        |
+|  locale     | Systems locale settings |
+|  uptime     | System uptime           |
+|  battery    | Battery information     |
+|  bios       | BIOS information        |
+|  de         | Desktop environment     |
+|  wm         | Window manager          |
+|  shell      | Current shell           |
+|  terminal   | Current terminal        |
+|  disk       | Disk usage              |
+|  time       | Current time            |
+|  date       | Current date            |
+|  packages   | Installed packages      |
+|  host       | Device model            |
+|  board      | Motherboard name        |
+|  emptyline  | Inserts a blank line    |
+|  text       | Custom text             |
+|  color      | Terminal color pallet   |
 
 ### Common options
 
-`name`
+| Option     | Description                                               |
+|------------|-----------------------------------------------------------|
+| name       | The module that should be displayed                       |
+| label      | The name displayed in output                              |
+| color      | Color of the label                                        |
+| separator  | Text seperating the label and the info                    |
+| format     | Changes how a module formats its output                   |
+| mount      | Sets which mount point or file system should be displayed |
+| text       | Used by the text module to set a custom text              |
 
-The module Dfetch should display.
+### Notes
 
-`label`
-
-The text displayed before the module's information.
-
-`color`
-
-Sets the label color. A list of supported colors can be found [here](#supported-colors).
-
-`separator`
-
-Sets the text between the label and the information.
-
-For example,
-
-```
-CPU: AMD Ryzen 7 250
-```
-
-uses `:` as the separator.
-
-`format`
-
-Changes how a module formats its output.
-
-Only supported by:
+Format is only supported by
 
 - `battery` supported format options: `short`
 - `cpu` supported format options: `short`
@@ -111,19 +95,13 @@ Only supported by:
 - `datetime` supported format options: `time`, `date`
 - `packages` supported format options: `short`
 
-`mount`
-
-Sets which mount point or file system should be displayed. Only used by the `disk` module.
-
-`text`
-
-Used by the text module to set a custom text.
+and mount only works on the disk module
 
 ## Custom ASCII art
 
 To use a custom ASCII art, create a text file containing your ASCII art.
 
-You can then optionally add color tags such as `${bright_blue}` inside the file
+You can then optionally add color tags such as `${bright_blue}` inside the file.
 
 ```
 ${bright_white}       _,met$$$$$gg.
@@ -170,4 +148,4 @@ to use it.
 | 7 cyan    | 15 bright_cyan    | 23 bold_cyan    | 31 bold_bright_cyan    |
 | 8 white   | 16 bright_white   | 24 bold_white   | 32 bold_bright_white   |
 
-The number in front of the color can be used as a replacement for the color.
+The number in front of the color can be used as a substitute for the color.
