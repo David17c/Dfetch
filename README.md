@@ -6,7 +6,7 @@ Lightweight command-line tool for displaying system information that focuses on 
 
 ## Installation
 
-Visit the [releases page](https://github.com/David17c/Dfetch/releases) and download the package for your linux distro or a prebuilt binary. More detailed installation instructions and instruction on building Dfetch from source can be found [here](documentation/INSTALL.md).
+Visit the [releases page](https://github.com/David17c/Dfetch/releases) and download the package for your linux distro or a prebuilt binary. More detailed installation instructions and instruction on building Dfetch from source can be found [here](documentation/INSTALL.md#build-from-source).
 
 ## Documentation
 

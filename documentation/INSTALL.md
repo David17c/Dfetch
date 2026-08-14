@@ -31,5 +31,5 @@ Clone the repository and build the binary:
 ```bash
 git clone https://github.com/David17c/Dfetch.git
 cd Dfetch
-go build .
+go build -trimpath -ldflags="-s -w" .
 ```
