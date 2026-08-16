@@ -183,8 +183,9 @@ The `mount` option can be used to select which filesystem is measured.
 
 ### `packages`
 
-* `{packages}` - Package counts by package manager
-* `{count}` - Total number of installed packages
+* `{packages}` - Default formatted output
+* `{total}` - Total number of installed packages
+* `{dpkg, pacman, apk, eopkg, rpm, snap, flatpak}` - Total packages for specified package manager
 
 ### `host`
 
@@ -192,7 +193,7 @@ The `mount` option can be used to select which filesystem is measured.
 
 ### `board`
 
-* `{name}` - Motherboard name
+* `{board}` - Motherboard name
 
 ### `locale`
 
