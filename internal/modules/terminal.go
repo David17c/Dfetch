@@ -7,11 +7,6 @@ import (
 	"strings"
 )
 
-type terminalElements struct {
-	terminalName    string
-	terminalVersion string
-}
-
 type terminalDetector struct {
 	env  string
 	name string
@@ -131,6 +126,7 @@ func detectTerminal() string {
 	}
 }
 
+// For now only collect version on terminals where it's easy to get.
 func terminalVersion(name string) string {
 	var command string
 	var args string
@@ -171,36 +167,24 @@ func terminalVersion(name string) string {
 }
 
 func Terminal(format string) string {
-	formatList := config.ExtractFormat(format)
+	fields := config.Fields(format)
+	values := config.Values{}
 
-	elm := terminalElements{
-		terminalName: detectTerminal(),
-	}
-
-	for _, value := range formatList {
-		if value == "version" {
-			elm.terminalVersion = terminalVersion(elm.terminalName)
-			break
-		}
-	}
-
-	return formatTerminalOutput(formatList, elm)
-}
-
-func formatTerminalOutput(formatList []string, elm terminalElements) string {
-	var output []string
-
-	for _, value := range formatList {
-		switch value {
+	for _, field := range fields {
+		switch field {
 		case "name":
-			output = append(output, elm.terminalName)
+			if _, exists := values["name"]; !exists {
+				values["name"] = detectTerminal()
+			}
 
 		case "version":
-			if elm.terminalVersion != "" {
-				output = append(output, elm.terminalVersion)
+			if _, exists := values["name"]; !exists {
+				values["name"] = detectTerminal()
 			}
+
+			values["version"] = terminalVersion(values["name"])
 		}
 	}
 
-	return strings.Join(output, " ")
+	return config.Format(format, values)
 }

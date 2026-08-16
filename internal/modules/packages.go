@@ -2,10 +2,12 @@ package modules
 
 import (
 	"bytes"
+	"dfetch/internal/config"
 	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strconv"
 	"strings"
 )
 
@@ -62,23 +64,85 @@ var PackageManagers = []PackageManager{
 }
 
 func Packages(format string) string {
-	var results []string
-	total := 0
+	fields := config.Fields(format)
 
-	for _, pm := range getPackageManagers() {
-		count := pm.Count()
+	needsPackages := false
+	needsTotal := false
+	neededManagers := make(map[string]bool)
 
-		if count > 0 {
-			total += count
-			results = append(results, fmt.Sprintf("%d %s", count, pm.Name))
+	for _, field := range fields {
+		switch field {
+		case "packages":
+			needsPackages = true
+
+		case "total":
+			needsTotal = true
+
+		case "dpkg", "pacman", "apk", "eopkg", "rpm", "snap", "flatpak":
+			neededManagers[field] = true
 		}
 	}
 
-	if strings.ToLower(format) == "short" {
-		return fmt.Sprintf("%d", total)
+	// {packages} and {total} require every detected package manager.
+	if needsPackages || needsTotal {
+		for _, pm := range PackageManagers {
+			neededManagers[pm.Name] = true
+		}
 	}
 
-	return strings.Join(results, ", ")
+	if len(neededManagers) == 0 {
+		return config.Format(format, config.Values{})
+	}
+
+	detected := getPackageManagers()
+	counts := make(map[string]int)
+
+	for _, pm := range detected {
+		if !neededManagers[pm.Name] {
+			continue
+		}
+
+		counts[pm.Name] = pm.Count()
+	}
+
+	total := 0
+
+	for _, count := range counts {
+		total += count
+	}
+
+	values := config.Values{}
+
+	for _, field := range fields {
+		switch field {
+		case "packages":
+			var results []string
+
+			for _, pm := range detected {
+				if !neededManagers[pm.Name] {
+					continue
+				}
+
+				count := counts[pm.Name]
+				if count > 0 {
+					results = append(
+						results,
+						fmt.Sprintf("%d %s", count, pm.Name),
+					)
+				}
+			}
+
+			values["packages"] = strings.Join(results, ", ")
+
+		case "total":
+			values["total"] = strconv.Itoa(total)
+
+		case "dpkg", "pacman", "apk", "eopkg", "rpm", "snap", "flatpak":
+			values[field] = strconv.Itoa(counts[field])
+		}
+	}
+
+	return config.Format(format, values)
 }
 
 func getPackageManagers() []PackageManager {
@@ -122,11 +186,13 @@ func countPacman() int {
 	}
 
 	count := 0
+
 	for _, entry := range entries {
 		if entry.IsDir() && entry.Name() != "ALPM_DB_VERSION" {
 			count++
 		}
 	}
+
 	return count
 }
 
@@ -137,11 +203,13 @@ func countApk() int {
 	}
 
 	count := 0
+
 	for _, line := range strings.Split(string(data), "\n") {
 		if strings.HasPrefix(line, "P:") {
 			count++
 		}
 	}
+
 	return count
 }
 
@@ -152,11 +220,13 @@ func countEopkg() int {
 	}
 
 	count := 0
+
 	for _, entry := range entries {
 		if entry.IsDir() {
 			count++
 		}
 	}
+
 	return count
 }
 
@@ -171,6 +241,7 @@ func countRpm() int {
 	}
 
 	lines := strings.Split(strings.TrimSpace(string(out)), "\n")
+
 	if len(lines) == 1 && lines[0] == "" {
 		return 0
 	}
@@ -185,11 +256,13 @@ func countSnap() int {
 	}
 
 	count := 0
+
 	for _, entry := range entries {
 		if !entry.IsDir() && strings.HasSuffix(entry.Name(), ".snap") {
 			count++
 		}
 	}
+
 	return count
 }
 
@@ -198,13 +271,16 @@ func countFlatpak() int {
 	paths := []string{"/var/lib/flatpak/app"}
 
 	if homeDir, err := os.UserHomeDir(); err == nil {
-		paths = append(paths, filepath.Join(homeDir, ".local/share/flatpak/app"))
+		paths = append(
+			paths,
+			filepath.Join(homeDir, ".local/share/flatpak/app"),
+		)
 	}
 
 	seen := make(map[string]bool)
 
-	for _, p := range paths {
-		entries, err := os.ReadDir(p)
+	for _, path := range paths {
+		entries, err := os.ReadDir(path)
 		if err != nil {
 			continue
 		}

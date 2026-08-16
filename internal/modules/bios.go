@@ -1,15 +1,20 @@
 package modules
 
 import (
+	"dfetch/internal/config"
 	"os"
 	"strings"
 )
 
-func Bios() string {
-	n, err := os.ReadFile("/sys/class/dmi/id/bios_version")
+func Bios(format string) string {
+	info, err := os.ReadFile("/sys/class/dmi/id/bios_version")
 	if err != nil {
-		return "unknown"
+		return config.Format(format, config.Values{
+			"bios": "unknown",
+		})
 	}
 
-	return strings.TrimSpace(string(n))
+	return config.Format(format, config.Values{
+		"bios": strings.TrimSpace(string(info)),
+	})
 }

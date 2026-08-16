@@ -1,16 +1,47 @@
 package modules
 
 import (
+	"dfetch/internal/config"
 	"os"
 	"os/user"
 )
 
-func Userinfo() (string, string) {
+func Userinfo(format string, color string, noColor bool) string {
+	fields := config.Fields(format)
+	values := config.Values{}
 
-	hostname := Hostname()
-	username := Username()
+	var username, hostname string
 
-	return username, hostname
+	for _, field := range fields {
+		switch field {
+		case "username":
+			if username == "" {
+				username = Username()
+			}
+			values["username"] = username
+
+		case "hostname":
+			if hostname == "" {
+				hostname = Hostname()
+			}
+			values["hostname"] = hostname
+		}
+	}
+
+	if color != "" {
+		c := config.GetColorCode(color, noColor)
+		r := config.GetColorCode("reset", noColor)
+
+		if _, ok := values["username"]; ok {
+			values["username"] = c + values["username"] + r
+		}
+
+		if _, ok := values["hostname"]; ok {
+			values["hostname"] = c + values["hostname"] + r
+		}
+	}
+
+	return config.Format(format, values)
 }
 
 func Hostname() string {
@@ -31,7 +62,11 @@ func Hostname() string {
 }
 
 func Username() string {
-	for _, key := range []string{"USER", "LOGNAME", "USERNAME"} {
+	for _, key := range []string{
+		"USER",
+		"LOGNAME",
+		"USERNAME",
+	} {
 		if value := os.Getenv(key); value != "" {
 			return value
 		}

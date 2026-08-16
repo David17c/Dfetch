@@ -197,28 +197,29 @@ func CreateConfigFile(opts cmd.Options) error {
 		Modules: []Module{
 			{Name: "emptyline"},
 
-			{Name: "os", Label: "OS", Color: "bold_cyan", Separator: ":"},
-			{Name: "host", Label: "Host", Color: "bold_cyan", Separator: ":"},
-			{Name: "kernel", Label: "Kernel", Color: "bold_cyan", Format: "short", Separator: ":"},
-			{Name: "bios", Label: "BIOS", Color: "bold_cyan", Format: "short", Separator: ":"},
+			{Name: "userinfo", Color: "bold_cyan", Format: "{username}@{hostname}"},
+			{Name: "os", Label: "OS", Color: "bold_cyan", Separator: ":", Format: "{name}"},
+			{Name: "host", Label: "Host", Color: "bold_cyan", Separator: ":", Format: "{host}"},
+			{Name: "kernel", Label: "Kernel", Color: "bold_cyan", Separator: ":", Format: "{version}"},
+			{Name: "bios", Label: "BIOS", Color: "bold_cyan", Separator: ":", Format: "{bios}"},
 
 			{Name: "emptyline"},
 
 			{Name: "cpu", Label: "CPU", Color: "bold_cyan", Format: "short", Separator: ":"},
-			{Name: "memory", Label: "RAM", Color: "bold_cyan", Separator: ":", Format: "long"},
-			{Name: "disk", Label: "Disk", Color: "bold_cyan", Separator: ":", Mount: "/", Format: "long"},
-			{Name: "board", Label: "Board", Color: "bold_cyan", Separator: ":"},
+			{Name: "memory", Label: "RAM", Color: "bold_cyan", Separator: ":", Format: "{memory} ({percent}%)"},
+			{Name: "disk", Label: "Disk", Color: "bold_cyan", Separator: ":", Mount: "/", Format: "{disk} ({percent}%)"},
+			{Name: "board", Label: "Board", Color: "bold_cyan", Separator: ":", Format: "{board}"},
 
 			{Name: "emptyline"},
 
-			{Name: "packages", Label: "Pkgs", Color: "bold_cyan", Separator: ":"},
+			{Name: "packages", Label: "Pkgs", Color: "bold_cyan", Separator: ":", Format: "{packages}"},
 			{Name: "shell", Label: "Shell", Color: "bold_cyan", Separator: ":", Format: "{name} {version}"},
 			{Name: "terminal", Label: "Term", Color: "bold_cyan", Separator: ":", Format: "{name} {version}"},
-			{Name: "de", Label: "DE", Color: "bold_cyan", Separator: ":"},
+			{Name: "de", Label: "DE", Color: "bold_cyan", Separator: ":", Format: "{de}"},
 			{Name: "wm", Label: "WM", Color: "bold_cyan", Separator: ":", Format: "{name} {sessiontype}"},
-			{Name: "uptime", Label: "Uptime", Color: "bold_cyan", Separator: ":"},
-			{Name: "local_ip", Label: "Local IP", Color: "bold_cyan", Separator: ":"},
-			{Name: "locale", Label: "Lang", Color: "bold_cyan", Separator: ":"},
+			{Name: "uptime", Label: "Uptime", Color: "bold_cyan", Separator: ":", Format: "{uptime}"},
+			{Name: "local_ip", Label: "Local IP", Color: "bold_cyan", Separator: ":", Format: "{address}"},
+			{Name: "locale", Label: "Lang", Color: "bold_cyan", Separator: ":", Format: "{locale}"},
 
 			{Name: "emptyline"},
 

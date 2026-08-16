@@ -1,18 +1,20 @@
 package modules
 
 import (
-	"fmt"
+	"dfetch/internal/config"
 	"os"
 	"strings"
 )
 
-func Board() string {
-	name, err := os.ReadFile("/sys/devices/virtual/dmi/id/board_name")
+func Board(format string) string {
+	data, err := os.ReadFile("/sys/devices/virtual/dmi/id/board_name")
 	if err != nil {
-		return "unknown"
+		return config.Format(format, config.Values{
+			"name": "unknown",
+		})
 	}
 
-	name = []byte(strings.TrimSpace(string(name)))
-
-	return fmt.Sprintf("%s", name)
+	return config.Format(format, config.Values{
+		"name": strings.TrimSpace(string(data)),
+	})
 }

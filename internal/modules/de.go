@@ -1,11 +1,42 @@
 package modules
 
 import (
+	"dfetch/internal/config"
 	"os"
 	"strings"
 )
 
-func DesktopEnvironment() string {
+func DesktopEnvironment(format string) string {
+	fields := config.Fields(format)
+
+	needsDE := false
+
+	for _, field := range fields {
+		switch field {
+		case "de", "name":
+			needsDE = true
+		}
+	}
+
+	if !needsDE {
+		return config.Format(format, config.Values{})
+	}
+
+	name := detectDesktopEnvironment()
+
+	values := config.Values{}
+
+	for _, field := range fields {
+		switch field {
+		case "de", "name":
+			values[field] = name
+		}
+	}
+
+	return config.Format(format, values)
+}
+
+func detectDesktopEnvironment() string {
 	id := os.Getenv("XDG_CURRENT_DESKTOP")
 
 	if id == "" {
@@ -64,5 +95,6 @@ func DesktopEnvironment() string {
 			return "Deepin"
 		}
 	}
+
 	return id
 }

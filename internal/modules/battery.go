@@ -1,6 +1,7 @@
 package modules
 
 import (
+	"dfetch/internal/config"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -9,35 +10,63 @@ import (
 )
 
 func Battery(format string) string {
+	fields := config.Fields(format)
+
+	needsPercent := false
+	needsStatus := false
+
+	for _, field := range fields {
+		switch field {
+		case "percent":
+			needsPercent = true
+
+		case "status":
+			needsStatus = true
+		}
+	}
+
+	if !needsPercent && !needsStatus {
+		return config.Format(format, config.Values{})
+	}
+
 	batPath, err := findBattery()
 	if err != nil {
-		return "unknown"
+		return config.Format(format, config.Values{
+			"percent": "unknown",
+			"status":  "unknown",
+		})
 	}
 
 	present, err := readInt(filepath.Join(batPath, "present"))
 	if err != nil || present != 1 {
-		return "No battery present"
+		return config.Format(format, config.Values{
+			"percent": "unknown",
+			"status":  "No battery present",
+		})
 	}
 
 	capacity, err := readInt(filepath.Join(batPath, "capacity"))
 	if err != nil {
-		return "No battery present"
+		return config.Format(format, config.Values{
+			"percent": "unknown",
+			"status":  "unknown",
+		})
 	}
 
-	if format == "short" {
-		return fmt.Sprintf("%d%%", capacity)
+	values := config.Values{
+		"percent": fmt.Sprintf("%d%%", capacity),
 	}
 
-	status, err := readString(filepath.Join(batPath, "status"))
-	if err != nil {
-		status = "unknown"
+	if needsStatus {
+		status, err := readString(filepath.Join(batPath, "status"))
+		if err != nil || status == "" {
+			status = "unknown"
+		}
+
+		values["status"] = status
 	}
 
-	if status == "unknown" {
-		return fmt.Sprintf("%d%%", capacity)
-	}
-
-	return fmt.Sprintf("%d%% (%s)", capacity, status)
+	return config.Format(format, values)
 }
 
 func findBattery() (string, error) {

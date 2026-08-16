@@ -1,6 +1,7 @@
 package modules
 
 import (
+	"dfetch/internal/config"
 	"os"
 	"strconv"
 	"strings"
@@ -16,27 +17,131 @@ const (
 	Century       = 100 * Year
 )
 
-func Uptime() string {
+type uptimeValues struct {
+	centuries int64
+	years     int64
+	months    int64
+	weeks     int64
+	days      int64
+	hours     int64
+	minutes   int64
+}
+
+func Uptime(format string) string {
+	fields := config.Fields(format)
+
+	needsUptime := false
+	needsUnits := false
+
+	for _, field := range fields {
+		switch field {
+		case "uptime":
+			needsUptime = true
+
+		case "centuries",
+			"years",
+			"months",
+			"weeks",
+			"days",
+			"hours",
+			"minutes":
+			needsUnits = true
+		}
+	}
+
+	if !needsUptime && !needsUnits {
+		return config.Format(format, config.Values{})
+	}
+
+	values := readUptime()
+
+	if values == nil {
+		return config.Format(format, config.Values{
+			"uptime": "unknown",
+		})
+	}
+
+	result := config.Values{}
+
+	for _, field := range fields {
+		switch field {
+		case "uptime":
+			result["uptime"] = formatUptime(*values)
+
+		case "centuries":
+			result["centuries"] = strconv.FormatInt(values.centuries, 10)
+
+		case "years":
+			result["years"] = strconv.FormatInt(values.years, 10)
+
+		case "months":
+			result["months"] = strconv.FormatInt(values.months, 10)
+
+		case "weeks":
+			result["weeks"] = strconv.FormatInt(values.weeks, 10)
+
+		case "days":
+			result["days"] = strconv.FormatInt(values.days, 10)
+
+		case "hours":
+			result["hours"] = strconv.FormatInt(values.hours, 10)
+
+		case "minutes":
+			result["minutes"] = strconv.FormatInt(values.minutes, 10)
+		}
+	}
+
+	return config.Format(format, result)
+}
+
+func readUptime() *uptimeValues {
 	content, err := os.ReadFile("/proc/uptime")
 	if err != nil {
-		return "unknown"
+		return nil
 	}
 
 	fields := strings.Fields(string(content))
 	if len(fields) == 0 {
-		return "unknown"
+		return nil
 	}
 
 	sec := fields[0]
+
 	if dot := strings.IndexByte(sec, '.'); dot != -1 {
 		sec = sec[:dot]
 	}
 
 	total, err := strconv.ParseInt(sec, 10, 64)
 	if err != nil {
-		return "unknown"
+		return nil
 	}
 
+	result := &uptimeValues{}
+
+	result.centuries = total / Century
+	total %= Century
+
+	result.years = total / Year
+	total %= Year
+
+	result.months = total / Month
+	total %= Month
+
+	result.weeks = total / Week
+	total %= Week
+
+	result.days = total / Day
+	total %= Day
+
+	result.hours = total / Hour
+	total %= Hour
+
+	result.minutes = total / Minute
+
+	return result
+}
+
+func formatUptime(u uptimeValues) string {
 	type unit struct {
 		value int64
 		long  string
@@ -44,36 +149,19 @@ func Uptime() string {
 	}
 
 	units := []unit{
-		{total / Century, "century", "c"},
-		{0, "year", "y"},
-		{0, "month", "mo"},
-		{0, "week", "w"},
-		{0, "day", "d"},
-		{0, "hour", "h"},
-		{0, "minute", "m"},
+		{u.centuries, "century", "c"},
+		{u.years, "year", "y"},
+		{u.months, "month", "mo"},
+		{u.weeks, "week", "w"},
+		{u.days, "day", "d"},
+		{u.hours, "hour", "h"},
+		{u.minutes, "minute", "m"},
 	}
 
-	total %= Century
-	units[1].value = total / Year
-	total %= Year
-
-	units[2].value = total / Month
-	total %= Month
-
-	units[3].value = total / Week
-	total %= Week
-
-	units[4].value = total / Day
-	total %= Day
-
-	units[5].value = total / Hour
-	total %= Hour
-
-	units[6].value = total / Minute
-
 	count := 0
-	for _, u := range units {
-		if u.value > 0 {
+
+	for _, unit := range units {
+		if unit.value > 0 {
 			count++
 		}
 	}
@@ -85,18 +173,22 @@ func Uptime() string {
 	short := count > 3
 
 	var parts []string
-	for _, u := range units {
-		if u.value == 0 {
+
+	for _, unit := range units {
+		if unit.value == 0 {
 			continue
 		}
+
+		value := strconv.FormatInt(unit.value, 10)
 
 		if short {
-			parts = append(parts, strconv.FormatInt(u.value, 10)+u.short)
+			parts = append(parts, value+unit.short)
 			continue
 		}
 
-		name := u.long
-		if u.value != 1 {
+		name := unit.long
+
+		if unit.value != 1 {
 			if name == "minute" {
 				name = "mins"
 			} else {
@@ -104,7 +196,7 @@ func Uptime() string {
 			}
 		}
 
-		parts = append(parts, strconv.FormatInt(u.value, 10)+" "+name)
+		parts = append(parts, value+" "+name)
 	}
 
 	return strings.Join(parts, ", ")

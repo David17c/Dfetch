@@ -2,6 +2,7 @@ package modules
 
 import (
 	"bufio"
+	"dfetch/internal/config"
 	"fmt"
 	"os"
 	"strings"
@@ -19,13 +20,29 @@ func (d DistroInfo) DisplayName() string {
 	switch {
 	case d.PrettyName != "":
 		return d.PrettyName
+
 	case d.Name != "" && d.Version != "":
 		return fmt.Sprintf("%s %s", d.Name, d.Version)
+
 	case d.Name != "":
 		return d.Name
+
 	default:
 		return d.ID
 	}
+}
+
+func OS(format string) string {
+	info, err := Distro()
+	if err != nil {
+		return config.Format(format, config.Values{
+			"name": "unknown",
+		})
+	}
+
+	return config.Format(format, config.Values{
+		"name": info.DisplayName(),
+	})
 }
 
 func Distro() (DistroInfo, error) {
@@ -34,13 +51,11 @@ func Distro() (DistroInfo, error) {
 		return info, nil
 	}
 
-	// Fallback 1
 	info, err = parseOSRelease("/usr/lib/os-release")
 	if err == nil && info.ID != "" {
 		return info, nil
 	}
 
-	// Fallback 2
 	data, err := os.ReadFile("/etc/issue")
 	if err != nil {
 		return DistroInfo{}, err
@@ -89,12 +104,16 @@ func parseOSRelease(path string) (DistroInfo, error) {
 		switch key {
 		case "PRETTY_NAME":
 			info.PrettyName = value
+
 		case "NAME":
 			info.Name = value
+
 		case "VERSION":
 			info.Version = value
+
 		case "ID":
 			info.ID = value
+
 		case "ID_LIKE":
 			info.IDLike = value
 		}

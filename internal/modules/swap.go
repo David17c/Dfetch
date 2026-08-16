@@ -2,6 +2,7 @@ package modules
 
 import (
 	"bufio"
+	"dfetch/internal/config"
 	"fmt"
 	"os"
 	"strconv"
@@ -9,9 +10,26 @@ import (
 )
 
 func Swap(format string) string {
+	fields := config.Fields(format)
+
+	var needsSwap bool
+	for _, field := range fields {
+		switch field {
+		case "swap", "used", "total", "unit", "percent":
+			needsSwap = true
+		}
+	}
+
+	// No swap-related values are requested.
+	if !needsSwap {
+		return config.Format(format, config.Values{})
+	}
+
 	file, err := os.Open("/proc/meminfo")
 	if err != nil {
-		return "unknown"
+		return config.Format(format, config.Values{
+			"swap": "unknown",
+		})
 	}
 	defer file.Close()
 
@@ -19,6 +37,7 @@ func Swap(format string) string {
 	var swapFree uint64
 
 	scanner := bufio.NewScanner(file)
+
 	for scanner.Scan() {
 		fields := strings.Fields(scanner.Text())
 		if len(fields) < 2 {
@@ -29,13 +48,17 @@ func Swap(format string) string {
 		case "SwapTotal:":
 			swapTotal, err = strconv.ParseUint(fields[1], 10, 64)
 			if err != nil {
-				return "unknown"
+				return config.Format(format, config.Values{
+					"swap": "unknown",
+				})
 			}
 
 		case "SwapFree:":
 			swapFree, err = strconv.ParseUint(fields[1], 10, 64)
 			if err != nil {
-				return "unknown"
+				return config.Format(format, config.Values{
+					"swap": "unknown",
+				})
 			}
 		}
 
@@ -45,11 +68,15 @@ func Swap(format string) string {
 	}
 
 	if err := scanner.Err(); err != nil {
-		return "unknown"
+		return config.Format(format, config.Values{
+			"swap": "unknown",
+		})
 	}
 
-	if swapTotal == 0 || swapFree == 0 {
-		return "unknown"
+	if swapTotal == 0 {
+		return config.Format(format, config.Values{
+			"swap": "unknown",
+		})
 	}
 
 	swapUsed := swapTotal - swapFree
@@ -59,34 +86,56 @@ func Swap(format string) string {
 	const kbPerGB = 1024 * 1024
 	const kbPerTB = 1024 * 1024 * 1024
 
-	var base string
+	var (
+		used  string
+		total string
+		unit  string
+	)
 
 	switch {
 	case swapTotal >= kbPerTB:
-		base = fmt.Sprintf(
-			"%.2f / %.2f TB",
-			float64(swapUsed)/float64(kbPerTB),
-			float64(swapTotal)/float64(kbPerTB),
-		)
+		unit = "TB"
+		used = fmt.Sprintf("%.2f", float64(swapUsed)/float64(kbPerTB))
+		total = fmt.Sprintf("%.2f", float64(swapTotal)/float64(kbPerTB))
+
 	case swapTotal >= kbPerGB:
-		base = fmt.Sprintf(
-			"%.2f / %.2f GB",
-			float64(swapUsed)/float64(kbPerGB),
-			float64(swapTotal)/float64(kbPerGB),
-		)
+		unit = "GB"
+		used = fmt.Sprintf("%.2f", float64(swapUsed)/float64(kbPerGB))
+		total = fmt.Sprintf("%.2f", float64(swapTotal)/float64(kbPerGB))
+
 	case swapTotal >= kbPerMB:
-		base = fmt.Sprintf(
-			"%.0f / %.0f MB",
-			float64(swapUsed)/float64(kbPerMB),
-			float64(swapTotal)/float64(kbPerMB),
-		)
+		unit = "MB"
+		used = fmt.Sprintf("%.0f", float64(swapUsed)/float64(kbPerMB))
+		total = fmt.Sprintf("%.0f", float64(swapTotal)/float64(kbPerMB))
+
 	default:
-		base = fmt.Sprintf("%d / %d KB", swapUsed, swapTotal)
+		unit = "KB"
+		used = strconv.FormatUint(swapUsed, 10)
+		total = strconv.FormatUint(swapTotal, 10)
 	}
 
-	if format == "long" {
-		base += fmt.Sprintf(" (%.0f%%)", usedPercent)
+	swap := used + " / " + total + " " + unit
+
+	values := config.Values{}
+
+	for _, field := range fields {
+		switch field {
+		case "swap":
+			values["swap"] = swap
+
+		case "used":
+			values["used"] = used
+
+		case "total":
+			values["total"] = total
+
+		case "unit":
+			values["unit"] = unit
+
+		case "percent":
+			values["percent"] = fmt.Sprintf("%.0f", usedPercent)
+		}
 	}
 
-	return base
+	return config.Format(format, values)
 }

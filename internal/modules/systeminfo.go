@@ -23,22 +23,13 @@ func CollectSystemInfo(modules []config.Module, distroName string, opts cmd.Opti
 
 		switch module.Name {
 		case "userinfo":
-			username, hostname := Userinfo()
-
-			if module.Color != "" {
-				c := config.GetColorCode(module.Color, opts.NoColor)
-				r := config.GetColorCode("reset", opts.NoColor)
-
-				value = c + username + r + "@" + c + hostname + r
-			} else {
-				value = username + "@" + hostname
-			}
+			value = Userinfo(module.Format, module.Color, opts.NoColor)
 
 		case "os":
 			value = distroName
 
 		case "kernel":
-			value = Kernel()
+			value = Kernel(module.Format)
 
 		case "cpu":
 			value = Cpu(module.Format)
@@ -50,19 +41,19 @@ func CollectSystemInfo(modules []config.Module, distroName string, opts cmd.Opti
 			value = Swap(module.Format)
 
 		case "local_ip":
-			value = Local_IP()
+			value = Local_IP(module.Format)
 
 		case "uptime":
-			value = Uptime()
+			value = Uptime(module.Format)
 
 		case "battery":
 			value = Battery(module.Format)
 
 		case "bios":
-			value = Bios()
+			value = Bios(module.Format)
 
 		case "de":
-			value = DesktopEnvironment()
+			value = DesktopEnvironment(module.Format)
 
 		case "wm":
 			value = WindowManager(module.Format)
@@ -83,13 +74,13 @@ func CollectSystemInfo(modules []config.Module, distroName string, opts cmd.Opti
 			value = Packages(module.Format)
 
 		case "host":
-			value = Host()
+			value = Host(module.Format)
 
 		case "locale":
-			value = Locale()
+			value = Locale(module.Format)
 
 		case "board":
-			value = Board()
+			value = Board(module.Format)
 
 		case "text":
 			value = module.Text

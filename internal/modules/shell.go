@@ -9,8 +9,8 @@ import (
 )
 
 type shellElements struct {
-	shellName    string
-	shellVersion string
+	name    string
+	version string
 }
 
 func Shell(format string) string {
@@ -25,43 +25,31 @@ func Shell(format string) string {
 
 	switch shell {
 	case "bash":
-		elm.shellName = "Bash"
-		elm.shellVersion = helpers.CommandVersion(shellPath, "--version")
+		elm.name = "Bash"
+		elm.version = helpers.CommandVersion(shellPath, "--version")
 
 	case "zsh":
-		elm.shellName = "Zsh"
-		elm.shellVersion = helpers.CommandVersion(shellPath, "--version")
+		elm.name = "Zsh"
+		elm.version = helpers.CommandVersion(shellPath, "--version")
 
 	case "fish":
-		elm.shellName = "Fish"
-		elm.shellVersion = helpers.CommandVersion(shellPath, "--version")
+		elm.name = "Fish"
+		elm.version = helpers.CommandVersion(shellPath, "--version")
 
 	case "dash":
-		elm.shellName = "Dash"
-		elm.shellVersion = helpers.CommandVersion(shellPath, "-V")
+		elm.name = "Dash"
+		elm.version = helpers.CommandVersion(shellPath, "-V")
 
 	case "ksh":
-		elm.shellName = "Ksh"
-		elm.shellVersion = helpers.CommandVersion(shellPath, "--version")
+		elm.name = "Ksh"
+		elm.version = helpers.CommandVersion(shellPath, "--version")
 
 	default:
-		elm.shellName = shell
+		elm.name = shell
 	}
 
-	return formatShellOutput(config.ExtractFormat(format), elm)
-}
-
-func formatShellOutput(formatList []string, elm shellElements) string {
-	var output []string
-
-	for _, value := range formatList {
-		switch value {
-		case "name":
-			output = append(output, elm.shellName)
-		case "version":
-			output = append(output, elm.shellVersion)
-		}
-	}
-
-	return strings.Join(output, " ")
+	return config.Format(format, map[string]string{
+		"name":    elm.name,
+		"version": elm.version,
+	})
 }

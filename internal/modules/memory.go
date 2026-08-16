@@ -2,6 +2,7 @@ package modules
 
 import (
 	"bufio"
+	"dfetch/internal/config"
 	"fmt"
 	"os"
 	"strconv"
@@ -9,9 +10,26 @@ import (
 )
 
 func Memory(format string) string {
+	fields := config.Fields(format)
+
+	var needsMemory bool
+
+	for _, field := range fields {
+		switch field {
+		case "memory", "used", "total", "unit", "percent":
+			needsMemory = true
+		}
+	}
+
+	if !needsMemory {
+		return config.Format(format, config.Values{})
+	}
+
 	file, err := os.Open("/proc/meminfo")
 	if err != nil {
-		return "unknown"
+		return config.Format(format, config.Values{
+			"memory": "unknown",
+		})
 	}
 	defer file.Close()
 
@@ -29,13 +47,17 @@ func Memory(format string) string {
 		case "MemTotal:":
 			memTotal, err = strconv.ParseUint(fields[1], 10, 64)
 			if err != nil {
-				return "unknown"
+				return config.Format(format, config.Values{
+					"memory": "unknown",
+				})
 			}
 
 		case "MemAvailable:":
 			memAvailable, err = strconv.ParseUint(fields[1], 10, 64)
 			if err != nil {
-				return "unknown"
+				return config.Format(format, config.Values{
+					"memory": "unknown",
+				})
 			}
 		}
 
@@ -45,11 +67,15 @@ func Memory(format string) string {
 	}
 
 	if err := scanner.Err(); err != nil {
-		return "unknown"
+		return config.Format(format, config.Values{
+			"memory": "unknown",
+		})
 	}
 
 	if memTotal == 0 || memAvailable == 0 {
-		return "unknown"
+		return config.Format(format, config.Values{
+			"memory": "unknown",
+		})
 	}
 
 	memUsed := memTotal - memAvailable
@@ -59,34 +85,56 @@ func Memory(format string) string {
 	const kbPerGB = 1024 * 1024
 	const kbPerTB = 1024 * 1024 * 1024
 
-	var base string
+	var (
+		used  string
+		total string
+		unit  string
+	)
 
 	switch {
 	case memTotal >= kbPerTB:
-		base = fmt.Sprintf(
-			"%.2f / %.2f TB",
-			float64(memUsed)/float64(kbPerTB),
-			float64(memTotal)/float64(kbPerTB),
-		)
+		unit = "TB"
+		used = fmt.Sprintf("%.2f", float64(memUsed)/float64(kbPerTB))
+		total = fmt.Sprintf("%.2f", float64(memTotal)/float64(kbPerTB))
+
 	case memTotal >= kbPerGB:
-		base = fmt.Sprintf(
-			"%.2f / %.2f GB",
-			float64(memUsed)/float64(kbPerGB),
-			float64(memTotal)/float64(kbPerGB),
-		)
+		unit = "GB"
+		used = fmt.Sprintf("%.2f", float64(memUsed)/float64(kbPerGB))
+		total = fmt.Sprintf("%.2f", float64(memTotal)/float64(kbPerGB))
+
 	case memTotal >= kbPerMB:
-		base = fmt.Sprintf(
-			"%.0f / %.0f MB",
-			float64(memUsed)/float64(kbPerMB),
-			float64(memTotal)/float64(kbPerMB),
-		)
+		unit = "MB"
+		used = fmt.Sprintf("%.0f", float64(memUsed)/float64(kbPerMB))
+		total = fmt.Sprintf("%.0f", float64(memTotal)/float64(kbPerMB))
+
 	default:
-		base = fmt.Sprintf("%d / %d KB", memUsed, memTotal)
+		unit = "KB"
+		used = strconv.FormatUint(memUsed, 10)
+		total = strconv.FormatUint(memTotal, 10)
 	}
 
-	if format == "long" {
-		base += fmt.Sprintf(" (%.0f%%)", usedPercent)
+	memory := used + " / " + total + " " + unit
+
+	values := config.Values{}
+
+	for _, field := range fields {
+		switch field {
+		case "memory":
+			values["memory"] = memory
+
+		case "used":
+			values["used"] = used
+
+		case "total":
+			values["total"] = total
+
+		case "unit":
+			values["unit"] = unit
+
+		case "percent":
+			values["percent"] = fmt.Sprintf("%.0f", usedPercent)
+		}
 	}
 
-	return base
+	return config.Format(format, values)
 }
