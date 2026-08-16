@@ -65,13 +65,13 @@ func CollectSystemInfo(modules []config.Module, distroName string, opts cmd.Opti
 			value = DesktopEnvironment()
 
 		case "wm":
-			value = windowManager(module.Format)
+			value = WindowManager(module.Format)
 
 		case "shell":
 			value = Shell(module.Format)
 
 		case "terminal":
-			value = Terminal()
+			value = Terminal(module.Format)
 
 		case "disk":
 			value = Disk(module.Format, module.Mount)

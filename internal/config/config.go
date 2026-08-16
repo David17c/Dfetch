@@ -212,10 +212,10 @@ func CreateConfigFile(opts cmd.Options) error {
 			{Name: "emptyline"},
 
 			{Name: "packages", Label: "Pkgs", Color: "bold_cyan", Separator: ":"},
-			{Name: "shell", Label: "Shell", Color: "bold_cyan", Separator: ":"},
-			{Name: "terminal", Label: "Term", Color: "bold_cyan", Separator: ":"},
+			{Name: "shell", Label: "Shell", Color: "bold_cyan", Separator: ":", Format: "{name} {version}"},
+			{Name: "terminal", Label: "Term", Color: "bold_cyan", Separator: ":", Format: "{name} {version}"},
 			{Name: "de", Label: "DE", Color: "bold_cyan", Separator: ":"},
-			{Name: "wm", Label: "WM", Color: "bold_cyan", Separator: ":"},
+			{Name: "wm", Label: "WM", Color: "bold_cyan", Separator: ":", Format: "{name} {sessiontype}"},
 			{Name: "uptime", Label: "Uptime", Color: "bold_cyan", Separator: ":"},
 			{Name: "local_ip", Label: "Local IP", Color: "bold_cyan", Separator: ":"},
 			{Name: "locale", Label: "Lang", Color: "bold_cyan", Separator: ":"},

@@ -1,47 +1,81 @@
 package modules
 
 import (
-	"fmt"
+	"dfetch/internal/config"
+	"dfetch/internal/helpers"
 	"os"
 	"strings"
 )
 
-func windowManager(format string) string {
-	sessionType := os.Getenv("XDG_SESSION_TYPE")
+type wmElements struct {
+	wmName      string
+	wmVersion   string
+	sessionType string
+}
 
-	if sessionType == "" {
+func WindowManager(format string) string {
+	formatList := config.ExtractFormat(format)
+
+	var needsName, needsVersion bool
+
+	for _, value := range formatList {
+		switch value {
+		case "name":
+			needsName = true
+		case "version":
+			needsName = true
+			needsVersion = true
+		}
+	}
+
+	var elm wmElements
+
+	elm.sessionType = os.Getenv("XDG_SESSION_TYPE")
+
+	if elm.sessionType == "" {
 		switch {
 		case os.Getenv("WAYLAND_DISPLAY") != "":
-			sessionType = "wayland"
+			elm.sessionType = "wayland"
 		case os.Getenv("DISPLAY") != "":
-			sessionType = "x11"
+			elm.sessionType = "x11"
 		default:
 			return "unknown"
 		}
 	}
 
-	switch sessionType {
-	case "wayland":
-		wm := WMOnWayland()
-
-		if format == "short" {
-			return wm
+	if needsName {
+		switch elm.sessionType {
+		case "wayland":
+			elm.wmName = WMOnWayland()
+		case "x11":
+			elm.wmName = WMOnX11()
+		default:
+			elm.wmName = "unknown"
 		}
-
-		return fmt.Sprintf("%s (Wayland)", wm)
-
-	case "x11":
-		wm := WMOnX11()
-
-		if format == "short" {
-			return wm
-		}
-
-		return fmt.Sprintf("%s (X11)", wm)
-
-	default:
-		return "unknown"
 	}
+
+	if needsVersion && elm.wmName != "unknown" {
+		elm.wmVersion = WMVersion(elm.wmName)
+	}
+
+	return formatWMOutput(formatList, elm)
+}
+
+func formatWMOutput(formatList []string, elm wmElements) string {
+	var output []string
+
+	for _, value := range formatList {
+		switch value {
+		case "name":
+			output = append(output, elm.wmName)
+		case "version":
+			output = append(output, elm.wmVersion)
+		case "sessiontype":
+			output = append(output, elm.sessionType)
+		}
+	}
+
+	return strings.Join(output, " ")
 }
 
 func WMOnWayland() string {
@@ -58,7 +92,7 @@ func WMOnWayland() string {
 		return "labwc"
 	}
 
-	switch processExists(
+	switch helpers.ProcessExists(
 		"kwin_wayland",
 		"gnome-shell",
 		"river",
@@ -85,7 +119,7 @@ func WMOnX11() string {
 		return "bspwm"
 	}
 
-	switch processExists(
+	switch helpers.ProcessExists(
 		"kwin_x11",
 		"gnome-shell",
 		"xfwm4",
@@ -122,9 +156,48 @@ func WMOnX11() string {
 	return "unknown"
 }
 
-// Check if a process exists
+func WMVersion(name string) string {
+	switch name {
+	case "Hyprland":
+		return helpers.CommandVersion("hyprctl", "version")
+	case "Sway":
+		return helpers.CommandVersion("sway", "--version")
+	case "Niri":
+		return helpers.CommandVersion("niri", "--version")
+	case "Wayfire":
+		return helpers.CommandVersion("wayfire", "--version")
+	case "labwc":
+		return helpers.CommandVersion("labwc", "--version")
+	case "KWin":
+		return helpers.CommandVersion("kwin_wayland", "--version")
+	case "Mutter":
+		return helpers.CommandVersion("gnome-shell", "--version")
+	case "River":
+		return helpers.CommandVersion("river", "--version")
+	case "COSMIC":
+		return helpers.CommandVersion("cosmic-comp", "--version")
+	case "i3":
+		return helpers.CommandVersion("i3", "--version")
+	case "bspwm":
+		return helpers.CommandVersion("bspwm", "--version")
+	case "Xfwm4":
+		return helpers.CommandVersion("xfwm4", "--version")
+	case "Openbox":
+		return helpers.CommandVersion("openbox", "--version")
+	case "awesome":
+		return helpers.CommandVersion("awesome", "--version")
+	case "fluxbox":
+		return helpers.CommandVersion("fluxbox", "-v")
+	case "IceWM":
+		return helpers.CommandVersion("icewm", "--version")
+	default:
+		return ""
+	}
+}
+
 func processExists(names ...string) string {
 	wanted := make(map[string]struct{}, len(names))
+
 	for _, name := range names {
 		wanted[name] = struct{}{}
 	}
@@ -147,6 +220,7 @@ func processExists(names ...string) string {
 		}
 
 		proc := strings.TrimSpace(string(data))
+
 		if _, ok := wanted[proc]; ok {
 			return proc
 		}

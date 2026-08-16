@@ -1,31 +1,16 @@
 package modules
 
 import (
-	"fmt"
+	"dfetch/internal/config"
+	"dfetch/internal/helpers"
 	"os"
-	"os/exec"
 	"path/filepath"
-	"regexp"
 	"strings"
 )
 
-var versionRe = regexp.MustCompile(`\b\d+\.\d+(?:\.\d+)?\b`)
-
-func shellVersion(displayName, cmd string, args ...string) string {
-	out, err := exec.Command(cmd, args...).CombinedOutput()
-	if err != nil {
-		return displayName
-	}
-
-	if v := extractVersion(string(out)); v != "" {
-		return fmt.Sprintf("%s %s", displayName, v)
-	}
-
-	return displayName
-}
-
-func extractVersion(output string) string {
-	return versionRe.FindString(output)
+type shellElements struct {
+	shellName    string
+	shellVersion string
 }
 
 func Shell(format string) string {
@@ -36,33 +21,47 @@ func Shell(format string) string {
 		return "unknown"
 	}
 
+	var elm shellElements
+
 	switch shell {
 	case "bash":
-		if format == "short" {
-			return "Bash"
-		}
-		return shellVersion("Bash", shellPath, "--version")
+		elm.shellName = "Bash"
+		elm.shellVersion = helpers.CommandVersion(shellPath, "--version")
+
 	case "zsh":
-		if format == "short" {
-			return "Zsh"
-		}
-		return shellVersion("Zsh", shellPath, "--version")
+		elm.shellName = "Zsh"
+		elm.shellVersion = helpers.CommandVersion(shellPath, "--version")
+
 	case "fish":
-		if format == "short" {
-			return "Fish"
-		}
-		return shellVersion("Fish", shellPath, "--version")
+		elm.shellName = "Fish"
+		elm.shellVersion = helpers.CommandVersion(shellPath, "--version")
+
 	case "dash":
-		if format == "short" {
-			return "Dash"
-		}
-		return shellVersion("Dash", shellPath, "-V")
+		elm.shellName = "Dash"
+		elm.shellVersion = helpers.CommandVersion(shellPath, "-V")
+
 	case "ksh":
-		if format == "short" {
-			return "Ksh"
-		}
-		return shellVersion("Ksh", shellPath, "--version")
+		elm.shellName = "Ksh"
+		elm.shellVersion = helpers.CommandVersion(shellPath, "--version")
+
 	default:
-		return shell
+		elm.shellName = shell
 	}
+
+	return formatShellOutput(config.ExtractFormat(format), elm)
+}
+
+func formatShellOutput(formatList []string, elm shellElements) string {
+	var output []string
+
+	for _, value := range formatList {
+		switch value {
+		case "name":
+			output = append(output, elm.shellName)
+		case "version":
+			output = append(output, elm.shellVersion)
+		}
+	}
+
+	return strings.Join(output, " ")
 }
