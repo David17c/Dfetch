@@ -28,8 +28,6 @@ func WindowManager(format string) string {
 
 	var sessionType string
 
-	// Session type is only needed when the format asks for it
-	// or when it is needed to detect the window manager.
 	if needsSessionType || needsName {
 		sessionType = os.Getenv("XDG_SESSION_TYPE")
 

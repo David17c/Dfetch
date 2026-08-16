@@ -1,17 +1,13 @@
 # Dfetch
 
-Lightweight command-line tool for displaying system information that focuses on clean output, speed, and simple configuration.
+Lightweight command-line tool for displaying system information that focuses on clean output, speed and customization
 
 ![Default output on Debian](image/debian_dfetch_output.png)
 
-## Installation
-
-Visit the [releases page](https://github.com/David17c/Dfetch/releases) and download the package for your linux distro or a prebuilt binary. More detailed installation instructions and instruction on building Dfetch from source can be found [here](documentation/INSTALL.md#build-from-source).
-
 ## Documentation
 
-[Customization guide](documentation/CUSTOMIZATION.md)  
 [Installation Instructions](documentation/INSTALL.md)  
+[Customization guide](documentation/CUSTOMIZATION.md)  
 [Command-line flags](documentation/FLAGS.md)
 
 ## Support

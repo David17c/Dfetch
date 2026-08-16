@@ -38,7 +38,7 @@ func ParseFlags() Options {
 func ListAllModules() {
 	fmt.Print(`
  Module       Description                           
- ------------ ----------------------------------
+ ------------ -------------------------------
  userinfo     Username and hostname                 
  os           Operating system                      
  kernel       Current kernel                        

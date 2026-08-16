@@ -12,19 +12,6 @@ import (
 func Swap(format string) string {
 	fields := config.Fields(format)
 
-	var needsSwap bool
-	for _, field := range fields {
-		switch field {
-		case "swap", "used", "total", "unit", "percent":
-			needsSwap = true
-		}
-	}
-
-	// No swap-related values are requested.
-	if !needsSwap {
-		return config.Format(format, config.Values{})
-	}
-
 	file, err := os.Open("/proc/meminfo")
 	if err != nil {
 		return config.Format(format, config.Values{

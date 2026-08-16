@@ -12,19 +12,6 @@ import (
 func Memory(format string) string {
 	fields := config.Fields(format)
 
-	var needsMemory bool
-
-	for _, field := range fields {
-		switch field {
-		case "memory", "used", "total", "unit", "percent":
-			needsMemory = true
-		}
-	}
-
-	if !needsMemory {
-		return config.Format(format, config.Values{})
-	}
-
 	file, err := os.Open("/proc/meminfo")
 	if err != nil {
 		return config.Format(format, config.Values{

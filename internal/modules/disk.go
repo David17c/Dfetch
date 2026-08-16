@@ -13,19 +13,6 @@ func formatBytesWithUnit(bytes uint64, divisor float64) string {
 func Disk(format, mount string) string {
 	fields := config.Fields(format)
 
-	needsDisk := false
-
-	for _, field := range fields {
-		switch field {
-		case "disk", "used", "total", "unit", "percent":
-			needsDisk = true
-		}
-	}
-
-	if !needsDisk {
-		return config.Format(format, config.Values{})
-	}
-
 	var stat syscall.Statfs_t
 
 	if mount == "" {

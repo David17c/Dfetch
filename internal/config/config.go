@@ -196,7 +196,6 @@ func CreateConfigFile(opts cmd.Options) error {
 		Modules: []Module{
 			{Name: "emptyline"},
 
-			{Name: "userinfo", Label: "", Color: "bold_cyan", Separator: "", Format: "{username}@{hostname}"},
 			{Name: "os", Label: "OS", Color: "bold_cyan", Separator: ":", Format: "{name}"},
 			{Name: "host", Label: "Host", Color: "bold_cyan", Separator: ":", Format: "{host}"},
 			{Name: "kernel", Label: "Kernel", Color: "bold_cyan", Separator: ":", Format: "{version}"},
@@ -204,7 +203,7 @@ func CreateConfigFile(opts cmd.Options) error {
 
 			{Name: "emptyline"},
 
-			{Name: "cpu", Label: "CPU", Color: "bold_cyan", Separator: ":", Format: "short"},
+			{Name: "cpu", Label: "CPU", Color: "bold_cyan", Separator: ":", Format: "{short}"},
 			{Name: "memory", Label: "RAM", Color: "bold_cyan", Separator: ":", Format: "{memory} ({percent}%)"},
 			{Name: "disk", Label: "Disk", Color: "bold_cyan", Separator: ":", Format: "{disk} ({percent}%)", Mount: "/"},
 			{Name: "board", Label: "Board", Color: "bold_cyan", Separator: ":", Format: "{board}"},

@@ -68,6 +68,8 @@ func detectLocalIP() (string, string) {
 		return "", ""
 	}
 
+	var ipv6IP, ipv6Prefix string
+
 	for _, iface := range interfaces {
 		if iface.Flags&net.FlagUp == 0 {
 			continue
@@ -114,10 +116,15 @@ func detectLocalIP() (string, string) {
 				return ipv4.String(), prefix
 			}
 
-			if ip.To16() != nil {
-				return ip.String(), prefix
+			if ip.To16() != nil && ipv6IP == "" {
+				ipv6IP = ip.String()
+				ipv6Prefix = prefix
 			}
 		}
+	}
+
+	if ipv6IP != "" {
+		return ipv6IP, ipv6Prefix
 	}
 
 	return "", ""

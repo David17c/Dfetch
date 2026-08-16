@@ -121,9 +121,9 @@ This is a list of the placeholders supported by every module:
 
 ### `local_ip`
 
-* `{ip}` - Local IP address
-* `{prefix}` - Network prefix length
-* `{address}` - IP address including prefix
+* `{ip}` - IP address without prefix
+* `{prefix}` - subnet prefix
+* `{address}` - IP address with prefix
 
 ### `uptime`
 
