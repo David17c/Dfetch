@@ -83,7 +83,7 @@ func CollectSystemInfo(modules []config.Module, distroName string, opts cmd.Opti
 			value = Board(module.Format)
 
 		case "text":
-			value = module.Text
+			value = module.Format
 
 		case "emptyline":
 			output = append(output, ModuleOutput{

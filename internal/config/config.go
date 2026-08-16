@@ -24,7 +24,6 @@ type ASCIIConfig struct {
 type Module struct {
 	Name      string `json:"name"`
 	Label     string `json:"label,omitempty"`
-	Text      string `json:"text,omitempty"`
 	Color     string `json:"color,omitempty"`
 	Format    string `json:"format,omitempty"`
 	Separator string `json:"separator,omitempty"`
@@ -107,12 +106,12 @@ func (c Config) Validate() error {
 
 		// Text module
 		if module.Name == "text" {
-			if module.Text == "" {
+			if module.Format == "" {
 				return fmt.Errorf("text module is missing text")
 			}
 
-			if module.Label != "" || module.Separator != "" || module.Format != "" {
-				return fmt.Errorf("Text module only supports text option")
+			if module.Label != "" || module.Separator != "" {
+				return fmt.Errorf("Text module only supports format option")
 			}
 			continue
 		}
@@ -197,7 +196,7 @@ func CreateConfigFile(opts cmd.Options) error {
 		Modules: []Module{
 			{Name: "emptyline"},
 
-			{Name: "userinfo", Color: "bold_cyan", Format: "{username}@{hostname}"},
+			{Name: "userinfo", Label: "", Color: "bold_cyan", Separator: "", Format: "{username}@{hostname}"},
 			{Name: "os", Label: "OS", Color: "bold_cyan", Separator: ":", Format: "{name}"},
 			{Name: "host", Label: "Host", Color: "bold_cyan", Separator: ":", Format: "{host}"},
 			{Name: "kernel", Label: "Kernel", Color: "bold_cyan", Separator: ":", Format: "{version}"},
@@ -205,9 +204,9 @@ func CreateConfigFile(opts cmd.Options) error {
 
 			{Name: "emptyline"},
 
-			{Name: "cpu", Label: "CPU", Color: "bold_cyan", Format: "short", Separator: ":"},
+			{Name: "cpu", Label: "CPU", Color: "bold_cyan", Separator: ":", Format: "short"},
 			{Name: "memory", Label: "RAM", Color: "bold_cyan", Separator: ":", Format: "{memory} ({percent}%)"},
-			{Name: "disk", Label: "Disk", Color: "bold_cyan", Separator: ":", Mount: "/", Format: "{disk} ({percent}%)"},
+			{Name: "disk", Label: "Disk", Color: "bold_cyan", Separator: ":", Format: "{disk} ({percent}%)", Mount: "/"},
 			{Name: "board", Label: "Board", Color: "bold_cyan", Separator: ":", Format: "{board}"},
 
 			{Name: "emptyline"},
@@ -262,7 +261,6 @@ func RemoveConfigFile(opts cmd.Options) {
 
 func (m Module) HasOptions() bool {
 	return m.Label != "" ||
-		m.Text != "" ||
 		m.Color != "" ||
 		m.Format != "" ||
 		m.Separator != "" ||
