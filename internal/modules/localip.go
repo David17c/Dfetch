@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-func Local_IP(format string) string {
+func LocalIP(format string) string {
 	fields := config.Fields(format)
 
 	needsIP := false

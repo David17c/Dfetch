@@ -62,7 +62,7 @@ func WindowManager(format string) string {
 		values["name"] = name
 
 		if needsVersion && name != "unknown" {
-			values["version"] = WMVersion(name)
+			values["version"] = WMVersion(name, sessionType)
 		}
 	}
 
@@ -168,7 +168,7 @@ func WMOnX11() string {
 	return "unknown"
 }
 
-func WMVersion(name string) string {
+func WMVersion(name, sessionType string) string {
 	switch name {
 	case "Hyprland":
 		return helpers.CommandVersion("hyprctl", "version")
@@ -186,6 +186,9 @@ func WMVersion(name string) string {
 		return helpers.CommandVersion("labwc", "--version")
 
 	case "KWin":
+		if sessionType == "x11" {
+			return helpers.CommandVersion("kwin_x11", "--version")
+		}
 		return helpers.CommandVersion("kwin_wayland", "--version")
 
 	case "Mutter":

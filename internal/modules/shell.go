@@ -18,7 +18,10 @@ func Shell(format string) string {
 	shell := strings.ToLower(filepath.Base(shellPath))
 
 	if shell == "" {
-		return "unknown"
+		return config.Format(format, config.Values{
+			"name":    "unknown",
+			"version": "unknown",
+		})
 	}
 
 	var elm shellElements

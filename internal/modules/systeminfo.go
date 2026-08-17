@@ -41,7 +41,7 @@ func CollectSystemInfo(modules []config.Module, distroName string, opts cmd.Opti
 			value = Swap(module.Format)
 
 		case "local_ip":
-			value = Local_IP(module.Format)
+			value = LocalIP(module.Format)
 
 		case "uptime":
 			value = Uptime(module.Format)

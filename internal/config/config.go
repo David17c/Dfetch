@@ -37,10 +37,11 @@ func configPath(opts cmd.Options) (string, error) {
 
 	if opts.SetConfig != "" {
 		_, err := os.Stat(opts.SetConfig)
-		if err == nil {
-			configDir = opts.SetConfig
-			return configDir, nil
+		if err != nil {
+			return "", err
 		}
+		configDir = opts.SetConfig
+		return configDir, nil
 	}
 	configDir, err := os.UserConfigDir()
 	if err != nil {

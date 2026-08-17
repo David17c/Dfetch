@@ -27,8 +27,11 @@ func (d DistroInfo) DisplayName() string {
 	case d.Name != "":
 		return d.Name
 
-	default:
+	case d.ID != "":
 		return d.ID
+
+	default:
+		return "unknown"
 	}
 }
 
@@ -46,34 +49,11 @@ func OS(format string) string {
 }
 
 func Distro() (DistroInfo, error) {
-	info, err := parseOSRelease("/etc/os-release")
-	if err == nil && info.ID != "" {
-		return info, nil
+	if _, err := os.Stat("/etc/os-release"); err == nil {
+		return parseOSRelease("/etc/os-release")
 	}
 
-	info, err = parseOSRelease("/usr/lib/os-release")
-	if err == nil && info.ID != "" {
-		return info, nil
-	}
-
-	data, err := os.ReadFile("/etc/issue")
-	if err != nil {
-		return DistroInfo{}, err
-	}
-
-	name := strings.TrimSpace(string(data))
-
-	if idx := strings.IndexRune(name, '\\'); idx != -1 {
-		name = strings.TrimSpace(name[:idx])
-	}
-
-	if name == "" {
-		return DistroInfo{}, fmt.Errorf("unable to determine distribution")
-	}
-
-	return DistroInfo{
-		PrettyName: name,
-	}, nil
+	return parseOSRelease("/usr/lib/os-release")
 }
 
 func parseOSRelease(path string) (DistroInfo, error) {
@@ -88,7 +68,7 @@ func parseOSRelease(path string) (DistroInfo, error) {
 	scanner := bufio.NewScanner(file)
 
 	for scanner.Scan() {
-		line := scanner.Text()
+		line := strings.TrimSpace(scanner.Text())
 
 		if line == "" || strings.HasPrefix(line, "#") {
 			continue
@@ -99,21 +79,18 @@ func parseOSRelease(path string) (DistroInfo, error) {
 			continue
 		}
 
-		value = strings.Trim(value, `"`)
+		key = strings.TrimSpace(key)
+		value = parseOSReleaseValue(value)
 
 		switch key {
 		case "PRETTY_NAME":
 			info.PrettyName = value
-
 		case "NAME":
 			info.Name = value
-
 		case "VERSION":
 			info.Version = value
-
 		case "ID":
 			info.ID = value
-
 		case "ID_LIKE":
 			info.IDLike = value
 		}
@@ -124,4 +101,44 @@ func parseOSRelease(path string) (DistroInfo, error) {
 	}
 
 	return info, nil
+}
+
+func parseOSReleaseValue(value string) string {
+	value = strings.TrimSpace(value)
+
+	if len(value) < 2 {
+		return value
+	}
+
+	quote := value[0]
+	if (quote != '"' && quote != '\'') || value[len(value)-1] != quote {
+		return value
+	}
+
+	value = value[1 : len(value)-1]
+
+	var b strings.Builder
+	b.Grow(len(value))
+
+	escaped := false
+	for _, r := range value {
+		if escaped {
+			b.WriteRune(r)
+			escaped = false
+			continue
+		}
+
+		if r == '\\' {
+			escaped = true
+			continue
+		}
+
+		b.WriteRune(r)
+	}
+
+	if escaped {
+		b.WriteByte('\\')
+	}
+
+	return b.String()
 }

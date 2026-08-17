@@ -45,14 +45,10 @@ var PackageManagers = []PackageManager{
 	},
 	{
 		Name:  "rpm",
-		Path:  "/var/lib/rpm",
-		Dir:   true,
 		Count: countRpm,
 	},
 	{
 		Name:  "snap",
-		Path:  "/var/lib/snapd/snaps",
-		Dir:   true,
 		Count: countSnap,
 	},
 	{
@@ -83,7 +79,6 @@ func Packages(format string) string {
 		}
 	}
 
-	// {packages} and {total} require every detected package manager.
 	if needsPackages || needsTotal {
 		for _, pm := range PackageManagers {
 			neededManagers[pm.Name] = true
@@ -150,10 +145,13 @@ func getPackageManagers() []PackageManager {
 
 	for _, pm := range PackageManagers {
 		switch pm.Name {
-		case "rpm", "dpkg", "pacman", "apk", "eopkg", "flatpak", "snap":
+		case "rpm", "snap":
 			if _, err := exec.LookPath(pm.Name); err != nil {
 				continue
 			}
+
+			detected = append(detected, pm)
+			continue
 		}
 
 		if pm.Dir {
@@ -231,39 +229,26 @@ func countEopkg() int {
 }
 
 func countRpm() int {
-	if _, err := os.Stat("/var/lib/rpm/Packages"); err != nil {
-		return 0
-	}
-
 	out, err := exec.Command("rpm", "-qa").Output()
 	if err != nil {
 		return 0
 	}
 
-	lines := strings.Split(strings.TrimSpace(string(out)), "\n")
-
-	if len(lines) == 1 && lines[0] == "" {
-		return 0
-	}
-
-	return len(lines)
+	return bytes.Count(out, []byte{'\n'})
 }
 
 func countSnap() int {
-	entries, err := os.ReadDir("/var/lib/snapd/snaps")
+	out, err := exec.Command("snap", "list").Output()
 	if err != nil {
 		return 0
 	}
 
-	count := 0
-
-	for _, entry := range entries {
-		if !entry.IsDir() && strings.HasSuffix(entry.Name(), ".snap") {
-			count++
-		}
+	lines := strings.Split(strings.TrimSpace(string(out)), "\n")
+	if len(lines) <= 1 {
+		return 0
 	}
 
-	return count
+	return len(lines) - 1
 }
 
 func countFlatpak() int {
