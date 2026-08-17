@@ -76,9 +76,10 @@ func field(label, color, separator, value string, NoColor bool) string {
 	}
 
 	return fmt.Sprintf(
-		"%s%s\x1b[0m%s %s",
+		"%s%s%s%s %s",
 		config.GetColorCode(color, NoColor),
 		label,
+		config.GetColorCode("reset", NoColor),
 		separator,
 		value,
 	)
@@ -121,10 +122,11 @@ func PrintOutput(asciiLines, infoLines []string, NoColor bool) {
 		}
 
 		fmt.Printf(
-			"%s%s%s\x1b[0m\n",
+			"%s%s%s%s\n",
 			left,
 			strings.Repeat(" ", padding),
 			infoLines[i],
+			config.GetColorCode("reset", NoColor),
 		)
 	}
 }
@@ -149,13 +151,13 @@ func ApplyColorTags(line string, NoColor bool) string {
 		name := strings.TrimSuffix(strings.TrimPrefix(tag, "${"), "}")
 
 		if strings.EqualFold(name, "reset") {
-			return "\x1b[0m"
+			return config.GetColorCode("reset", NoColor)
 		}
 
 		return config.GetColorCode(name, NoColor)
 	})
 
-	return result + "\x1b[0m"
+	return result + config.GetColorCode("reset", NoColor)
 }
 
 // helps make it so modules spanning multiple lines don't cut through the ascii art
