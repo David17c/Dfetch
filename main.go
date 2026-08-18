@@ -22,7 +22,7 @@ func main() {
 	}
 
 	// Create the default config file if it doesn't exist
-	if err := config.CreateConfigFile(opts); err != nil {
+	if err := config.CreateConfigFile(opts, distro.ID, distro.IDLike); err != nil {
 		fmt.Fprintf(os.Stderr, "Dfetch: %v\n", err)
 		os.Exit(1)
 	}

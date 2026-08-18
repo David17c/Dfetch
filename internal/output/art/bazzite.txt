@@ -1,19 +1,19 @@
-${bold_blue}     %%%%%%${bold_bright_white}====${bold_blue}%%%%%%%%%%            
-${bold_blue}   %%%%%%%%    %%%%%%%%%%%%%%        
-${bold_blue}  %%%%%%%%%    %%%%%%%%%%%%%%%%      
-${bold_blue}  %%%%%%%%%    %%%%%%%%%%%%%%%###    
-${bold_blue}  %%%%%%%%%    %%%%%%%%%%%%%######   
-${bold_bright_white}  ==                  =======${bold_blue}######  
-${bold_bright_white}  ==                  =========${bold_blue}##### 
-${bold_blue}  %%%%%%%%%    ${bold_blue}%%%%%%%####${bold_bright_white}======${bold_blue}#####
-${bold_blue}  %%%%%%%%%    ${bold_blue}%%%%%#######${bold_bright_white}=====${bold_blue}#####
-${bold_blue}  %%%%%%%%%    ${bold_blue}%%%#########${bold_bright_white}=====${bold_blue}#####
-${bold_blue}  %%%%%%%%%    ${bold_blue}%%##########${bold_bright_white}=====${bold_blue}#####
-${bold_blue}  %%%%%%%%%${bold_bright_white}====${bold_blue}###########${bold_bright_white}=====${bold_blue}######
-${bold_blue}   %%%%%%%%${bold_bright_white}====${bold_blue}#########${bold_bright_white}======${bold_blue}###### 
-${bold_blue}    %%%%%%%${bold_bright_white}=====${bold_blue}#####${bold_bright_white}========${bold_blue}######  
-${bold_blue}     %%%%###${bold_bright_white}===============${bold_blue}#######   
-${bold_blue}      %#######${bold_bright_white}==========${bold_blue}#########    
-${bold_blue}        #######################      
-${bold_blue}          ###################        
-${bold_blue}              ###########    
+${bold_bright_blue}     %%%%%%${bold_bright_white}====${bold_bright_blue}%%%%%%%%%%            
+${bold_bright_blue}   %%%%%%%%    %%%%%%%%%%%%%%        
+${bold_bright_blue}  %%%%%%%%%    %%%%%%%%%%%%%%%%      
+${bold_bright_blue}  %%%%%%%%%    %%%%%%%%%%%%%%%###    
+${bold_bright_blue}  %%%%%%%%%    %%%%%%%%%%%%%######   
+${bold_bright_white}  ==                  =======${bold_bright_blue}######  
+${bold_bright_white}  ==                  =========${bold_bright_blue}##### 
+${bold_bright_blue}  %%%%%%%%%    ${bold_bright_blue}%%%%%%%####${bold_bright_white}======${bold_bright_blue}#####
+${bold_bright_blue}  %%%%%%%%%    ${bold_bright_blue}%%%%%#######${bold_bright_white}=====${bold_bright_blue}#####
+${bold_bright_blue}  %%%%%%%%%    ${bold_bright_blue}%%%#########${bold_bright_white}=====${bold_bright_blue}#####
+${bold_bright_blue}  %%%%%%%%%    ${bold_bright_blue}%%##########${bold_bright_white}=====${bold_bright_blue}#####
+${bold_bright_blue}  %%%%%%%%%${bold_bright_white}====${bold_bright_blue}###########${bold_bright_white}=====${bold_bright_blue}######
+${bold_bright_blue}   %%%%%%%%${bold_bright_white}====${bold_bright_blue}#########${bold_bright_white}======${bold_bright_blue}###### 
+${bold_bright_blue}    %%%%%%%${bold_bright_white}=====${bold_bright_blue}#####${bold_bright_white}========${bold_bright_blue}######  
+${bold_bright_blue}     %%%%###${bold_bright_white}===============${bold_bright_blue}#######   
+${bold_bright_blue}      %#######${bold_bright_white}==========${bold_bright_blue}#########    
+${bold_bright_blue}        #######################      
+${bold_bright_blue}          ###################        
+${bold_bright_blue}              ###########    

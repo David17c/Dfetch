@@ -1,19 +1,19 @@
-${bold_bright_blue}                   -`
-${bold_bright_blue}                  .o+`
-${bold_bright_blue}                 `ooo/
-${bold_bright_blue}                `+oooo:
-${bold_bright_blue}               `+oooooo:
-${bold_bright_blue}               -+oooooo+:
-${bold_bright_blue}             `/:-:++oooo+:
-${bold_bright_blue}            `/++++/+++++++:
-${bold_bright_blue}           `/++++++++++++++:
-${bold_bright_blue}          `/+++ooooooooooooo/`
-${bold_bright_blue}         ./ooosssso++osssssso+`
-${bold_bright_blue}        .oossssso-````/ossssss+`
-${bold_bright_blue}       -osssssso.      :ssssssso.
-${bold_bright_blue}      :osssssss/        osssso+++.
-${bold_bright_blue}     /ossssssss/        +ssssooo/-
-${bold_bright_blue}   `/ossssso+/:-        -:/+osssso+-
-${bold_bright_blue}  `+sso+:-`                 `.-/+oso:
-${bold_bright_blue} `++:.                           `-/+/
-${bold_bright_blue} .`                                 `/
+${bold_cyan}                   -`
+${bold_cyan}                  .o+`
+${bold_cyan}                 `ooo/
+${bold_cyan}                `+oooo:
+${bold_cyan}               `+oooooo:
+${bold_cyan}               -+oooooo+:
+${bold_cyan}             `/:-:++oooo+:
+${bold_cyan}            `/++++/+++++++:
+${bold_cyan}           `/++++++++++++++:
+${bold_cyan}          `/+++ooooooooooooo/`
+${bold_cyan}         ./ooosssso++osssssso+`
+${bold_cyan}        .oossssso-````/ossssss+`
+${bold_cyan}       -osssssso.      :ssssssso.
+${bold_cyan}      :osssssss/        osssso+++.
+${bold_cyan}     /ossssssss/        +ssssooo/-
+${bold_cyan}   `/ossssso+/:-        -:/+osssso+-
+${bold_cyan}  `+sso+:-`                 `.-/+oso:
+${bold_cyan} `++:.                           `-/+/
+${bold_cyan} .`                                 `/

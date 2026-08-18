@@ -1,17 +1,17 @@
-${bold_bright_blue}         ZZZZZZZZZZZZZZZZZZZZZZ
-${bold_bright_blue}        ZZZZZZZZZZZZZZZZZZZZZZZZ
-${bold_bright_blue}       ZZZZZZZZZZZZZZZZZZZZZZZZZZ
-${bold_bright_blue}                                  
-${bold_bright_blue}                                   
-${bold_bright_blue}   ZZZZZZZZZZZZZZZZZZZZZZZ=`        
-${bold_bright_blue}  ZZZZZZZZZZZZZZZZZZZZ-`        _-ZZZ
-${bold_bright_blue} ZZZZZZZZZZZZZZZZZZ-`        _-ZZZZZZZ
-${bold_bright_blue}ZZZZZZZZZZZZZZZZ-`       _-ZZZZZZZZZZZZ
-${bold_bright_blue} ZZZZZZZZZZZ-`       _-ZZZZZZZZZZZZZZZZ
-${bold_bright_blue}  ZZZZZZ-`        _-ZZZZZZZZZZZZZZZZZZ
-${bold_bright_blue}   ZZ-`        -ZZZZZZZZZZZZZZZZZZZZZ
-${bold_bright_blue}                                    
-${bold_bright_blue}                                   
-${bold_bright_blue}      ZZZZZZZZZZZZZZZZZZZZZZZZZZZ
-${bold_bright_blue}       ZZZZZZZZZZZZZZZZZZZZZZZZZ
-${bold_bright_blue}        ZZZZZZZZZZZZZZZZZZZZZZZ
+${bold_blue}         ZZZZZZZZZZZZZZZZZZZZZZ
+${bold_blue}        ZZZZZZZZZZZZZZZZZZZZZZZZ
+${bold_blue}       ZZZZZZZZZZZZZZZZZZZZZZZZZZ
+${bold_blue}                                  
+${bold_blue}                                   
+${bold_blue}   ZZZZZZZZZZZZZZZZZZZZZZZ=`        
+${bold_blue}  ZZZZZZZZZZZZZZZZZZZZ-`        _-ZZZ
+${bold_blue} ZZZZZZZZZZZZZZZZZZ-`        _-ZZZZZZZ
+${bold_blue}ZZZZZZZZZZZZZZZZ-`       _-ZZZZZZZZZZZZ
+${bold_blue} ZZZZZZZZZZZ-`       _-ZZZZZZZZZZZZZZZZ
+${bold_blue}  ZZZZZZ-`        _-ZZZZZZZZZZZZZZZZZZ
+${bold_blue}   ZZ-`        -ZZZZZZZZZZZZZZZZZZZZZ
+${bold_blue}                                    
+${bold_blue}                                   
+${bold_blue}      ZZZZZZZZZZZZZZZZZZZZZZZZZZZ
+${bold_blue}       ZZZZZZZZZZZZZZZZZZZZZZZZZ
+${bold_blue}        ZZZZZZZZZZZZZZZZZZZZZZZ

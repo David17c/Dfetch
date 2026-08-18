@@ -1,19 +1,19 @@
              ${bold_bright_white}...-:::::-...
 ${bold_bright_white}         .-MMMMMMMMMMMMMMMMM-.
-${bold_bright_white}      .-MMMM${green}`.-=:::::::=-.`${bold_bright_white}MMMM-.
-${bold_bright_white}    .:MMMM${green}.:MMMMMMMMMMMMMMM:.${bold_bright_white}MMMM:.
-${bold_bright_white}   -MMM${green}-M---MMMMMMMMMMMMMMMMMMM.${bold_bright_white}MMM-
-${bold_bright_white}  :MMM${green}:MM`  :MMMM:....::-...-MMMM:${bold_bright_white}MMM:
-${bold_bright_white} :MMM${green}:MMM`  :MM:`  ``    ``  `:MMM:${bold_bright_white}MMM:
-${bold_bright_white}.MMM${green}.MMMM`  :MM.  -MM.  .MM-  `MMMM.${bold_bright_white}MMM.
-${bold_bright_white}:MMM${green}:MMMM`  :MM.  -MM-  .MM:  `MMMM-${bold_bright_white}MMM:
-${bold_bright_white}:MMM${green}:MMMM`  :MM.  -MM-  .MM:  `MMMM:${bold_bright_white}MMM:
-${bold_bright_white}:MMM${green}:MMMM`  :MM.  -MM-  .MM:  `MMMM-${bold_bright_white}MMM:
-${bold_bright_white}.MMM${green}.MMMM`  :MM:--:MM:--:MM:  `MMMM.${bold_bright_white}MMM.
-${bold_bright_white} :MMM${green}:MMM-  `-MMMMMMMMMMMM-`  -MMM-${bold_bright_white}MMM:
-${bold_bright_white}  :MMM${green}:MMM:`                `:MMM:${bold_bright_white}MMM:
-${bold_bright_white}   .MMM${green}.MMMM:--------------:MMMM.${bold_bright_white}MMM.
-${bold_bright_white}     '-MMMM${green}.-MMMMMMMMMMMMMMM-.${bold_bright_white}MMMM-'
-${bold_bright_white}       '.-MMMM${green}``--:::::--``${bold_bright_white}MMMM-.'
+${bold_bright_white}      .-MMMM${bold_green}`.-=:::::::=-.`${bold_bright_white}MMMM-.
+${bold_bright_white}    .:MMMM${bold_green}.:MMMMMMMMMMMMMMM:.${bold_bright_white}MMMM:.
+${bold_bright_white}   -MMM${bold_green}-M---MMMMMMMMMMMMMMMMMMM.${bold_bright_white}MMM-
+${bold_bright_white}  :MMM${bold_green}:MM`  :MMMM:....::-...-MMMM:${bold_bright_white}MMM:
+${bold_bright_white} :MMM${bold_green}:MMM`  :MM:`  ``    ``  `:MMM:${bold_bright_white}MMM:
+${bold_bright_white}.MMM${bold_green}.MMMM`  :MM.  -MM.  .MM-  `MMMM.${bold_bright_white}MMM.
+${bold_bright_white}:MMM${bold_green}:MMMM`  :MM.  -MM-  .MM:  `MMMM-${bold_bright_white}MMM:
+${bold_bright_white}:MMM${bold_green}:MMMM`  :MM.  -MM-  .MM:  `MMMM:${bold_bright_white}MMM:
+${bold_bright_white}:MMM${bold_green}:MMMM`  :MM.  -MM-  .MM:  `MMMM-${bold_bright_white}MMM:
+${bold_bright_white}.MMM${bold_green}.MMMM`  :MM:--:MM:--:MM:  `MMMM.${bold_bright_white}MMM.
+${bold_bright_white} :MMM${bold_green}:MMM-  `-MMMMMMMMMMMM-`  -MMM-${bold_bright_white}MMM:
+${bold_bright_white}  :MMM${bold_green}:MMM:`                `:MMM:${bold_bright_white}MMM:
+${bold_bright_white}   .MMM${bold_green}.MMMM:--------------:MMMM.${bold_bright_white}MMM.
+${bold_bright_white}     '-MMMM${bold_green}.-MMMMMMMMMMMMMMM-.${bold_bright_white}MMMM-'
+${bold_bright_white}       '.-MMMM${bold_green}``--:::::--``${bold_bright_white}MMMM-.'
 ${bold_bright_white}           '-MMMMMMMMMMMMMMM-'
 ${bold_bright_white}               ``-:::::-``

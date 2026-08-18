@@ -157,7 +157,7 @@ func (c Config) Validate() error {
 	return nil
 }
 
-func CreateConfigFile(opts cmd.Options) error {
+func CreateConfigFile(opts cmd.Options, distroID string, distroIDLike string) error {
 	path, err := configPath(opts)
 	if err != nil {
 		return err
@@ -179,6 +179,16 @@ func CreateConfigFile(opts cmd.Options) error {
 		return fmt.Errorf("unable to check config file: %w", err)
 	}
 
+	// Decide what color to use based on the distro
+	colorToUse := mapLogoToColor(distroID)
+
+	if colorToUse == "" {
+		colorToUse = mapLogoToColor(distroIDLike)
+		if colorToUse == "" {
+			colorToUse = "bold_cyan"
+		}
+	}
+
 	defaultConfig := Config{
 		Logo: ASCIIConfig{
 			Enabled:       true,
@@ -190,28 +200,28 @@ func CreateConfigFile(opts cmd.Options) error {
 		Modules: []Module{
 			{Name: "emptyline"},
 
-			{Name: "os", Label: "OS", Color: "bold_cyan", Separator: ": ", Format: "{name}"},
-			{Name: "host", Label: "Host", Color: "bold_cyan", Separator: ": ", Format: "{host}"},
-			{Name: "kernel", Label: "Kernel", Color: "bold_cyan", Separator: ": ", Format: "{version}"},
-			{Name: "bios", Label: "BIOS", Color: "bold_cyan", Separator: ": ", Format: "{bios}"},
+			{Name: "os", Label: "OS", Color: colorToUse, Separator: ": ", Format: "{name}"},
+			{Name: "host", Label: "Host", Color: colorToUse, Separator: ": ", Format: "{host}"},
+			{Name: "kernel", Label: "Kernel", Color: colorToUse, Separator: ": ", Format: "{version}"},
+			{Name: "bios", Label: "BIOS", Color: colorToUse, Separator: ": ", Format: "{bios}"},
 
 			{Name: "emptyline"},
 
-			{Name: "cpu", Label: "CPU", Color: "bold_cyan", Separator: ": ", Format: "{short}"},
-			{Name: "memory", Label: "RAM", Color: "bold_cyan", Separator: ": ", Format: "{used} / {total} {unit} ({percent}%)"},
-			{Name: "disk", Label: "Disk", Color: "bold_cyan", Separator: ": ", Format: "{used} / {total} {unit} ({percent}%)", Mount: "/"},
-			{Name: "board", Label: "Board", Color: "bold_cyan", Separator: ": ", Format: "{board}"},
+			{Name: "cpu", Label: "CPU", Color: colorToUse, Separator: ": ", Format: "{short}"},
+			{Name: "memory", Label: "RAM", Color: colorToUse, Separator: ": ", Format: "{used} / {total} {unit} ({percent}%)"},
+			{Name: "disk", Label: "Disk", Color: colorToUse, Separator: ": ", Format: "{used} / {total} {unit} ({percent}%)", Mount: "/"},
+			{Name: "board", Label: "Board", Color: colorToUse, Separator: ": ", Format: "{board}"},
 
 			{Name: "emptyline"},
 
-			{Name: "packages", Label: "Pkgs", Color: "bold_cyan", Separator: ": ", Format: "{packages}"},
-			{Name: "shell", Label: "Shell", Color: "bold_cyan", Separator: ": ", Format: "{name} {version}"},
-			{Name: "terminal", Label: "Term", Color: "bold_cyan", Separator: ": ", Format: "{name} {version}"},
-			{Name: "de", Label: "DE", Color: "bold_cyan", Separator: ": ", Format: "{de}"},
-			{Name: "wm", Label: "WM", Color: "bold_cyan", Separator: ": ", Format: "{name} {sessiontype}"},
-			{Name: "uptime", Label: "Uptime", Color: "bold_cyan", Separator: ": ", Format: "{uptime}"},
-			{Name: "local_ip", Label: "Local IP", Color: "bold_cyan", Separator: ": ", Format: "{address}"},
-			{Name: "locale", Label: "Lang", Color: "bold_cyan", Separator: ": ", Format: "{locale}"},
+			{Name: "packages", Label: "Pkgs", Color: colorToUse, Separator: ": ", Format: "{packages}"},
+			{Name: "shell", Label: "Shell", Color: colorToUse, Separator: ": ", Format: "{name} {version}"},
+			{Name: "terminal", Label: "Term", Color: colorToUse, Separator: ": ", Format: "{name} {version}"},
+			{Name: "de", Label: "DE", Color: colorToUse, Separator: ": ", Format: "{de}"},
+			{Name: "wm", Label: "WM", Color: colorToUse, Separator: ": ", Format: "{name} {sessiontype}"},
+			{Name: "uptime", Label: "Uptime", Color: colorToUse, Separator: ": ", Format: "{uptime}"},
+			{Name: "local_ip", Label: "Local IP", Color: colorToUse, Separator: ": ", Format: "{address}"},
+			{Name: "locale", Label: "Lang", Color: colorToUse, Separator: ": ", Format: "{locale}"},
 
 			{Name: "emptyline"},
 
@@ -258,4 +268,47 @@ func (m Module) HasOptions() bool {
 		m.Format != "" ||
 		m.Separator != "" ||
 		m.Mount != ""
+}
+
+func mapLogoToColor(ID string) string {
+	colors := map[string]string{
+		"almalinux":           "bold_yellow",
+		"alpine":              "bold_magenta",
+		"arch":                "bold_cyan",
+		"artix":               "bold_cyan",
+		"bazzite":             "bold_blue",
+		"cachyos":             "bold_green",
+		"centos":              "bold_green",
+		"clear-linux-os":      "bold_blue",
+		"debian":              "bold_red",
+		"deepin":              "bold_green",
+		"elementary":          "bold_blue",
+		"endeavouros":         "bold_magenta",
+		"fedora":              "bold_blue",
+		"garuda":              "bold_red",
+		"gentoo":              "bold_magenta",
+		"kali":                "bold_blue",
+		"linuxmint":           "bold_green",
+		"manjaro":             "bold_green",
+		"mx":                  "bold_white",
+		"nixos":               "bold_magenta",
+		"opensuse-leap":       "bold_green",
+		"opensuse-tumbleweed": "bold_green",
+		"opensuse-slowroll":   "bold_green",
+		"parrot":              "bold_cyan",
+		"pclinuxos":           "bold_white",
+		"peppermint":          "bold_white",
+		"popos":               "bold_cyan",
+		"qubes":               "magenta",
+		"rhel":                "bold_red",
+		"rocky":               "bold_green",
+		"slackware":           "bold_blue",
+		"tuxedo":              "bold_red",
+		"ubuntu":              "bold_yellow",
+		"vanilla":             "bold_yellow",
+		"void":                "bold_white",
+		"zorin":               "bold_blue",
+	}
+
+	return colors[ID]
 }
