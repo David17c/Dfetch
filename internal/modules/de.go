@@ -95,6 +95,5 @@ func detectDesktopEnvironment() string {
 			return "Deepin"
 		}
 	}
-
-	return id
+	return "unknown"
 }
