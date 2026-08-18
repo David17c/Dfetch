@@ -179,7 +179,7 @@ func CreateConfigFile(opts cmd.Options, distroID string, distroIDLike string) er
 		return fmt.Errorf("unable to check config file: %w", err)
 	}
 
-	// Decide what color to use based on the distro
+	// Decide what color to use for default config based on the distro
 	colorToUse := mapLogoToColor(distroID)
 
 	if colorToUse == "" {
@@ -276,8 +276,8 @@ func mapLogoToColor(ID string) string {
 		"alpine":              "bold_magenta",
 		"arch":                "bold_cyan",
 		"artix":               "bold_cyan",
-		"bazzite":             "bold_blue",
-		"cachyos":             "bold_green",
+		"bazzite":             "bold_bright_blue",
+		"cachyos":             "bold_cyan",
 		"centos":              "bold_green",
 		"clear-linux-os":      "bold_blue",
 		"debian":              "bold_red",
@@ -299,10 +299,10 @@ func mapLogoToColor(ID string) string {
 		"pclinuxos":           "bold_white",
 		"peppermint":          "bold_white",
 		"popos":               "bold_cyan",
-		"qubes":               "magenta",
+		"qubes":               "bold_magenta",
 		"rhel":                "bold_red",
 		"rocky":               "bold_green",
-		"slackware":           "bold_blue",
+		"slackware":           "bold_bright_blue",
 		"tuxedo":              "bold_red",
 		"ubuntu":              "bold_yellow",
 		"vanilla":             "bold_yellow",

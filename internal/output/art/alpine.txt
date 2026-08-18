@@ -1,20 +1,20 @@
-${bold_bright_blue}       .hddddddddddddddddddddddh.
-${bold_bright_blue}      :dddddddddddddddddddddddddd:
-${bold_bright_blue}     /dddddddddddddddddddddddddddd/
-${bold_bright_blue}    +dddddddddddddddddddddddddddddd+
-${bold_bright_blue}  `sdddddddddddddddddddddddddddddddds`
-${bold_bright_blue} `ydddddddddddd++hdddddddddddddddddddy`
-${bold_bright_blue}.hddddddddddd+`  `+ddddh:-sdddddddddddh.
-${bold_bright_blue}hdddddddddd+`      `+y:    .sddddddddddh
-${bold_bright_blue}ddddddddh+`   `//`   `.`     -sddddddddd
-${bold_bright_blue}ddddddh+`   `/hddh/`   `:s-    -sddddddd
-${bold_bright_blue}ddddh+`   `/+/dddddh/`   `+s-    -sddddd
-${bold_bright_blue}ddd+`   `/o` :dddddddh/`   `oy-    .yddd
-${bold_bright_blue}hdddyo+ohddyosdddddddddho+oydddy++ohdddh
-${bold_bright_blue}.hddddddddddddddddddddddddddddddddddddh.
-${bold_bright_blue} `yddddddddddddddddddddddddddddddddddy`
-${bold_bright_blue}  `sdddddddddddddddddddddddddddddddds`
-${bold_bright_blue}    +dddddddddddddddddddddddddddddd+
-${bold_bright_blue}     /dddddddddddddddddddddddddddd/
-${bold_bright_blue}      :dddddddddddddddddddddddddd:
-${bold_bright_blue}       .hddddddddddddddddddddddh.
+${bold_blue}       .hddddddddddddddddddddddh.
+${bold_blue}      :dddddddddddddddddddddddddd:
+${bold_blue}     /dddddddddddddddddddddddddddd/
+${bold_blue}    +dddddddddddddddddddddddddddddd+
+${bold_blue}  `sdddddddddddddddddddddddddddddddds`
+${bold_blue} `ydddddddddddd++hdddddddddddddddddddy`
+${bold_blue}.hddddddddddd+`  `+ddddh:-sdddddddddddh.
+${bold_blue}hdddddddddd+`      `+y:    .sddddddddddh
+${bold_blue}ddddddddh+`   `//`   `.`     -sddddddddd
+${bold_blue}ddddddh+`   `/hddh/`   `:s-    -sddddddd
+${bold_blue}ddddh+`   `/+/dddddh/`   `+s-    -sddddd
+${bold_blue}ddd+`   `/o` :dddddddh/`   `oy-    .yddd
+${bold_blue}hdddyo+ohddyosdddddddddho+oydddy++ohdddh
+${bold_blue}.hddddddddddddddddddddddddddddddddddddh.
+${bold_blue} `yddddddddddddddddddddddddddddddddddy`
+${bold_blue}  `sdddddddddddddddddddddddddddddddds`
+${bold_blue}    +dddddddddddddddddddddddddddddd+
+${bold_blue}     /dddddddddddddddddddddddddddd/
+${bold_blue}      :dddddddddddddddddddddddddd:
+${bold_blue}       .hddddddddddddddddddddddh.

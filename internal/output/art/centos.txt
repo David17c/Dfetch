@@ -5,15 +5,15 @@
      ${bold_green}KKV' 4KKKKK ${bold_yellow}LJ ${bold_magenta}KKKKAL 'VKK
      ${bold_green}V' ' 'VKKKK ${bold_yellow}LJ ${bold_magenta}KKKKV' ' 'V
      ${bold_green}.4MA.' 'VKK ${bold_yellow}LJ ${bold_magenta}KKV' '.4Mb.
-${bold_magenta}   . ${bold_green}KKKKKA.' 'V ${bold_yellow}LJ ${bold_magenta}V' '.4KKKKK ${bold_bright_blue}.
-${bold_magenta} .4D ${bold_green}KKKKKKKA.'' ${bold_yellow}LJ ${bold_magenta}''.4KKKKKKK ${bold_bright_blue}FA.
-${bold_magenta}<QDD ++++++++++++  ${bold_bright_blue}++++++++++++ GFD>
-${bold_magenta} 'VD ${bold_bright_blue}KKKKKKKK'.. ${bold_green}LJ ${bold_yellow}..'KKKKKKKK ${bold_bright_blue}FV
-${bold_magenta}   ' ${bold_bright_blue}VKKKKK'. .4 ${bold_green}LJ ${bold_yellow}K. .'KKKKKV ${bold_bright_blue}'
-     ${bold_bright_blue} 'VK'. .4KK ${bold_green}LJ ${bold_yellow}KKA. .'KV'
-     ${bold_bright_blue}A. . .4KKKK ${bold_green}LJ ${bold_yellow}KKKKA. . .4
-     ${bold_bright_blue}KKA. 'KKKKK ${bold_green}LJ ${bold_yellow}KKKKK' .4KK
-     ${bold_bright_blue}KKSSA. VKKK ${bold_green}LJ ${bold_yellow}KKKV .4SSKK
+${bold_magenta}   . ${bold_green}KKKKKA.' 'V ${bold_yellow}LJ ${bold_magenta}V' '.4KKKKK ${bold_blue}.
+${bold_magenta} .4D ${bold_green}KKKKKKKA.'' ${bold_yellow}LJ ${bold_magenta}''.4KKKKKKK ${bold_blue}FA.
+${bold_magenta}<QDD ++++++++++++  ${bold_blue}++++++++++++ GFD>
+${bold_magenta} 'VD ${bold_blue}KKKKKKKK'.. ${bold_green}LJ ${bold_yellow}..'KKKKKKKK ${bold_blue}FV
+${bold_magenta}   ' ${bold_blue}VKKKKK'. .4 ${bold_green}LJ ${bold_yellow}K. .'KKKKKV ${bold_blue}'
+     ${bold_blue} 'VK'. .4KK ${bold_green}LJ ${bold_yellow}KKA. .'KV'
+     ${bold_blue}A. . .4KKKK ${bold_green}LJ ${bold_yellow}KKKKA. . .4
+     ${bold_blue}KKA. 'KKKKK ${bold_green}LJ ${bold_yellow}KKKKK' .4KK
+     ${bold_blue}KKSSA. VKKK ${bold_green}LJ ${bold_yellow}KKKV .4SSKK
               ${bold_green}<><><><>
               ${bold_green} 'MKKM'
               ${bold_green}   ''

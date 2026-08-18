@@ -1,20 +1,20 @@
-${bold_yellow}             --+oossssssoo+--
-${bold_yellow}         .:+ssssssssssssssssss+:.
-${bold_yellow}       -+ssssssssssssssssssyyssss+-
-${bold_yellow}     .ossssssssssssssssssd${bold_bright_white}MMMNy${bold_yellow}sssso.
-${bold_yellow}   /sssssssssss${bold_bright_white}hdmmNNmmyNMMMMh${bold_yellow}ssssss/
-${bold_yellow}  +sssssssss${bold_bright_white}hm${bold_yellow}yd${bold_bright_white}MMMMMMMNddddy${bold_yellow}ssssssss+
-${bold_yellow} /ssssssss${bold_bright_white}hNMMM${bold_yellow}yh${bold_bright_white}hyyyyhmNMMMNh${bold_yellow}ssssssss/
-${bold_yellow}.ssssssss${bold_bright_white}dMMMNh${bold_yellow}ssssssssss${bold_bright_white}hNMMMd${bold_yellow}ssssssss.
-${bold_yellow}+ssss${bold_bright_white}hhhyNMMNy${bold_yellow}ssssssssssss${bold_bright_white}yNMMMy${bold_yellow}sssssss+
-${bold_yellow}oss${bold_bright_white}yNMMMNyMMh${bold_yellow}ssssssssssssss${bold_bright_white}hmmmh${bold_yellow}ssssssso
-${bold_yellow}oss${bold_bright_white}yNMMMNyMMh${bold_yellow}sssssssssssssshmmmhssssssso
-${bold_yellow}+ssss${bold_bright_white}hhhyNMMNy${bold_yellow}ssssssssssss${bold_bright_white}yNMMMy${bold_yellow}sssssss+
-${bold_yellow}.ssssssss${bold_bright_white}dMMMNh${bold_yellow}ssssssssss${bold_bright_white}hNMMMd${bold_yellow}ssssssss.
-${bold_yellow} /ssssssss${bold_bright_white}hNMMM${bold_yellow}yh${bold_bright_white}hyyyyhdNMMMNh${bold_yellow}ssssssss/
-${bold_yellow}  +sssssssss${bold_bright_white}dm${bold_yellow}yd${bold_bright_white}MMMMMMMMddddy${bold_yellow}ssssssss+
-${bold_yellow}   /sssssssssss${bold_bright_white}hdmNNNNmyNMMMMh${bold_yellow}ssssss/
-${bold_yellow}    .ossssssssssssssssss${bold_bright_white}dMMMNy${bold_yellow}sssso.
-${bold_yellow}     -+sssssssssssssssss${bold_bright_white}yyy${bold_yellow}ssss+-
-${bold_yellow}       `:+ssssssssssssssssss+:´
-${bold_yellow}           --+oossssssoo+--
+${bold_red}                             ....
+${bold_red}              .',:clooo:  .:looooo:.
+${bold_red}           .;looooooooc  .oooooooooo'
+${bold_red}        .;looooool:,''.  :ooooooooooc
+${bold_red}       ;looool;.         'oooooooooo,
+${bold_red}      ;clool'             .cooooooc.  ,,
+${bold_red}         ...                ......  .:oo,
+${bold_red}  .;clol:,.                        .loooo'
+${bold_red} :ooooooooo,                        'ooool
+${bold_red}'ooooooooooo.                        loooo.
+${bold_red}'ooooooooool                         coooo.
+${bold_red} ,loooooooc.                        .loooo.
+${bold_red}   .,;;;'.                          ;ooooc
+${bold_red}       ...                         ,ooool.
+${bold_red}    .cooooc.              ..',,'.  .cooo.
+${bold_red}      ;ooooo:.           ;oooooooc.  :l.
+${bold_red}       .coooooc,..      coooooooooo.
+${bold_red}         .:ooooooolc:. .ooooooooooo'
+${bold_red}           .':loooooo;  ,oooooooooc
+${bold_red}               ..';::c'  .;loooo:'

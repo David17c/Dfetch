@@ -1,15 +1,15 @@
                      ${bold_red}./${bold_magenta}o.
-                   ${bold_red}./${bold_magenta}sssso${bold_bright_blue}-
-                 ${bold_red}`:${bold_magenta}osssssss+${bold_bright_blue}-
-               ${bold_red}`:+${bold_magenta}sssssssssso${bold_bright_blue}/.
-             ${bold_red}`-/o${bold_magenta}ssssssssssssso${bold_bright_blue}/.
-           ${bold_red}`-/+${bold_magenta}sssssssssssssssso${bold_bright_blue}+:`
-         ${bold_red}`-:/+${bold_magenta}sssssssssssssssssso${bold_bright_blue}+/.
-       ${bold_red}`.://o${bold_magenta}sssssssssssssssssssso${bold_bright_blue}++-
-      ${bold_red}.://+${bold_magenta}ssssssssssssssssssssssso${bold_bright_blue}++:
-    ${bold_red}.:///o${bold_magenta}ssssssssssssssssssssssssso${bold_bright_blue}++:
-  ${bold_red}`:////${bold_magenta}ssssssssssssssssssssssssssso${bold_bright_blue}+++.
-${bold_red}`-////+${bold_magenta}ssssssssssssssssssssssssssso${bold_bright_blue}++++-
- ${bold_red}`..-+${bold_magenta}oosssssssssssssssssssssssso${bold_bright_blue}+++++/`
-   ${bold_bright_blue}./++++++++++++++++++++++++++++++/:.
-  ${bold_bright_blue}`:::::::::::::::::::::::::------``
+                   ${bold_red}./${bold_magenta}sssso${bold_blue}-
+                 ${bold_red}`:${bold_magenta}osssssss+${bold_blue}-
+               ${bold_red}`:+${bold_magenta}sssssssssso${bold_blue}/.
+             ${bold_red}`-/o${bold_magenta}ssssssssssssso${bold_blue}/.
+           ${bold_red}`-/+${bold_magenta}sssssssssssssssso${bold_blue}+:`
+         ${bold_red}`-:/+${bold_magenta}sssssssssssssssssso${bold_blue}+/.
+       ${bold_red}`.://o${bold_magenta}sssssssssssssssssssso${bold_blue}++-
+      ${bold_red}.://+${bold_magenta}ssssssssssssssssssssssso${bold_blue}++:
+    ${bold_red}.:///o${bold_magenta}ssssssssssssssssssssssssso${bold_blue}++:
+  ${bold_red}`:////${bold_magenta}ssssssssssssssssssssssssssso${bold_blue}+++.
+${bold_red}`-////+${bold_magenta}ssssssssssssssssssssssssssso${bold_blue}++++-
+ ${bold_red}`..-+${bold_magenta}oosssssssssssssssssssssssso${bold_blue}+++++/`
+   ${bold_blue}./++++++++++++++++++++++++++++++/:.
+  ${bold_blue}`:::::::::::::::::::::::::------``

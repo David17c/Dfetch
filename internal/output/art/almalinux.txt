@@ -6,15 +6,15 @@ ${bold_red}      .xkkkkdood:  ${bold_yellow};kx,  .lkxlll;
 ${bold_red}       xkkx.       ${bold_yellow}xk'     xkkkkk:
 ${bold_red}       'xkx.       ${bold_yellow}xd      .....,.
 ${bold_blue}      .. ${bold_red}:xkl'     ${bold_yellow}:c      ..''..
-${bold_blue}    .dkx'  ${bold_red}.:ldl:'. ${bold_yellow}'  ${bold_bright_green}':lollldkkxo;
-${bold_blue}  .''lkkko'                     ${bold_bright_green}ckkkx.
-${bold_blue}'xkkkd:kkd.       ..  ${bold_bright_blue};'        ${bold_bright_green}:kkxo.
-${bold_blue},xkkkd;kk'      ,d;    ${bold_bright_blue}ld.   ${bold_bright_green}':dkd::cc,
-${bold_blue} .,,.;xkko'.';lxo.      ${bold_bright_blue}dx,  ${bold_bright_green}:kkk'xkkkkc
-${bold_blue}     'dkkkkkxo:.        ${bold_bright_blue};kx  ${bold_bright_green}.kkk:;xkkd.
-${bold_blue}       .....   ${bold_bright_blue}.;dk:.   ${bold_bright_blue}lkk.  ${bold_bright_green}:;,
-${bold_bright_blue}             ${bold_bright_blue}:kkkkkkkdoxkkx
-${bold_bright_blue}              ,c,,;;;:xkkd.
-${bold_bright_blue}                ;kkkkl...
-${bold_bright_blue}                ;kkkkl
-${bold_bright_blue}                 ,od;
+${bold_blue}    .dkx'  ${bold_red}.:ldl:'. ${bold_yellow}'  ${bold_green}':lollldkkxo;
+${bold_blue}  .''lkkko'                     ${bold_green}ckkkx.
+${bold_blue}'xkkkd:kkd.       ..  ${bold_blue};'        ${bold_green}:kkxo.
+${bold_blue},xkkkd;kk'      ,d;    ${bold_blue}ld.   ${bold_green}':dkd::cc,
+${bold_blue} .,,.;xkko'.';lxo.      ${bold_blue}dx,  ${bold_green}:kkk'xkkkkc
+${bold_blue}     'dkkkkkxo:.        ${bold_blue};kx  ${bold_green}.kkk:;xkkd.
+${bold_blue}       .....   ${bold_blue}.;dk:.   ${bold_blue}lkk.  ${bold_green}:;,
+${bold_blue}             ${bold_blue}:kkkkkkkdoxkkx
+${bold_blue}              ,c,,;;;:xkkd.
+${bold_blue}                ;kkkkl...
+${bold_blue}                ;kkkkl
+${bold_blue}                 ,od;
