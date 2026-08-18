@@ -72,11 +72,11 @@ func field(label, color, separator, value string, NoColor bool) string {
 	}
 
 	if color == "" {
-		return fmt.Sprintf("%s%s %s", label, separator, value)
+		return fmt.Sprintf("%s%s%s", label, separator, value)
 	}
 
 	return fmt.Sprintf(
-		"%s%s%s%s %s",
+		"%s%s%s%s%s",
 		config.GetColorCode(color, NoColor),
 		label,
 		config.GetColorCode("reset", NoColor),

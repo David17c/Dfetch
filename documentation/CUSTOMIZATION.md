@@ -111,6 +111,7 @@ This is a list of the placeholders supported by every module:
 * `{used}` - Used memory
 * `{total}` - Total memory
 * `{percent}` - Memory usage percentage
+* `{unit}` - The unit in which the rest is displayed
 
 ### `swap`
 
@@ -118,6 +119,7 @@ This is a list of the placeholders supported by every module:
 * `{used}` - Used swap
 * `{total}` - Total swap
 * `{percent}` - Swap usage percentage
+* `{unit}` - The unit in which the rest is displayed
 
 ### `local_ip`
 
@@ -209,7 +211,20 @@ The following modules do not currently provide format placeholders:
 
 The `text` module uses the `format` option for custom text but does not support any placeholders.
 
-### `mount`
+### Color in formatted information
+
+Formatted information, such as
+
+`{disk} ({percent}%)`
+
+can be colored in the same way as ASCII art by providing color tags. For example, if we want to make the percent part of the information green, we can write:
+
+`{disk} ${green}({percent}%)`
+
+A [list of supported colors](#supported-colors) can be found below.
+
+
+### mount
 
 The `mount` option is only used by the `disk` module.
 

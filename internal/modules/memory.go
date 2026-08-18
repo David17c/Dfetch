@@ -75,29 +75,36 @@ func Memory(format string) string {
 	var (
 		used  string
 		total string
-		unit  string
 	)
 
 	switch {
 	case memTotal >= kbPerTB:
-		unit = "TB"
 		used = fmt.Sprintf("%.2f", float64(memUsed)/float64(kbPerTB))
 		total = fmt.Sprintf("%.2f", float64(memTotal)/float64(kbPerTB))
 
 	case memTotal >= kbPerGB:
-		unit = "GB"
 		used = fmt.Sprintf("%.2f", float64(memUsed)/float64(kbPerGB))
 		total = fmt.Sprintf("%.2f", float64(memTotal)/float64(kbPerGB))
 
 	case memTotal >= kbPerMB:
-		unit = "MB"
 		used = fmt.Sprintf("%.0f", float64(memUsed)/float64(kbPerMB))
 		total = fmt.Sprintf("%.0f", float64(memTotal)/float64(kbPerMB))
 
 	default:
-		unit = "KB"
 		used = strconv.FormatUint(memUsed, 10)
 		total = strconv.FormatUint(memTotal, 10)
+	}
+
+	var unit string
+	switch {
+	case memTotal >= kbPerTB:
+		unit = "TB"
+	case memTotal >= kbPerGB:
+		unit = "GB"
+	case memTotal >= kbPerMB:
+		unit = "MB"
+	default:
+		unit = "KB"
 	}
 
 	memory := used + " / " + total + " " + unit

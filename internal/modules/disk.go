@@ -67,28 +67,8 @@ func Disk(format, mount string) string {
 		divisor = KB
 
 	default:
-		values := config.Values{}
-
-		for _, field := range fields {
-			switch field {
-			case "disk":
-				values["disk"] = fmt.Sprintf("%d / %d B", used, total)
-
-			case "used":
-				values["used"] = fmt.Sprintf("%d", used)
-
-			case "total":
-				values["total"] = fmt.Sprintf("%d", total)
-
-			case "unit":
-				values["unit"] = "B"
-
-			case "percent":
-				values["percent"] = fmt.Sprintf("%.0f", percent)
-			}
-		}
-
-		return config.Format(format, values)
+		unit = "B"
+		divisor = 1
 	}
 
 	usedValue := formatBytesWithUnit(used, divisor)

@@ -76,29 +76,36 @@ func Swap(format string) string {
 	var (
 		used  string
 		total string
-		unit  string
 	)
 
 	switch {
 	case swapTotal >= kbPerTB:
-		unit = "TB"
 		used = fmt.Sprintf("%.2f", float64(swapUsed)/float64(kbPerTB))
 		total = fmt.Sprintf("%.2f", float64(swapTotal)/float64(kbPerTB))
 
 	case swapTotal >= kbPerGB:
-		unit = "GB"
 		used = fmt.Sprintf("%.2f", float64(swapUsed)/float64(kbPerGB))
 		total = fmt.Sprintf("%.2f", float64(swapTotal)/float64(kbPerGB))
 
 	case swapTotal >= kbPerMB:
-		unit = "MB"
 		used = fmt.Sprintf("%.0f", float64(swapUsed)/float64(kbPerMB))
 		total = fmt.Sprintf("%.0f", float64(swapTotal)/float64(kbPerMB))
 
 	default:
-		unit = "KB"
 		used = strconv.FormatUint(swapUsed, 10)
 		total = strconv.FormatUint(swapTotal, 10)
+	}
+
+	var unit string
+	switch {
+	case swapTotal >= kbPerTB:
+		unit = "TB"
+	case swapTotal >= kbPerGB:
+		unit = "GB"
+	case swapTotal >= kbPerMB:
+		unit = "MB"
+	default:
+		unit = "KB"
 	}
 
 	swap := used + " / " + total + " " + unit
