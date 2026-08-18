@@ -26,7 +26,9 @@ func CollectSystemInfo(modules []config.Module, distroName string, opts cmd.Opti
 			value = Userinfo(module.Format, module.Color, opts.NoColor)
 
 		case "os":
-			value = distroName
+			value = config.Format(module.Format, config.Values{
+				"name": distroName,
+			})
 
 		case "kernel":
 			value = Kernel(module.Format)

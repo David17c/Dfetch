@@ -92,14 +92,19 @@ func PrintOutput(asciiLines, infoLines []string, NoColor bool) {
 		renderedAscii[i] = ApplyColorTags(line, NoColor)
 	}
 
+	// Expand multiline module output and apply inline colors.
+	infoLines = expandInfoLines(infoLines)
+
+	for i, line := range infoLines {
+		infoLines[i] = ApplyColorTags(line, NoColor)
+	}
+
 	if len(renderedAscii) == 0 {
 		for _, line := range infoLines {
 			fmt.Println(line)
 		}
 		return
 	}
-
-	infoLines = expandInfoLines(infoLines)
 
 	width := getMaxWidth(renderedAscii)
 	total := max(len(renderedAscii), len(infoLines))
@@ -146,18 +151,17 @@ func getMaxWidth(lines []string) int {
 var colorTagRE = regexp.MustCompile(`\$\{([^}]+)\}`)
 
 func ApplyColorTags(line string, NoColor bool) string {
+	if NoColor {
+		return colorTagRE.ReplaceAllString(line, "")
+	}
 
 	result := colorTagRE.ReplaceAllStringFunc(line, func(tag string) string {
-		name := strings.TrimSuffix(strings.TrimPrefix(tag, "${"), "}")
+		name := tag[2 : len(tag)-1]
 
-		if strings.EqualFold(name, "reset") {
-			return config.GetColorCode("reset", NoColor)
-		}
-
-		return config.GetColorCode(name, NoColor)
+		return config.GetColorCode(name, false)
 	})
 
-	return result + config.GetColorCode("reset", NoColor)
+	return result + config.GetColorCode("reset", false)
 }
 
 // helps make it so modules spanning multiple lines don't cut through the ascii art

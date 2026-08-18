@@ -1,13 +1,13 @@
 # Customization
 
-The configuration file is stored in `~/.config/Dfetch`. Every time Dfetch is started, it checks if this file exists. If it doesn't, a default configuration file is created automatically.
+The configuration file is stored in `~/.config/Dfetch`. Every time Dfetch is started, it checks if this file exists. If it doesn't, it is created automatically.
 
 The configuration file can be reset by running Dfetch with `--reset-config`.
 
 The configuration file contains two sections:
 
 * `ascii` - Controls the ASCII art displayed by Dfetch.
-* `modules` - Controls which modules are displayed and how they are formatted.
+* `modules` - Controls which modules are displayed in what way and how info is formatted.
 
 ## ASCII
 

@@ -1,8 +1,6 @@
 package config
 
-import (
-	"strings"
-)
+import "strings"
 
 func GetColorCode(accentColor string, NoColor bool) string {
 	if NoColor {
@@ -10,6 +8,8 @@ func GetColorCode(accentColor string, NoColor bool) string {
 	}
 
 	switch strings.ToLower(accentColor) {
+	case "reset":
+		return "\x1b[0m"
 
 	case "black", "1":
 		return "\x1b[30m"
@@ -78,8 +78,7 @@ func GetColorCode(accentColor string, NoColor bool) string {
 		return "\x1b[1;96m"
 	case "bold_bright_white", "32":
 		return "\x1b[1;97m"
-
-	default:
-		return "\x1b[0m"
 	}
+
+	return ""
 }

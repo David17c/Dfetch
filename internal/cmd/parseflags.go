@@ -19,7 +19,7 @@ type Options struct {
 func ParseFlags() Options {
 	var opts Options
 
-	fs := pflag.NewFlagSet("myapp", pflag.ExitOnError)
+	fs := pflag.NewFlagSet("Dfetch", pflag.ExitOnError)
 
 	fs.BoolVarP(&opts.NoLogo, "no-logo", "l", false, "Disable ASCII art for this run")
 	fs.BoolVarP(&opts.NoColor, "no-color", "C", false, "Disable color output for this run")
@@ -59,7 +59,7 @@ func listModules() {
  terminal     Current terminal
  disk         Disk usage
  time         Current time
- date          Current date
+ date         Current date
  packages     Installed packages
  host         Device model
  board        Motherboard name
