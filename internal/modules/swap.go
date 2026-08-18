@@ -2,19 +2,19 @@ package modules
 
 import (
 	"bufio"
-	"dfetch/internal/config"
+	"dfetch/internal/format"
 	"fmt"
 	"os"
 	"strconv"
 	"strings"
 )
 
-func Swap(format string) string {
-	fields := config.Fields(format)
+func Swap(formatstring string) string {
+	fields := format.Fields(formatstring)
 
 	file, err := os.Open("/proc/meminfo")
 	if err != nil {
-		return config.Format(format, config.Values{
+		return format.Format(formatstring, format.Values{
 			"swap": "unknown",
 		})
 	}
@@ -35,7 +35,7 @@ func Swap(format string) string {
 		case "SwapTotal:":
 			swapTotal, err = strconv.ParseUint(fields[1], 10, 64)
 			if err != nil {
-				return config.Format(format, config.Values{
+				return format.Format(formatstring, format.Values{
 					"swap": "unknown",
 				})
 			}
@@ -43,7 +43,7 @@ func Swap(format string) string {
 		case "SwapFree:":
 			swapFree, err = strconv.ParseUint(fields[1], 10, 64)
 			if err != nil {
-				return config.Format(format, config.Values{
+				return format.Format(formatstring, format.Values{
 					"swap": "unknown",
 				})
 			}
@@ -55,13 +55,13 @@ func Swap(format string) string {
 	}
 
 	if err := scanner.Err(); err != nil {
-		return config.Format(format, config.Values{
+		return format.Format(formatstring, format.Values{
 			"swap": "unknown",
 		})
 	}
 
 	if swapTotal == 0 {
-		return config.Format(format, config.Values{
+		return format.Format(formatstring, format.Values{
 			"swap": "unknown",
 		})
 	}
@@ -110,7 +110,7 @@ func Swap(format string) string {
 
 	swap := used + " / " + total + " " + unit
 
-	values := config.Values{}
+	values := format.Values{}
 
 	for _, field := range fields {
 		switch field {
@@ -131,5 +131,5 @@ func Swap(format string) string {
 		}
 	}
 
-	return config.Format(format, values)
+	return format.Format(formatstring, values)
 }

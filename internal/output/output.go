@@ -6,7 +6,7 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"dfetch/internal/config"
+	"dfetch/internal/format"
 	"dfetch/internal/modules"
 )
 
@@ -34,7 +34,7 @@ func BuildInfoLines(info []modules.ModuleOutput, NoColor bool) []string {
 			if module.Color != "" {
 				lines = append(
 					lines,
-					config.GetColorCode(module.Color, NoColor)+module.Value+config.GetColorCode("reset", NoColor),
+					format.GetColorCode(module.Color, NoColor)+module.Value+format.GetColorCode("reset", NoColor),
 				)
 			} else {
 				lines = append(lines, module.Value)
@@ -77,9 +77,9 @@ func field(label, color, separator, value string, NoColor bool) string {
 
 	return fmt.Sprintf(
 		"%s%s%s%s%s",
-		config.GetColorCode(color, NoColor),
+		format.GetColorCode(color, NoColor),
 		label,
-		config.GetColorCode("reset", NoColor),
+		format.GetColorCode("reset", NoColor),
 		separator,
 		value,
 	)
@@ -131,7 +131,7 @@ func PrintOutput(asciiLines, infoLines []string, NoColor bool) {
 			left,
 			strings.Repeat(" ", padding),
 			infoLines[i],
-			config.GetColorCode("reset", NoColor),
+			format.GetColorCode("reset", NoColor),
 		)
 	}
 }
@@ -158,10 +158,10 @@ func ApplyColorTags(line string, NoColor bool) string {
 	result := colorTagRE.ReplaceAllStringFunc(line, func(tag string) string {
 		name := tag[2 : len(tag)-1]
 
-		return config.GetColorCode(name, false)
+		return format.GetColorCode(name, false)
 	})
 
-	return result + config.GetColorCode("reset", false)
+	return result + format.GetColorCode("reset", false)
 }
 
 // helps make it so modules spanning multiple lines don't cut through the ascii art

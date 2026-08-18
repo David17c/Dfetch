@@ -2,14 +2,14 @@ package modules
 
 import (
 	"bufio"
-	"dfetch/internal/config"
+	"dfetch/internal/format"
 	"os"
 	"os/exec"
 	"strings"
 )
 
-func Cpu(format string) string {
-	fields := config.Fields(format)
+func Cpu(formatstring string) string {
+	fields := format.Fields(formatstring)
 
 	needsName := false
 	needsShort := false
@@ -25,7 +25,7 @@ func Cpu(format string) string {
 	}
 
 	if !needsName && !needsShort {
-		return config.Format(format, config.Values{})
+		return format.Format(formatstring, format.Values{})
 	}
 
 	name := cpuName()
@@ -33,7 +33,7 @@ func Cpu(format string) string {
 		name = "unknown"
 	}
 
-	values := config.Values{}
+	values := format.Values{}
 
 	for _, field := range fields {
 		switch field {
@@ -45,7 +45,7 @@ func Cpu(format string) string {
 		}
 	}
 
-	return config.Format(format, values)
+	return format.Format(formatstring, values)
 }
 
 func cpuName() string {

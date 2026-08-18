@@ -1,13 +1,13 @@
 package modules
 
 import (
-	"dfetch/internal/config"
+	"dfetch/internal/format"
 	"os"
 	"strings"
 )
 
-func Kernel(format string) string {
-	fields := config.Fields(format)
+func Kernel(formatstring string) string {
+	fields := format.Fields(formatstring)
 
 	needsVersion := false
 	needsType := false
@@ -23,10 +23,10 @@ func Kernel(format string) string {
 	}
 
 	if !needsVersion && !needsType {
-		return config.Format(format, config.Values{})
+		return format.Format(formatstring, format.Values{})
 	}
 
-	values := config.Values{}
+	values := format.Values{}
 
 	if needsVersion {
 		version, err := os.ReadFile("/proc/sys/kernel/osrelease")
@@ -41,5 +41,5 @@ func Kernel(format string) string {
 		values["type"] = "Linux"
 	}
 
-	return config.Format(format, values)
+	return format.Format(formatstring, values)
 }

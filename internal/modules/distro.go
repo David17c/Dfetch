@@ -2,7 +2,7 @@ package modules
 
 import (
 	"bufio"
-	"dfetch/internal/config"
+	"dfetch/internal/format"
 	"fmt"
 	"os"
 	"strings"
@@ -35,15 +35,15 @@ func (d DistroInfo) DisplayName() string {
 	}
 }
 
-func OS(format string) string {
+func OS(formatstring string) string {
 	info, err := Distro()
 	if err != nil {
-		return config.Format(format, config.Values{
+		return format.Format(formatstring, format.Values{
 			"name": "unknown",
 		})
 	}
 
-	return config.Format(format, config.Values{
+	return format.Format(formatstring, format.Values{
 		"name": info.DisplayName(),
 	})
 }

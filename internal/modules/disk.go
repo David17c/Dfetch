@@ -1,7 +1,7 @@
 package modules
 
 import (
-	"dfetch/internal/config"
+	"dfetch/internal/format"
 	"fmt"
 	"syscall"
 )
@@ -10,8 +10,8 @@ func formatBytesWithUnit(bytes uint64, divisor float64) string {
 	return fmt.Sprintf("%.1f", float64(bytes)/divisor)
 }
 
-func Disk(format, mount string) string {
-	fields := config.Fields(format)
+func Disk(formatstring, mount string) string {
+	fields := format.Fields(formatstring)
 
 	var stat syscall.Statfs_t
 
@@ -20,7 +20,7 @@ func Disk(format, mount string) string {
 	}
 
 	if err := syscall.Statfs(mount, &stat); err != nil {
-		return config.Format(format, config.Values{
+		return format.Format(formatstring, format.Values{
 			"disk": "unknown",
 		})
 	}
@@ -29,7 +29,7 @@ func Disk(format, mount string) string {
 	free := stat.Bfree * uint64(stat.Bsize)
 
 	if total == 0 {
-		return config.Format(format, config.Values{
+		return format.Format(formatstring, format.Values{
 			"disk": "unknown",
 		})
 	}
@@ -74,7 +74,7 @@ func Disk(format, mount string) string {
 	usedValue := formatBytesWithUnit(used, divisor)
 	totalValue := formatBytesWithUnit(total, divisor)
 
-	values := config.Values{}
+	values := format.Values{}
 
 	for _, field := range fields {
 		switch field {
@@ -100,5 +100,5 @@ func Disk(format, mount string) string {
 		}
 	}
 
-	return config.Format(format, values)
+	return format.Format(formatstring, values)
 }

@@ -1,12 +1,12 @@
 package modules
 
 import (
-	"dfetch/internal/config"
+	"dfetch/internal/format"
 	"time"
 )
 
-func DateTime(format string) string {
-	fields := config.Fields(format)
+func DateTime(formatstring string) string {
+	fields := format.Fields(formatstring)
 
 	needsTime := false
 	needsDate := false
@@ -22,12 +22,12 @@ func DateTime(format string) string {
 	}
 
 	if !needsTime && !needsDate {
-		return config.Format(format, config.Values{})
+		return format.Format(formatstring, format.Values{})
 	}
 
 	now := time.Now()
 
-	values := config.Values{}
+	values := format.Values{}
 
 	if needsTime {
 		values["time"] = now.Format("15:04:05")
@@ -37,5 +37,5 @@ func DateTime(format string) string {
 		values["date"] = now.Format("2006-01-02")
 	}
 
-	return config.Format(format, values)
+	return format.Format(formatstring, values)
 }

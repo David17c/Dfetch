@@ -1,7 +1,7 @@
 package modules
 
 import (
-	"dfetch/internal/config"
+	"dfetch/internal/format"
 	"dfetch/internal/helpers"
 	"os"
 	"strings"
@@ -166,9 +166,9 @@ func terminalVersion(name string) string {
 	return version
 }
 
-func Terminal(format string) string {
-	fields := config.Fields(format)
-	values := config.Values{}
+func Terminal(formatstring string) string {
+	fields := format.Fields(formatstring)
+	values := format.Values{}
 
 	for _, field := range fields {
 		switch field {
@@ -186,5 +186,5 @@ func Terminal(format string) string {
 		}
 	}
 
-	return config.Format(format, values)
+	return format.Format(formatstring, values)
 }

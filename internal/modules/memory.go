@@ -2,19 +2,19 @@ package modules
 
 import (
 	"bufio"
-	"dfetch/internal/config"
+	"dfetch/internal/format"
 	"fmt"
 	"os"
 	"strconv"
 	"strings"
 )
 
-func Memory(format string) string {
-	fields := config.Fields(format)
+func Memory(formatstring string) string {
+	fields := format.Fields(formatstring)
 
 	file, err := os.Open("/proc/meminfo")
 	if err != nil {
-		return config.Format(format, config.Values{
+		return format.Format(formatstring, format.Values{
 			"memory": "unknown",
 		})
 	}
@@ -34,7 +34,7 @@ func Memory(format string) string {
 		case "MemTotal:":
 			memTotal, err = strconv.ParseUint(fields[1], 10, 64)
 			if err != nil {
-				return config.Format(format, config.Values{
+				return format.Format(formatstring, format.Values{
 					"memory": "unknown",
 				})
 			}
@@ -42,7 +42,7 @@ func Memory(format string) string {
 		case "MemAvailable:":
 			memAvailable, err = strconv.ParseUint(fields[1], 10, 64)
 			if err != nil {
-				return config.Format(format, config.Values{
+				return format.Format(formatstring, format.Values{
 					"memory": "unknown",
 				})
 			}
@@ -54,13 +54,13 @@ func Memory(format string) string {
 	}
 
 	if err := scanner.Err(); err != nil {
-		return config.Format(format, config.Values{
+		return format.Format(formatstring, format.Values{
 			"memory": "unknown",
 		})
 	}
 
 	if memTotal == 0 || memAvailable == 0 {
-		return config.Format(format, config.Values{
+		return format.Format(formatstring, format.Values{
 			"memory": "unknown",
 		})
 	}
@@ -109,7 +109,7 @@ func Memory(format string) string {
 
 	memory := used + " / " + total + " " + unit
 
-	values := config.Values{}
+	values := format.Values{}
 
 	for _, field := range fields {
 		switch field {
@@ -130,5 +130,5 @@ func Memory(format string) string {
 		}
 	}
 
-	return config.Format(format, values)
+	return format.Format(formatstring, values)
 }

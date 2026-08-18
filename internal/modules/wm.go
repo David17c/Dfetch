@@ -1,14 +1,14 @@
 package modules
 
 import (
-	"dfetch/internal/config"
+	"dfetch/internal/format"
 	"dfetch/internal/helpers"
 	"os"
 )
 
-func WindowManager(format string) string {
-	fields := config.Fields(format)
-	values := config.Values{}
+func WindowManager(formatstring string) string {
+	fields := format.Fields(formatstring)
+	values := format.Values{}
 
 	var needsName, needsVersion, needsSessionType bool
 
@@ -70,7 +70,7 @@ func WindowManager(format string) string {
 		values["sessiontype"] = sessionType
 	}
 
-	return config.Format(format, values)
+	return format.Format(formatstring, values)
 }
 
 func WMOnWayland() string {

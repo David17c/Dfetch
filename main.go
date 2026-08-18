@@ -14,21 +14,21 @@ func main() {
 	// Parse command-line flags
 	opts := cmd.ParseFlags()
 
+	// Collect distro info
+	distro, err := modules.Distro()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Dfetch: %v\n", err)
+		os.Exit(1)
+	}
+
 	// Create the default config file if it doesn't exist
 	if err := config.CreateConfigFile(opts); err != nil {
 		fmt.Fprintf(os.Stderr, "Dfetch: %v\n", err)
 		os.Exit(1)
 	}
 
-	// Read / create the config
+	// Read the config
 	cfg, err := config.ReadConfig(opts)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Dfetch: %v\n", err)
-		os.Exit(1)
-	}
-
-	// Collect distro info
-	distro, err := modules.Distro()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Dfetch: %v\n", err)
 		os.Exit(1)

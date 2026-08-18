@@ -1,20 +1,20 @@
 package modules
 
 import (
-	"dfetch/internal/config"
+	"dfetch/internal/format"
 	"os"
 	"strings"
 )
 
-func Host(format string) string {
+func Host(formatstring string) string {
 	info, err := os.ReadFile("/sys/devices/virtual/dmi/id/product_family")
 	if err != nil {
-		return config.Format(format, config.Values{
+		return format.Format(formatstring, format.Values{
 			"host": "unknown",
 		})
 	}
 
-	return config.Format(format, config.Values{
+	return format.Format(formatstring, format.Values{
 		"host": strings.TrimSpace(string(info)),
 	})
 }

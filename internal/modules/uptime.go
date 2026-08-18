@@ -1,7 +1,7 @@
 package modules
 
 import (
-	"dfetch/internal/config"
+	"dfetch/internal/format"
 	"os"
 	"strconv"
 	"strings"
@@ -27,8 +27,8 @@ type uptimeValues struct {
 	minutes   int64
 }
 
-func Uptime(format string) string {
-	fields := config.Fields(format)
+func Uptime(formatstring string) string {
+	fields := format.Fields(formatstring)
 
 	needsUptime := false
 	needsUnits := false
@@ -50,18 +50,18 @@ func Uptime(format string) string {
 	}
 
 	if !needsUptime && !needsUnits {
-		return config.Format(format, config.Values{})
+		return format.Format(formatstring, format.Values{})
 	}
 
 	values := readUptime()
 
 	if values == nil {
-		return config.Format(format, config.Values{
+		return format.Format(formatstring, format.Values{
 			"uptime": "unknown",
 		})
 	}
 
-	result := config.Values{}
+	result := format.Values{}
 
 	for _, field := range fields {
 		switch field {
@@ -91,7 +91,7 @@ func Uptime(format string) string {
 		}
 	}
 
-	return config.Format(format, result)
+	return format.Format(formatstring, result)
 }
 
 func readUptime() *uptimeValues {

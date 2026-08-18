@@ -1,14 +1,14 @@
 package modules
 
 import (
-	"dfetch/internal/config"
+	"dfetch/internal/format"
 	"os"
 	"os/user"
 )
 
-func Userinfo(format string, color string, noColor bool) string {
-	fields := config.Fields(format)
-	values := config.Values{}
+func Userinfo(formatstring string, color string, noColor bool) string {
+	fields := format.Fields(formatstring)
+	values := format.Values{}
 
 	var username, hostname string
 
@@ -29,8 +29,8 @@ func Userinfo(format string, color string, noColor bool) string {
 	}
 
 	if color != "" {
-		c := config.GetColorCode(color, noColor)
-		r := config.GetColorCode("reset", noColor)
+		c := format.GetColorCode(color, noColor)
+		r := format.GetColorCode("reset", noColor)
 
 		if _, ok := values["username"]; ok {
 			values["username"] = c + values["username"] + r
@@ -41,7 +41,7 @@ func Userinfo(format string, color string, noColor bool) string {
 		}
 	}
 
-	return config.Format(format, values)
+	return format.Format(formatstring, values)
 }
 
 func Hostname() string {

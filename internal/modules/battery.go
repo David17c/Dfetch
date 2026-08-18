@@ -1,7 +1,7 @@
 package modules
 
 import (
-	"dfetch/internal/config"
+	"dfetch/internal/format"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -9,8 +9,8 @@ import (
 	"strings"
 )
 
-func Battery(format string) string {
-	fields := config.Fields(format)
+func Battery(formatstring string) string {
+	fields := format.Fields(formatstring)
 
 	needsPercent := false
 	needsStatus := false
@@ -26,12 +26,12 @@ func Battery(format string) string {
 	}
 
 	if !needsPercent && !needsStatus {
-		return config.Format(format, config.Values{})
+		return format.Format(formatstring, format.Values{})
 	}
 
 	batPath, err := findBattery()
 	if err != nil {
-		return config.Format(format, config.Values{
+		return format.Format(formatstring, format.Values{
 			"percent": "unknown",
 			"status":  "unknown",
 		})
@@ -39,7 +39,7 @@ func Battery(format string) string {
 
 	present, err := readInt(filepath.Join(batPath, "present"))
 	if err != nil || present != 1 {
-		return config.Format(format, config.Values{
+		return format.Format(formatstring, format.Values{
 			"percent": "unknown",
 			"status":  "No battery present",
 		})
@@ -47,13 +47,13 @@ func Battery(format string) string {
 
 	capacity, err := readInt(filepath.Join(batPath, "capacity"))
 	if err != nil {
-		return config.Format(format, config.Values{
+		return format.Format(formatstring, format.Values{
 			"percent": "unknown",
 			"status":  "unknown",
 		})
 	}
 
-	values := config.Values{
+	values := format.Values{
 		"percent": fmt.Sprintf("%d%%", capacity),
 	}
 
@@ -66,7 +66,7 @@ func Battery(format string) string {
 		values["status"] = status
 	}
 
-	return config.Format(format, values)
+	return format.Format(formatstring, values)
 }
 
 func findBattery() (string, error) {

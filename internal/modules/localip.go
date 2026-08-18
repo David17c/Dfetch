@@ -1,13 +1,13 @@
 package modules
 
 import (
-	"dfetch/internal/config"
+	"dfetch/internal/format"
 	"net"
 	"strconv"
 )
 
-func LocalIP(format string) string {
-	fields := config.Fields(format)
+func LocalIP(formatstring string) string {
+	fields := format.Fields(formatstring)
 
 	needsIP := false
 	needsPrefix := false
@@ -27,20 +27,20 @@ func LocalIP(format string) string {
 	}
 
 	if !needsIP && !needsPrefix && !needsAddress {
-		return config.Format(format, config.Values{})
+		return format.Format(formatstring, format.Values{})
 	}
 
 	ip, prefix := detectLocalIP()
 
 	if ip == "" {
-		return config.Format(format, config.Values{
+		return format.Format(formatstring, format.Values{
 			"ip":      "unknown",
 			"prefix":  "unknown",
 			"address": "unknown",
 		})
 	}
 
-	values := config.Values{}
+	values := format.Values{}
 
 	for _, field := range fields {
 		switch field {
@@ -59,7 +59,7 @@ func LocalIP(format string) string {
 		}
 	}
 
-	return config.Format(format, values)
+	return format.Format(formatstring, values)
 }
 
 func detectLocalIP() (string, string) {

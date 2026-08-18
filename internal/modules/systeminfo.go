@@ -3,6 +3,7 @@ package modules
 import (
 	"dfetch/internal/cmd"
 	"dfetch/internal/config"
+	"dfetch/internal/format"
 	"fmt"
 )
 
@@ -26,7 +27,7 @@ func CollectSystemInfo(modules []config.Module, distroName string, opts cmd.Opti
 			value = Userinfo(module.Format, module.Color, opts.NoColor)
 
 		case "os":
-			value = config.Format(module.Format, config.Values{
+			value = format.Format(module.Format, format.Values{
 				"name": distroName,
 			})
 

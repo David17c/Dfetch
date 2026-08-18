@@ -1,7 +1,7 @@
 package modules
 
 import (
-	"dfetch/internal/config"
+	"dfetch/internal/format"
 	"dfetch/internal/helpers"
 	"os"
 	"path/filepath"
@@ -13,12 +13,12 @@ type shellElements struct {
 	version string
 }
 
-func Shell(format string) string {
+func Shell(formatstring string) string {
 	shellPath := os.Getenv("SHELL")
 	shell := strings.ToLower(filepath.Base(shellPath))
 
 	if shell == "" {
-		return config.Format(format, config.Values{
+		return format.Format(formatstring, format.Values{
 			"name":    "unknown",
 			"version": "unknown",
 		})
@@ -51,7 +51,7 @@ func Shell(format string) string {
 		elm.name = shell
 	}
 
-	return config.Format(format, map[string]string{
+	return format.Format(formatstring, map[string]string{
 		"name":    elm.name,
 		"version": elm.version,
 	})

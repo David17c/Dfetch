@@ -1,13 +1,13 @@
 package modules
 
 import (
-	"dfetch/internal/config"
+	"dfetch/internal/format"
 	"os"
 	"strings"
 )
 
-func DesktopEnvironment(format string) string {
-	fields := config.Fields(format)
+func DesktopEnvironment(formatstring string) string {
+	fields := format.Fields(formatstring)
 
 	needsDE := false
 
@@ -19,12 +19,12 @@ func DesktopEnvironment(format string) string {
 	}
 
 	if !needsDE {
-		return config.Format(format, config.Values{})
+		return format.Format(formatstring, format.Values{})
 	}
 
 	name := detectDesktopEnvironment()
 
-	values := config.Values{}
+	values := format.Values{}
 
 	for _, field := range fields {
 		switch field {
@@ -33,7 +33,7 @@ func DesktopEnvironment(format string) string {
 		}
 	}
 
-	return config.Format(format, values)
+	return format.Format(formatstring, values)
 }
 
 func detectDesktopEnvironment() string {

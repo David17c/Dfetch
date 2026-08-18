@@ -2,7 +2,7 @@ package modules
 
 import (
 	"bytes"
-	"dfetch/internal/config"
+	"dfetch/internal/format"
 	"fmt"
 	"os"
 	"os/exec"
@@ -59,8 +59,8 @@ var PackageManagers = []PackageManager{
 	},
 }
 
-func Packages(format string) string {
-	fields := config.Fields(format)
+func Packages(formatstring string) string {
+	fields := format.Fields(formatstring)
 
 	needsPackages := false
 	needsTotal := false
@@ -86,7 +86,7 @@ func Packages(format string) string {
 	}
 
 	if len(neededManagers) == 0 {
-		return config.Format(format, config.Values{})
+		return format.Format(formatstring, format.Values{})
 	}
 
 	detected := getPackageManagers()
@@ -106,7 +106,7 @@ func Packages(format string) string {
 		total += count
 	}
 
-	values := config.Values{}
+	values := format.Values{}
 
 	for _, field := range fields {
 		switch field {
@@ -137,7 +137,7 @@ func Packages(format string) string {
 		}
 	}
 
-	return config.Format(format, values)
+	return format.Format(formatstring, values)
 }
 
 func getPackageManagers() []PackageManager {
