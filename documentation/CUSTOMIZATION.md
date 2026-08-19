@@ -74,7 +74,7 @@ displays the CPU module using its short name.
 | ----------- | -------------------------------------------------------- |
 | `name`      | The module that should be displayed                      |
 | `label`     | The name displayed in output                             |
-| `color`     | Color of the label                                       |
+| `color`     | Color of the label default is set based on the distro    |
 | `separator` | Text separating the label and the information            |
 | `format`    | Controls how the module output is formatted              |
 | `mount`     | Sets which mount point or filesystem should be displayed |

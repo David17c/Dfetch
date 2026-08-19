@@ -5,6 +5,7 @@ import (
 	"dfetch/internal/format"
 	"os"
 	"os/exec"
+	"regexp"
 	"strings"
 )
 
@@ -80,28 +81,17 @@ func cpuName() string {
 	return ""
 }
 
-var cpuReplacer = strings.NewReplacer(
-	"(R)", "",
-	"(TM)", "",
-	"®", "",
-	"™", "",
-	" CPU", "",
-	" Processor", "",
-	" APU", "",
-	" with Radeon Vega Graphics", "",
-	" with Radeon Graphics", "",
-	" with Radeon", "",
-)
+var cpuReplacer = regexp.MustCompile(`(?i)(\(r\)|\(tm\)|®|™|\s+cpu|\s+processor|\s+apu|\s+with radeon vega graphics|\s+with radeon graphics|\s+with radeon)`)
 
-func normalizeCPUName(name string) string {
-	name = cpuReplacer.Replace(name)
+func normalizeCPUName(output string) string {
+	name := cpuReplacer.ReplaceAllString(output, "")
 
 	if before, _, found := strings.Cut(name, " @ "); found {
 		name = before
 	}
 
-	if before, _, found := strings.Cut(strings.ToLower(name), " w/"); found {
-		name = name[:len(before)]
+	if before, _, found := strings.Cut(name, " w/"); found {
+		name = before
 	}
 
 	return strings.Join(strings.Fields(name), " ")
