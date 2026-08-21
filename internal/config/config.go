@@ -297,6 +297,7 @@ func mapLogoToColor(ID string) string {
 		"linuxmint":           "bold_green",
 		"manjaro":             "bold_green",
 		"mx":                  "bold_white",
+		"nobara":              "bold_white",
 		"nixos":               "bold_magenta",
 		"opensuse-leap":       "bold_green",
 		"opensuse-tumbleweed": "bold_green",

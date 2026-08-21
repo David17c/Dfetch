@@ -126,7 +126,6 @@ func detectTerminal() string {
 	}
 }
 
-// For now only collect version on terminals where it's easy to get
 func terminalVersion(name string) string {
 	var command string
 	var args string

@@ -14,7 +14,7 @@ Lightweight command-line tool for displaying system information with a focus on 
 
 Dfetch supports most modern Linux distributions and includes ASCII art for:
 
-**Alma Linux, Alpine Linux, Arch, Artix, Bazzite, CachyOS, CentOS, Clear Linux, Debian, Deepin, Elementary, EndeavourOS, Fedora, Garuda, Gentoo, Kali Linux, Linux Mint, Manjaro, NixOS, OpenSUSE Leap, OpenSUSE Tumbleweed, Parrot, Pc Linux OS, Peppermint OS, Pop!_OS, Qubes, Rhel, Rocky Linux, Slackware, Tuxedo OS, Ubuntu, Vanilla OS, Void Linux and Zorin OS.**
+**AlmaLinux, Alpine Linux, Arch, Artix, Bazzite, CachyOS, CentOS, Clear Linux, Debian, Deepin, elementary OS, EndeavourOS, Fedora, Garuda Linux, Gentoo, Kali Linux, Linux Mint, Manjaro, MX Linux, NixOS, Nobara, openSUSE Leap, openSUSE Tumbleweed, openSUSE Slowroll, Parrot OS, PCLinuxOS, Peppermint OS, Pop!_OS, Qubes OS, RHEL, Rocky Linux, Slackware, TUXEDO OS, Ubuntu, Vanilla OS, Void Linux and Zorin OS.**
 
 If your distribution isn't listed, Dfetch probably still works.
 
