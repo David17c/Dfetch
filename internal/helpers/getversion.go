@@ -1,3 +1,5 @@
+// takes a string and extracts a version number from it
+
 package helpers
 
 import (

@@ -12,4 +12,4 @@
 
 `-c, --set-config <path>` Use the specified config file
 
-`--reset-config` Regenerate the default config file
+`--regen-config` Regenerate the default config file

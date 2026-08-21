@@ -2,6 +2,7 @@ package format
 
 import "strings"
 
+// reeives color return corresponding ansi code
 func GetColorCode(accentColor string, NoColor bool) string {
 	if NoColor {
 		return ""

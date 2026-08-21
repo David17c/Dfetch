@@ -28,10 +28,11 @@ type Module struct {
 	Format    string `json:"format,omitempty"`
 	Separator string `json:"separator,omitempty"`
 
-	// Disk module only
+	// disk module only
 	Mount string `json:"mount,omitempty"`
 }
 
+// return path to default config
 func configPath(opts cmd.Options) (string, error) {
 	var configDir string
 
@@ -79,6 +80,7 @@ func ReadConfig(opts cmd.Options) (Config, error) {
 	return cfg, nil
 }
 
+// validate modules only use allowed options
 func (c Config) Validate() error {
 
 	for i, module := range c.Modules {
@@ -157,6 +159,7 @@ func (c Config) Validate() error {
 	return nil
 }
 
+// create default config file
 func CreateConfigFile(opts cmd.Options, distroID string, distroIDLike string) error {
 	path, err := configPath(opts)
 	if err != nil {
@@ -189,6 +192,7 @@ func CreateConfigFile(opts cmd.Options, distroID string, distroIDLike string) er
 		}
 	}
 
+	//The default config
 	defaultConfig := Config{
 		Logo: ASCIIConfig{
 			Enabled:       true,
@@ -218,7 +222,7 @@ func CreateConfigFile(opts cmd.Options, distroID string, distroIDLike string) er
 			{Name: "shell", Label: "Shell", Color: colorToUse, Separator: ": ", Format: "{name} {version}"},
 			{Name: "terminal", Label: "Term", Color: colorToUse, Separator: ": ", Format: "{name} {version}"},
 			{Name: "de", Label: "DE", Color: colorToUse, Separator: ": ", Format: "{de}"},
-			{Name: "wm", Label: "WM", Color: colorToUse, Separator: ": ", Format: "{name} {sessiontype}"},
+			{Name: "wm", Label: "WM", Color: colorToUse, Separator: ": ", Format: "{name} ({sessiontype})"},
 			{Name: "uptime", Label: "Uptime", Color: colorToUse, Separator: ": ", Format: "{uptime}"},
 			{Name: "local_ip", Label: "Local IP", Color: colorToUse, Separator: ": ", Format: "{address}"},
 			{Name: "locale", Label: "Lang", Color: colorToUse, Separator: ": ", Format: "{locale}"},
@@ -245,7 +249,7 @@ func CreateConfigFile(opts cmd.Options, distroID string, distroIDLike string) er
 	return nil
 }
 
-// Removes existing config
+// Remove existing config
 func RemoveConfigFile(opts cmd.Options) {
 	path, err := configPath(opts)
 	if err != nil {
@@ -262,6 +266,7 @@ func RemoveConfigFile(opts cmd.Options) {
 	}
 }
 
+// helper function used to validate modules that don't support any options
 func (m Module) HasOptions() bool {
 	return m.Label != "" ||
 		m.Color != "" ||
@@ -270,6 +275,7 @@ func (m Module) HasOptions() bool {
 		m.Mount != ""
 }
 
+// map of accentcolor -> distro
 func mapLogoToColor(ID string) string {
 	colors := map[string]string{
 		"almalinux":           "bold_yellow",

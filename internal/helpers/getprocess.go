@@ -1,3 +1,5 @@
+// checks if a process exists
+
 package helpers
 
 import (

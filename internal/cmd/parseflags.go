@@ -25,7 +25,7 @@ func ParseFlags() Options {
 	fs.BoolVarP(&opts.NoColor, "no-color", "C", false, "Disable color output for this run")
 	fs.StringVarP(&opts.SetLogo, "set-logo", "L", "", "Set the logo from a custom ASCII art file or distro name")
 	fs.StringVarP(&opts.SetConfig, "set-config", "c", "", "Use the specified config file")
-	fs.BoolVar(&opts.ResetConfig, "reset-config", false, "Regenerate the default config file")
+	fs.BoolVar(&opts.ResetConfig, "regen-config", false, "Regenerate the default config file")
 	fs.BoolVarP(&opts.ListModules, "list-modules", "m", false, "List all available modules")
 
 	fs.Parse(os.Args[1:])
