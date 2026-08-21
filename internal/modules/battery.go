@@ -37,12 +37,17 @@ func Battery(formatstring string) string {
 		})
 	}
 
-	present, err := readInt(filepath.Join(batPath, "present"))
-	if err != nil || present != 1 {
-		return format.Format(formatstring, format.Values{
-			"percent": "unknown",
-			"status":  "No battery present",
-		})
+	// Assume the battery is present unless the "present" file
+	// explicitly says otherwise.
+	presentPath := filepath.Join(batPath, "present")
+	if _, err := os.Stat(presentPath); err == nil {
+		present, err := readInt(presentPath)
+		if err != nil || present != 1 {
+			return format.Format(formatstring, format.Values{
+				"percent": "unknown",
+				"status":  "No battery present",
+			})
+		}
 	}
 
 	capacity, err := readInt(filepath.Join(batPath, "capacity"))
