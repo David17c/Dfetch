@@ -2,6 +2,7 @@ package modules
 
 import (
 	"bytes"
+	"database/sql"
 	"dfetch/internal/format"
 	"fmt"
 	"os"
@@ -9,6 +10,8 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+
+	_ "modernc.org/sqlite"
 )
 
 type PackageManager struct {
@@ -45,6 +48,8 @@ var PackageManagers = []PackageManager{
 	},
 	{
 		Name:  "rpm",
+		Path:  "/usr/lib/sysimage/rpm/rpmdb.sqlite",
+		Dir:   false,
 		Count: countRpm,
 	},
 	{
@@ -144,9 +149,8 @@ func getPackageManagers() []PackageManager {
 	var detected []PackageManager
 
 	for _, pm := range PackageManagers {
-		switch pm.Name {
-		case "rpm", "snap":
-			if _, err := exec.LookPath(pm.Name); err != nil {
+		if pm.Name == "snap" {
+			if _, err := exec.LookPath("snap"); err != nil {
 				continue
 			}
 
@@ -229,6 +233,21 @@ func countEopkg() int {
 }
 
 func countRpm() int {
+	db, err := sql.Open(
+		"sqlite",
+		"file:/usr/lib/sysimage/rpm/rpmdb.sqlite?mode=ro",
+	)
+	if err == nil {
+		var count int
+
+		if err := db.QueryRow("SELECT COUNT(*) FROM Packages").Scan(&count); err == nil {
+			db.Close()
+			return count
+		}
+
+		db.Close()
+	}
+
 	out, err := exec.Command("rpm", "-qa").Output()
 	if err != nil {
 		return 0
@@ -253,7 +272,9 @@ func countSnap() int {
 
 func countFlatpak() int {
 	count := 0
-	paths := []string{"/var/lib/flatpak/app"}
+	paths := []string{
+		"/var/lib/flatpak/app",
+	}
 
 	if homeDir, err := os.UserHomeDir(); err == nil {
 		paths = append(

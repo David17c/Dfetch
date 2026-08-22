@@ -2,7 +2,7 @@
 
 Lightweight command-line tool for displaying system information with a focus on clean output, speed, and customization.
 
-![Default output on Debian](image/debian_dfetch_output.png)
+![Default output on Debian](image/fedora_dfetch_output.png)
 
 ## Documentation
 
